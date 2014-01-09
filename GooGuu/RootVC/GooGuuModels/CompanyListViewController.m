@@ -31,47 +31,25 @@
 
 @implementation CompanyListViewController
 
-@synthesize comList;
-@synthesize comType;
-@synthesize rowImage;
-@synthesize table;
-@synthesize search;
-@synthesize isShowSearchBar=_isShowSearchBar;
-@synthesize concernStocksCodeArr;
-@synthesize com;
-@synthesize type;
-@synthesize nibsRegistered;
-@synthesize isSearchList;
-
-- (void)dealloc {
-    SAFE_RELEASE(com);
-    SAFE_RELEASE(concernStocksCodeArr);
-    SAFE_RELEASE(comType);
-    SAFE_RELEASE(comList);
-    SAFE_RELEASE(rowImage);
-    SAFE_RELEASE(table);
-    SAFE_RELEASE(search);
-    [super dealloc];
-}
 
 -(void)viewDidAppear:(BOOL)animated{
     //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
     [self getConcernStocksCode];
     [self.table reloadData];
-    if(isSearchList){
+    if(self.isSearchList){
         [self.search becomeFirstResponder];
     }
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
     //[[BaiduMobStat defaultStat] pageviewEndWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-    [search resignFirstResponder];
+    [self.search resignFirstResponder];
 }
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    nibsRegistered = NO;
+    self.nibsRegistered = NO;
 
     self.title=@"估值模型";
     [self initViewComponents];
@@ -92,26 +70,26 @@
 }
 -(void)initViewComponents{
     
-    table=[[UITableView alloc] initWithFrame:CGRectMake(0,62,SCREEN_WIDTH,SCREEN_HEIGHT-160)];
-    table.separatorStyle=UITableViewCellSeparatorStyleNone;
-    search=[[UISearchBar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,35)];
-    if(!IOS7_OR_LATER){
-        [[self.search.subviews objectAtIndex:0] removeFromSuperview];
-        self.search.backgroundColor = [UIColor grayColor];
-    }
+    UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,62,SCREEN_WIDTH,SCREEN_HEIGHT-160)] autorelease];
+    self.table = temp;
+    self.table.separatorStyle=UITableViewCellSeparatorStyleNone;
+    
+    UISearchBar *tempBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,35)] autorelease];
+    self.search = tempBar;
     [self.search setPlaceholder:@"输入股票代码/名称"];
-    search.delegate=self;
+    
+    self.search.delegate=self;
     
     IndicatorComView *indicator=[[IndicatorComView alloc] init];
     indicator.center=CGPointMake(SCREEN_WIDTH/2,50);
     [self.view insertSubview:indicator aboveSubview:self.table];
     [indicator release];
-    [self.view addSubview:search];
-    [table setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
-    table.dataSource=self;
-    table.delegate=self;
+    [self.view addSubview:self.search];
+    [self.table setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
+    self.table.dataSource=self;
+    self.table.delegate=self;
     
-    [self.view addSubview:table];
+    [self.view addSubview:self.table];
 }
 -(void)addTableHeaderAndFooter{
     if(_refreshHeaderView == nil)
@@ -137,7 +115,7 @@
 -(void)addCompany{
 
     NSString *updateTime=[[self.comList lastObject] objectForKey:@"updatetime"];   
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:type],@"market",updateTime,@"updatetime", nil];
+    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:self.type],@"market",updateTime,@"updatetime", nil];
     
     [Utiles getNetInfoWithPath:@"QueryAllCompany" andParams:params besidesBlock:^(id resObj){        
         NSMutableArray *temp=[NSMutableArray arrayWithArray:self.comList];
@@ -160,7 +138,7 @@
 
 -(void)getCompanyList{
 
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:type],@"market", nil];
+    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:self.type],@"market", nil];
     [Utiles getNetInfoWithPath:@"QueryAllCompany" andParams:params besidesBlock:^(id resObj){
         
         self.comList=resObj;
@@ -180,15 +158,17 @@
         NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[Utiles getUserToken],@"token",@"googuu",@"from", nil];
         [Utiles postNetInfoWithPath:@"AttentionData" andParams:params besidesBlock:^(id resObj){
             if(![[resObj objectForKey:@"status"] isEqualToString:@"0"]){
-                self.concernStocksCodeArr=[[NSMutableArray alloc] init];
+                NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
+                self.concernStocksCodeArr = temps;
                 NSArray *temp=[resObj objectForKey:@"data"];
                 for(id obj in temp){
-                    [concernStocksCodeArr addObject:[NSString stringWithFormat:@"%@",[obj objectForKey:@"stockcode"]]];
+                    [self.concernStocksCodeArr addObject:[NSString stringWithFormat:@"%@",[obj objectForKey:@"stockcode"]]];
                 }
                 [self.table reloadData];
             }else{
                 [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
-                self.concernStocksCodeArr=[[NSMutableArray alloc] init];
+                NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
+                self.concernStocksCodeArr = temps;
             }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
@@ -248,10 +228,10 @@
     static NSString * StockCellIdentifier =
     @"StockCellIdentifier";
     
-    if (!nibsRegistered) {
+    if (!self.nibsRegistered) {
         UINib *nib = [UINib nibWithNibName:@"StockCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:StockCellIdentifier];
-        nibsRegistered = YES;
+        self.nibsRegistered = YES;
     }
     
     StockCell *cell = [tableView dequeueReusableCellWithIdentifier:StockCellIdentifier];
@@ -264,7 +244,7 @@
     NSUInteger row;
     row = [indexPath row];
     @try{
-        NSDictionary *comInfo=[comList objectAtIndex:row];
+        NSDictionary *comInfo=[self.comList objectAtIndex:row];
         cell.stockNameLabel.text=[comInfo objectForKey:@"companyname"]==nil?@"":[comInfo objectForKey:@"companyname"];
         [cell.concernBt setTitleColor:[UIColor clearColor] forState:UIControlStateHighlighted];
         if([Utiles isLogin]){
@@ -374,7 +354,7 @@
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [search resignFirstResponder];
+    [self.search resignFirstResponder];
     return indexPath;
 }
 
@@ -384,14 +364,15 @@
     AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
     int row=indexPath.row;
     delegate.comInfo=[self.comList objectAtIndex:row];
-
-    com=[[ComFieldViewController alloc] init];
-    com.browseType=ValuationModelType;
-    com.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
-    [self presentViewController:com animated:YES completion:nil];
+    
+    ComFieldViewController *tempCom = [[[ComFieldViewController alloc] init] autorelease];
+    self.com = tempCom;
+    self.com.browseType=ValuationModelType;
+    self.com.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
+    [self presentViewController:self.com animated:YES completion:nil];
 
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [search resignFirstResponder];
+    [self.search resignFirstResponder];
 }
 
 
@@ -406,7 +387,7 @@
     searchList.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:searchList animated:YES];
     SAFE_RELEASE(searchList);
-    [search resignFirstResponder];
+    [self.search resignFirstResponder];
   
 }
 
@@ -427,7 +408,7 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    [search resignFirstResponder];
+    [self.search resignFirstResponder];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{

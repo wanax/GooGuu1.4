@@ -262,7 +262,8 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "CPTTestApp_iPad-Info.plist";
 				PRODUCT_NAME = "CPTTestApp-iPad";
-			};
+			GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {

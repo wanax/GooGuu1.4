@@ -37,6 +37,12 @@
 		AE018896187D02D0004C6A5D /* agreement.txt in Resources */ = {isa = PBXBuildFile; fileRef = AE018893187D02D0004C6A5D /* agreement.txt */; };
 		AE018897187D02D0004C6A5D /* announce.txt in Resources */ = {isa = PBXBuildFile; fileRef = AE018894187D02D0004C6A5D /* announce.txt */; };
 		AE018898187D02D0004C6A5D /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE018895187D02D0004C6A5D /* Entitlements.plist */; };
+		AE06B8E6187EAB7900DA93E2 /* FinanceToolsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8DB187EAB7900DA93E2 /* FinanceToolsViewController.m */; };
+		AE06B8E7187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8DD187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.m */; };
+		AE06B8E8187EAB7900DA93E2 /* CounterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8DF187EAB7900DA93E2 /* CounterViewController.m */; };
+		AE06B8E9187EAB7900DA93E2 /* CounterBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8E1187EAB7900DA93E2 /* CounterBankViewController.m */; };
+		AE06B8EA187EAB7900DA93E2 /* BetaFactorCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8E3187EAB7900DA93E2 /* BetaFactorCountViewController.m */; };
+		AE06B8EB187EAB7900DA93E2 /* ChoseBetaFactorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE06B8E5187EAB7900DA93E2 /* ChoseBetaFactorViewController.m */; };
 		AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0D3C9E187D2D7100E0E141 /* MobileCoreServices.framework */; };
 		AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0D3CA2187D2DBB00E0E141 /* CoreText.framework */; };
 		AE0D3CA5187D2DC100E0E141 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0D3CA4187D2DC100E0E141 /* ImageIO.framework */; };
@@ -361,6 +367,18 @@
 		AE018893187D02D0004C6A5D /* agreement.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = agreement.txt; sourceTree = "<group>"; };
 		AE018894187D02D0004C6A5D /* announce.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = announce.txt; sourceTree = "<group>"; };
 		AE018895187D02D0004C6A5D /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		AE06B8DA187EAB7900DA93E2 /* FinanceToolsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceToolsViewController.h; sourceTree = "<group>"; };
+		AE06B8DB187EAB7900DA93E2 /* FinanceToolsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinanceToolsViewController.m; sourceTree = "<group>"; };
+		AE06B8DC187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceToolsGrade2ViewController.h; sourceTree = "<group>"; };
+		AE06B8DD187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinanceToolsGrade2ViewController.m; sourceTree = "<group>"; };
+		AE06B8DE187EAB7900DA93E2 /* CounterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterViewController.h; sourceTree = "<group>"; };
+		AE06B8DF187EAB7900DA93E2 /* CounterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterViewController.m; sourceTree = "<group>"; };
+		AE06B8E0187EAB7900DA93E2 /* CounterBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CounterBankViewController.h; sourceTree = "<group>"; };
+		AE06B8E1187EAB7900DA93E2 /* CounterBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CounterBankViewController.m; sourceTree = "<group>"; };
+		AE06B8E2187EAB7900DA93E2 /* BetaFactorCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BetaFactorCountViewController.h; sourceTree = "<group>"; };
+		AE06B8E3187EAB7900DA93E2 /* BetaFactorCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BetaFactorCountViewController.m; sourceTree = "<group>"; };
+		AE06B8E4187EAB7900DA93E2 /* ChoseBetaFactorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseBetaFactorViewController.h; sourceTree = "<group>"; };
+		AE06B8E5187EAB7900DA93E2 /* ChoseBetaFactorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseBetaFactorViewController.m; sourceTree = "<group>"; };
 		AE0D3C9E187D2D7100E0E141 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		AE0D3CA2187D2DBB00E0E141 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		AE0D3CA4187D2DC100E0E141 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -388,7 +406,7 @@
 		AE0D3CCC187D3A2E00E0E141 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		AE0D3CCD187D3A2E00E0E141 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		AE0D3CCF187D3A3800E0E141 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarController.h; sourceTree = "<group>"; };
-		AE0D3CD0187D3A3800E0E141 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
+		AE0D3CD0187D3A3800E0E141 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MHTabBarController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE0D3CD4187D3A9200E0E141 /* PrettyCustomViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyCustomViewTableViewCell.h; sourceTree = "<group>"; };
 		AE0D3CD5187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyCustomViewTableViewCell.m; sourceTree = "<group>"; };
 		AE0D3CD6187D3A9200E0E141 /* PrettyGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyGridTableViewCell.h; sourceTree = "<group>"; };
@@ -419,7 +437,7 @@
 		AE0D3D05187D407700E0E141 /* ConcernedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcernedViewController.h; sourceTree = "<group>"; };
 		AE0D3D06187D407700E0E141 /* ConcernedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConcernedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE0D3D07187D407700E0E141 /* MyGooguuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGooguuViewController.h; sourceTree = "<group>"; };
-		AE0D3D08187D407700E0E141 /* MyGooguuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGooguuViewController.m; sourceTree = "<group>"; };
+		AE0D3D08187D407700E0E141 /* MyGooguuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyGooguuViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE0D3D09187D407700E0E141 /* GooGuuContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuContainerViewController.h; sourceTree = "<group>"; };
 		AE0D3D0A187D407700E0E141 /* GooGuuContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuContainerViewController.m; sourceTree = "<group>"; };
 		AE0D3D0B187D407700E0E141 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
@@ -454,7 +472,7 @@
 		AE0D3D39187D414400E0E141 /* StockContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockContainerViewController.h; sourceTree = "<group>"; };
 		AE0D3D3A187D414400E0E141 /* StockContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockContainerViewController.m; sourceTree = "<group>"; };
 		AE0D3D3B187D414400E0E141 /* UniverseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UniverseViewController.h; sourceTree = "<group>"; };
-		AE0D3D3C187D414400E0E141 /* UniverseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniverseViewController.m; sourceTree = "<group>"; };
+		AE0D3D3C187D414400E0E141 /* UniverseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UniverseViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE0D3D3D187D414400E0E141 /* IndicatorComView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorComView.h; sourceTree = "<group>"; };
 		AE0D3D3E187D414400E0E141 /* IndicatorComView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorComView.m; sourceTree = "<group>"; };
 		AE0D3D3F187D414400E0E141 /* StockSearchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockSearchListViewController.h; sourceTree = "<group>"; };
@@ -637,7 +655,7 @@
 		AE518731187E411A0055B9AE /* AnalyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyDetailViewController.h; sourceTree = "<group>"; };
 		AE518732187E411A0055B9AE /* AnalyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyDetailViewController.m; sourceTree = "<group>"; };
 		AE518733187E411A0055B9AE /* AnalyDetailContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyDetailContainerViewController.h; sourceTree = "<group>"; };
-		AE518734187E411A0055B9AE /* AnalyDetailContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnalyDetailContainerViewController.m; sourceTree = "<group>"; };
+		AE518734187E411A0055B9AE /* AnalyDetailContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AnalyDetailContainerViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE518738187E412B0055B9AE /* ComfieldTabelDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComfieldTabelDataSource.h; sourceTree = "<group>"; };
 		AE518739187E412B0055B9AE /* ComfieldTabelDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComfieldTabelDataSource.m; sourceTree = "<group>"; };
 		AE51873A187E412B0055B9AE /* UserCell+ConfigureForComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserCell+ConfigureForComment.h"; sourceTree = "<group>"; };
@@ -645,7 +663,7 @@
 		AE51873F187E41BD0055B9AE /* ModelClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelClassViewController.h; sourceTree = "<group>"; };
 		AE518740187E41BD0055B9AE /* ModelClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelClassViewController.m; sourceTree = "<group>"; };
 		AE518741187E41BD0055B9AE /* ModelClassGrade2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelClassGrade2ViewController.h; sourceTree = "<group>"; };
-		AE518742187E41BD0055B9AE /* ModelClassGrade2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelClassGrade2ViewController.m; sourceTree = "<group>"; };
+		AE518742187E41BD0055B9AE /* ModelClassGrade2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ModelClassGrade2ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE518745187E41FF0055B9AE /* ComFieldViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComFieldViewController.h; sourceTree = "<group>"; };
 		AE518746187E41FF0055B9AE /* ComFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ComFieldViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE518749187E42F10055B9AE /* CQMFloatingContentOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMFloatingContentOverlayView.h; sourceTree = "<group>"; };
@@ -668,11 +686,11 @@
 		AE74DF8C187E44DE002AE169 /* ClientLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientLoginViewController.h; sourceTree = "<group>"; };
 		AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ClientLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE74DF91187E4509002AE169 /* StockRiseDownColorSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockRiseDownColorSettingViewController.h; sourceTree = "<group>"; };
-		AE74DF92187E4509002AE169 /* StockRiseDownColorSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockRiseDownColorSettingViewController.m; sourceTree = "<group>"; };
+		AE74DF92187E4509002AE169 /* StockRiseDownColorSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = StockRiseDownColorSettingViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE74DF93187E4509002AE169 /* AboutUsAndCopyrightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsAndCopyrightViewController.h; sourceTree = "<group>"; };
 		AE74DF94187E4509002AE169 /* AboutUsAndCopyrightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsAndCopyrightViewController.m; sourceTree = "<group>"; };
 		AE74DF95187E4509002AE169 /* FeedBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedBackViewController.h; sourceTree = "<group>"; };
-		AE74DF96187E4509002AE169 /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedBackViewController.m; sourceTree = "<group>"; };
+		AE74DF96187E4509002AE169 /* FeedBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FeedBackViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE74DF97187E4509002AE169 /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpViewController.h; sourceTree = "<group>"; };
 		AE74DF98187E4509002AE169 /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpViewController.m; sourceTree = "<group>"; };
 		AE74DF99187E4509002AE169 /* DisclaimersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclaimersViewController.h; sourceTree = "<group>"; };
@@ -680,7 +698,7 @@
 		AE74DF9B187E4509002AE169 /* AgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AgreementViewController.h; sourceTree = "<group>"; };
 		AE74DF9C187E4509002AE169 /* AgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AgreementViewController.m; sourceTree = "<group>"; };
 		AE74DFA3187E4518002AE169 /* ClientCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCenterViewController.h; sourceTree = "<group>"; };
-		AE74DFA4187E4518002AE169 /* ClientCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCenterViewController.m; sourceTree = "<group>"; };
+		AE74DFA4187E4518002AE169 /* ClientCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ClientCenterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE74DFA5187E4518002AE169 /* SettingCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingCenterViewController.h; sourceTree = "<group>"; };
 		AE74DFA6187E4518002AE169 /* SettingCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SettingCenterViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE74DFAA187E4595002AE169 /* IQKeyBoardManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQKeyBoardManager.h; sourceTree = "<group>"; };
@@ -936,6 +954,7 @@
 		AE018865187CFC3F004C6A5D /* AccessoryVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE06B8D9187EAB6400DA93E2 /* FinanceTool */,
 				AE518738187E412B0055B9AE /* ComfieldTabelDataSource.h */,
 				AE518739187E412B0055B9AE /* ComfieldTabelDataSource.m */,
 				AE51873A187E412B0055B9AE /* UserCell+ConfigureForComment.h */,
@@ -1076,6 +1095,25 @@
 				AE018889187D02BC004C6A5D /* FrameParamConfig.plist */,
 			);
 			path = TextFile;
+			sourceTree = "<group>";
+		};
+		AE06B8D9187EAB6400DA93E2 /* FinanceTool */ = {
+			isa = PBXGroup;
+			children = (
+				AE06B8DA187EAB7900DA93E2 /* FinanceToolsViewController.h */,
+				AE06B8DB187EAB7900DA93E2 /* FinanceToolsViewController.m */,
+				AE06B8DC187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.h */,
+				AE06B8DD187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.m */,
+				AE06B8DE187EAB7900DA93E2 /* CounterViewController.h */,
+				AE06B8DF187EAB7900DA93E2 /* CounterViewController.m */,
+				AE06B8E0187EAB7900DA93E2 /* CounterBankViewController.h */,
+				AE06B8E1187EAB7900DA93E2 /* CounterBankViewController.m */,
+				AE06B8E2187EAB7900DA93E2 /* BetaFactorCountViewController.h */,
+				AE06B8E3187EAB7900DA93E2 /* BetaFactorCountViewController.m */,
+				AE06B8E4187EAB7900DA93E2 /* ChoseBetaFactorViewController.h */,
+				AE06B8E5187EAB7900DA93E2 /* ChoseBetaFactorViewController.m */,
+			);
+			path = FinanceTool;
 			sourceTree = "<group>";
 		};
 		AE0D3CA9187D368900E0E141 /* Catalog */ = {
@@ -2252,6 +2290,7 @@
 				AE518747187E41FF0055B9AE /* ComFieldViewController.m in Sources */,
 				AE0D3D15187D407700E0E141 /* IndicatorView.m in Sources */,
 				AE0D3D4C187D45E400E0E141 /* AOTag.m in Sources */,
+				AE06B8E6187EAB7900DA93E2 /* FinanceToolsViewController.m in Sources */,
 				AE0D3CBF187D36B200E0E141 /* Utiles.m in Sources */,
 				AE518757187E42F10055B9AE /* CQMFloatingController.m in Sources */,
 				AE518728187E40EC0055B9AE /* IntroductionViewController.m in Sources */,
@@ -2273,6 +2312,7 @@
 				AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */,
 				AE518744187E41BD0055B9AE /* ModelClassGrade2ViewController.m in Sources */,
 				AE0D3CEE187D3A9200E0E141 /* PrettyTabBar.m in Sources */,
+				AE06B8E9187EAB7900DA93E2 /* CounterBankViewController.m in Sources */,
 				AE0D3D14187D407700E0E141 /* CalendarViewController.m in Sources */,
 				AE0D3D45187D414400E0E141 /* UniverseViewController.m in Sources */,
 				AE0D3CB6187D36A000E0E141 /* UITabBarController+Autorotate.m in Sources */,
@@ -2291,6 +2331,7 @@
 				AE0D3D22187D410800E0E141 /* CustomCellBackground.m in Sources */,
 				AE0D3D46187D414400E0E141 /* IndicatorComView.m in Sources */,
 				AE51871F187E40630055B9AE /* ChartViewController.m in Sources */,
+				AE06B8EA187EAB7900DA93E2 /* BetaFactorCountViewController.m in Sources */,
 				AE0D3D43187D414400E0E141 /* CompanyListViewController.m in Sources */,
 				AE0D3CB8187D36A000E0E141 /* UIButton+BGColor.m in Sources */,
 				AE0D3D34187D413000E0E141 /* GooGuuArticleViewController.m in Sources */,
@@ -2299,6 +2340,7 @@
 				AE0D3CD1187D3A3800E0E141 /* MHTabBarController.m in Sources */,
 				AE518743187E41BD0055B9AE /* ModelClassViewController.m in Sources */,
 				AE518759187E42F10055B9AE /* CQMFloatingMaskControl.m in Sources */,
+				AE06B8E8187EAB7900DA93E2 /* CounterViewController.m in Sources */,
 				AE0D3CB4187D36A000E0E141 /* NSDictionary+MutableDeepCopy.m in Sources */,
 				AE0D3CCB187D3A2900E0E141 /* MBProgressHUD.m in Sources */,
 				AE0D3D24187D410800E0E141 /* FinancePicViewController.m in Sources */,
@@ -2337,6 +2379,7 @@
 				AE0D3D5F187D467300E0E141 /* VRGCalendarView.m in Sources */,
 				AE0D3CED187D3A9200E0E141 /* PrettyShadowPlainTableview.m in Sources */,
 				AE0D3CE7187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m in Sources */,
+				AE06B8EB187EAB7900DA93E2 /* ChoseBetaFactorViewController.m in Sources */,
 				AE0D3D33187D413000E0E141 /* GooNewsViewController.m in Sources */,
 				AE0D3D11187D407700E0E141 /* ConcernedViewController.m in Sources */,
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
@@ -2344,6 +2387,7 @@
 				AE74DFA1187E4509002AE169 /* DisclaimersViewController.m in Sources */,
 				AE0D3CCE187D3A2E00E0E141 /* EGORefreshTableHeaderView.m in Sources */,
 				AE518736187E411A0055B9AE /* AnalyDetailViewController.m in Sources */,
+				AE06B8E7187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.m in Sources */,
 				AE0D3CC4187D38B700E0E141 /* UIImageView+Addition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2480,6 +2524,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -2502,6 +2547,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

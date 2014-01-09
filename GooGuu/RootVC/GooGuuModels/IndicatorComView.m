@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame=CGRectMake(0,0,SCREEN_WIDTH,30);
+        self.frame=CGRectMake(0,60,SCREEN_WIDTH,30);
         [self setBackgroundColor:[Utiles colorWithHexString:@"#553D24"]];
         
         UILabel *companyNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(29,3,55,21)];

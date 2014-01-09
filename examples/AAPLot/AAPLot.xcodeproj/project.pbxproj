@@ -331,7 +331,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = AAPLot;
-			};
+			GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {

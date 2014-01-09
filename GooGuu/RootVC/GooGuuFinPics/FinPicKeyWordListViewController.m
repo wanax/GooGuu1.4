@@ -32,17 +32,10 @@
     [self.view setBackgroundColor:[Utiles colorWithHexString:@"#FDFBE4"]];
     self.title=@"金融图汇";
     self.tag =nil;
-    if (IOS7_OR_LATER) {
-        self.tag = [[AOTagList alloc] initWithFrame:CGRectMake(-10.0f,
-                                                          150.0f,
-                                                          320.0f,
-                                                          300.0f)];
-    } else {
-        self.tag = [[AOTagList alloc] initWithFrame:CGRectMake(-10.0f,
-                                                          100.0f,
-                                                          320.0f,
-                                                          300.0f)];
-    }
+    self.tag = [[AOTagList alloc] initWithFrame:CGRectMake(-10.0f,
+                                                           150.0f,
+                                                           320.0f,
+                                                           300.0f)];
     
     [self.tag setDelegate:self];
     [self.view addSubview:self.tag];
@@ -64,11 +57,7 @@
 -(void)getKeyWordList{
     
     UIButton *allBt=[UIButton buttonWithType:UIButtonTypeCustom];
-    if (IOS7_OR_LATER) {
-        [allBt setFrame:CGRectMake(30,100,260,25)];
-    } else {
-        [allBt setFrame:CGRectMake(30,50,260,25)];
-    }
+    [allBt setFrame:CGRectMake(30,100,260,25)];
     [allBt setTitle:@"全部" forState:UIControlStateNormal];
     [allBt setBackgroundColor:[UIColor orangeColor]];
     [allBt addTarget:self action:@selector(allBtClicked:) forControlEvents:UIControlEventTouchUpInside];

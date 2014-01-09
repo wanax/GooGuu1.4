@@ -16,3 +16,10 @@
 #ifdef DEBUG
 #define SV_DEBUG_MEMORY_LEAK
 #endif
+
+// From here to end of file added by Injection Plugin //
+
+#ifdef DEBUG
+#define INJECTION_ENABLED
+#import "/Applications/Injection Plugin.app/Contents/Resources/BundleInterface.h"
+#endif

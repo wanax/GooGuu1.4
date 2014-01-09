@@ -40,10 +40,5 @@
 @property (nonatomic,retain) NSMutableArray *concernStocksCodeArr;
 @property (nonatomic,retain) ComFieldViewController *com;
 
-- (void)resetSearch;
-- (void)handleSearchForTerm:(NSString *)searchTerm;
-
-
-
 
 @end

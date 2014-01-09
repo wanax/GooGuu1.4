@@ -190,25 +190,13 @@
     
     
     if(isAttention){
-        if (IOS7_OR_LATER) {
-            attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, 445, 160, 30) img:@"deleteAttentionBt" title:@"取消关注"];
-        } else {
-            attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, 357, 160, 30) img:@"deleteAttentionBt" title:@"取消关注"];
-        }
+        attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, 445, 160, 30) img:@"deleteAttentionBt" title:@"取消关注"];
         
     }else{
-        if (IOS7_OR_LATER) {
-            attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, SCREEN_HEIGHT-123, 160, 30) img:@"addAttentionBt" title:@"添加关注"];
-        } else {
-            attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, SCREEN_HEIGHT-123, 160, 30) img:@"addAttentionBt" title:@"添加关注"];
-        }
+        attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, SCREEN_HEIGHT-123, 160, 30) img:@"addAttentionBt" title:@"添加关注"];
         
     }
-    if (IOS7_OR_LATER) {
-        [self addActionButtonTag:AddComment frame:CGRectMake(160, SCREEN_HEIGHT-123, 160, 30) img:@"addCommentBt" title:@"添加评论"];
-    } else {
-        [self addActionButtonTag:AddComment frame:CGRectMake(160, SCREEN_HEIGHT-123, 160, 30) img:@"addCommentBt" title:@"添加评论"];
-    }
+    [self addActionButtonTag:AddComment frame:CGRectMake(160, SCREEN_HEIGHT-123, 160, 30) img:@"addCommentBt" title:@"添加评论"];
     
 }
 

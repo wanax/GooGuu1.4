@@ -17,21 +17,6 @@
 
 @implementation StockContainerViewController
 
-@synthesize hkListViewController;
-@synthesize szListViewController;
-@synthesize usListViewController;
-@synthesize shListViewController;
-@synthesize tabBarController;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(tabBarController);
-    SAFE_RELEASE(hkListViewController);
-    SAFE_RELEASE(szListViewController);
-    SAFE_RELEASE(shListViewController);
-    SAFE_RELEASE(usListViewController);
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,38 +32,43 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    hkListViewController = [[CompanyListViewController alloc] init];
-    usListViewController = [[CompanyListViewController alloc] init];
-    szListViewController = [[CompanyListViewController alloc] init];
-    shListViewController = [[CompanyListViewController alloc] init];
+    CompanyListViewController *temp1 = [[[CompanyListViewController alloc] init] autorelease];
+    self.hkListViewController = temp1;
+    CompanyListViewController *temp2 = [[[CompanyListViewController alloc] init] autorelease];
+    self.usListViewController = temp2;
+    CompanyListViewController *temp3 = [[[CompanyListViewController alloc] init] autorelease];
+    self.szListViewController = temp3;
+    CompanyListViewController *temp4 = [[[CompanyListViewController alloc] init] autorelease];
+    self.shListViewController = temp4;
 
-    hkListViewController.comType=@"港股";
-    usListViewController.comType=@"美股";
-    szListViewController.comType=@"深市";
-    shListViewController.comType=@"沪市";
+    self.hkListViewController.comType=@"港股";
+    self.usListViewController.comType=@"美股";
+    self.szListViewController.comType=@"深市";
+    self.shListViewController.comType=@"沪市";
     
-    hkListViewController.title=@"港股";
-    usListViewController.title=@"美股";
-    szListViewController.title=@"深市";
-    shListViewController.title=@"沪市";
+    self.hkListViewController.title=@"港股";
+    self.usListViewController.title=@"美股";
+    self.szListViewController.title=@"深市";
+    self.shListViewController.title=@"沪市";
     
-    hkListViewController.type=HK;
-    usListViewController.type=NANY;
-    szListViewController.type=SZSE;
-    shListViewController.type=SHSE;
+    self.hkListViewController.type=HK;
+    self.usListViewController.type=NANY;
+    self.szListViewController.type=SZSE;
+    self.shListViewController.type=SHSE;
     
-    hkListViewController.isSearchList=NO;
-    usListViewController.isSearchList=NO;
-    szListViewController.isSearchList=NO;
-    shListViewController.isSearchList=NO;
+    self.hkListViewController.isSearchList=NO;
+    self.usListViewController.isSearchList=NO;
+    self.szListViewController.isSearchList=NO;
+    self.shListViewController.isSearchList=NO;
   
-	NSArray *viewControllers = [NSArray arrayWithObjects:hkListViewController, usListViewController,szListViewController,shListViewController, nil];
-	tabBarController = [[MHTabBarController alloc] init];
+	NSArray *viewControllers = [NSArray arrayWithObjects:self.hkListViewController, self.usListViewController,self.szListViewController,self.shListViewController, nil];
+    MHTabBarController *tempMh = [[[MHTabBarController alloc] init] autorelease];
+	self.tabBarController = tempMh;
     
-	tabBarController.viewControllers = viewControllers;
+	self.tabBarController.viewControllers = viewControllers;
     
-    [self.view addSubview:tabBarController.view];
-    [self addChildViewController:tabBarController];
+    [self.view addSubview:self.tabBarController.view];
+    [self addChildViewController:self.tabBarController];
 }
 
 - (void)didReceiveMemoryWarning

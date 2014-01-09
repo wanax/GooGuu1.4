@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
+    
 	// Do any additional setup after loading the view.
     GooGuuArticleViewController *articleViewController=[[GooGuuArticleViewController alloc] init];
     articleViewController.articleId=self.articleId;

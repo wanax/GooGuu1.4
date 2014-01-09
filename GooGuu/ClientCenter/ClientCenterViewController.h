@@ -12,7 +12,7 @@
 #import "VRGCalendarView.h"
 
 
-@interface ClientCenterViewController : UIViewController<VRGCalendarViewDelegate>{
+@interface ClientCenterViewController : UIViewController{
     
     NSMutableArray *_eventArr;
     NSMutableDictionary *_dateDic;

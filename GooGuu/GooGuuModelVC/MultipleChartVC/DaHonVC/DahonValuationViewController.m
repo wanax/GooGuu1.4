@@ -107,33 +107,18 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
     UIImageView *topBar=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]];
-    if (IOS7_OR_LATER) {
-        topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
-    } else {
-        topBar.frame=CGRectMake(0,0,SCREEN_HEIGHT,40);
-    }
+    topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
     
     [self.view addSubview:topBar];
     
     //title
-    if (IOS7_OR_LATER) {
-        titleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:6 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
-        [tool addButtonToView:self.view withTitle:@"返回" Tag:5 frame:CGRectMake(15,25,54,30) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
-        [tool addButtonToView:self.view withTitle:@"刷新" Tag:6 frame:CGRectMake(SCREEN_HEIGHT-64,25,54,30) andFun:@selector(reflash:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"reflashBt" highBackGroundImg:nil];
-    } else {
-        titleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:6 frame:CGRectMake(0,40,SCREEN_HEIGHT,30) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
-        [tool addButtonToView:self.view withTitle:@"返回" Tag:5 frame:CGRectMake(15,5,54,30) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
-        [tool addButtonToView:self.view withTitle:@"刷新" Tag:6 frame:CGRectMake(SCREEN_HEIGHT-64,5,54,30) andFun:@selector(reflash:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"reflashBt" highBackGroundImg:nil];
-    }
+    titleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:6 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
+    [tool addButtonToView:self.view withTitle:@"返回" Tag:5 frame:CGRectMake(15,25,54,30) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
+    [tool addButtonToView:self.view withTitle:@"刷新" Tag:6 frame:CGRectMake(SCREEN_HEIGHT-64,25,54,30) andFun:@selector(reflash:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"reflashBt" highBackGroundImg:nil];
     
     int iOS7H0,iOS7H1;
-    if (IOS7_OR_LATER) {
-        iOS7H0=28;
-        iOS7H1=38;
-    } else {
-        iOS7H0=45;
-        iOS7H1=55;
-    }
+    iOS7H0=28;
+    iOS7H1=38;
     
     //提示信息
     [tool addLabelToView:self.view withTitle:@"*点击图标查看大行估值" Tag:6 frame:CGRectMake(SCREEN_HEIGHT-145,SCREEN_WIDTH-iOS7H1,140,40) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
@@ -245,11 +230,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
             DrawChartTool *tool=[[DrawChartTool alloc] init];
             tool.standIn=self;
             //公司名称
-            if (IOS7_OR_LATER) {
-                [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",info[@"companyName"],info[@"stockCode"],info[@"marketName"]] Tag:6 frame:CGRectMake((SCREEN_HEIGHT-340)/2,20,340,40) fontSize:18.0 color:nil textColor:@"#F9F8F6" location:NSTextAlignmentCenter];
-            } else {
-                [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",info[@"companyName"],info[@"stockCode"],info[@"marketName"]] Tag:6 frame:CGRectMake((SCREEN_HEIGHT-340)/2,0,340,40) fontSize:18.0 color:nil textColor:@"#F9F8F6" location:NSTextAlignmentCenter];
-            }
+            [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",info[@"companyName"],info[@"stockCode"],info[@"marketName"]] Tag:6 frame:CGRectMake((SCREEN_HEIGHT-340)/2,20,340,40) fontSize:18.0 color:nil textColor:@"#F9F8F6" location:NSTextAlignmentCenter];
             SAFE_RELEASE(tool);
             
             NSString *open=[formatter stringForObjectValue:info[@"open"]==nil?@"":info[@"open"]];
@@ -669,11 +650,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 }
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        if (IOS7_OR_LATER) {
-            self.hostView.frame=CGRectMake(10,90,SCREEN_HEIGHT-20,195);
-        } else {
-            self.hostView.frame=CGRectMake(10,70,SCREEN_HEIGHT-20,195);
-        }
+        self.hostView.frame=CGRectMake(10,90,SCREEN_HEIGHT-20,195);
     }
 }
 -(NSUInteger)supportedInterfaceOrientations{

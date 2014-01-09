@@ -73,14 +73,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
+    
     ContainerViewController *content=[[ContainerViewController alloc] init];
     content.browseType=self.browseType;
-    if (IOS7_OR_LATER) {
-        content.view.frame=CGRectMake(0,64,FRAME_WIDTH,FRAME_HEIGHT);
-    } else {
-        content.view.frame=CGRectMake(0,24,FRAME_WIDTH,FRAME_HEIGHT);
-    }
+    content.view.frame=CGRectMake(0,64,FRAME_WIDTH,FRAME_HEIGHT);
     
     [self.view addSubview:content.view];
     [self addChildViewController:content];
@@ -101,13 +97,8 @@
     [companyNameLabel setText:[comInfo objectForKey:@"companyname"]];
     [companyNameLabel setTextAlignment:NSTextAlignmentCenter];
     
-    if (IOS7_OR_LATER) {
-        top=[[UIToolbar alloc] initWithFrame:CGRectMake(0,20,SCREEN_WIDTH,44)];
-        [companyNameLabel setTextColor:[Utiles colorWithHexString:@"#2E71FA"]];
-    } else {
-        top=[[PrettyToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,44)];
-        [companyNameLabel setTextColor:[UIColor whiteColor]];
-    }
+    top=[[UIToolbar alloc] initWithFrame:CGRectMake(0,20,SCREEN_WIDTH,44)];
+    [companyNameLabel setTextColor:[Utiles colorWithHexString:@"#2E71FA"]];
 
     [top addSubview:companyNameLabel];
     SAFE_RELEASE(companyNameLabel);

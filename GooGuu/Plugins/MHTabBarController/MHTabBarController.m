@@ -134,7 +134,7 @@ static const NSInteger TAG_OFFSET = 1000;
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
+    
 
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 

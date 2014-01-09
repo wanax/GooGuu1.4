@@ -328,7 +328,8 @@
 				);
 				PRODUCT_NAME = "CPTTestApp-iPhone";
 				SDKROOT = iphoneos;
-			};
+			GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				};
 			name = Debug;
 		};
 		1D6058950D05DD3E006BFB54 /* Release */ = {

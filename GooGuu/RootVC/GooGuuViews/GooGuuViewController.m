@@ -43,7 +43,7 @@
 {
     [super viewDidLoad];
     [self setTitle:@"估值观点"];
-    [Utiles iOS7StatusBar:self];
+    
 	[self initComponents];
     self.readingMarksDic=[Utiles getConfigureInfoFrom:@"googuuviewreadingmarks" andKey:nil inUserDomain:YES];
     [self getValueViewData:@"" code:@""];
@@ -51,8 +51,8 @@
 
 -(void)initComponents{
 
-    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-120) style:UITableViewStylePlain];
-    [self.view setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
+    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-92) style:UITableViewStylePlain];
+    [self.view setBackgroundColor:[Utiles colorWithHexString:GetConfigure(@"colorconfigure", @"NormalCellColor", NO)]];
     self.cusTable.delegate=self;
     self.cusTable.dataSource=self;
     self.cusTable.separatorStyle=UITableViewCellSeparatorStyleNone;

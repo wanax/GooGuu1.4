@@ -316,7 +316,6 @@
 #pragma mark - PhotBrower Actions
 - (void)photoBrowserDidTapDoneButton:(UIButton *)sender
 {
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

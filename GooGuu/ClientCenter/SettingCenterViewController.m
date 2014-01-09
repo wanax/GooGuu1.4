@@ -26,14 +26,6 @@
 
 @implementation SettingCenterViewController
 
-@synthesize customTabel;
-
-- (void)dealloc
-{
-    [customTabel release];customTabel=nil;
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -56,7 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
+    
     [self setTitle:@"功能设置"];
     [self initCommonents];
 
@@ -65,7 +57,8 @@
 #pragma mark General Methods
 
 -(void)initCommonents{
-    self.customTabel=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-64) style:UITableViewStyleGrouped];
+    UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStyleGrouped] autorelease];
+    self.customTabel = temp;
     self.customTabel.delegate=self;
     self.customTabel.dataSource=self;
     [self.view addSubview:self.customTabel];
@@ -173,9 +166,9 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                  TableSampleIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]
+            cell = [[[UITableViewCell alloc]
                     initWithStyle:UITableViewCellStyleValue1
-                    reuseIdentifier:TableSampleIdentifier];
+                    reuseIdentifier:TableSampleIdentifier] autorelease];
         }
         cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:16.0f];
         cell.detailTextLabel.font=[UIFont fontWithName:@"Heiti SC" size:12.0f];
@@ -214,9 +207,9 @@
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                      TableSampleIdentifier];
             if (cell == nil) {
-                cell = [[UITableViewCell alloc]
+                cell = [[[UITableViewCell alloc]
                         initWithStyle:UITableViewCellStyleValue1
-                        reuseIdentifier:TableSampleIdentifier];
+                        reuseIdentifier:TableSampleIdentifier] autorelease];
             }
 
             cell.textLabel.text = @"设置涨跌示意颜色";
@@ -260,9 +253,9 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                  TableSampleIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]
+            cell = [[[UITableViewCell alloc]
                     initWithStyle:UITableViewCellStyleValue1
-                    reuseIdentifier:TableSampleIdentifier];
+                    reuseIdentifier:TableSampleIdentifier] autorelease];
         }
         
         cell.textLabel.text = @"清除缓存";
@@ -279,9 +272,9 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                                  TableSampleIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc]
+            cell = [[[UITableViewCell alloc]
                     initWithStyle:UITableViewCellStyleValue1
-                    reuseIdentifier:TableSampleIdentifier];
+                    reuseIdentifier:TableSampleIdentifier] autorelease];
         }
         cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:16.0f];
         cell.detailTextLabel.font=[UIFont fontWithName:@"Heiti SC" size:12.0f];
@@ -353,9 +346,9 @@
                 } else {
                     ClientLoginViewController *loginViewController=nil;
                     if (SCREEN_HEIGHT>500) {
-                        loginViewController = [[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView5" bundle:nil];
+                        loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView5" bundle:nil] autorelease];
                     } else {
-                        loginViewController = [[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView" bundle:nil];
+                        loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView" bundle:nil] autorelease];
                     }
                     loginViewController.sourceType=SettingBar;
                     [self presentViewController:loginViewController animated:YES completion:nil];
@@ -385,9 +378,8 @@
 
     }else if(section==1){
         if(row==0){
-            StockRiseDownColorSettingViewController *set=[[StockRiseDownColorSettingViewController alloc] init];
+            StockRiseDownColorSettingViewController *set=[[[StockRiseDownColorSettingViewController alloc] init] autorelease];
             [self presentViewController:set animated:YES completion:nil];
-            [set release];
         }
     }else if(section==2){
         //[Utiles deleteSandBoxContent];

@@ -17,34 +17,19 @@
 
 @implementation UniverseViewController
 
-@synthesize theSearchBar;
-
-
-- (void)dealloc {
-    [theSearchBar release], theSearchBar = nil;
-    [super dealloc];
-}
-
-
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
     self.title=@"估值模型";
-    [Utiles iOS7StatusBar:self];
+    
     // Do any additional setup after loading the view.
-    StockContainerViewController *content=[[StockContainerViewController alloc] init];
-    if (IOS7_OR_LATER) {
-        content.view.frame=CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
-    } else {
-        content.view.frame=CGRectMake(0,-22,SCREEN_WIDTH,SCREEN_HEIGHT);
-    }
-    
-    
+    StockContainerViewController *content=[[[StockContainerViewController alloc] init] autorelease];
+    content.view.frame=CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT);
+  
     [self.view addSubview:content.view];
     [self addChildViewController:content];
-    
-    [content release];
+
 }
 
 
@@ -62,7 +47,7 @@
 -(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     
     [self.theSearchBar resignFirstResponder];
-    CompanyListViewController *nextController=[[CompanyListViewController alloc] init];
+    CompanyListViewController *nextController=[[[CompanyListViewController alloc] init] autorelease];
     nextController.comType=@"全部";
     nextController.isShowSearchBar=YES;
     nextController.type=ALL;
@@ -70,7 +55,7 @@
     if(![self.navigationController.topViewController isKindOfClass:[CompanyListViewController class]]){
         @try{
             [self.navigationController pushViewController:nextController animated:YES];
-            [theSearchBar resignFirstResponder];
+            [self.theSearchBar resignFirstResponder];
         }@catch (NSException *e) {
             NSLog(@"%@",e);
         }

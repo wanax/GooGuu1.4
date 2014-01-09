@@ -247,15 +247,9 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 -(void)initChartViewComponents{
     //NSLog(@"initChartViewComponents");
     int iOS7H0,iOS7H1,iOS7H2;
-    if (IOS7_OR_LATER) {
-        iOS7H0=20;
-        iOS7H1=25;
-        iOS7H2=72;
-    } else {
-        iOS7H0=0;
-        iOS7H1=5;
-        iOS7H2=47;
-    }
+    iOS7H0=20;
+    iOS7H1=25;
+    iOS7H2=72;
     UIImageView *topBar=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]];
     topBar.frame=CGRectMake(0,iOS7H0,SCREEN_HEIGHT,40);
     [self.view addSubview:topBar];
@@ -280,11 +274,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     self.resetBt=[tool addButtonToView:self.view withTitle:@"复位" Tag:ResetChart frame:CGRectMake(SCREEN_HEIGHT-121,iOS7H2,54,26) andFun:@selector(chartAction:) withType:UIButtonTypeRoundedRect andColor:@"#2bc0a7" textColor:@"#FFFEFE" normalBackGroundImg:@"resetBt" highBackGroundImg:nil];
     
     int iOSHeightStatusBar;
-    if (IOS7_OR_LATER) {
-        iOSHeightStatusBar=20;
-    } else {
-        iOSHeightStatusBar=0;
-    }
+    iOSHeightStatusBar=20;
     
     //公司名称label
     CGSize labelsize1 = [tool getLabelSizeFromString:netComInfo[@"CompanyName"] font:@"Heiti SC" fontSize:14.0];
@@ -422,11 +412,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
             rateViewController.view.frame=CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
         } else {
             rateViewController=[[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil];
-            if (IOS7_OR_LATER) {
-                rateViewController.view.frame=CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
-            } else {
-                rateViewController.view.frame=CGRectMake(0,40,SCREEN_HEIGHT,SCREEN_WIDTH-60);
-            }
+            rateViewController.view.frame=CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
         }   
         rateViewController.jsonData=self.jsonForChart;
         rateViewController.valuesStr=values;
@@ -997,11 +983,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        if (IOS7_OR_LATER) {
-            self.hostView.frame=CGRectMake(5,110,SCREEN_HEIGHT-10,205);
-        } else {
-            self.hostView.frame=CGRectMake(5,90,SCREEN_HEIGHT-10,205);
-        }
+        self.hostView.frame=CGRectMake(5,110,SCREEN_HEIGHT-10,205);
     }
 }
 

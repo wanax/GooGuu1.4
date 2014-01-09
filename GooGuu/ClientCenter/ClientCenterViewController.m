@@ -9,15 +9,11 @@
 #import "ClientCenterViewController.h"
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
-#import "MBProgressHUD.h"
 #import "Reachability.h"
 #import "UIButton+BGColor.h"
 #import "ClientLoginViewController.h"
 #import "UILabel+VerticalAlign.h"
 #import "SDWebImageDownloader.h"
-#import "MBProgressHUD.h"
-
-
 
 
 @interface ClientCenterViewController ()
@@ -27,32 +23,6 @@
 
 @implementation ClientCenterViewController
 
-@synthesize userIdLabel;
-@synthesize favoriteLabel;
-@synthesize tradeLabel;
-@synthesize regtimeLabel;
-@synthesize userNameLabel;
-@synthesize occupationalLabel;
-@synthesize logoutBt;
-@synthesize avatar;
-
-@synthesize eventArr=_eventArr;
-@synthesize dateDic=_dateDic;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(occupationalLabel);
-    SAFE_RELEASE(userIdLabel);
-    SAFE_RELEASE(favoriteLabel);
-    SAFE_RELEASE(tradeLabel);
-    SAFE_RELEASE(regtimeLabel);
-    SAFE_RELEASE(avatar);
-    SAFE_RELEASE(logoutBt);
-    SAFE_RELEASE(_dateDic);
-    SAFE_RELEASE(_eventArr);
-    SAFE_RELEASE(userNameLabel);
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,7 +39,7 @@
     if ([Utiles isNetConnected]) {
         if([Utiles isLogin]){            
             [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            logoutBt.hidden=NO;
+            self.logoutBt.hidden=NO;
             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [Utiles getUserToken], @"token",@"googuu",@"from",
                                     nil];
@@ -80,8 +50,8 @@
                     NSDictionary *occupationalList=[Utiles getConfigureInfoFrom:@"OccupationalList" andKey:nil inUserDomain:NO];
                     
                     id userInfo=[resObj objectForKey:@"data"];
-                    [userNameLabel setText:[Utiles isBlankString:[userInfo objectForKey:@"nickname"]]?@"":[userInfo objectForKey:@"nickname"]];
-                    [userIdLabel setText:[Utiles isBlankString:[userInfo objectForKey:@"userid"]]?@"":[userInfo objectForKey:@"userid"]];
+                    [self.userNameLabel setText:[Utiles isBlankString:[userInfo objectForKey:@"nickname"]]?@"":[userInfo objectForKey:@"nickname"]];
+                    [self.userIdLabel setText:[Utiles isBlankString:[userInfo objectForKey:@"userid"]]?@"":[userInfo objectForKey:@"userid"]];
                     
                     [self setInfoType:@"trade" label:self.tradeLabel userInfo:userInfo dicName:@"TradeList"];
                     [self setInfoType:@"favorite" label:self.favoriteLabel userInfo:userInfo dicName:@"InterestList"];
@@ -91,7 +61,7 @@
                     [date setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                     NSDate *d=[date dateFromString:[userInfo objectForKey:@"regtime"]];
                     [date setDateFormat:@"yyyy-MM-dd"];
-                    [regtimeLabel setText:[date stringFromDate:d]];
+                    [self.regtimeLabel setText:[date stringFromDate:d]];
                     
                     NSString *url=[Utiles isBlankString:userInfo[@"headerpicurl"]]?@"":userInfo[@"headerpicurl"];
                     if([Utiles isBlankString:url]){
@@ -140,13 +110,13 @@
 {
     [super viewDidLoad];
     [self setTitle:@"个人中心"];
-    [Utiles iOS7StatusBar:self];
+    
     
     self.view.backgroundColor=[Utiles colorWithHexString:@"#F3EFE1"];
     [self.logoutBt setBackgroundColorString:@"#C96125" forState:UIControlStateNormal];
 
-    favoriteLabel.numberOfLines = 10;
-    tradeLabel.numberOfLines = 10;
+    self.favoriteLabel.numberOfLines = 10;
+    self.tradeLabel.numberOfLines = 10;
 
 }
 

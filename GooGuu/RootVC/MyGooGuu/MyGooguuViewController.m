@@ -104,19 +104,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
+    
     [self setTitle:@"我的估股"];
     
-    UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain
-                                                                     target:self action:@selector(setting:)];
+    UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(setting:)];
     self.navigationItem.rightBarButtonItem = settingButton;
     
     GooGuuContainerViewController *content=[[GooGuuContainerViewController alloc] init];
-    if (IOS7_OR_LATER) {
-        content.view.frame=CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
-    } else {
-        content.view.frame=CGRectMake(0,-21,SCREEN_WIDTH,SCREEN_HEIGHT);
-    }
+    content.view.frame=CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT);
     
     [self addChildViewController:content];
     [self.view addSubview:content.view];

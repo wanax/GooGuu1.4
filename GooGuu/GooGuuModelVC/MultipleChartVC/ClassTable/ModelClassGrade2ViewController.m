@@ -49,7 +49,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
+    
     [self.navigationItem setTitle:classTitle];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self addTabel];

@@ -27,32 +27,6 @@
 
 @implementation ConcernedViewController
 
-@synthesize companyFieldViewController;
-@synthesize comFieldViewController;
-@synthesize loginViewController;
-@synthesize customTableView;
-@synthesize type;
-@synthesize browseType;
-@synthesize nibsRegistered;
-@synthesize nibsRegistered2;
-@synthesize isEditing;
-
-@synthesize comInfoList;
-
-
-- (void)dealloc
-{
-    SAFE_RELEASE(comFieldViewController);
-    SAFE_RELEASE(type);
-    SAFE_RELEASE(companyFieldViewController);
-    SAFE_RELEASE(customTableView);
-    SAFE_RELEASE(comInfoList);
-    SAFE_RELEASE(loginViewController);
-    [super dealloc];
-}
-
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,8 +53,8 @@
     [super viewDidLoad];
     
     _showToast=NO;
-    nibsRegistered=NO;
-    nibsRegistered2=NO;
+    self.nibsRegistered=NO;
+    self.nibsRegistered2=NO;
     
     [self initViewComponents];
     [self addTableHeader];
@@ -101,21 +75,21 @@
 -(void)initViewComponents{
     
     self.comInfoList=[[NSMutableArray alloc] init];
-    if(browseType==MyConcernedType){
+    if(self.browseType==MyConcernedType){
         IndicatorView *indicator=[[IndicatorView alloc] init];
         [self.view addSubview:indicator];
         [indicator release];
-    }else if(browseType==MySavedType){
+    }else if(self.browseType==MySavedType){
         Indicator2View *indicator=[[Indicator2View alloc] init];
         [self.view addSubview:indicator];
         [indicator release];
     }
     
-   	customTableView=[[UITableView alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,SCREEN_HEIGHT-168)];
-    [customTableView setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
-    customTableView.dataSource=self;
-    customTableView.delegate=self;
-    [self.view addSubview:customTableView];
+   	self.customTableView=[[UITableView alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,SCREEN_HEIGHT-148)];
+    [self.customTableView setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
+    self.customTableView.dataSource=self;
+    self.customTableView.delegate=self;
+    [self.view addSubview:self.customTableView];
 }
 
 -(void)addTableHeader{
@@ -134,9 +108,9 @@
 }
 
 -(void)tapAction:(UITapGestureRecognizer *)tap{
-    if(isEditing){
-        [customTableView setEditing:NO animated:YES];
-        isEditing=NO;
+    if(self.isEditing){
+        [self.customTableView setEditing:NO animated:YES];
+        self.isEditing=NO;
     }
 }
 
@@ -168,7 +142,7 @@
             if(![[obj objectForKey:@"status"] isEqualToString:@"0"]){
                 @try {
                     self.comInfoList=[NSMutableArray arrayWithArray:[obj objectForKey:@"data"]];
-                    [customTableView reloadData];
+                    [self.customTableView reloadData];
                 }
                 @catch (NSException *exception) {
                     NSLog(@"%@",exception);
@@ -219,10 +193,10 @@
     //股票栏目
     static NSString *CustomCellIdentifier = @"CustomCellIdentifier";
     
-    if (!nibsRegistered) {
+    if (!self.nibsRegistered) {
         UINib *nib = [UINib nibWithNibName:@"CustomCell" bundle:nil];
         [tableView registerNib:nib forCellReuseIdentifier:CustomCellIdentifier];
-        nibsRegistered = YES;
+        self.nibsRegistered = YES;
     }
     
     CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CustomCellIdentifier];
@@ -277,8 +251,8 @@
 
 -(void)longAction:(UILongPressGestureRecognizer *)press andCellIndex:(NSIndexPath *)indexPath{
     
-    [customTableView setEditing:YES animated:YES];
-    isEditing=YES;
+    [self.customTableView setEditing:YES animated:YES];
+    self.isEditing=YES;
     
     UIBarButtonItem *cancelEdit=[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelAction)];
     [self.parentViewController.parentViewController.parentViewController.navigationItem setRightBarButtonItem:cancelEdit animated:NO];
@@ -287,7 +261,7 @@
     
 }
 -(void)cancelAction{
-    [customTableView setEditing:NO animated:YES];
+    [self.customTableView setEditing:NO animated:YES];
     UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain
                                                                      target:self action:@selector(setting:)];
     [self.parentViewController.parentViewController.parentViewController.navigationItem setRightBarButtonItem:settingButton animated:YES];
@@ -303,7 +277,7 @@
 #pragma mark Edit Mothods Delegate
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (browseType==MyConcernedType) {
+    if (self.browseType==MyConcernedType) {
         return @"取消关注";
     } else {
         return @"删除";
@@ -363,10 +337,10 @@
     @try {
         delegate.comInfo=[[self.comInfoList objectAtIndex:row] retain];
         
-        comFieldViewController=[[ComFieldViewController alloc] init];
-        comFieldViewController.browseType=self.browseType;
-        comFieldViewController.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
-        [self presentViewController:comFieldViewController animated:YES completion:nil];
+        self.comFieldViewController=[[ComFieldViewController alloc] init];
+        self.comFieldViewController.browseType=self.browseType;
+        self.comFieldViewController.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
+        [self presentViewController:self.comFieldViewController animated:YES completion:nil];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     @catch (NSException *exception) {

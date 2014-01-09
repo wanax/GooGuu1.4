@@ -493,7 +493,8 @@
 				PRODUCT_NAME = "Plot Gallery";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALID_ARCHS = "i386 x86_64";
-			};
+			GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
@@ -535,7 +536,8 @@
 				);
 				SDKROOT = macosx;
 				SYMROOT = "$(PROJECT_DIR)/../../build";
-			};
+			GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {

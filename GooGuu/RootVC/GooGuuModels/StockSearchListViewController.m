@@ -52,14 +52,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [Utiles iOS7StatusBar:self];
-	self.title=@"股票搜索";
-    searchTable=[[UITableView alloc] initWithFrame:CGRectMake(0,62,SCREEN_WIDTH,SCREEN_HEIGHT-125)];
-    searchBar=[[UISearchBar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,35)];
     
-    if(!IOS7_OR_LATER){
-        [[self.searchBar.subviews objectAtIndex:0] removeFromSuperview];
-    }
+	self.title=@"股票搜索";
+    searchTable=[[UITableView alloc] initWithFrame:CGRectMake(0,62,SCREEN_WIDTH,SCREEN_HEIGHT-60)];
+    searchBar=[[UISearchBar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,35)];
 
     [self.searchBar setPlaceholder:@"输入股票代码/名称/拼音"];
     self.searchBar.backgroundColor = [UIColor grayColor];
@@ -72,7 +68,7 @@
     [self.view addSubview:searchTable];
     
     IndicatorSearchView *indicator=[[IndicatorSearchView alloc] init];
-    indicator.center=CGPointMake(SCREEN_WIDTH/2,50);
+    indicator.frame = CGRectMake(0,44,SCREEN_WIDTH, 30);
     [self.view insertSubview:indicator aboveSubview:self.searchTable];
     [indicator release];
     

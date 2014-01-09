@@ -47,11 +47,9 @@
     calendar.userInteractionEnabled=YES;
     self.view.userInteractionEnabled=YES;
     
-    if(!IOS7_OR_LATER){
-        UIPanGestureRecognizer *pan=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-        [self.view addGestureRecognizer:pan];
-        [pan release];
-    }
+    UIPanGestureRecognizer *pan=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
+    [self.view addGestureRecognizer:pan];
+    [pan release];
     
 }
 

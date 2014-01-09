@@ -31,26 +31,6 @@
 @implementation GooNewsViewController
 
 
-@synthesize customTableView;
-@synthesize arrList;
-@synthesize imageUrl;
-@synthesize companyInfo;
-@synthesize readingMarksDic;
-@synthesize container;
-@synthesize hud;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(container);
-    [readingMarksDic release];readingMarksDic=nil;
-    [companyInfo release];companyInfo=nil;
-    [hud release];hud=nil;
-    [customTableView release];customTableView=nil;
-    [arrList release];arrList=nil;
-    [imageUrl release];imageUrl=nil;
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -88,7 +68,7 @@
 
 - (void)viewDidLoad
 {
-    [Utiles iOS7StatusBar:self];
+    
     [super viewDidLoad];
     [self addHelpBt];
     
@@ -105,12 +85,12 @@
 
 -(void)addTable{
     
-    customTableView=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-110) style:UITableViewStylePlain];
+    self.customTableView=[[UITableView alloc] initWithFrame:CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-92) style:UITableViewStylePlain];
     [self.customTableView setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
-    customTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
-    customTableView.dataSource=self;
-    customTableView.delegate=self;
-    [self.view addSubview:customTableView];
+    self.customTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
+    self.customTableView.dataSource=self;
+    self.customTableView.delegate=self;
+    [self.view addSubview:self.customTableView];
     
 }
 
@@ -353,7 +333,7 @@
         }
         
         int row=[indexPath row];
-        id model=[arrList objectAtIndex:row];
+        id model=[self.arrList objectAtIndex:row];
 
         cell.title=[model objectForKey:@"title"];
         cell.titleLabel.lineBreakMode=NSLineBreakByWordWrapping;
@@ -417,21 +397,21 @@
     delegate.comInfo=[self.arrList objectAtIndex:row];
     NSString *artId=[NSString stringWithFormat:@"%@",[[self.arrList objectAtIndex:row] objectForKey:@"articleid"]];
     GooGuuArticleViewController *articleViewController=[[GooGuuArticleViewController alloc] init];
-    articleViewController.articleTitle=[[arrList objectAtIndex:row] objectForKey:@"title"];
+    articleViewController.articleTitle=[[self.arrList objectAtIndex:row] objectForKey:@"title"];
     articleViewController.articleId=artId;
     articleViewController.title=@"研究报告";
     ArticleCommentViewController *articleCommentViewController=[[ArticleCommentViewController alloc] init];
     articleCommentViewController.articleId=artId;
     articleCommentViewController.title=@"评论";
     articleCommentViewController.type=News;
-    container=[[MHTabBarController alloc] init];
+    self.container=[[MHTabBarController alloc] init];
     NSArray *controllers=[NSArray arrayWithObjects:articleViewController,articleCommentViewController, nil];
-    container.viewControllers=controllers;
+    self.container.viewControllers=controllers;
     
     [Utiles setConfigureInfoTo:@"readingmarks" forKey:[[self.arrList objectAtIndex:row] objectForKey:@"title"] andContent:@"1"];
     self.readingMarksDic=[Utiles getConfigureInfoFrom:@"readingmarks" andKey:nil inUserDomain:YES];
-    container.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:container animated:YES];
+    self.container.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:self.container animated:YES];
     
     SAFE_RELEASE(articleViewController);
     SAFE_RELEASE(articleCommentViewController);
@@ -439,8 +419,8 @@
 
 -(void)setReadingMark:(GooNewsCell *)cell andTitle:(NSString *)title{
     
-    if(readingMarksDic){
-        if ([[readingMarksDic allKeys] containsObject:title]) {
+    if(self.readingMarksDic){
+        if ([[self.readingMarksDic allKeys] containsObject:title]) {
             cell.readMarkImg.image=[UIImage imageNamed:@"read2"];
         }else{
             cell.readMarkImg.image=[UIImage imageNamed:@"unread2"];

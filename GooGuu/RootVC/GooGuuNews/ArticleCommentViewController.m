@@ -70,13 +70,9 @@
             NSAssert(self.type==StockCompany,@"Analy Report");
             
             UIButton *wanSay= [[UIButton alloc] initWithFrame:CGRectMake(280, 10.0, 40, 30.0)];
-            if (IOS7_OR_LATER) {
-                [wanSay setTitle:@"添加评论" forState:UIControlStateNormal];
-                [wanSay.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:16.0]];
-                [wanSay setTitleColor:[Utiles colorWithHexString:@"#307DF9"] forState:UIControlStateNormal];
-            } else {
-                [wanSay setImage:[UIImage imageNamed:@"addComment"] forState:UIControlStateNormal];
-            }
+            [wanSay setTitle:@"添加评论" forState:UIControlStateNormal];
+            [wanSay.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:16.0]];
+            [wanSay setTitleColor:[Utiles colorWithHexString:@"#307DF9"] forState:UIControlStateNormal];
             [wanSay addTarget:self action:@selector(wanSay:) forControlEvents:UIControlEventTouchUpInside];
             UIBarButtonItem *nextStepBarBtn = [[UIBarButtonItem alloc] initWithCustomView:wanSay];
             [nextStepBarBtn setWidth:455];

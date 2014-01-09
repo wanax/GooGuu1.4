@@ -194,13 +194,8 @@ withCloseButtonColor:(UIColor *)closeColor
 
 - (CGSize)getTagSize
 {
-    DrawChartTool *tool=[[DrawChartTool alloc] init];
     CGSize tSize;
-    if (IOS7_OR_LATER) {
-        tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
-    } else {
-        tSize = [tool getLabelSizeFromString:self.tTitle font:tagFontType fontSize:tagFontSize];
-    }
+    tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
     return CGSizeMake( tSize.width + tagMargin, tagHeight);
 }
 
@@ -210,21 +205,11 @@ withCloseButtonColor:(UIColor *)closeColor
     
     self.layer.backgroundColor = [self.tBackgroundColor CGColor];
     
-    DrawChartTool *tool=[[DrawChartTool alloc] init];
     CGSize tSize;
-    if (IOS7_OR_LATER) {
-        tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
-    } else {
-        tSize=[tool getLabelSizeFromString:self.tTitle font:tagFontType fontSize:tagFontSize];
-    }
+    tSize = [self.tTitle sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize]}];
     
-    if (IOS7_OR_LATER) {
-        [self.tTitle drawInRect:CGRectMake(7, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height)
-                 withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
-    }else{
-        [self.tTitle drawInRect:CGRectMake(7, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height) withFont:[UIFont fontWithName:tagFontType size:tagFontSize]];
-    }
-    
+    [self.tTitle drawInRect:CGRectMake(7, ([self getTagSize].height / 2.0f) - (tSize.height / 2.0f), tSize.width, tSize.height)
+             withAttributes:@{NSFontAttributeName:[UIFont fontWithName:tagFontType size:tagFontSize], NSForegroundColorAttributeName:self.tLabelColor}];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tagSelected:)];
     [recognizer setNumberOfTapsRequired:1];
