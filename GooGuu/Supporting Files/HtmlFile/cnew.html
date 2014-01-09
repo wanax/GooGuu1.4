@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script type="text/javascript">
+                       
+			var jsonobjs;
+            
+            //初始化各变量
+            function initFinancialData(jsondata)
+            {
+            	this.jsonobjs = eval('(' + jsondata + ')');
+				return returnFinancialChartList();
+            }
+			
+			//金融数据所需信息
+            function returnFinancialChartList()
+            {
+            	var rtnstr="{\"listRatio\":";
+            	rtnstr+=returnIds(jsonobjs.tree[0].child);
+            	
+            	rtnstr+=",\"listChart\":";
+            	rtnstr+=returnIds(jsonobjs.tree[1].child);
+            	
+            	rtnstr+=",\"listOther\":";
+            	rtnstr+="[]}";
+            	return rtnstr;
+            }
+            
+			//root中某类图标数据的具体信息
+			function returnIds(branch)
+            {
+            	var rtnstr="[";
+            	for (var i1 = 0; i1 < branch.length; i1 ++ ) {
+					var childOne = branch[i1]; 
+					for (var i2 = 0; i2 < childOne.array.length; i2 ++ ) {
+						var viewTwo=childOne.array[i2];
+						rtnstr+="{\"name\":\""+viewTwo.name+"\",";
+						rtnstr+="\"id\":\""+viewTwo.rid+"\"},";
+					}
+				}
+            	rtnstr=rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+            
+			 //根据driverid返回一组调整参数数据
+            function returnChartArray(driverid)
+            {
+            	var rdata=jsonobjs.description[driverid];
+				if(!rdata){
+            		return;
+            	}
+				var rtnstr="[";
+				for (var i1 = 0; i1 < rdata.child.length; i1 ++ ) {
+					//webcalc.jscallback("child","105");
+					var childOne = rdata.child[i1]; 
+					var dataid=childOne.vid;
+					var truedata=jsonobjs.values[dataid];
+					rtnstr+="{\"unit\":\""+truedata.unit
+            			+"\",\"title\":\""+truedata.name
+            			+"\",\"name\":\""+childOne.name
+            			+"\",\"datalist\":[";
+					for (var i2 = 0; i2 < childOne.data.length; i2 ++ ) {
+						//webcalc.jscallback("data","105");
+						var truedataid=childOne.data[i2];
+						rtnstr+="{\"t\":\""+truedata.ds[truedataid].t+"\",";
+						rtnstr+="\"id\":\""+truedata.ds[truedataid].id+"\",";
+						rtnstr+="\"v\":"+truedata.ds[truedataid].v+",";
+						rtnstr+="\"d2\":\""+truedata.ds[truedataid].d2+"\",";
+						rtnstr+="\"d1\":\""+truedata.ds[truedataid].d1+"\",";
+						rtnstr+="\"d0\":\""+truedata.ds[truedataid].d0+"\"},";
+					}
+					rtnstr = rtnstr.substring(0,rtnstr.length-1);
+					rtnstr+="]},"
+				}
+            	rtnstr = rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr += "]";
+            	return rtnstr;
+            }
+          
+            //根据driverid返回一组调整参数数据
+            function returnChartData(driverid)
+            {
+            	var rdata=jsonobjs.description[driverid];
+				if(!rdata){
+            		return;
+            	}
+				
+				for (var i1 = 0; i1 < rdata.child.length; i1 ++ ) {
+					webcalc.jscallback("child","105");
+					var childOne = rdata.child[i1]; 
+					var dataid=childOne.vid;
+					var truedata=jsonobjs.values[dataid];
+					rtnstr="{\"unit\":\""+truedata.unit
+            			+"\",\"title\":\""+truedata.name
+            			+"\",\"array\":[";
+					for (var i2 = 0; i2 < childOne.data.length; i2 ++ ) {
+						webcalc.jscallback("data","105");
+						var truedataid=childOne.data[i2];
+						rtnstr+="{\"h\":true,";
+						rtnstr+="\"id\":\""+truedata.ds[truedataid].id+"\",";
+						rtnstr+="\"v\":"+truedata.ds[truedataid].v+",";
+						rtnstr+="\"y\":\""+truedata.ds[truedataid].d0+"\"},";
+					}
+				}
+            	rtnstr+="],\"arraynew\":[]}"
+            	return rtnstr;
+            }
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>23</key>
+	<string>持牌证券代理人</string>
+	<key>22</key>
+	<string>注册理财规划师</string>
+	<key>21</key>
+	<string>独立理财规划师</string>
+	<key>20</key>
+	<string>风险投资家</string>
+	<key>19</key>
+	<string>私募股权投资组合经理</string>
+	<key>18</key>
+	<string>公募基金经理</string>
+	<key>17</key>
+	<string>对冲基金经理</string>
+	<key>16</key>
+	<string>保险代理</string>
+	<key>15</key>
+	<string>会计</string>
+	<key>14</key>
+	<string>律师</string>
+	<key>13</key>
+	<string>公共关系专员</string>
+	<key>12</key>
+	<string>投资者关系管理专员</string>
+	<key>11</key>
+	<string>公司高管</string>
+	<key>10</key>
+	<string>宏观/策略分析师</string>
+	<key>9</key>
+	<string>风险投资(VC)或股权投资 (PE)分析师</string>
+	<key>8</key>
+	<string>独立第三方/小型研究机构 分析师</string>
+	<key>7</key>
+	<string>卖方分析师</string>
+	<key>6</key>
+	<string>对冲基金分析师</string>
+	<key>5</key>
+	<string>基金分析师</string>
+	<key>4</key>
+	<string>本科生</string>
+	<key>3</key>
+	<string>工商管理硕士(MBA)</string>
+	<key>2</key>
+	<string>博士生	</string>
+	<key>1</key>
+	<string>教师/教授</string>
+</dict>
+</plist>

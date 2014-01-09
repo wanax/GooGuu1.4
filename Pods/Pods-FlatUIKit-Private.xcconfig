@@ -1,0 +1,5 @@
+#include "Pods-FlatUIKit.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/FlatUIKit" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/CXPhotoBrowser" "${PODS_ROOT}/Headers/FlatUIKit" "${PODS_ROOT}/Headers/JSONKit" "${PODS_ROOT}/Headers/KKProgressTimer" "${PODS_ROOT}/Headers/MMDrawerController" "${PODS_ROOT}/Headers/NSLogger" "${PODS_ROOT}/Headers/PonyDebugger" "${PODS_ROOT}/Headers/REFrostedViewController" "${PODS_ROOT}/Headers/Reachability" "${PODS_ROOT}/Headers/RegexKitLite" "${PODS_ROOT}/Headers/SDWebImage" "${PODS_ROOT}/Headers/SVPullToRefresh" "${PODS_ROOT}/Headers/SocketRocket" "${PODS_ROOT}/Headers/TouchJSON"
+OTHER_LDFLAGS = -ObjC ${PODS_FLATUIKIT_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}

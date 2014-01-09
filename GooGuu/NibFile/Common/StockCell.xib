@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="StockCellIdentifier" selectionStyle="blue" indentationWidth="10" reuseIdentifier="StockCellIdentifier" rowHeight="40" id="2" customClass="StockCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2" id="809-bU-fIH">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cea-cC-SfU">
+                        <rect key="frame" x="3" y="3" width="314" height="75"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="110" translatesAutoresizingMaskIntoConstraints="NO" id="3">
+                        <rect key="frame" x="5" y="9" width="110" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31">
+                        <rect key="frame" x="283" y="26" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="SsE-UE-EHQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="9"/>
+                        <state key="normal" title="Button" backgroundImage="addConcernBtt.png">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52">
+                        <rect key="frame" x="5" y="49" width="110" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="INy-ZP-T6x"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87">
+                        <rect key="frame" x="166" y="15" width="44" height="54"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="Xl7-Jo-Uau"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="92">
+                        <rect key="frame" x="118" y="21" width="44" height="42"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="vjt-Wl-YsU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97">
+                        <rect key="frame" x="215" y="22" width="60" height="40"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="iYv-gp-CMu"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="92" firstAttribute="leading" secondItem="3" secondAttribute="trailing" constant="3" id="2Rc-Dp-ObY"/>
+                    <constraint firstItem="97" firstAttribute="leading" secondItem="87" secondAttribute="trailing" constant="5" id="2gY-Zh-ITm"/>
+                    <constraint firstAttribute="bottom" secondItem="31" secondAttribute="bottom" constant="25" id="2tX-WG-BWT"/>
+                    <constraint firstItem="cea-cC-SfU" firstAttribute="leading" secondItem="809-bU-fIH" secondAttribute="leading" constant="3" id="89U-vw-OU0"/>
+                    <constraint firstItem="cea-cC-SfU" firstAttribute="top" secondItem="809-bU-fIH" secondAttribute="top" constant="3" id="Epe-UM-YBL"/>
+                    <constraint firstItem="3" firstAttribute="trailing" secondItem="52" secondAttribute="trailing" id="FGQ-iI-leR"/>
+                    <constraint firstItem="97" firstAttribute="top" secondItem="809-bU-fIH" secondAttribute="top" constant="22" id="Kuk-CC-wmg"/>
+                    <constraint firstItem="cea-cC-SfU" firstAttribute="centerX" secondItem="809-bU-fIH" secondAttribute="centerX" id="LtX-WU-P8X"/>
+                    <constraint firstItem="31" firstAttribute="leading" secondItem="97" secondAttribute="trailing" constant="8" symbolic="YES" id="NBG-7h-6df"/>
+                    <constraint firstItem="92" firstAttribute="top" secondItem="809-bU-fIH" secondAttribute="top" constant="21" id="O1M-a6-7su"/>
+                    <constraint firstItem="87" firstAttribute="top" secondItem="809-bU-fIH" secondAttribute="top" constant="15" id="ORt-Wz-YBe"/>
+                    <constraint firstItem="3" firstAttribute="leading" secondItem="52" secondAttribute="leading" id="Qne-cf-ox9"/>
+                    <constraint firstAttribute="bottom" secondItem="87" secondAttribute="bottom" constant="12" id="Vhb-n3-yLg"/>
+                    <constraint firstAttribute="trailing" secondItem="31" secondAttribute="trailing" constant="7" id="VrU-tI-gow"/>
+                    <constraint firstItem="87" firstAttribute="leading" secondItem="92" secondAttribute="trailing" constant="4" id="Wub-dJ-Ypk"/>
+                    <constraint firstAttribute="bottom" secondItem="52" secondAttribute="bottom" constant="8" id="Ymb-uL-xwz"/>
+                    <constraint firstItem="52" firstAttribute="top" secondItem="3" secondAttribute="bottom" id="dBk-dn-lsn"/>
+                    <constraint firstItem="3" firstAttribute="leading" secondItem="809-bU-fIH" secondAttribute="leading" constant="5" id="gVg-N4-9PT"/>
+                    <constraint firstItem="92" firstAttribute="centerY" secondItem="87" secondAttribute="centerY" id="iQI-pd-Rvb"/>
+                    <constraint firstItem="31" firstAttribute="top" secondItem="809-bU-fIH" secondAttribute="top" constant="26" id="qHh-Pe-7ZG"/>
+                    <constraint firstItem="cea-cC-SfU" firstAttribute="centerY" secondItem="809-bU-fIH" secondAttribute="centerY" id="rUC-DJ-Qy2"/>
+                    <constraint firstItem="97" firstAttribute="centerY" secondItem="87" secondAttribute="centerY" id="vtq-6P-Sjx"/>
+                    <constraint firstItem="3" firstAttribute="top" secondItem="809-bU-fIH" secondAttribute="top" constant="9" id="wfb-jl-zss"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backLabel" destination="cea-cC-SfU" id="pQK-nD-loK"/>
+                <outlet property="belongLabel" destination="52" id="196"/>
+                <outlet property="concernBt" destination="31" id="41"/>
+                <outlet property="gPriceLabel" destination="87" id="193"/>
+                <outlet property="percentLabel" destination="97" id="195"/>
+                <outlet property="priceLabel" destination="92" id="194"/>
+                <outlet property="stockNameLabel" destination="3" id="40"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="addConcernBtt.png" width="29" height="29"/>
+    </resources>
+</document>

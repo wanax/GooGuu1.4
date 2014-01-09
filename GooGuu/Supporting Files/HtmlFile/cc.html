@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script type="text/javascript">
+                       
+			var values;
+            var strequ;
+            var computerf;
+            var countId = "";//当前默认曲线股价Id
+			var countV = "";//调整曲线后的值
+			var jsonobjs;
+			var jsonbackup;
+            
+            function getValues(){
+                return json2str(this.values);
+            }
+            
+            function setValues(tmpVal){
+                this.values=eval('(' + tmpVal + ')');
+                return json2str(this.values);
+            }
+            function json2str(o) {
+                 var arr = [];
+                 var fmt = function(s) {
+                         if (typeof s == 'object' && s != null) return json2str(s);
+                         return /^(string)$/.test(typeof s) ? "'" + s + "'" : s;
+                  }
+                 for (var i in o) arr.push("\"" + i + "\":" + fmt(o[i]));
+                 return '{' + arr.join(',') + '}';
+            }
+            
+            //初始化各变量
+            function initData(jsondata)
+            {
+            	this.jsonobjs = eval('(' + jsondata + ')');
+            	this.jsonbackup=jsonobjs;
+            	this.values=jsonobjs.model.values;
+            	this.strequ = jsonobjs.model.equation;
+            	this.computerf=new Function(strequ);
+                initGGid();
+				return returnDragableChartList();
+            }
+			
+            //金融数据所需信息
+            function returnDragableChartList()
+            {
+            	rtnstr="{\"listMain\":";
+            	rtnstr+=returnMainIds();
+				
+            	rtnstr+=",\"listFee\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.fee);
+            	
+            	rtnstr+=",\"listCap\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.cap);
+            	
+            	rtnstr+=",\"listWacc\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.wacc);
+            	rtnstr+="}";
+            	return rtnstr;
+            }      
+            
+            
+			
+            //初始化各变量
+            function initFinancialData(jsondata)
+            {
+            	this.jsonobjs = eval('(' + jsondata + ')');
+            	this.jsonbackup=jsonobjs;
+            	this.values=jsonobjs.model.values;
+            	this.strequ = jsonobjs.model.equation;
+            	this.computerf=new Function(strequ);
+                
+                return returnFinancialChartList();
+
+            }
+			
+			//金融数据所需信息
+            function returnFinancialChartList()
+            {
+            	rtnstr="{\"listRatio\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.r);
+            	
+            	rtnstr+=",\"listChart\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.fc);
+            	
+            	rtnstr+=",\"listOther\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.ot);
+            	rtnstr+="}";
+            	return rtnstr;
+            }
+            //root中某类图标数据的具体信息
+			function returnIds(view)
+            {
+            	rtnstr="[";
+            	for (var i1 = 0; i1 < view.length; i1 ++ ) {
+					var viewOne = view[i1];
+					var sun = jsonobjs.model.driver[viewOne];
+					if(!sun) {
+						continue;
+					}
+					rtnstr+="{\"name\":\""+sun.name+"\",";
+	        		rtnstr+="\"id\":\""+viewOne+"\"},";
+				}
+            	rtnstr=rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+
+			
+			//模型基本信息
+            function returnInfo()
+            {
+            	var data=jsonobjs.info;
+            	rtnstr="{";
+            	for(var i in data)
+            	{
+            		rtnstr+="\""+i+"\":\""+data[i]+"\",";
+            	}
+            	rtnstr=rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr+="}";
+            	return rtnstr;
+            }
+			
+			//返回主业务调整参数数据
+            function returnMainIds()
+            {
+            	ws=jsonobjs.model.division;
+            	rtnstr="[";
+            	for(var i in ws)
+            	{
+            		for ( var j in ws[i].drivers) 
+            		{
+	            		var para = ws[i].drivers[j].split('/');
+	            		chartdata=jsonobjs.model.driver[para[0]];
+	            		if(chartdata.array.length>1)
+	            		{
+	            			rtnstr+="{\"name\":\""+chartdata.name+"\",";
+		            		rtnstr+="\"id\":\""+para[0]+"\"},";
+	            		}
+					}						
+            	}
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+          
+            //根据driverid返回一组调整参数数据
+            function returnChartData(driverid)
+            {
+            	chartdata=jsonobjs.model.driver[driverid].array;
+            	rtnstr="{\"unit\":\""+jsonobjs.model.driver[driverid].unit
+            			+"\",\"title\":\""+jsonobjs.model.driver[driverid].name
+            			+"\",\"array\":[";
+            	//[{"h":false,"id":"1398.21","v":0.03,"y":"21"},{"h":false,"id":"1398.22","v":0.03,"y":"22"}]
+            	for(i=0;i<chartdata.length;i++)
+            	{
+            		rtnstr+="{\"h\":"+chartdata[i].h+",";
+            		rtnstr+="\"id\":\""+chartdata[i].id+"\",";
+            		rtnstr+="\"v\":"+chartdata[i].v+",";
+            		rtnstr+="\"y\":\""+chartdata[i].y+"\"},";
+            	}
+            	rtnstr+="],\"arraynew\":["
+            	for(i=0;i<chartdata.length;i++)
+            	{
+	            	if(!chartdata[i].h)
+	            	{
+	            		rtnstr+="{\"h\":"+chartdata[i].h+",";
+	            		rtnstr+="\"id\":\""+chartdata[i].id+"\",";
+	            		rtnstr+="\"v\":"+values[chartdata[i].id]+",";
+	            		rtnstr+="\"y\":\""+chartdata[i].y+"\"},";
+            		}
+            	}
+            	rtnstr+="]}";
+            	return rtnstr;
+            }
+            
+            //估股价
+			function initGGid() 
+			{
+				var ayal = jsonobjs.info.AyalyseItemId;
+				var moldelAy = jsonobjs.model.driver[ayal].array;
+				for (var hi = 0; hi < moldelAy.length; hi ++) 
+				{
+					var h = moldelAy[hi].h;
+					if(h == false) 
+					{
+						//当前默认曲线股价值
+						countV = moldelAy[hi].v;
+						//当前默认曲线id
+						countId = moldelAy[hi].id;
+						break;
+					}
+				}
+				//return rtnstr;
+			}   
+				
+			//根据传入的数据重新计算估股价
+            function chartCalu(jsondata)
+            {
+	            var sValue = eval('(' + jsondata + ')');
+				for ( var i = 0; i < sValue.length; i++) {
+					values[sValue[i].id] = sValue[i].v;
+				}
+				computerf();
+				return values[countId];
+			}
+			
+            
+            function returnSaveDicountData(comInfoStr){
+                
+                var comInfo=eval('(' + comInfoStr + ')');
+                var driverIds =jsonobjs.model.root.wacc;
+                var dataStr="{\"modeldata\":[";
+                var i=0;
+                for (var driverId in driverIds){
+                    var tempData=jsonobjs.model.driver[driverIds[driverId]];
+                    if(!tempData){
+                        continue;
+                    }
+                    if(i>=3){
+                        break;
+                    }
+                    dataStr+="{\"data\":[";
+                    for(var single in tempData.array){
+                        dataStr+="{\"h\":"+tempData.array[single].h+",";
+                        dataStr+="\"id\":\""+tempData.array[single].id+"\",";
+                        dataStr+="\"v\":"+values[tempData.array[single].id]+",";
+                        dataStr+="\"y\":\""+tempData.array[single].y+"\"},";
+                    }
+                    dataStr+="],";
+                    dataStr+="\"unit\":\""+tempData.unit+"\",";
+                    dataStr+="\"itemname\":\""+tempData.name+"\",";
+                    dataStr+="\"itemcode\":\""+driverIds[driverId]+"\",";
+                    dataStr+="\"stockcode\":\""+comInfo.stockcode+"\"";
+                    dataStr+="},";
+                    i++;
+                }
+                dataStr+="],";
+                dataStr+="\"price\":\""+comInfo.price+"\",";
+                dataStr+="\"companyname\":\""+comInfo.companyname+"\",";
+                dataStr+="\"stockcode\":\""+comInfo.stockcode+"\"";
+                dataStr+="}";
+                return dataStr;
+                
+            }
+            //根据传入的数据重新计算估股价
+            function chartCaluWacc(jsondata)
+            {
+	            var sValue = eval('(' + jsondata + ')');
+	            var strtmp="";
+				for ( var i = 0; i < sValue.length; i++) {
+					values[sValue[i].id] = parseFloat(sValue[i].datanew);
+				}
+				computerf();
+				return returnWaccData();
+			}
+            
+            //金融数据所需信息
+            function returnWaccData()
+            {
+            	view=jsonobjs.model.root.wacc;
+            	var rtnstr="[";
+            	for (var i1 = 0; i1 < view.length; i1 ++ ) {
+					var viewOne = view[i1];
+					var sun = jsonobjs.model.driver[viewOne];
+					if(!sun) {
+						//bad data
+						continue;
+					}
+					rtnstr+="{\"name\":\""+sun.name+"\",";
+					ddata=sun.array;
+					if(ddata.length<1){
+						//bad data
+						rtnstr+="\"data\":\"\",\"datanew\":\"\",\"id\":\"\"},";
+					}
+					else{
+						rtnstr+="\"data\":\""+ddata[0].v+"\",";
+						if(values[ddata[0].id]){
+							rtnstr+="\"datanew\":\""+values[ddata[0].id]+"\",";
+						}
+						else{
+							//bad data
+							rtnstr+="\"datanew\":\""+ddata[0].v+"\",";
+						}
+		        		rtnstr+="\"id\":\""+ddata[0].id+"\"},";
+	        		}
+				}
+                rtnstr+="{\"ggPrice\":\""+values[countId]+"\"}";
+            	//rtnstr=rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

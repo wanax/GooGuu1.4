@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <script type="text/javascript">
+            
+            //初始化value值
+			var values;
+            //计算公式字符串
+            var strequ;
+            //计算公式computerf=new Function(strequ)
+            var computerf;
+            //当前默认曲线股价Id
+            var countId = "";
+            //调整曲线后的值
+			var countV = "";
+            
+			var jsonobjs;
+			var jsonbackup;
+                        
+            //初始化各变量
+            function initData(jsondata)
+            {
+            	this.jsonobjs = eval('(' + jsondata + ')');
+            	this.jsonbackup=jsonobjs;
+            	this.values=jsonobjs.model.values;
+            	this.strequ = jsonobjs.model.equation;
+            	this.computerf=new Function(strequ);
+            	
+            	initGGid();
+				return returnMainIds();
+
+            }
+            
+            //根据传入的数据重新计算估股价
+            function chartCalu(jsondata)
+            {
+	            var sValue = eval('(' + jsondata + ')');
+
+				for ( var i = 0; i < sValue.length; i++) {
+                    
+					values[sValue[i].id] = sValue[i].v;
+
+				}
+				computerf();
+				return values[countId];
+			}
+                        
+            //初始化各变量
+            function initFinancialData(jsondata)
+            {
+            	this.jsonobjs = eval('(' + jsondata + ')');
+            	this.jsonbackup=jsonobjs;
+            	this.values=jsonobjs.model.values;
+            	this.strequ = jsonobjs.model.equation;
+            	this.computerf=new Function(strequ);
+            	
+				returnInfo();
+				returnFinancialChartList();
+            }
+            function returnFinancialChartList()
+            {
+            	rtnstr="{\"listRatio\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.r);
+            	
+            	rtnstr+=",\"listChart\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.fc);
+            	
+            	rtnstr+=",\"listOther\":";
+            	rtnstr+=returnIds(jsonobjs.model.root.ot);
+            	rtnstr+="}";
+            	return rtnstr;
+            }
+            function returnInfo()
+            {
+            	var data=jsonobjs.info;
+            	rtnstr="{";
+            	for(var i in data)
+            	{
+            		rtnstr+="\""+i+"\":\""+data[i]+"\",";
+            	}
+            	rtnstr=rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr+="}";
+            	return rtnstr;
+            }
+            
+            //返回主业务调整参数数据
+            function returnMainIds()
+            {
+            	ws=jsonobjs.model.division;
+            	rtnstr="[";
+            	for(var i in ws)
+            	{
+            		for ( var j in ws[i].drivers) 
+            		{
+	            		var para = ws[i].drivers[j].split('/');
+	            		chartdata=jsonobjs.model.driver[para[0]].array;
+	            		if(chartdata.length>1)
+	            		{
+	            			rtnstr+="{\"name\":\""+ws[i].name+"\",";
+		            		rtnstr+="\"chartlength\":\""+chartdata.length+"\",";
+		            		rtnstr+="\"id\":\""+para[0]+"\"},";
+	            		}
+					}						
+            	}
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+            
+			function returnIds(view)
+            {
+            	rtnstr="[";
+            	for (var i1 = 0; i1 < view.length; i1 ++ ) {
+					var viewOne = view[i1]; 
+					var sun = jsonobjs.model.driver[viewOne];
+					if(!sun) {
+						continue;
+					}
+					rtnstr+="{\"name\":\""+sun.name+"\",";
+	        		rtnstr+="\"id\":\""+viewOne+"\"},";
+				}
+            	rtnstr=rtnstr.substring(0,rtnstr.length-1);
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+            
+            function returnRootIds(view)
+            {
+            	rtnstr="[";
+            	for (var i1 = 0; i1 < view.length; i1 ++ ) {
+					var viewOne = view[i1]; 
+					var sun = jsonobjs.model.driver[viewOne];
+					if(!sun) {
+						continue;
+					}
+					rtnstr+="{\"name\":\""+sun.name+"\",";
+	        		rtnstr+="\"id\":\""+viewOne+"\"},";
+				}
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+            //返回fee调整参数数据
+            function returnFeeIds()
+            {
+            	var data=jsonobjs.model.root.fee;
+            	returnRootIds(data);
+            }
+			//返回Cap调整参数数据
+            function returnCapIds()
+            {
+            	var data=jsonobjs.model.root.cap;
+            	returnRootIds(data);
+            }
+            //返回Other调整参数数据
+            function returnOtherIds()
+            {
+            	var data=jsonobjs.model.root.ot;
+            	returnRootIds(data);
+            }
+            
+            //返回Other调整参数数据
+            function returnFinancialIds()
+            {
+            	var data=jsonobjs.model.root.fc;
+            	returnRootIds(data);
+            }
+            
+            //返回Other调整参数数据
+            function returnRatioIds()
+            {
+            	var data=jsonobjs.model.root.r;
+            	returnRootIds(data);
+            }
+            
+            //返回一组调整参数数据
+            function returnChartData(driverid)
+            {
+            	chartdata=jsonobjs.model.driver[driverid].array;
+            	rtnstr="[";
+            	for(i=0;i<chartdata.length;i++)
+            	{
+            		rtnstr+="{\"h\":"+chartdata[i].h+",";
+            		rtnstr+="\"id\":\""+chartdata[i].id+"\",";
+            		rtnstr+="\"v\":"+chartdata[i].v+",";
+            		rtnstr+="\"y\":\""+chartdata[i].y+"\"},";
+            	}
+            	rtnstr+="]";
+            	return rtnstr;
+            }
+            
+            //估股价
+			function initGGid() 
+			{
+					var ayal = jsonobjs.info.AyalyseItemId;
+					var moldelAy = jsonobjs.model.driver[ayal].array;
+					for (var hi = 0; hi < moldelAy.length; hi ++) 
+					{
+						var h = moldelAy[hi].h;
+						if(h == false) 
+						{
+							//当前默认曲线股价值
+							countV = moldelAy[hi].v;
+							//当前默认曲线id
+							countId = moldelAy[hi].id;
+							break;
+						}
+					}
+			}   
+				
+			
+            
+        </script>
+    </head>
+    <body onload="javascript:webcalc.initJson()">
+    </body>
+</html>

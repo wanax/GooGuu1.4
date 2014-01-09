@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>10</key>
+	<string>美股</string>
+	<key>9</key>
+	<string>港股</string>
+	<key>8</key>
+	<string>A股</string>
+	<key>7</key>
+	<string>外汇</string>
+	<key>6</key>
+	<string>黄金</string>
+	<key>5</key>
+	<string>期权</string>
+	<key>4</key>
+	<string>债券</string>
+	<key>3</key>
+	<string>商品期货</string>
+	<key>2</key>
+	<string>ETFs(交易所交易基金)</string>
+	<key>1</key>
+	<string>REITS(房地产信托投资基金)</string>
+</dict>
+</plist>

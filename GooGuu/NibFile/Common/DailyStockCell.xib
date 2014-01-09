@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="DailyStockCellIdentifier" selectionStyle="blue" indentationWidth="10" rowHeight="57" id="2" customClass="DailyStockCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2" id="Z8i-By-hZg">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dailystockbackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="1091">
+                        <rect key="frame" x="0.0" y="40" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="每日一股" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="753">
+                        <rect key="frame" x="19" y="9" width="70" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="38">
+                        <rect key="frame" x="93" y="3" width="100" height="33"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="估股价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="57">
+                        <rect key="frame" x="29" y="43" width="60" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="Ybd-0H-XNL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="60">
+                        <rect key="frame" x="29" y="64" width="60" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="当前价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65">
+                        <rect key="frame" x="130" y="43" width="60" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="上涨潜力" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96">
+                        <rect key="frame" x="240" y="43" width="60" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="68">
+                        <rect key="frame" x="235" y="64" width="70" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99">
+                        <rect key="frame" x="130" y="64" width="60" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="dailyStockLittleIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="943">
+                        <rect key="frame" x="14" y="14" width="12" height="12"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="12" id="3yG-3k-O7y"/>
+                            <constraint firstAttribute="width" constant="12" id="c2Q-MH-vCb"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1290">
+                        <rect key="frame" x="221" y="58" width="16" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1400">
+                        <rect key="frame" x="236" y="1" width="71" height="38"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="71" id="vkg-sT-5tL"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="60" secondAttribute="bottom" constant="4" id="1ZD-JV-gyt"/>
+                    <constraint firstItem="65" firstAttribute="top" secondItem="57" secondAttribute="top" id="20l-0x-yHe"/>
+                    <constraint firstItem="57" firstAttribute="baseline" secondItem="65" secondAttribute="baseline" id="5z8-zd-WDP"/>
+                    <constraint firstItem="57" firstAttribute="trailing" secondItem="753" secondAttribute="trailing" id="6Jf-Sa-SxK"/>
+                    <constraint firstItem="1290" firstAttribute="top" secondItem="Z8i-By-hZg" secondAttribute="top" constant="58" id="7OA-Uy-q2s"/>
+                    <constraint firstItem="96" firstAttribute="centerX" secondItem="68" secondAttribute="centerX" id="84k-Sm-1lp"/>
+                    <constraint firstItem="99" firstAttribute="trailing" secondItem="65" secondAttribute="trailing" id="G3o-ah-ktc"/>
+                    <constraint firstItem="96" firstAttribute="leading" secondItem="65" secondAttribute="trailing" constant="50" id="I2H-wL-n3a"/>
+                    <constraint firstItem="943" firstAttribute="centerY" secondItem="1400" secondAttribute="centerY" id="IWb-E1-kBQ"/>
+                    <constraint firstItem="1091" firstAttribute="top" secondItem="38" secondAttribute="bottom" constant="4" id="Kei-c3-o85"/>
+                    <constraint firstAttribute="trailing" secondItem="96" secondAttribute="trailing" constant="20" symbolic="YES" id="KjT-v0-Qjv"/>
+                    <constraint firstAttribute="bottom" secondItem="1290" secondAttribute="bottom" constant="9" id="Qdt-Y5-ITS"/>
+                    <constraint firstItem="943" firstAttribute="leading" secondItem="Z8i-By-hZg" secondAttribute="leading" constant="14" id="Qep-Ia-27D"/>
+                    <constraint firstItem="1091" firstAttribute="top" secondItem="753" secondAttribute="bottom" constant="10" id="RWv-zY-dUv"/>
+                    <constraint firstAttribute="trailing" secondItem="1400" secondAttribute="trailing" constant="13" id="SQV-YT-dwl"/>
+                    <constraint firstItem="68" firstAttribute="leading" secondItem="99" secondAttribute="trailing" constant="45" id="VQk-Fy-GUo"/>
+                    <constraint firstItem="65" firstAttribute="leading" secondItem="57" secondAttribute="trailing" constant="41" id="VdV-dP-rUZ"/>
+                    <constraint firstItem="96" firstAttribute="top" secondItem="1400" secondAttribute="bottom" constant="4" id="W7I-3Q-RCx"/>
+                    <constraint firstItem="38" firstAttribute="leading" secondItem="753" secondAttribute="trailing" constant="4" id="WR1-fN-ltG"/>
+                    <constraint firstItem="96" firstAttribute="baseline" secondItem="65" secondAttribute="baseline" id="XFi-4K-pIp"/>
+                    <constraint firstItem="1290" firstAttribute="leading" secondItem="99" secondAttribute="trailing" constant="31" id="XIX-US-fY8"/>
+                    <constraint firstItem="99" firstAttribute="top" secondItem="68" secondAttribute="top" id="Y9d-mM-wAG"/>
+                    <constraint firstAttribute="trailing" secondItem="1091" secondAttribute="trailing" id="ZAe-og-069"/>
+                    <constraint firstItem="99" firstAttribute="top" secondItem="60" secondAttribute="top" id="bND-eM-rbE"/>
+                    <constraint firstItem="65" firstAttribute="top" secondItem="96" secondAttribute="top" id="cbe-mU-tSu"/>
+                    <constraint firstItem="1091" firstAttribute="top" secondItem="1400" secondAttribute="bottom" constant="1" id="dFj-ji-MlO"/>
+                    <constraint firstItem="1400" firstAttribute="top" secondItem="Z8i-By-hZg" secondAttribute="top" constant="1" id="dnf-b4-Z8D"/>
+                    <constraint firstItem="1091" firstAttribute="leading" secondItem="Z8i-By-hZg" secondAttribute="leading" id="du4-Hf-4wg"/>
+                    <constraint firstItem="57" firstAttribute="leading" secondItem="60" secondAttribute="leading" id="fVM-Hu-yNT"/>
+                    <constraint firstItem="99" firstAttribute="baseline" secondItem="68" secondAttribute="baseline" id="g6i-iL-GuA"/>
+                    <constraint firstItem="65" firstAttribute="centerX" secondItem="1091" secondAttribute="centerX" id="hTZ-uf-apZ"/>
+                    <constraint firstItem="60" firstAttribute="top" secondItem="57" secondAttribute="bottom" constant="4" id="ja4-YH-1LQ"/>
+                    <constraint firstAttribute="trailing" secondItem="1290" secondAttribute="trailing" constant="83" id="nPw-zc-0LV"/>
+                    <constraint firstItem="57" firstAttribute="trailing" secondItem="60" secondAttribute="trailing" id="o58-2W-ncM"/>
+                    <constraint firstItem="57" firstAttribute="leading" secondItem="Z8i-By-hZg" secondAttribute="leading" constant="29" id="oxU-7d-Lri"/>
+                    <constraint firstItem="753" firstAttribute="leading" secondItem="Z8i-By-hZg" secondAttribute="leading" constant="19" id="qMX-d5-GN6"/>
+                    <constraint firstItem="38" firstAttribute="top" secondItem="Z8i-By-hZg" secondAttribute="top" constant="3" id="r0Y-pd-GA9"/>
+                    <constraint firstItem="753" firstAttribute="centerY" secondItem="38" secondAttribute="centerY" id="tqq-Lj-4gz"/>
+                    <constraint firstItem="99" firstAttribute="baseline" secondItem="60" secondAttribute="baseline" id="uOY-Ty-MV8"/>
+                    <constraint firstItem="1400" firstAttribute="leading" secondItem="38" secondAttribute="trailing" constant="43" id="uXx-d7-CgV"/>
+                    <constraint firstItem="38" firstAttribute="leading" secondItem="943" secondAttribute="trailing" constant="67" id="xuq-Wk-AbP"/>
+                    <constraint firstItem="99" firstAttribute="leading" secondItem="65" secondAttribute="leading" id="yHg-7P-iYP"/>
+                    <constraint firstItem="1091" firstAttribute="top" secondItem="943" secondAttribute="bottom" constant="14" id="ykR-JH-SPn"/>
+                    <constraint firstAttribute="bottom" secondItem="1091" secondAttribute="bottom" constant="1" id="zBh-LB-KKB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="arrowImg" destination="1290" id="1319"/>
+                <outlet property="companyNameLabel" destination="38" id="353"/>
+                <outlet property="dailyStockImg" destination="1400" id="1413"/>
+                <outlet property="gooGuuPriceLabel" destination="60" id="348"/>
+                <outlet property="marketPriceLabel" destination="99" id="352"/>
+                <outlet property="outLookLabel" destination="68" id="400"/>
+                <outlet property="outLookTextLabel" destination="96" id="906"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="dailyStockLittleIcon.png" width="13" height="13"/>
+        <image name="dailystockbackground.png" width="300" height="53"/>
+    </resources>
+</document>

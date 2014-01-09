@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppDownLoadURL</key>
+	<string>itms-apps://phobos.apple.com/WebObjects/MZStore.woa/wa/viewSoftwareUpdate?id=703282718&amp;mt=8</string>
+	<key>GooguuAPPID</key>
+	<string>703282718</string>
+	<key>iTunesURL</key>
+	<string>http://itunes.apple.com</string>
+	<key>ShareSDKSinaWeiboRedirectUri</key>
+	<string>http://appgo.cn</string>
+	<key>ShareSDKSinaWeiboAppSecret</key>
+	<string>9991fbc725c5f5cf6b565b9a00a5584a</string>
+	<key>ShareSDKSinaWeiboAppKey</key>
+	<string>1486252908</string>
+	<key>ShareSDKWeChatAppId</key>
+	<string>wx68cacf0b8972c879</string>
+	<key>ShareSDKRegisterApp</key>
+	<string>8c37a484287</string>
+	<key>BaiDuStatisticsAppID</key>
+	<string>0737a8b0ff</string>
+	<key>NetCheckURL</key>
+	<string>www.baidu.com</string>
+	<key>PonyDebuggerURL</key>
+	<string>ws://localhost:9000/device</string>
+	<key>CrashlyticsAPIKey</key>
+	<string>c59317990c405b2f42582cacbe9f4fa9abe1fefb</string>
+</dict>
+</plist>

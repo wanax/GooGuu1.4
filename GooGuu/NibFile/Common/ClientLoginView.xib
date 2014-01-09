@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClientLoginViewController">
+            <connections>
+                <outlet property="autoCheckImg" destination="2wc-5R-A07" id="ru1-hz-tHh"/>
+                <outlet property="autoLoginBt" destination="163" id="297"/>
+                <outlet property="cancelBt" destination="375" id="386"/>
+                <outlet property="findPwdBt" destination="148" id="299"/>
+                <outlet property="loginBt" destination="45" id="300"/>
+                <outlet property="regBt" destination="169" id="301"/>
+                <outlet property="userNameField" destination="20" id="302"/>
+                <outlet property="userPwdField" destination="34" id="303"/>
+                <outlet property="view" destination="1" id="6"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1" customClass="UIControl">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="loginBack.png" translatesAutoresizingMaskIntoConstraints="NO" id="7">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="NOZ-06-j5k">
+                    <rect key="frame" x="76" y="289" width="15" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="DB1-zS-lo2"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45">
+                    <rect key="frame" x="62" y="209" width="197" height="71"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="loginBt.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="loginBtClicked:" destination="-1" eventType="touchUpInside" id="490"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="163">
+                    <rect key="frame" x="92" y="288" width="50" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="10"/>
+                    <state key="normal" title="记住密码">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="autoBtClicked:" destination="-1" eventType="touchUpInside" id="540"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="169">
+                    <rect key="frame" x="147" y="288" width="40" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="10"/>
+                    <state key="normal" title="免费注册">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="freeRegBtClicked:" destination="-1" eventType="touchUpInside" id="541"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="密码:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="26">
+                    <rect key="frame" x="37" y="162" width="50" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="8xa-gA-URu"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="用户名:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12">
+                    <rect key="frame" x="37" y="98" width="50" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Cew-dX-aNd"/>
+                        <constraint firstAttribute="height" constant="21" id="Uhh-VK-nq6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inputBack.png" translatesAutoresizingMaskIntoConstraints="NO" id="404">
+                    <rect key="frame" x="30" y="117" width="280" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="9hY-3r-mWg"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="inputBack.png" translatesAutoresizingMaskIntoConstraints="NO" id="424">
+                    <rect key="frame" x="30" y="175" width="280" height="45"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <textField opaque="NO" clipsSubviews="YES" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="20">
+                    <rect key="frame" x="40" y="120" width="260" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="bHZ-sY-dqj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" tag="200" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="34">
+                    <rect key="frame" x="40" y="178" width="260" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="Pj3-Ue-Tyf"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="quest.png" translatesAutoresizingMaskIntoConstraints="NO" id="135">
+                    <rect key="frame" x="195" y="288" width="15" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="148">
+                    <rect key="frame" x="211" y="288" width="40" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="10"/>
+                    <state key="normal" title="找回密码">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="findPwdBtClicked:" destination="-1" eventType="touchUpInside" id="542"/>
+                    </connections>
+                </button>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="|" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="187">
+                    <rect key="frame" x="140" y="285" width="5" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="5" id="OSO-se-XSl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="375">
+                    <rect key="frame" x="0.0" y="20" width="24" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="24" id="5dk-Td-y6K"/>
+                        <constraint firstAttribute="height" constant="26" id="seF-f7-MDh"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" backgroundImage="cancelLoginBt.png">
+                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelBtClicked:" destination="-1" eventType="touchUpInside" id="387"/>
+                    </connections>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2wc-5R-A07">
+                    <rect key="frame" x="76" y="288" width="15" height="15"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="15" id="ZT5-57-3mr"/>
+                        <constraint firstAttribute="width" constant="15" id="o7N-Pn-q1R"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.96470588239999999" green="0.94509803920000002" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="2wc-5R-A07" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="8" symbolic="YES" id="2Ul-X7-1Li"/>
+                <constraint firstItem="135" firstAttribute="leading" secondItem="169" secondAttribute="trailing" constant="8" symbolic="YES" id="2eE-ax-wXZ"/>
+                <constraint firstItem="135" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="8" symbolic="YES" id="5ZB-2X-VvX"/>
+                <constraint firstItem="2wc-5R-A07" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="76" id="5l2-27-8t4"/>
+                <constraint firstItem="169" firstAttribute="bottom" secondItem="135" secondAttribute="bottom" id="7Ji-Tq-WaC"/>
+                <constraint firstItem="12" firstAttribute="top" secondItem="1" secondAttribute="top" constant="98" id="8GB-LI-7wD"/>
+                <constraint firstItem="169" firstAttribute="bottom" secondItem="163" secondAttribute="bottom" id="BPT-aP-2sw"/>
+                <constraint firstItem="20" firstAttribute="top" secondItem="12" secondAttribute="bottom" constant="1" id="CY0-UR-w3q"/>
+                <constraint firstItem="12" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="37" id="Enx-gX-yUr"/>
+                <constraint firstItem="375" firstAttribute="leading" secondItem="7" secondAttribute="leading" id="LD7-Ch-bxX"/>
+                <constraint firstItem="7" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="Mt4-29-ojK"/>
+                <constraint firstItem="12" firstAttribute="trailing" secondItem="26" secondAttribute="trailing" id="NPo-aA-LGm"/>
+                <constraint firstItem="404" firstAttribute="trailing" secondItem="424" secondAttribute="trailing" id="NaX-1w-gtE"/>
+                <constraint firstItem="45" firstAttribute="top" secondItem="26" secondAttribute="bottom" constant="26" id="Nyd-26-Z6O"/>
+                <constraint firstAttribute="trailing" secondItem="7" secondAttribute="trailing" id="PEy-Ap-Dnd"/>
+                <constraint firstItem="169" firstAttribute="leading" secondItem="187" secondAttribute="trailing" constant="2" id="QpZ-VE-ugF"/>
+                <constraint firstItem="20" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="40" id="Rgc-Og-2LY"/>
+                <constraint firstItem="424" firstAttribute="top" secondItem="404" secondAttribute="bottom" constant="13" id="SVM-m6-p4g"/>
+                <constraint firstItem="20" firstAttribute="leading" secondItem="34" secondAttribute="leading" id="SjW-cj-YYj"/>
+                <constraint firstItem="404" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="30" id="T6t-ix-T7u"/>
+                <constraint firstItem="187" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="5" id="TDL-f0-Rsm"/>
+                <constraint firstItem="NOZ-06-j5k" firstAttribute="centerY" secondItem="163" secondAttribute="centerY" id="TyH-PB-j2Y"/>
+                <constraint firstItem="148" firstAttribute="bottom" secondItem="135" secondAttribute="bottom" id="UHN-An-TqG"/>
+                <constraint firstItem="26" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="2" id="UPg-HS-nac"/>
+                <constraint firstItem="169" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="8" symbolic="YES" id="Uq0-kq-LMH"/>
+                <constraint firstItem="20" firstAttribute="centerX" secondItem="404" secondAttribute="centerX" id="V06-vV-4t0"/>
+                <constraint firstItem="45" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="62" id="WHy-3E-BG1"/>
+                <constraint firstItem="163" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="8" symbolic="YES" id="Wsh-Ba-YRr"/>
+                <constraint firstItem="187" firstAttribute="top" secondItem="34" secondAttribute="bottom" constant="67" id="XFY-LL-Ao3"/>
+                <constraint firstItem="169" firstAttribute="leading" secondItem="163" secondAttribute="trailing" constant="5" id="ZFv-Jl-qHY"/>
+                <constraint firstItem="404" firstAttribute="leading" secondItem="424" secondAttribute="leading" id="aEs-O6-dip"/>
+                <constraint firstItem="187" firstAttribute="centerY" secondItem="2wc-5R-A07" secondAttribute="centerY" id="cZz-uR-wSl"/>
+                <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" symbolic="YES" id="cnK-fR-BWm"/>
+                <constraint firstItem="34" firstAttribute="trailing" secondItem="20" secondAttribute="trailing" id="duu-Mr-5zw"/>
+                <constraint firstItem="34" firstAttribute="top" secondItem="404" secondAttribute="bottom" constant="16" id="fPH-un-bsM"/>
+                <constraint firstItem="148" firstAttribute="leading" secondItem="135" secondAttribute="trailing" constant="1" id="fQb-HV-P9s"/>
+                <constraint firstItem="NOZ-06-j5k" firstAttribute="leading" secondItem="2wc-5R-A07" secondAttribute="leading" id="hkd-9a-z5Q"/>
+                <constraint firstItem="26" firstAttribute="top" secondItem="404" secondAttribute="bottom" id="kyB-jH-PfA"/>
+                <constraint firstItem="163" firstAttribute="leading" secondItem="2wc-5R-A07" secondAttribute="trailing" constant="1" id="laf-Ed-C95"/>
+                <constraint firstAttribute="bottom" secondItem="7" secondAttribute="bottom" id="mLd-27-dZb"/>
+                <constraint firstItem="7" firstAttribute="centerX" secondItem="45" secondAttribute="centerX" id="nhV-8K-arw"/>
+                <constraint firstAttribute="trailing" secondItem="148" secondAttribute="trailing" constant="69" id="pm3-cl-C1a"/>
+                <constraint firstItem="375" firstAttribute="top" secondItem="1" secondAttribute="top" constant="20" symbolic="YES" id="qpq-5p-BoL"/>
+                <constraint firstItem="148" firstAttribute="top" secondItem="45" secondAttribute="bottom" constant="8" symbolic="YES" id="qvk-DQ-eUv"/>
+                <constraint firstItem="187" firstAttribute="leading" secondItem="2wc-5R-A07" secondAttribute="trailing" constant="49" id="r1b-K5-3i3"/>
+                <constraint firstItem="7" firstAttribute="top" secondItem="1" secondAttribute="top" id="rhY-OH-7NO"/>
+                <constraint firstItem="2wc-5R-A07" firstAttribute="trailing" secondItem="NOZ-06-j5k" secondAttribute="trailing" id="rjp-8Y-rN1"/>
+                <constraint firstItem="163" firstAttribute="bottom" secondItem="NOZ-06-j5k" secondAttribute="bottom" id="urv-I0-M9B"/>
+                <constraint firstItem="187" firstAttribute="top" secondItem="424" secondAttribute="bottom" constant="65" id="vg7-uu-tQX"/>
+                <constraint firstItem="26" firstAttribute="leading" secondItem="12" secondAttribute="leading" id="xQI-xu-I5u"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <action selector="backGroundIsClicked" destination="-1" eventType="touchUpInside" id="449"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="cancelLoginBt.png" width="38" height="45"/>
+        <image name="checkBox.png" width="22" height="22"/>
+        <image name="inputBack.png" width="546" height="88"/>
+        <image name="loginBack.png" width="640" height="926"/>
+        <image name="loginBt.png" width="373" height="131"/>
+        <image name="quest.png" width="26" height="26"/>
+    </resources>
+</document>
