@@ -38,11 +38,11 @@
 {
     [super viewDidLoad];
 	[self.view setBackgroundColor:[Utiles colorWithHexString:@"#EAE6D0"]];
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(10, 45, 300, 360)];
-    UILabel *label = [[UILabel alloc] init];
+    UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(10, 45, 300, 360)] autorelease];
+    UILabel *label = [[[UILabel alloc] init] autorelease];
     label.frame = CGRectMake(0,0,300,960);
     NSString *path = [[NSBundle mainBundle] pathForResource:@"agreement" ofType:@"txt"];
-    NSString *textFile = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSString *textFile = [[[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil] autorelease];
     label.lineBreakMode = NSLineBreakByCharWrapping;
     label.numberOfLines = 0;
     [label setFont:[UIFont fontWithName:@"Heiti SC" size:17.0]];

@@ -18,19 +18,6 @@
 
 @implementation GooGuuContainerViewController
 
-@synthesize concernedViewController;
-@synthesize saveModelViewControler;
-@synthesize calendarViewController;
-@synthesize tabBarController;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(tabBarController);
-    SAFE_RELEASE(calendarViewController);
-    SAFE_RELEASE(concernedViewController);
-    SAFE_RELEASE(saveModelViewControler);
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,26 +32,32 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    concernedViewController = [[ConcernedViewController alloc] init];
-    concernedViewController.type=@"AttentionData";
-    concernedViewController.browseType=MyConcernedType;
-    saveModelViewControler = [[ConcernedViewController alloc] init];
-    saveModelViewControler.type=@"SavedData";
-    saveModelViewControler.browseType=MySavedType;
-    calendarViewController=[[CalendarViewController alloc] init];
-    calendarViewController.view.frame=CGRectMake(0,100,SCREEN_WIDTH,600);
-    concernedViewController.title=@"自选股";
-    saveModelViewControler.title=@"我的模型";
-    calendarViewController.title=@"投资日历";
+    ConcernedViewController *tempVC = [[[ConcernedViewController alloc] init] autorelease];
+    self.concernedViewController = tempVC;
+    self.concernedViewController.type=@"AttentionData";
+    self.concernedViewController.browseType=MyConcernedType;
+    
+    ConcernedViewController *tempVC2 = [[[ConcernedViewController alloc] init] autorelease];
+    self.saveModelViewControler = tempVC2;
+    self.saveModelViewControler.type=@"SavedData";
+    self.saveModelViewControler.browseType=MySavedType;
+    
+    CalendarViewController *tempCal = [[[CalendarViewController alloc] init] autorelease];
+    self.calendarViewController = tempCal;
+    self.calendarViewController.view.frame=CGRectMake(0,100,SCREEN_WIDTH,600);
+    self.concernedViewController.title=@"自选股";
+    self.saveModelViewControler.title=@"我的模型";
+    self.calendarViewController.title=@"投资日历";
 
     
     
-	NSArray *viewControllers = [NSArray arrayWithObjects:concernedViewController, saveModelViewControler,calendarViewController, nil];
-	tabBarController = [[MHTabBarController alloc] init];
-	tabBarController.viewControllers = viewControllers;
+	NSArray *viewControllers = [NSArray arrayWithObjects:self.concernedViewController, self.saveModelViewControler,self.calendarViewController, nil];
+    MHTabBarController *tempTab = [[[MHTabBarController alloc] init] autorelease];
+	self.tabBarController = tempTab;
+	self.tabBarController.viewControllers = viewControllers;
     
-    [self addChildViewController:tabBarController];
-    [self.view addSubview:tabBarController.view];
+    [self addChildViewController:self.tabBarController];
+    [self.view addSubview:self.tabBarController.view];
     
 }
 

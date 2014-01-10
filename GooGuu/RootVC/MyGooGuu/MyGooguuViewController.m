@@ -15,57 +15,9 @@
 
 @interface MyGooguuViewController ()
 
-//界面基本参数
-- (void) addBasicView;
-- (void) addToolBar;
-- (void) addButtonAndSlid;
-
-//左右滑动相关
-- (void)initScrollView;
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-- (void)createAllEmptyPagesForScrollView;
-
-//界面按钮事件
-- (void) btnActionShow;
-- (void) concernButtonAction;
-- (void) saveButtonAction;
-
-
 @end
 
 @implementation MyGooguuViewController
-
-@synthesize concernedViewController;
-@synthesize saveModelViewControler;
-
-@synthesize concernNavViewController;
-
-@synthesize concernButton;
-@synthesize saveButton;
-
-@synthesize scrollView;
-@synthesize slidLabel;
-@synthesize pageControl;
-@synthesize tabBarController;
-
-- (void)dealloc
-{
-    [tabBarController release];tabBarController=nil;
-    [concernedViewController release];concernedViewController=nil;
-    [saveModelViewControler release];saveModelViewControler=nil;
-    
-    [concernNavViewController release];concernNavViewController=nil;
-    
-    [concernButton release];concernButton=nil;
-    [saveButton release];saveButton=nil;
-    
-    [scrollView release];scrollView=nil;
-    [slidLabel release];slidLabel=nil;
-    [pageControl release];pageControl=nil;
-    
-    [super dealloc];
-}
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,9 +31,9 @@
 -(void)loginBtClicked:(id)sender{
     ClientLoginViewController *loginViewController=nil;
     if (SCREEN_HEIGHT>500) {
-        loginViewController = [[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView5" bundle:nil];
+        loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView5" bundle:nil] autorelease];
     } else {
-        loginViewController = [[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView" bundle:nil];
+        loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView" bundle:nil] autorelease];
     }
     
     loginViewController.sourceType=MyGooGuuBar;

@@ -146,6 +146,8 @@
 		AE16E982187D5714003588FA /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E981187D5714003588FA /* libBaiduMobStat.a */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
+		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
+		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
 		AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518712187E40370055B9AE /* FinancalModelChartViewController.m */; };
 		AE518716187E40370055B9AE /* FinanceDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518714187E40370055B9AE /* FinanceDataViewController.m */; };
 		AE518719187E40400055B9AE /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518718187E40400055B9AE /* DahonValuationViewController.m */; };
@@ -632,6 +634,9 @@
 		AE2B48F3187D2BDD007ABEC8 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AE3E6316187F8B9F005A71AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		AE3E6318187F9374005A71AD /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
+		AE3E6319187F9374005A71AD /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
 		AE518711187E40370055B9AE /* FinancalModelChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinancalModelChartViewController.h; sourceTree = "<group>"; };
 		AE518712187E40370055B9AE /* FinancalModelChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FinancalModelChartViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE518713187E40370055B9AE /* FinanceDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceDataViewController.h; sourceTree = "<group>"; };
@@ -848,6 +853,7 @@
 				AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */,
 				AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */,
 				AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */,
+				AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */,
 				AE018839187CF635004C6A5D /* CoreGraphics.framework in Frameworks */,
 				AE01883B187CF635004C6A5D /* UIKit.framework in Frameworks */,
 				AE018837187CF635004C6A5D /* Foundation.framework in Frameworks */,
@@ -892,6 +898,7 @@
 		AE018835187CF635004C6A5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE3E6316187F8B9F005A71AD /* Crashlytics.framework */,
 				AE16E97D187D56CD003588FA /* CoreTelephony.framework */,
 				AE16E97B187D56BF003588FA /* libstdc++.dylib */,
 				AE16E979187D56A9003588FA /* CoreLocation.framework */,
@@ -923,6 +930,7 @@
 				AE949CD7187E7690004FC1AB /* Images */,
 				AE018869187CFC3F004C6A5D /* NibFile */,
 				AE01886A187CFC3F004C6A5D /* Plugins */,
+				AE3E630F187F8964005A71AD /* Welcome */,
 				AE01886B187CFC3F004C6A5D /* RootVC */,
 				AE518709187E327E0055B9AE /* GooGuuModelVC */,
 				AE74DF83187E4480002AE169 /* ClientCenter */,
@@ -1495,6 +1503,15 @@
 			path = CorePlotHeaders;
 			sourceTree = "<group>";
 		};
+		AE3E630F187F8964005A71AD /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				AE3E6318187F9374005A71AD /* TipViewController.h */,
+				AE3E6319187F9374005A71AD /* TipViewController.m */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1976,6 +1993,7 @@
 				AE018830187CF635004C6A5D /* Frameworks */,
 				AE018831187CF635004C6A5D /* Resources */,
 				7649413C01D94A78A438AE73 /* Copy Pods Resources */,
+				AE3E6315187F8B6F005A71AD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2270,6 +2288,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		AE3E6315187F8B6F005A71AD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run c59317990c405b2f42582cacbe9f4fa9abe1fefb";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -2334,6 +2365,7 @@
 				AE06B8EA187EAB7900DA93E2 /* BetaFactorCountViewController.m in Sources */,
 				AE0D3D43187D414400E0E141 /* CompanyListViewController.m in Sources */,
 				AE0D3CB8187D36A000E0E141 /* UIButton+BGColor.m in Sources */,
+				AE3E631A187F9374005A71AD /* TipViewController.m in Sources */,
 				AE0D3D34187D413000E0E141 /* GooGuuArticleViewController.m in Sources */,
 				AE0D3CEB187D3A9200E0E141 /* PrettyDrawing.m in Sources */,
 				AE0D3CF9187D3B2500E0E141 /* Toast+UIView.m in Sources */,
@@ -2515,6 +2547,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/xcode/wanax/oc/GooGuu,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GooGuu/Supporting Files/GooGuu-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/GooGuu/Supporting Files/GooGuu-Info.plist";
@@ -2538,6 +2574,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/xcode/wanax/oc/GooGuu,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GooGuu/Supporting Files/GooGuu-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/GooGuu/Supporting Files/GooGuu-Info.plist";

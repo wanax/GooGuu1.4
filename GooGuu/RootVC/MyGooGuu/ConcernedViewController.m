@@ -74,7 +74,8 @@
 
 -(void)initViewComponents{
     
-    self.comInfoList=[[NSMutableArray alloc] init];
+    NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
+    self.comInfoList = temps;
     if(self.browseType==MyConcernedType){
         IndicatorView *indicator=[[IndicatorView alloc] init];
         [self.view addSubview:indicator];
@@ -85,7 +86,8 @@
         [indicator release];
     }
     
-   	self.customTableView=[[UITableView alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,SCREEN_HEIGHT-148)];
+    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,SCREEN_HEIGHT-148)] autorelease];
+   	self.customTableView = tempTable;
     [self.customTableView setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
     self.customTableView.dataSource=self;
     self.customTableView.delegate=self;

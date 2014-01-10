@@ -97,7 +97,7 @@
     [companyNameLabel setText:[comInfo objectForKey:@"companyname"]];
     [companyNameLabel setTextAlignment:NSTextAlignmentCenter];
     
-    top=[[UIToolbar alloc] initWithFrame:CGRectMake(0,20,SCREEN_WIDTH,44)];
+    top=[[UIToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,44)];
     [companyNameLabel setTextColor:[Utiles colorWithHexString:@"#2E71FA"]];
 
     [top addSubview:companyNameLabel];

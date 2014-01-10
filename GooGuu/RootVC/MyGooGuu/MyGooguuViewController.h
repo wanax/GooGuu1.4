@@ -16,11 +16,11 @@
 @class MHTabBarController;
 
 @interface MyGooguuViewController : UIViewController<UIScrollViewDelegate>{
-    //左右滑动部分
-	UIPageControl *pageControl;
     int currentPage;
     BOOL pageControlUsed;
 }
+
+@property (nonatomic,retain) UIPageControl *pageControl;
 
 @property (nonatomic,retain) ConcernedViewController *concernedViewController;
 @property (nonatomic,retain) SaveModelViewController *saveModelViewControler;
@@ -33,7 +33,6 @@
 @property (retain, nonatomic) UILabel *slidLabel;//用于指示作用
 
 @property (strong, nonatomic) UIScrollView *scrollView;
-@property (nonatomic,retain) UIPageControl *pageControl;
 
 @property (nonatomic,retain) MHTabBarController *tabBarController ;
 

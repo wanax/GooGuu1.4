@@ -17,16 +17,6 @@
 
 @implementation CalendarViewController
 
-@synthesize eventArr=_eventArr;
-@synthesize dateDic=_dateDic;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(_dateDic);
-    SAFE_RELEASE(_eventArr);
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,7 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor=[Utiles colorWithHexString:@"#FFFFFE"];
-    VRGCalendarView *calendar = [[VRGCalendarView alloc] init];
+    VRGCalendarView *calendar = [[[VRGCalendarView alloc] init] autorelease];
     calendar.delegate=self;
     [self.view addSubview:calendar];
     calendar.userInteractionEnabled=YES;
@@ -98,7 +88,8 @@
                 [dates addObject:[f numberFromString:[obj objectForKey:@"day"]]];
             }
             [calendarView markDates:dates];
-            self.dateDic=[[NSMutableDictionary alloc] init];
+            NSMutableDictionary *tempDic = [[[NSMutableDictionary alloc] init] autorelease];
+            self.dateDic = tempDic;
             for(id key in self.eventArr){
                 [self.dateDic setObject:[key objectForKey:@"data"] forKey:[self dateFormatter:[key objectForKey:@"day"]]];
             }
@@ -121,7 +112,7 @@
     [dateFormat setDateFormat:@"YYYY/MM/dd"];
     NSString *pointerDate=[NSString stringWithFormat:@"%@相关信息",[dateFormat stringFromDate:date]];
     if ([[self.dateDic allKeys] containsObject:currentDateStr]){
-        NSString *msg=[[NSString alloc] init];
+        NSString *msg=[[[NSString alloc] init] autorelease];
         for(id obj in [self.dateDic objectForKey:currentDateStr]){
             msg=[msg stringByAppendingFormat:@"%@:%@\n",[obj objectForKey:@"companyname"],[obj objectForKey:@"desc"]];
         }
