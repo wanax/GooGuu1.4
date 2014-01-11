@@ -64,7 +64,7 @@
             
             UIBarButtonItem *wanSay=[[UIBarButtonItem alloc] initWithTitle:@"添加评论" style:UIBarButtonItemStyleBordered target:self action:@selector(wanSay:)];
             
-            [self.parentViewController.navigationItem setRightBarButtonItem:wanSay animated:YES];
+            [self.parentViewController.parentViewController.parentViewController.navigationItem setRightBarButtonItem:wanSay animated:YES];
             
         }else if(self.type==StockCompany){
             NSAssert(self.type==StockCompany,@"Analy Report");
@@ -97,7 +97,7 @@
     
     if(self.type==News){
         addCommentViewController.type=NewsType;
-        [(UINavigationController *)self.parentViewController.parentViewController pushViewController:addCommentViewController animated:YES];
+        [(UINavigationController *)self.parentViewController.parentViewController.parentViewController.parentViewController pushViewController:addCommentViewController animated:YES];
     }else{
         NSAssert(self.type==StockCompany,@"Should be articel");
         addCommentViewController.type=ArticleType;

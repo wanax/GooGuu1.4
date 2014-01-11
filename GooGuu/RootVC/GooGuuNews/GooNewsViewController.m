@@ -58,10 +58,10 @@
 }
 -(void)addHelpBt{
     
-    UIButton *wanSay= [[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)];
+    UIButton *wanSay = [[[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)] autorelease];
     [wanSay setImage:[UIImage imageNamed:@"helpBt"] forState:UIControlStateNormal];
     [wanSay addTarget:self action:@selector(helpAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *nextStepBarBtn = [[UIBarButtonItem alloc] initWithCustomView:wanSay];
+    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
     [self.navigationItem setRightBarButtonItem:nextStepBarBtn animated:YES];
   
 }
@@ -85,7 +85,8 @@
 
 -(void)addTable{
     
-    self.customTableView=[[UITableView alloc] initWithFrame:CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-92) style:UITableViewStylePlain];
+    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-92) style:UITableViewStylePlain] autorelease];
+    self.customTableView = tempTable;
     [self.customTableView setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
     self.customTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.customTableView.dataSource=self;
@@ -176,11 +177,6 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark -
 #pragma mark Table Data Source Methods
@@ -391,6 +387,10 @@
 #pragma mark -
 #pragma mark General Methods
 
+-(void)backToPresent {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)cellBtClicked:(UIButton *)bt{
     NSInteger row=bt.tag;
     AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
@@ -404,14 +404,25 @@
     articleCommentViewController.articleId=artId;
     articleCommentViewController.title=@"评论";
     articleCommentViewController.type=News;
-    self.container=[[MHTabBarController alloc] init];
+    MHTabBarController *tempMH = [[[MHTabBarController alloc] init] autorelease];
+    self.container = tempMH;
     NSArray *controllers=[NSArray arrayWithObjects:articleViewController,articleCommentViewController, nil];
     self.container.viewControllers=controllers;
     
+    UIViewController *contentVC = [[[UIViewController alloc] init] autorelease];
+    [contentVC addChildViewController:self.container];
+    [contentVC.view addSubview:self.container.view];
+    contentVC.view.frame = CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-44);
+    
+    UIViewController *test = [[[UIViewController alloc] init] autorelease];
+    test.view.frame = CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+    [test.view addSubview:contentVC.view];
+    [test addChildViewController:contentVC];
+    
     [Utiles setConfigureInfoTo:@"readingmarks" forKey:[[self.arrList objectAtIndex:row] objectForKey:@"title"] andContent:@"1"];
     self.readingMarksDic=[Utiles getConfigureInfoFrom:@"readingmarks" andKey:nil inUserDomain:YES];
-    self.container.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:self.container animated:YES];
+    test.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:test animated:YES];
     
     SAFE_RELEASE(articleViewController);
     SAFE_RELEASE(articleCommentViewController);
@@ -440,7 +451,7 @@
     if(indexPath.section==0){
         AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
         delegate.comInfo=self.companyInfo;
-        ComFieldViewController *com=[[ComFieldViewController alloc] init];
+        ComFieldViewController *com=[[[ComFieldViewController alloc] init] autorelease];
         com.browseType=ValuationModelType;
         com.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
         [self presentViewController:com animated:YES completion:nil];
@@ -510,6 +521,11 @@
 }
 
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
 

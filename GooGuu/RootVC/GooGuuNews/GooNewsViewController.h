@@ -35,7 +35,5 @@
 @property (nonatomic,retain) MHTabBarController *container;
 @property (nonatomic,retain) MBProgressHUD *hud;
 
-- (void)reloadTableViewDataSource;
-- (void)doneLoadingTableViewData;
 
 @end

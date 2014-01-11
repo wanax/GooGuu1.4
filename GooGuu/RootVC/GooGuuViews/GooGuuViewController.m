@@ -193,11 +193,21 @@
     NSArray *controllers=[NSArray arrayWithObjects:articleViewController,articleCommentViewController, nil];
     container.viewControllers=controllers;
     
+    UIViewController *contentVC = [[[UIViewController alloc] init] autorelease];
+    [contentVC addChildViewController:container];
+    [contentVC.view addSubview:container.view];
+    contentVC.view.frame = CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-44);
+    
+    UIViewController *test = [[[UIViewController alloc] init] autorelease];
+    test.view.frame = CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
+    [test.view addSubview:contentVC.view];
+    [test addChildViewController:contentVC];
+    
     [Utiles setConfigureInfoTo:@"googuuviewreadingmarks" forKey:[[self.viewDataArr objectAtIndex:row] objectForKey:@"title"] andContent:@"1"];
     self.readingMarksDic=[Utiles getConfigureInfoFrom:@"googuuviewreadingmarks" andKey:nil inUserDomain:YES];
     
-    container.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:container animated:YES];
+    test.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:test animated:YES];
 }
 
 -(void)setReadingMark:(ValueViewCell *)cell andTitle:(NSString *)title{

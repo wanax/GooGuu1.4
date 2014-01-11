@@ -163,7 +163,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor=[UIColor greenSeaColor];
     if (self.sourceType==GooGuuView) {
         self.parentViewController.title=@"估值观点";
     } else {
