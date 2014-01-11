@@ -190,13 +190,13 @@
     
     
     if(isAttention){
-        attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, 445, 160, 30) img:@"deleteAttentionBt" title:@"取消关注"];
+        attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, SCREEN_HEIGHT-103, 160, 30) img:@"deleteAttentionBt" title:@"取消关注"];
         
     }else{
-        attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, SCREEN_HEIGHT-123, 160, 30) img:@"addAttentionBt" title:@"添加关注"];
+        attentionBt=[self addActionButtonTag:AttentionAction frame:CGRectMake(0, SCREEN_HEIGHT-103, 160, 30) img:@"addAttentionBt" title:@"添加关注"];
         
     }
-    [self addActionButtonTag:AddComment frame:CGRectMake(160, SCREEN_HEIGHT-123, 160, 30) img:@"addCommentBt" title:@"添加评论"];
+    [self addActionButtonTag:AddComment frame:CGRectMake(160, SCREEN_HEIGHT-103, 160, 30) img:@"addCommentBt" title:@"添加评论"];
     
 }
 

@@ -116,7 +116,7 @@
     nibsRegistered=NO;
 
     
-    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height-80) style:UITableViewStylePlain];
+    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-75) style:UITableViewStylePlain];
     [self.cusTable setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
     self.cusTable.dataSource=self;
     self.cusTable.delegate=self;

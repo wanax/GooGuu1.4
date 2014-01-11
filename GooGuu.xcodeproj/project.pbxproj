@@ -96,7 +96,6 @@
 		AE0D3D47187D414400E0E141 /* StockSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D40187D414400E0E141 /* StockSearchListViewController.m */; };
 		AE0D3D48187D414400E0E141 /* IndicatorSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D42187D414400E0E141 /* IndicatorSearchView.m */; };
 		AE0D3D4C187D45E400E0E141 /* AOTag.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D4B187D45E400E0E141 /* AOTag.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		AE0D3D4F187D460500E0E141 /* DrawChartTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D4E187D460500E0E141 /* DrawChartTool.m */; };
 		AE0D3D5B187D467300E0E141 /* NSDate+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D52187D467300E0E141 /* NSDate+convenience.m */; };
 		AE0D3D5C187D467300E0E141 /* NSMutableArray+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D54187D467300E0E141 /* NSMutableArray+convenience.m */; };
 		AE0D3D5D187D467300E0E141 /* UIColor+expanded.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D56187D467300E0E141 /* UIColor+expanded.m */; };
@@ -148,9 +147,10 @@
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
 		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
+		AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */; };
+		AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB411880E41900386C49 /* DrawChartTool.m */; };
 		AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518712187E40370055B9AE /* FinancalModelChartViewController.m */; };
 		AE518716187E40370055B9AE /* FinanceDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518714187E40370055B9AE /* FinanceDataViewController.m */; };
-		AE518719187E40400055B9AE /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518718187E40400055B9AE /* DahonValuationViewController.m */; };
 		AE51871C187E40550055B9AE /* DiscountRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE51871B187E40550055B9AE /* DiscountRateViewController.m */; };
 		AE51871F187E40630055B9AE /* ChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE51871E187E40630055B9AE /* ChartViewController.m */; };
 		AE518725187E40E60055B9AE /* GuestCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518724187E40E60055B9AE /* GuestCommentViewController.m */; };
@@ -483,8 +483,6 @@
 		AE0D3D42187D414400E0E141 /* IndicatorSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorSearchView.m; sourceTree = "<group>"; };
 		AE0D3D4A187D45E400E0E141 /* AOTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOTag.h; sourceTree = "<group>"; };
 		AE0D3D4B187D45E400E0E141 /* AOTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOTag.m; sourceTree = "<group>"; };
-		AE0D3D4D187D460500E0E141 /* DrawChartTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawChartTool.h; sourceTree = "<group>"; };
-		AE0D3D4E187D460500E0E141 /* DrawChartTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawChartTool.m; sourceTree = "<group>"; };
 		AE0D3D51187D467300E0E141 /* NSDate+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+convenience.h"; sourceTree = "<group>"; };
 		AE0D3D52187D467300E0E141 /* NSDate+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+convenience.m"; sourceTree = "<group>"; };
 		AE0D3D53187D467300E0E141 /* NSMutableArray+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+convenience.h"; sourceTree = "<group>"; };
@@ -637,12 +635,14 @@
 		AE3E6316187F8B9F005A71AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AE3E6318187F9374005A71AD /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		AE3E6319187F9374005A71AD /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
+		AE49AB3D1880E3D600386C49 /* DahonValuationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DahonValuationViewController.h; sourceTree = "<group>"; };
+		AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DahonValuationViewController.m; sourceTree = "<group>"; };
+		AE49AB401880E41900386C49 /* DrawChartTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawChartTool.h; sourceTree = "<group>"; };
+		AE49AB411880E41900386C49 /* DrawChartTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawChartTool.m; sourceTree = "<group>"; };
 		AE518711187E40370055B9AE /* FinancalModelChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinancalModelChartViewController.h; sourceTree = "<group>"; };
 		AE518712187E40370055B9AE /* FinancalModelChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FinancalModelChartViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE518713187E40370055B9AE /* FinanceDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceDataViewController.h; sourceTree = "<group>"; };
 		AE518714187E40370055B9AE /* FinanceDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FinanceDataViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		AE518717187E40400055B9AE /* DahonValuationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DahonValuationViewController.h; sourceTree = "<group>"; };
-		AE518718187E40400055B9AE /* DahonValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DahonValuationViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE51871A187E40550055B9AE /* DiscountRateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscountRateViewController.h; sourceTree = "<group>"; };
 		AE51871B187E40550055B9AE /* DiscountRateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DiscountRateViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE51871D187E40630055B9AE /* ChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartViewController.h; sourceTree = "<group>"; };
@@ -974,8 +974,8 @@
 		AE018866187CFC3F004C6A5D /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				AE0D3D4D187D460500E0E141 /* DrawChartTool.h */,
-				AE0D3D4E187D460500E0E141 /* DrawChartTool.m */,
+				AE49AB401880E41900386C49 /* DrawChartTool.h */,
+				AE49AB411880E41900386C49 /* DrawChartTool.m */,
 				AE0D3CB9187D36B200E0E141 /* Utiles.h */,
 				AE0D3CBA187D36B200E0E141 /* Utiles.m */,
 				AE0D3CBB187D36B200E0E141 /* CommonlyMacros.h */,
@@ -1512,6 +1512,15 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		AE49AB3C1880E3D100386C49 /* DaHonVC */ = {
+			isa = PBXGroup;
+			children = (
+				AE49AB3D1880E3D600386C49 /* DahonValuationViewController.h */,
+				AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */,
+			);
+			path = DaHonVC;
+			sourceTree = "<group>";
+		};
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1532,21 +1541,12 @@
 		AE51870D187E34C00055B9AE /* MultipleChartVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE49AB3C1880E3D100386C49 /* DaHonVC */,
 				AE51873E187E41B30055B9AE /* ClassTable */,
-				AE51870E187E34C00055B9AE /* DaHonVC */,
 				AE51870F187E34C00055B9AE /* FinanceVC */,
 				AE518710187E34C00055B9AE /* ValueModelVC */,
 			);
 			path = MultipleChartVC;
-			sourceTree = "<group>";
-		};
-		AE51870E187E34C00055B9AE /* DaHonVC */ = {
-			isa = PBXGroup;
-			children = (
-				AE518717187E40400055B9AE /* DahonValuationViewController.h */,
-				AE518718187E40400055B9AE /* DahonValuationViewController.m */,
-			);
-			path = DaHonVC;
 			sourceTree = "<group>";
 		};
 		AE51870F187E34C00055B9AE /* FinanceVC */ = {
@@ -2347,6 +2347,7 @@
 				AE0D3D14187D407700E0E141 /* CalendarViewController.m in Sources */,
 				AE0D3D45187D414400E0E141 /* UniverseViewController.m in Sources */,
 				AE0D3CB6187D36A000E0E141 /* UITabBarController+Autorotate.m in Sources */,
+				AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */,
 				AE51872B187E40FB0055B9AE /* ModelViewController.m in Sources */,
 				AE0D3CE8187D3A9200E0E141 /* PrettyGridTableViewCell.m in Sources */,
 				AE0D3D44187D414400E0E141 /* StockContainerViewController.m in Sources */,
@@ -2372,6 +2373,7 @@
 				AE0D3CD1187D3A3800E0E141 /* MHTabBarController.m in Sources */,
 				AE518743187E41BD0055B9AE /* ModelClassViewController.m in Sources */,
 				AE518759187E42F10055B9AE /* CQMFloatingMaskControl.m in Sources */,
+				AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */,
 				AE06B8E8187EAB7900DA93E2 /* CounterViewController.m in Sources */,
 				AE0D3CB4187D36A000E0E141 /* NSDictionary+MutableDeepCopy.m in Sources */,
 				AE0D3CCB187D3A2900E0E141 /* MBProgressHUD.m in Sources */,
@@ -2398,10 +2400,8 @@
 				AE518756187E42F10055B9AE /* CQMFloatingContentOverlayView.m in Sources */,
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
 				AE0D3D83187D469800E0E141 /* ReportCell.m in Sources */,
-				AE0D3D4F187D460500E0E141 /* DrawChartTool.m in Sources */,
 				AE51873D187E412B0055B9AE /* UserCell+ConfigureForComment.m in Sources */,
 				AE0D3CC1187D36B200E0E141 /* EnumSummary.m in Sources */,
-				AE518719187E40400055B9AE /* DahonValuationViewController.m in Sources */,
 				AE0D3D5E187D467300E0E141 /* UIView+convenience.m in Sources */,
 				AE0D3D13187D407700E0E141 /* GooGuuContainerViewController.m in Sources */,
 				AE0D3D35187D413000E0E141 /* ArticleCommentViewController.m in Sources */,

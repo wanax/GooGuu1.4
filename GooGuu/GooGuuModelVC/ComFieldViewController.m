@@ -76,7 +76,7 @@
     
     ContainerViewController *content=[[ContainerViewController alloc] init];
     content.browseType=self.browseType;
-    content.view.frame=CGRectMake(0,64,FRAME_WIDTH,FRAME_HEIGHT);
+    content.view.frame=CGRectMake(0,44,FRAME_WIDTH,FRAME_HEIGHT);
     
     [self.view addSubview:content.view];
     [self addChildViewController:content];

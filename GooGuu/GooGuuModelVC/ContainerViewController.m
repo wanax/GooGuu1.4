@@ -19,28 +19,6 @@
 
 @implementation ContainerViewController
 
-@synthesize browseType;
-
-@synthesize viewController1;
-@synthesize viewController2;
-@synthesize viewController3;
-@synthesize viewController4;
-@synthesize tabBarController;
-
-
-
-- (void)dealloc
-{
-    [tabBarController release];tabBarController=nil;
-    [viewController1 release];viewController1=nil;
-    [viewController2 release];viewController2=nil;
-    [viewController3 release];viewController3=nil;
-    [viewController4 release];viewController4=nil;
-    
-    [super dealloc];
-}
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -54,28 +32,31 @@
 {
     [super viewDidLoad];
 
-	// Do any additional setup after loading the view.
-    viewController1 = [[IntroductionViewController alloc] init];
-    UINavigationController *introNav=[[UINavigationController alloc] initWithRootViewController:viewController1];
-    viewController2 = [[ModelViewController alloc] init];
-    viewController3 = [[AnalysisReportViewController alloc] init];
-    UINavigationController *analyNav=[[UINavigationController alloc] initWithRootViewController:viewController3];
-    viewController4 = [[GuestCommentViewController alloc] init];
+    IntroductionViewController *temp1 = [[[IntroductionViewController alloc] init] autorelease];
+    self.viewController1 = temp1;
+    UINavigationController *introNav=[[[UINavigationController alloc] initWithRootViewController:self.viewController1] autorelease];
+    ModelViewController *temp2 = [[[ModelViewController alloc] init] autorelease];
+    self.viewController2 = temp2;
+    AnalysisReportViewController *temp3 = [[[AnalysisReportViewController alloc] init] autorelease];
+    self.viewController3 = temp3;
+    GuestCommentViewController *temp4 = [[[GuestCommentViewController alloc] init] autorelease];
+    self.viewController4 = temp4;
     
-    viewController1.title=@"公司图解";
-    viewController2.title=@"估值模型";
-    viewController3.title=@"公司简报";
-    viewController4.title=@"用户评论";
-    viewController2.browseType=self.browseType;
+    self.viewController1.title=@"公司图解";
+    self.viewController2.title=@"估值模型";
+    self.viewController3.title=@"公司简报";
+    self.viewController4.title=@"用户评论";
+    self.viewController2.browseType=self.browseType;
     
-    NSArray *viewControllers = [NSArray arrayWithObjects:viewController2, introNav,viewController3,viewController4, nil];
-	tabBarController = [[MHTabBarController alloc] init];
+    NSArray *viewControllers = [NSArray arrayWithObjects:self.viewController2, introNav,self.viewController3,self.viewController4, nil];
+    MHTabBarController *tempMH = [[[MHTabBarController alloc] init] autorelease];
+	self.tabBarController = tempMH;
     
-	tabBarController.viewControllers = viewControllers;
+	self.tabBarController.viewControllers = viewControllers;
     
-    [self.view addSubview:tabBarController.view];
-    [self addChildViewController:tabBarController];
-    [analyNav release];
+    [self.view addSubview:self.tabBarController.view];
+    [self addChildViewController:self.tabBarController];
+
 }
 
 - (void)didReceiveMemoryWarning

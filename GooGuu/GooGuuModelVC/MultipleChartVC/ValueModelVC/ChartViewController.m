@@ -858,7 +858,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
             [yTmp addObject:obj[@"v"]];
         }
         
-        NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:DragabelModel screenWidth:205];
+        NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:DragabelModel screenHeight:205];
         XRANGEBEGIN=[xyDic[@"xBegin"] floatValue];
         XRANGELENGTH=[xyDic[@"xLength"] floatValue];
         XORTHOGONALCOORDINATE=[xyDic[@"xOrigin"] floatValue];

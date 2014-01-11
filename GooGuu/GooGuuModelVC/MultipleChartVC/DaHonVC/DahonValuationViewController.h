@@ -1,17 +1,18 @@
 //
 //  DahonValuationViewController.h
-//  估股
+//  MathMonsters
 //
-//  Created by Xcode on 13-8-8.
+//  Created by Xcode on 13-11-8.
 //  Copyright (c) 2013年 Xcode. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 #import <math.h>
 #import "CorePlot-CocoaTouch.h"
 #import "DrawChartTool.h"
 
-#define DrawXYAxisWithoutXAxisOrYAxis [DrawChartTool drawXYAxisIn:graph toPlot:plotSpace withXRANGEBEGIN:XRANGEBEGIN XRANGELENGTH:XRANGELENGTH YRANGEBEGIN:YRANGEBEGIN YRANGELENGTH:YRANGELENGTH XINTERVALLENGTH:XINTERVALLENGTH XORTHOGONALCOORDINATE:XORTHOGONALCOORDINATE XTICKSPERINTERVAL:XTICKSPERINTERVAL YINTERVALLENGTH:YINTERVALLENGTH YORTHOGONALCOORDINATE:YORTHOGONALCOORDINATE YTICKSPERINTERVAL:YTICKSPERINTERVAL to:self isY:NO isX:NO]
+#define DrawXYAxisWithoutXAxisOrYAxis [DrawChartTool drawXYAxisIn:self.graph toPlot:self.plotSpace withXRANGEBEGIN:XRANGEBEGIN XRANGELENGTH:XRANGELENGTH YRANGEBEGIN:YRANGEBEGIN YRANGELENGTH:YRANGELENGTH XINTERVALLENGTH:XINTERVALLENGTH XORTHOGONALCOORDINATE:XORTHOGONALCOORDINATE XTICKSPERINTERVAL:XTICKSPERINTERVAL YINTERVALLENGTH:YINTERVALLENGTH YORTHOGONALCOORDINATE:YORTHOGONALCOORDINATE YTICKSPERINTERVAL:YTICKSPERINTERVAL to:self isY:NO isX:NO type:DahonModel]
 
 @interface DahonValuationViewController : UIViewController<CPTScatterPlotDataSource,CPTScatterPlotDelegate,CPTAxisDelegate>{
     //x轴起点
@@ -33,33 +34,31 @@
     double YINTERVALLENGTH;
     double YORTHOGONALCOORDINATE;
     double YTICKSPERINTERVAL;
-    
-    
-    CPTXYGraph * graph ;
+
 }
 @property (nonatomic,retain) NSNumberFormatter * f;
 
+@property (nonatomic,retain) NSArray *defaultColors;
 @property (nonatomic,retain) id jsonData;
 @property (nonatomic,retain) id comInfo;
 @property (nonatomic,retain) NSArray *dateArr;
-@property (nonatomic,retain) id chartData;
-@property (nonatomic,retain) NSMutableDictionary *daHonIndexDateMap;
-@property (nonatomic,retain) NSDictionary *daHonDataDic;
-@property (nonatomic,retain) NSArray *daHonIndexSets;
-@property (nonatomic,retain) NSMutableDictionary *gooGuuIndexDateMap;
-@property (nonatomic,retain) NSDictionary *gooGuuDataDic;
-@property (nonatomic,retain) NSArray *gooGuuIndexSets;
+@property (nonatomic,retain) NSDictionary *dateIndexMap;
+@property (nonatomic,retain) id hisLineData;
+
+@property (nonatomic,retain) NSDictionary *dhDic;
+@property (nonatomic,retain) NSDictionary *dhCodePointsDic;
 
 @property (nonatomic,retain) UIButton *oneMonth;
 @property (nonatomic,retain) UIButton *threeMonth;
 @property (nonatomic,retain) UIButton *sixMonth;
 @property (nonatomic,retain) UIButton *oneYear;
+@property (nonatomic,retain) UIButton *backBt;
 @property (nonatomic,retain) UIButton *lastMarkBt;
 @property (nonatomic,retain) UILabel *titleLabel;
 
-@property (nonatomic,retain) CPTScatterPlot * daHonLinePlot;
-@property (nonatomic,retain) CPTScatterPlot * gooGuuLinePlot;
 @property (nonatomic,retain) CPTScatterPlot * historyLinePlot;
+@property (nonatomic,retain) NSArray *lines;
+@property (nonatomic,retain) NSArray *identifiers;
 
 //绘图view
 @property (nonatomic,retain) CPTXYGraph * graph ;
@@ -77,3 +76,4 @@
 
 
 @end
+

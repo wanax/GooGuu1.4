@@ -1,14 +1,17 @@
 //
 //  DahonValuationViewController.m
-//  估股
+//  MathMonsters
 //
-//  Created by Xcode on 13-8-8.
+//  Created by Xcode on 13-11-8.
 //  Copyright (c) 2013年 Xcode. All rights reserved.
 //
 
 #import "DahonValuationViewController.h"
 #import "DrawChartTool.h"
 #import "UIButton+BGColor.h"
+#import "RegexKitLite.h"
+
+#define HostViewHeight 270.0
 
 @interface DahonValuationViewController ()
 
@@ -16,72 +19,44 @@
 
 @implementation DahonValuationViewController
 
-@synthesize oneMonth;
-@synthesize threeMonth;
-@synthesize sixMonth;
-@synthesize oneYear;
-@synthesize lastMarkBt;
-@synthesize titleLabel;
+static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
 
-@synthesize daHonLinePlot;
-@synthesize gooGuuLinePlot;
-@synthesize historyLinePlot;
-
-@synthesize jsonData;
-@synthesize comInfo;
-@synthesize dateArr;
-@synthesize chartData;
-@synthesize daHonIndexDateMap;
-@synthesize daHonDataDic;
-@synthesize daHonIndexSets;
-@synthesize gooGuuIndexDateMap;
-@synthesize gooGuuDataDic;
-@synthesize gooGuuIndexSets;
-
-@synthesize graph;
-@synthesize hostView;
-@synthesize plotSpace;
-
-static NSString * DAHON_DATALINE_IDENTIFIER =@"dahon_dataline_identifier";
-static NSString * GOOGUU_DATALINE_IDENTIFIER =@"googuu_dataline_identifier";
-static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
-
-- (void)dealloc
-{
-    SAFE_RELEASE(titleLabel);
-    SAFE_RELEASE(lastMarkBt);
-    SAFE_RELEASE(comInfo);
-    SAFE_RELEASE(daHonIndexSets);
-    SAFE_RELEASE(daHonIndexDateMap);
-    SAFE_RELEASE(daHonDataDic);
-    SAFE_RELEASE(gooGuuIndexDateMap);
-    SAFE_RELEASE(gooGuuDataDic);
-    SAFE_RELEASE(gooGuuIndexSets);
-    SAFE_RELEASE(oneMonth);
-    SAFE_RELEASE(oneYear);
-    SAFE_RELEASE(threeMonth);
-    SAFE_RELEASE(sixMonth);
-    SAFE_RELEASE(historyLinePlot);
-    SAFE_RELEASE(daHonLinePlot);
-    SAFE_RELEASE(gooGuuLinePlot);
-    SAFE_RELEASE(dateArr);
-    SAFE_RELEASE(chartData);
-    SAFE_RELEASE(jsonData);
-    
-    SAFE_RELEASE(graph);
-    SAFE_RELEASE(hostView);
-    SAFE_RELEASE(plotSpace);
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        NSArray *temp=[NSArray arrayWithObjects:
+                       [Utiles cptcolorWithHexString:@"#ffa42f" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#42e069" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#3ec4df" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#ff1a49" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#5a86d5" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#9B59B6" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#bf8fec" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#0c3707" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#55460d" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#003300" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#a7d3ff" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#9f37d0" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#191970" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#cfff02" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#00ffd2" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#c9a0dc" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#6b4423" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#750082" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#340024" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#e87511" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#002649" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#73fb76" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#ffc0cb" andAlpha:0.8],
+                       [Utiles cptcolorWithHexString:@"#c9a8e0" andAlpha:0.8],
+                       nil];
+        self.defaultColors=temp;
     }
     return self;
 }
+
 
 -(void)viewDidAppear:(BOOL)animated{
     //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
@@ -93,73 +68,64 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    comInfo=delegate.comInfo;
-    [self initData];
-    [self initChart];
-    [MBProgressHUD showHUDAddedTo:self.hostView animated:YES];
-	[self.view setBackgroundColor:[Utiles colorWithHexString:@"#F6F1E6"]];
+	[self.view setBackgroundColor:[Utiles colorWithHexString:@"#F2EFE1"]];
     [self initDahonViewComponents];
+    [self initData];
+    
 }
 
 -(void)initDahonViewComponents{
-    //NSLog(@"%s",__FUNCTION__);
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
-    UIImageView *topBar=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]];
-    topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
-    
-    [self.view addSubview:topBar];
-    
     //title
-    titleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:6 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
-    [tool addButtonToView:self.view withTitle:@"返回" Tag:5 frame:CGRectMake(15,25,54,30) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
-    [tool addButtonToView:self.view withTitle:@"刷新" Tag:6 frame:CGRectMake(SCREEN_HEIGHT-64,25,54,30) andFun:@selector(reflash:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"reflashBt" highBackGroundImg:nil];
-    
-    int iOS7H0,iOS7H1;
-    iOS7H0=28;
-    iOS7H1=38;
+    self.titleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:6 frame:CGRectMake(10,5,450,30) fontSize:12.0 color:nil textColor:@"#63573d" location:NSTextAlignmentLeft];
     
     //提示信息
-    [tool addLabelToView:self.view withTitle:@"*点击图标查看大行估值" Tag:6 frame:CGRectMake(SCREEN_HEIGHT-145,SCREEN_WIDTH-iOS7H1,140,40) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
+    //[tool addLabelToView:self.view withTitle:@"*点击图标查看大行估值" Tag:6 frame:CGRectMake(450,5,80,30) fontSize:10.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
     
-    oneMonth=[tool addButtonToView:self.view withTitle:@"一个月" Tag:OneMonth frame:CGRectMake(SCREEN_HEIGHT-335,SCREEN_WIDTH-iOS7H0,40,22) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
-    [oneMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:10.0]];
-    threeMonth=[tool addButtonToView:self.view withTitle:@"三个月" Tag:ThreeMonth frame:CGRectMake(SCREEN_HEIGHT-285,SCREEN_WIDTH-iOS7H0,40,22) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
-    [threeMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:10.0]];
-    sixMonth=[tool addButtonToView:self.view withTitle:@"六个月" Tag:SixMonth frame:CGRectMake(SCREEN_HEIGHT-235,SCREEN_WIDTH-iOS7H0,40,22) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
-    [sixMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:10.0]];
-    oneYear=[tool addButtonToView:self.view withTitle:@"一年" Tag:OneYear frame:CGRectMake(SCREEN_HEIGHT-185,SCREEN_WIDTH-iOS7H0,40,22) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"monthChoosenBt" highBackGroundImg:nil];
-    [oneYear.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:10.0]];
-    lastMarkBt=oneYear;
-    [oneMonth setEnabled:NO];
-    [threeMonth setEnabled:NO];
-    [sixMonth setEnabled:NO];
-    [oneYear setEnabled:NO];
+    self.backBt=[tool addButtonToView:self.view withTitle:@"返回" Tag:OneMonth frame:CGRectMake(530,5,30,30) andFun:@selector(backToParent:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    [self.backBt.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
+    
+    self.oneMonth=[tool addButtonToView:self.view withTitle:@"一个月" Tag:OneMonth frame:CGRectMake(10,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    [self.oneMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
+    self.threeMonth=[tool addButtonToView:self.view withTitle:@"三个月" Tag:ThreeMonth frame:CGRectMake(60,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    [self.threeMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
+    self.sixMonth=[tool addButtonToView:self.view withTitle:@"六个月" Tag:SixMonth frame:CGRectMake(110,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    [self.sixMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
+    self.oneYear=[tool addButtonToView:self.view withTitle:@"一年" Tag:OneYear frame:CGRectMake(160,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"monthChoosenBt" highBackGroundImg:nil];
+    [self.oneYear.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
+    self.lastMarkBt=self.oneYear;
+    [self.oneMonth setEnabled:NO];
+    [self.threeMonth setEnabled:NO];
+    [self.sixMonth setEnabled:NO];
+    [self.oneYear setEnabled:NO];
     SAFE_RELEASE(tool);
-    SAFE_RELEASE(topBar);
+}
+
+-(void)backToParent:(UIButton *)bt {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)changeDateInter:(UIButton *)bt{
     bt.showsTouchWhenHighlighted=YES;
     int count=[self.dateArr count];
     if(bt.tag==OneMonth){
-        [self changeBtState:oneMonth];
+        [self changeBtState:self.oneMonth];
         XRANGEBEGIN=count-24;
         XRANGELENGTH=24;
         XINTERVALLENGTH=4.5;
     }else if(bt.tag==ThreeMonth){
-        [self changeBtState:threeMonth];
+        [self changeBtState:self.threeMonth];
         XRANGEBEGIN=count-60;
         XRANGELENGTH=59;
         XINTERVALLENGTH=10.7;
     }else if(bt.tag==SixMonth){
-        [self changeBtState:sixMonth];
+        [self changeBtState:self.sixMonth];
         XRANGEBEGIN=count-130;
         XRANGELENGTH=129;
         XINTERVALLENGTH=23;
     }else if(bt.tag==OneYear){
-        [self changeBtState:oneYear];
+        [self changeBtState:self.oneYear];
         XRANGEBEGIN=count-269;
         XRANGELENGTH=269;
         XINTERVALLENGTH=50;
@@ -168,8 +134,8 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 }
 
 -(void)changeBtState:(UIButton *)nowBt{
-    [lastMarkBt setBackgroundImage:nil forState:UIControlStateNormal];
-    [lastMarkBt.titleLabel setTextColor:[Utiles colorWithHexString:@"#e97a31"]];
+    [self.lastMarkBt setBackgroundImage:nil forState:UIControlStateNormal];
+    [self.lastMarkBt.titleLabel setTextColor:[Utiles colorWithHexString:@"#e97a31"]];
     [nowBt setBackgroundImage:[UIImage imageNamed:@"monthChoosenBt"] forState:UIControlStateNormal];
     [nowBt setTitleColor:[Utiles colorWithHexString:@"#FFFEFE"] forState:UIControlStateNormal];
     CATransition *transition=[CATransition animation];
@@ -180,36 +146,37 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
     [nowBt.layer addAnimation:transition forKey:@"animation"];
     transition.type=kCATransitionFade;
     transition.subtype=kCATransitionFromTop;
-    [lastMarkBt.layer addAnimation:transition forKey:@"animation"];
-    lastMarkBt=nowBt;
+    [self.lastMarkBt.layer addAnimation:transition forKey:@"animation"];
+    self.lastMarkBt=nowBt;
 }
 
 -(void)initChart{
-    //初始化图形视图
-    @try {
-        graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
-        //CPTTheme *theme=[CPTTheme themeNamed:kCPTPlainWhiteTheme];
-        //[graph applyTheme:theme];
-        graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
-        
-        hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(20,80,SCREEN_WIDTH-20,180) ];
-        [self.view addSubview:hostView];
-        [hostView setHostedGraph : graph ];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
     
-    graph . paddingLeft = 0.0f ;
-    graph . paddingRight = 0.0f ;
-    graph . paddingTop = 0 ;
-    graph . paddingBottom = 0 ;
+    CPTXYGraph *tg=[[[CPTXYGraph alloc] initWithFrame:CGRectZero] autorelease];
+    self.graph=tg;
+    CPTFill *tf=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#ffffff" andAlpha:0.9]];
+    self.graph.fill=tf;
+    
+    CPTGraphHostingView *tHostView=[[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(5,30,SCREEN_HEIGHT-10,HostViewHeight-15)] autorelease];
+    self.hostView=tHostView;
+    [self.view addSubview:self.hostView];
+    [self.hostView setHostedGraph : self.graph ];
+    self.graph . paddingLeft = 0.0f ;
+    self.graph . paddingRight = 0.0f ;
+    self.graph . paddingTop = 0 ;
+    self.graph . paddingBottom = 0 ;
+    
+    self.graph.plotAreaFrame.paddingTop    = 10.0;
+    self.graph.plotAreaFrame.paddingBottom = 20.0;
+    self.graph.plotAreaFrame.paddingLeft   = 30.0;
+    self.graph.plotAreaFrame.paddingRight  = 0.0;
+    self.graph.plotAreaFrame.masksToBorder = NO;
     
     //graph.title=@"大行估值";
-    [titleLabel setText:@"大行估值"];
+    [self.titleLabel setText:@"大行估值"];
     //绘制图形空间
-    plotSpace=(CPTXYPlotSpace *)graph.defaultPlotSpace;
-    plotSpace.allowsUserInteraction=YES;
+    self.plotSpace=(CPTXYPlotSpace *)self.graph.defaultPlotSpace;
+    self.plotSpace.allowsUserInteraction=YES;
     [self.hostView setAllowPinchScaling:YES];
     DrawXYAxisWithoutXAxisOrYAxis;
     [self addScatterChart];
@@ -218,144 +185,155 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 
 -(void)initData{
     
-    NSDictionary *params=@{@"stockcode": comInfo[@"stockcode"]};
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    self.comInfo = delegate.comInfo;
+    NSDictionary *params=@{@"stockcode": self.comInfo[@"stockcode"]};
     [Utiles getNetInfoWithPath:@"GetStockHistoryData" andParams:params besidesBlock:^(id resObj){
         NSNumberFormatter * formatter   = [[NSNumberFormatter alloc] init];
-        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
         [formatter setPositiveFormat:@"##.##"];
-        @try {
-            self.chartData=resObj[@"stockHistoryData"][@"data"];
-            id info=resObj[@"stockHistoryData"][@"info"];
-            
-            DrawChartTool *tool=[[DrawChartTool alloc] init];
-            tool.standIn=self;
-            //公司名称
-            [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",info[@"companyName"],info[@"stockCode"],info[@"marketName"]] Tag:6 frame:CGRectMake((SCREEN_HEIGHT-340)/2,20,340,40) fontSize:18.0 color:nil textColor:@"#F9F8F6" location:NSTextAlignmentCenter];
-            SAFE_RELEASE(tool);
-            
-            NSString *open=[formatter stringForObjectValue:info[@"open"]==nil?@"":info[@"open"]];
-            NSString *close=[formatter stringForObjectValue:info[@"close"]==nil?@"":info[@"close"]];
-            NSString *high=[formatter stringForObjectValue:info[@"high"]==nil?@"":info[@"high"]];
-            NSString *low=[formatter stringForObjectValue:info[@"low"]==nil?@"":info[@"low"]];
-            NSString *volume=[NSString stringWithFormat:@"%@",info[@"volume"]==nil?@"":info[@"volume"]];
-            NSString *indicator=[NSString stringWithFormat:@"昨开盘:%@ 昨收盘:%@ 最高价:%@ 最低价:%@ 成交量:%@",open,close,high,low,volume];
-            [titleLabel setText:indicator];
-            
-            self.dateArr=[Utiles sortDateArr:self.chartData];
-            self.daHonDataDic=resObj[@"dahonData"];
-            self.gooGuuDataDic=resObj[@"googuuData"];
-            
+        self.jsonData=resObj;
+        self.hisLineData=resObj[@"stockHistoryData"][@"data"];
+        id info=resObj[@"stockHistoryData"][@"info"];
+        
+        NSString *open=[formatter stringForObjectValue:info[@"open"]==nil?@"":info[@"open"]];
+        NSString *close=[formatter stringForObjectValue:info[@"close"]==nil?@"":info[@"close"]];
+        NSString *high=[formatter stringForObjectValue:info[@"high"]==nil?@"":info[@"high"]];
+        NSString *low=[formatter stringForObjectValue:info[@"low"]==nil?@"":info[@"low"]];
+        [formatter setPositiveFormat:@"#,###"];
+        NSString *volume=[formatter stringFromNumber:info[@"volume"]];
+        NSString *indicator=[NSString stringWithFormat:@"昨开盘:%@   昨收盘:%@   最高价:%@   最低价:%@   成交量:%@",open,close,high,low,volume];
+        SAFE_RELEASE(formatter);
+        
+        if ([resObj[@"stockHistoryData"][@"data"] count] > 0) {
+            self.dateArr=[Utiles sortDateArr:self.hisLineData];
             [self setDateMap];
-            
             int count=[self.dateArr count];
             XRANGEBEGIN=count-269;
             XRANGELENGTH=269;
             XINTERVALLENGTH=50;
-            [MBProgressHUD hideHUDForView:self.hostView animated:YES];
-            SAFE_RELEASE(formatter);
+            
+            [self initChart];
+            [self setXYAxis];
+            [self.titleLabel setText:indicator];
+            
+            [self.oneMonth setEnabled:YES];
+            [self.threeMonth setEnabled:YES];
+            [self.sixMonth setEnabled:YES];
+            [self.oneYear setEnabled:YES];
+        } else {
+            [Utiles showToastView:self.view withTitle:nil andContent:@"暂无数据" duration:1.0];
         }
-        @catch (NSException *exception) {
-            NSLog(@"%@",exception);
-        }
-        
-        
-        [self setXYAxis];
-        [oneMonth setEnabled:YES];
-        [threeMonth setEnabled:YES];
-        [sixMonth setEnabled:YES];
-        [oneYear setEnabled:YES];
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-        [oneMonth setEnabled:NO];
-        [threeMonth setEnabled:NO];
-        [sixMonth setEnabled:NO];
-        [oneYear setEnabled:NO];
+        [self.oneMonth setEnabled:NO];
+        [self.threeMonth setEnabled:NO];
+        [self.sixMonth setEnabled:NO];
+        [self.oneYear setEnabled:NO];
     }];
+}
+
+-(void)buildDhDic:(NSMutableDictionary *)tempDic source:(id)dataDic{
+    for (id key in dataDic) {
+        for (id obj in dataDic[key]) {
+            if (![[tempDic allKeys] containsObject:obj[@"dahonName"]]) {
+                NSMutableArray *arr=[NSMutableArray arrayWithObject:obj];
+                [tempDic setObject:arr forKey:obj[@"dahonName"]];
+            }else {
+                NSMutableArray *temps=tempDic[obj[@"dahonName"]];
+                [temps addObject:obj];
+            }
+        }
+    }
 }
 
 -(void)setDateMap{
     
+    //将大行估值与估股估值统一放入大行字典
+    NSMutableDictionary *tempDhDic=[[[NSMutableDictionary alloc] init] autorelease];
+    [self buildDhDic:tempDhDic source:self.jsonData[@"dahonData"]];
+    [self buildDhDic:tempDhDic source:self.jsonData[@"googuuData"]];
+    self.dhDic=tempDhDic;
+    
+    //设置横坐标与时间的对应关系
     NSMutableDictionary *tempDic=[[NSMutableDictionary alloc] init];
     for(int i=0;i<[self.dateArr count];i++){
         [tempDic setValue:@(i) forKey:(self.dateArr)[i]];
     }
+    self.dateIndexMap=tempDic;
     
-    self.daHonIndexDateMap=[self dateRestruct:tempDic keys:[Utiles sortDateArr:[self.daHonDataDic allKeys]]];
-    self.daHonIndexSets=[self.daHonIndexDateMap allKeys];
-    
-    self.gooGuuIndexDateMap=[self dateRestruct:tempDic keys:[Utiles sortDateArr:[self.gooGuuDataDic allKeys]]];
-    self.gooGuuIndexSets=[self.gooGuuIndexDateMap allKeys];
-    
-    SAFE_RELEASE(tempDic);
-    
-}
-
--(NSMutableDictionary *)dateRestruct:(NSMutableDictionary *)tempDic keys:(NSArray *)keys{
-    NSMutableDictionary *tempMap=[[NSMutableDictionary alloc] init];
-    NSMutableArray *scoreCounter=[[NSMutableArray alloc] init];
-    NSArray *dates=[Utiles sortDateArr:[tempDic allKeys]];
-    BOOL isAdd=NO;
-    for(id key in keys){
-        if([dates containsObject:key]){
-            [tempMap setValue:key forKey:[NSString stringWithFormat:@"%@",tempDic[key]]];
-            [scoreCounter addObject:tempDic[key]];
-        }else{
-            for(int n=[scoreCounter count]==0?0:[[scoreCounter lastObject] intValue];n<[dates count];n++){
-                if([Utiles isDate1:dates[n] beforeThanDate2:key]){
-                    continue;
-                }else{
-                    [tempMap setValue:key forKey:[NSString stringWithFormat:@"%d",n]];
-                    [scoreCounter addObject:@(n-1)];
-                    isAdd=YES;
-                    break;
-                }
-            }
-            if(!isAdd){
-                [tempMap setValue:key forKey:[NSString stringWithFormat:@"%d",[dates count]-1]];
+    //组建大行估值点坐标
+    NSMutableDictionary *tempDcCodePointsDic=[[[NSMutableDictionary alloc] init] autorelease];
+    NSString *regexString  = @"\\d+.\\d+|\\d+";
+    for (id key in self.dhDic) {
+        NSMutableArray *points=[[[NSMutableArray alloc] init] autorelease];
+        for (id obj in self.dhDic[key]) {
+            id x=[self dateToIndex:obj[@"date"]];
+            NSArray  *matchArray   = NULL;
+            matchArray = [obj[@"desc"] componentsMatchedByRegex:regexString];
+            if ([matchArray count]>0) {
+                id y=[matchArray lastObject];
+                NSDictionary *point=@{@"x":x,@"y":y};
+                [points addObject:point];
             }
         }
-        
+        if ([points count] >0) {
+            [tempDcCodePointsDic setObject:points forKey:key];
+        }
     }
-    SAFE_RELEASE(scoreCounter);
-    return [tempMap autorelease];
+    self.dhCodePointsDic=tempDcCodePointsDic;
+    SAFE_RELEASE(tempDic);
+}
+
+-(id)dateToIndex:(NSString *)date{
+    NSMutableArray *scoreCounter=[[[NSMutableArray alloc] init] autorelease];
+    if ([self.dateArr containsObject:date]) {
+        [scoreCounter addObject:self.dateIndexMap[date]];
+        return self.dateIndexMap[date];
+    }else {
+        for(int n=[scoreCounter count]==0?0:[[scoreCounter lastObject] intValue];n<[self.dateArr count];n++){
+            if([Utiles isDate1:self.dateArr[n] beforeThanDate2:date]){
+                continue;
+            }else{
+                [scoreCounter addObject:@(n-1)];
+                return [NSNumber numberWithInt:n];
+            }
+        }
+        return [NSNumber numberWithInt:[self.dateArr count]-1];
+    }
 }
 
 -(void)setXYAxis{
-    
+
     [self lineShowWithAnimation];
-    NSMutableArray *xTmp=[[NSMutableArray alloc] init];
-    NSMutableArray *yTmp=[[NSMutableArray alloc] init];
+    NSMutableArray *xTmp=[[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *yTmp=[[[NSMutableArray alloc] init] autorelease];
     int n=0;
     for(id obj in self.dateArr){
         [xTmp addObject:@(n++)];
     }
-    for(id obj in self.chartData){
-        [yTmp addObject:(self.chartData)[obj][@"close"]];
+    for(id obj in self.hisLineData){
+        [yTmp addObject:self.hisLineData[obj][@"close"]];
     }
-    @try {
-        NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:DahonModel screenWidth:195];
-        XORTHOGONALCOORDINATE=[xyDic[@"xOrigin"] doubleValue];
-        YRANGEBEGIN=[xyDic[@"yBegin"] doubleValue];
-        YRANGELENGTH=[xyDic[@"yLength"] doubleValue];
-        YORTHOGONALCOORDINATE=[xyDic[@"yOrigin"] doubleValue];
-        YINTERVALLENGTH=[xyDic[@"yInterval"] doubleValue];
-        plotSpace.globalYRange=[CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(YRANGEBEGIN) length:CPTDecimalFromDouble(YRANGELENGTH)];
-        plotSpace.globalXRange=[CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(-30) length:CPTDecimalFromDouble(320)];
-        DrawXYAxisWithoutXAxisOrYAxis;
-        [graph reloadData];
+    for (id key in self.dhCodePointsDic) {
+        for (id obj in self.dhCodePointsDic[key]) {
+            [yTmp addObject:obj[@"y"]];
+        }
     }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
-}
-
--(void)reflash:(UIButton *)bt{
-    [MBProgressHUD showHUDAddedTo:self.hostView animated:YES];
-    [self initData];
-    
+    NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:DahonModel screenHeight:HostViewHeight];
+    XORTHOGONALCOORDINATE=[xyDic[@"xOrigin"] doubleValue];
+    YRANGEBEGIN=[xyDic[@"yBegin"] doubleValue];
+    YRANGELENGTH=[xyDic[@"yLength"] doubleValue];
+    YORTHOGONALCOORDINATE=[xyDic[@"yOrigin"] doubleValue];
+    YINTERVALLENGTH=[xyDic[@"yInterval"] doubleValue];
+    self.plotSpace.globalYRange=[CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(YRANGEBEGIN) length:CPTDecimalFromDouble(YRANGELENGTH)];
+    self.plotSpace.globalXRange=[CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(-30) length:CPTDecimalFromDouble(320)];
+    DrawXYAxisWithoutXAxisOrYAxis;
+    [self.graph reloadData];
 }
 
 -(void)backTo:(UIButton *)bt{
@@ -368,23 +346,16 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot{
     int count=0;
     if([(NSString *)plot.identifier isEqualToString:HISTORY_DATALINE_IDENTIFIER]){
-        if(self.chartData){
-            count=[self.chartData count];
+        if(self.hisLineData){
+            count=[self.hisLineData count];
         }else{
             count=0;
         }
-        
-    }else if([(NSString *)plot.identifier isEqualToString:DAHON_DATALINE_IDENTIFIER]){
-        if(self.daHonIndexSets){
-            count=[self.daHonIndexSets count];
-        }else{
-            count=0;
-        }
-    }else if([(NSString *)plot.identifier isEqualToString:GOOGUU_DATALINE_IDENTIFIER]){
-        if(self.gooGuuIndexSets){
-            count=[self.gooGuuIndexSets count];
-        }else{
-            count=0;
+    }else {
+        for (id identifier in self.identifiers) {
+            if ([identifier isEqual:(NSString *)plot.identifier]) {
+                count=[self.dhCodePointsDic[identifier] count];
+            }
         }
     }
     return count;
@@ -401,7 +372,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
                 if([key isEqualToString:@"x"]){
                     num=[NSNumber numberWithInt:index] ;
                 }else if([key isEqualToString:@"y"]){
-                    num=[self.chartData valueForKey:(self.dateArr)[index]][@"close"];
+                    num=[self.hisLineData valueForKey:(self.dateArr)[index]][@"close"];
                 }
             }
             @catch (NSException *exception) {
@@ -409,76 +380,29 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
             }
         }
         
-    }else if([(NSString *)plot.identifier isEqualToString:DAHON_DATALINE_IDENTIFIER]){
-        if(index<[self.daHonIndexSets count]){
-            @try {
+    } else {
+        for (id identifier in self.identifiers) {
+            if ([identifier isEqual:(NSString *)plot.identifier]) {
                 NSString *key=(fieldEnum==CPTScatterPlotFieldX?@"x":@"y");
-                NSInteger trueIndex=[(self.daHonIndexSets)[index] intValue];
-                if([key isEqualToString:@"x"]){
-                    num=@(trueIndex);
-                }else if([key isEqualToString:@"y"]){
-                    num=[self.chartData valueForKey:(self.dateArr)[trueIndex]][@"close"];
-                }
-            }
-            @catch (NSException *exception) {
-                NSLog(@"%@",exception);
+                NSDictionary *point=self.dhCodePointsDic[identifier][index];
+                num = point[key];
             }
         }
-        
-    }else if([(NSString *)plot.identifier isEqualToString:GOOGUU_DATALINE_IDENTIFIER]){
-        if(index<[self.gooGuuIndexSets count]){
-            @try {
-                NSString *key=(fieldEnum==CPTScatterPlotFieldX?@"x":@"y");
-                NSInteger trueIndex=[(self.gooGuuIndexSets)[index] intValue];
-                if([key isEqualToString:@"x"]){
-                    num=@(trueIndex);
-                }else if([key isEqualToString:@"y"]){
-                    num=[self.chartData valueForKey:(self.dateArr)[trueIndex]][@"close"];
-                }
-            }
-            @catch (NSException *exception) {
-                NSLog(@"%@",exception);
-            }
-        }
-        
     }
     return  num;
 }
 
 #pragma mark -
 #pragma mark Scatter Plot Methods Delegate
--(NSDictionary *)getDataFromDic:(NSDictionary *)dic dateMap:(NSMutableDictionary *)map andArr:(NSArray *)sets byIndex:(NSUInteger)idx{
-    
-    NSString *msg=[[NSString alloc] init];
-    NSString *title=[[NSString alloc] init];
-    NSNumber *trueIndex=@([sets[idx] intValue]);
-    NSString *date=map[[NSString stringWithFormat:@"%@",trueIndex]];
-    id data=dic[date];
-    title=[NSString stringWithFormat:@"%@",date];
-    for(id obj in data){
-        msg=[msg stringByAppendingFormat:@"%@:%@\n",obj[@"dahonName"],obj[@"desc"]];
-    }
-    return @{@"msg": msg,@"title": title};
-}
 
 -(void)scatterPlot:(CPTScatterPlot *)plot plotSymbolWasSelectedAtRecordIndex:(NSUInteger)idx{
-    NSDictionary *info=nil;
-    NSDictionary *info2=nil;
-    if(plot.identifier==GOOGUU_DATALINE_IDENTIFIER){
-        info=[self getDataFromDic:self.gooGuuDataDic dateMap:self.gooGuuIndexDateMap andArr:self.gooGuuIndexSets byIndex:idx];
-        if([self.daHonIndexSets containsObject:(self.gooGuuIndexSets)[idx]]){
-            info2=[self getDataFromDic:self.daHonDataDic dateMap:self.daHonIndexDateMap andArr:self.daHonIndexSets byIndex:idx];
+    for (id identifier in self.identifiers) {
+        if ([identifier isEqual:(NSString *)plot.identifier]) {
+            NSString *title = [NSString stringWithFormat:@"%@(%@)",identifier,self.dhDic[identifier][idx][@"date"]];
+            [Utiles showToastView:self.view withTitle:title andContent:self.dhDic[identifier][idx][@"desc"] duration:3];
+            return;
         }
-    }else if(plot.identifier==DAHON_DATALINE_IDENTIFIER){
-        info=[self getDataFromDic:self.daHonDataDic dateMap:self.daHonIndexDateMap andArr:self.daHonIndexSets byIndex:idx];
     }
-    NSString *msg=nil;
-    if(info2){
-        msg=[NSString stringWithFormat:@"%@%@",info[@"msg"],info2[@"msg"]];
-    }else{
-        msg=[NSString stringWithFormat:@"%@",info[@"msg"]];
-    }
-    [Utiles showToastView:self.view withTitle:info[@"title"] andContent:msg duration:1.5];
 }
 
 #pragma mark -
@@ -487,149 +411,151 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 -(BOOL)axis:(CPTAxis *)axis shouldUpdateAxisLabelsAtLocations:(NSSet *)locations
 {
     if(axis.coordinate==CPTCoordinateX){
-        @try {
-            NSNumberFormatter * formatter   = (NSNumberFormatter *)axis.labelFormatter;
-            [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-            //[formatter setPositiveFormat:@"0.00%;0.00%;-0.00%"];
-            [formatter setPositiveFormat:@"##"];
-            //CGFloat labelOffset             = axis.labelOffset;
-            NSMutableSet * newLabels        = [NSMutableSet set];
-            static CPTTextStyle * positiveStyle = nil;
-            for (NSDecimalNumber * tickLocation in locations) {
-                CPTTextStyle *theLabelTextStyle;
-                
-                CPTMutableTextStyle * newStyle = [axis.labelTextStyle mutableCopy];
-                newStyle.fontSize=10.0;
-                newStyle.fontName=@"Heiti SC";
-                newStyle.color=[CPTColor colorWithComponentRed:153/255.0 green:129/255.0 blue:64/255.0 alpha:0.8];
-                positiveStyle  = newStyle;
-                
-                theLabelTextStyle = positiveStyle;
-                
-                NSString * labelString      = [formatter stringForObjectValue:tickLocation];
-                NSString *str=nil;
-                if([self.dateArr count]>10){
-                    @try {
-                        if([labelString intValue]<=[self.dateArr count]-1&&[labelString intValue]>=0){
-                            str=(self.dateArr)[[labelString intValue]];
-                        }else{
-                            str=@"";
-                        }
-                    }
-                    @catch (NSException *exception) {
-                        NSLog(@"%@",exception);
-                    }
-                }
-                CPTTextLayer * newLabelLayer= [[CPTTextLayer alloc] initWithText:str style:theLabelTextStyle];
-                [newLabelLayer sizeToFit];
-                CPTAxisLabel * newLabel     = [[CPTAxisLabel alloc] initWithContentLayer:newLabelLayer];
-                newLabel.tickLocation       = tickLocation.decimalValue;
-                newLabel.offset             =  0;
-                newLabel.rotation     = 0;
-                [newLabels addObject:newLabel];
-            }
+        NSNumberFormatter * formatter   = (NSNumberFormatter *)axis.labelFormatter;
+        [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        [formatter setPositiveFormat:@"##"];
+        NSMutableSet * newLabels        = [NSMutableSet set];
+        
+        for (NSDecimalNumber * tickLocation in locations) {
             
-            axis.axisLabels = newLabels;
-        }
-        @catch (NSException *exception) {
-            NSLog(@"%@",exception);
-        }
+            CPTMutableTextStyle * newStyle = [[axis.labelTextStyle mutableCopy] autorelease];
+            newStyle.fontSize=12.0;
+            newStyle.fontName=@"Heiti SC";
+            newStyle.color=[CPTColor blackColor];
+            
+            NSString * labelString      = [formatter stringForObjectValue:tickLocation];
+            NSString *str=nil;
+            if([self.dateArr count]>10){
+                if([labelString intValue]<=[self.dateArr count]-1&&[labelString intValue]>=0){
+                    str=(self.dateArr)[[labelString intValue]];
+                }else{
+                    str=@"";
+                }
+            }
+            CPTTextLayer * newLabelLayer= [[[CPTTextLayer alloc] initWithText:str style:newStyle] autorelease];
+            CPTAxisLabel * newLabel     = [[[CPTAxisLabel alloc] initWithContentLayer:newLabelLayer] autorelease];
+            newLabel.tickLocation       = tickLocation.decimalValue;
+            newLabel.offset = 5;
+            [newLabels addObject:newLabel];
+        }        
+        axis.axisLabels = newLabels;
         
     }else{
         NSNumberFormatter * formatter   = (NSNumberFormatter *)axis.labelFormatter;
         [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        //[formatter setPositiveFormat:@"0.00%;0.00%;-0.00%"];
-        [formatter setPositiveFormat:@"##.##"];
         NSMutableSet * newLabels        = [NSMutableSet set];
-        static CPTTextStyle * positiveStyle = nil;
+
         for (NSDecimalNumber * tickLocation in locations) {
-            CPTTextStyle *theLabelTextStyle;
+
+            if ([tickLocation integerValue] > 10) {
+                [formatter setPositiveFormat:@"##"];
+            } else {
+                [formatter setPositiveFormat:@"##.#"];
+            }
             
-            CPTMutableTextStyle * newStyle = [axis.labelTextStyle mutableCopy];
-            newStyle.fontSize=11.0;
+            CPTMutableTextStyle * newStyle = [[axis.labelTextStyle mutableCopy] autorelease];
+            newStyle.fontSize=12.0;
             newStyle.fontName=@"Heiti SC";
-            newStyle.color=[CPTColor colorWithComponentRed:153/255.0 green:129/255.0 blue:64/255.0 alpha:0.8];
-            positiveStyle  = newStyle;
-            
-            theLabelTextStyle = positiveStyle;
-            
+            newStyle.color=[CPTColor blackColor];
+
             NSString * labelString      = [formatter stringForObjectValue:tickLocation];
-            CPTTextLayer * newLabelLayer= [[CPTTextLayer alloc] initWithText:labelString style:theLabelTextStyle];
-            [newLabelLayer sizeToFit];
-            CPTAxisLabel * newLabel     = [[CPTAxisLabel alloc] initWithContentLayer:newLabelLayer];
+            CPTTextLayer * newLabelLayer= [[[CPTTextLayer alloc] initWithText:labelString style:newStyle] autorelease];
+            CPTAxisLabel * newLabel     = [[[CPTAxisLabel alloc] initWithContentLayer:newLabelLayer] autorelease];
             newLabel.tickLocation       = tickLocation.decimalValue;
-            newLabel.offset             = 0;
+            newLabel.offset             = 7;
             [newLabels addObject:newLabel];
         }
-        
         axis.axisLabels = newLabels;
-        
     }
-    
-    
     return NO;
 }
 
 -(void)addScatterChart{
     
     CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-    //修改折线图线段样式,创建可调整数据线段
-    historyLinePlot=[[CPTScatterPlot alloc] init];
+
+    CPTScatterPlot *c1=[[[CPTScatterPlot alloc] init] autorelease];
+    self.historyLinePlot=c1;
     lineStyle.miterLimit=2.0f;
     lineStyle.lineWidth=2.0f;
-    lineStyle.lineColor=[CPTColor colorWithComponentRed:255/255.0 green:114/255.0 blue:0/255.0 alpha:0.8];
-    historyLinePlot.dataLineStyle=lineStyle;
-    historyLinePlot.identifier=HISTORY_DATALINE_IDENTIFIER;
-    historyLinePlot.labelOffset=5;
-    historyLinePlot.dataSource=self;
-    historyLinePlot.delegate=self;
+    //[UIColor peterRiverColor]
+    lineStyle.lineColor=[Utiles cptcolorWithHexString:@"#2980B9" andAlpha:1.0];
+    self.historyLinePlot.dataLineStyle=lineStyle;
+    self.historyLinePlot.identifier=HISTORY_DATALINE_IDENTIFIER;
+    self.historyLinePlot.labelOffset=2;
+    self.historyLinePlot.dataSource=self;
+    self.historyLinePlot.delegate=self;
     
-    daHonLinePlot=[[CPTScatterPlot alloc] init];
-    lineStyle.miterLimit=0.0f;
-    lineStyle.lineWidth=0.0f;
-    lineStyle.lineColor=[CPTColor clearColor];
-    daHonLinePlot.dataLineStyle=lineStyle;
-    daHonLinePlot.identifier=DAHON_DATALINE_IDENTIFIER;
-    daHonLinePlot.labelOffset=5;
-    daHonLinePlot.dataSource=self;
-    daHonLinePlot.delegate=self;
-    
-    gooGuuLinePlot=[[CPTScatterPlot alloc] init];
-    lineStyle.miterLimit=0.0f;
-    lineStyle.lineWidth=0.0f;
-    lineStyle.lineColor=[CPTColor clearColor];
-    gooGuuLinePlot.dataLineStyle=lineStyle;
-    gooGuuLinePlot.identifier=GOOGUU_DATALINE_IDENTIFIER;
-    gooGuuLinePlot.labelOffset=5;
-    gooGuuLinePlot.dataSource=self;
-    gooGuuLinePlot.delegate=self;
     
     CPTMutableLineStyle * symbolLineStyle = [CPTMutableLineStyle lineStyle];
-    symbolLineStyle.lineColor = [CPTColor colorWithComponentRed:102/255.0 green:204/255.0 blue:255/255.0 alpha:0.5];
-    symbolLineStyle.lineWidth = 2.0;
+    symbolLineStyle.lineWidth = 0.0;
     
     CPTPlotSymbol * plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-    plotSymbol.fill          = [CPTFill fillWithColor: [CPTColor colorWithComponentRed:226/255.0 green:93/255.0 blue:31/255.0 alpha:0.7]];
     plotSymbol.lineStyle     = symbolLineStyle;
-    plotSymbol.size          = CGSizeMake(20, 20);
-    
-    daHonLinePlot.plotSymbol = plotSymbol;
-    
-    plotSymbol = [CPTPlotSymbol trianglePlotSymbol];
-    plotSymbol.lineStyle     = symbolLineStyle;
-    symbolLineStyle.lineWidth = 0.0;
-    plotSymbol.fill          = [CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#498641" andAlpha:1.0]];
-    plotSymbol.size          = CGSizeMake(17, 17);
-    gooGuuLinePlot.plotSymbol=plotSymbol;
-    
-    historyLinePlot.opacity = 0.0f;
-    daHonLinePlot.opacity = 0.0f;
-    gooGuuLinePlot.opacity=0.0f;
+    plotSymbol.size          = CGSizeMake(10, 10);
+    NSMutableArray *tempLines=[[[NSMutableArray alloc] init] autorelease];
+    NSMutableArray *tempIdentifiers=[[[NSMutableArray alloc] init] autorelease];
+    int n=0;
+    for (id key in self.dhDic) {
+        //只显示具有估价的大行数据点
+        if ([[self.dhCodePointsDic allKeys] containsObject:key]) {
+            CPTScatterPlot *line=[[[CPTScatterPlot alloc] init] autorelease];
+            lineStyle.miterLimit=0.0f;
+            lineStyle.lineWidth=0.0f;
+            lineStyle.lineColor=[CPTColor clearColor];
+            line.dataLineStyle=lineStyle;
+            line.identifier=key;
+            line.labelOffset=2;
+            line.dataSource=self;
+            line.delegate=self;
+            
+            if ([key isEqualToString:@"估股网"]) {
+                plotSymbol = [CPTPlotSymbol trianglePlotSymbol];
+                symbolLineStyle.lineWidth = 0.0;
+                plotSymbol.fill          = [CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#498641" andAlpha:1.0]];
+                plotSymbol.size          = CGSizeMake(15, 15);
+            }else {
+                plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+                symbolLineStyle.lineWidth = 0.0;
+                plotSymbol.fill  = [CPTFill fillWithColor:self.defaultColors[n++]];
+                plotSymbol.size          = CGSizeMake(10,10);
+            }
+            plotSymbol.lineStyle     = symbolLineStyle;
+            line.plotSymbol = plotSymbol;
+            [tempIdentifiers addObject:key];
+            [tempLines addObject:line];
+            [self.graph addPlot:line];
+        }
+    }
+    self.lines=tempLines;
+    self.identifiers=tempIdentifiers;
+
+    self.historyLinePlot.opacity = 0.0f;
     [self lineShowWithAnimation];
     
-    [graph addPlot:historyLinePlot];
-    [graph addPlot:daHonLinePlot];
-    [graph addPlot:gooGuuLinePlot];
+    CPTColor *areaColor       = [CPTColor purpleColor];
+    CPTGradient *areaGradient = [CPTGradient gradientWithBeginningColor:areaColor endingColor:[CPTColor blackColor]];
+    areaGradient.angle = 0.0f;
+    self.historyLinePlot.areaFill      = [CPTFill fillWithGradient:areaGradient];
+    
+    [self.graph addPlot:self.historyLinePlot];
+    
+    // Add legend
+    self.graph.legend                    = [CPTLegend legendWithGraph:self.graph];
+    //self.graph.legend.textStyle          = lineStyle;
+    self.graph.legend.fill               = self.graph.plotAreaFrame.fill;
+    self.graph.legend.borderLineStyle    = self.graph.plotAreaFrame.borderLineStyle;
+    self.graph.legend.cornerRadius       = 5.0;
+    self.graph.legend.swatchSize         = CGSizeMake(15.0, 15.0);
+    self.graph.legend.swatchCornerRadius = 3.0;
+    if ([self.lines count] > 15) {
+        self.graph.legend.numberOfRows       = 2;
+    } else {
+        self.graph.legend.numberOfRows       = 1;
+    }
+    
+    self.graph.legendAnchor              = CPTRectAnchorTopLeft;
+    self.graph.legendDisplacement        = CGPointMake(40.0, 0.0);
     
 }
 -(void)lineShowWithAnimation{
@@ -638,9 +564,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
     fadeInAnimation.removedOnCompletion = NO;
     fadeInAnimation.fillMode            = kCAFillModeBoth;
     fadeInAnimation.toValue             = @1.0f;
-    [daHonLinePlot addAnimation:fadeInAnimation forKey:@"animateOpacity"];
-    [historyLinePlot addAnimation:fadeInAnimation forKey:@"animateOpacity"];
-    [gooGuuLinePlot addAnimation:fadeInAnimation forKey:@"animateOpacity"];
+    [self.historyLinePlot addAnimation:fadeInAnimation forKey:@"animateOpacity"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -648,22 +572,21 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
     [super didReceiveMemoryWarning];
     
 }
+
+
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        self.hostView.frame=CGRectMake(10,90,SCREEN_HEIGHT-20,195);
+        self.hostView.frame=CGRectMake(10,60,SCREEN_HEIGHT-20,195);
     }
 }
 -(NSUInteger)supportedInterfaceOrientations{
-    //NSLog(@"%s",__FUNCTION__);
     return UIInterfaceOrientationMaskLandscapeRight;
 }
 
 - (BOOL)shouldAutorotate
 {
-    //NSLog(@"%s",__FUNCTION__);
     return YES;
 }
-
 
 
 

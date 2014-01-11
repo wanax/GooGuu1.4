@@ -40,7 +40,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.photoDataSource = [[NSMutableArray alloc] init];
+        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+        self.photoDataSource = temp;
     }
     return self;
 }
@@ -65,7 +66,6 @@
         [[SDImageCache sharedImageCache] clearDisk];
         [[SDImageCache sharedImageCache] clearMemory];
         self.browser = [[CXPhotoBrowser alloc] initWithDataSource:self delegate:self];
-        self.browser.wantsFullScreenLayout = YES;
         
         DemoPhoto *photo = nil;
         if([Utiles isBlankString:comPicUrl]){
@@ -75,6 +75,7 @@
         }
         [self.photoDataSource addObject:photo];
         [self.navigationController pushViewController:self.browser animated:YES];
+        SAFE_RELEASE(photo);
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }

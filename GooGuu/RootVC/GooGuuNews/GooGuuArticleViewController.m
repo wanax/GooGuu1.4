@@ -63,7 +63,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.photoDataSource = [[NSMutableArray alloc] init];
+        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+        self.photoDataSource = temp;
     }
     return self;
 }
@@ -95,7 +96,6 @@
     if (self.sourceType!=GooGuuView) {
         [self addButtons:@"进入公司" fun:@selector(comeIntoComBtClicked:) frame:CGRectMake(0,SCREEN_HEIGHT-123, 106, 30)];
         [self addButtons:@"添加评论" fun:@selector(addCommentBtClicked) frame:CGRectMake(106,SCREEN_HEIGHT-123, 106, 30)];
-        [self addButtons:@"分享" fun:@selector(addShare:) frame:CGRectMake(212,SCREEN_HEIGHT-123, 108, 30)];
     }
     
 }
@@ -119,7 +119,7 @@
 #pragma mark Buttons Clicks
 -(void)addCommentBtClicked{
     if ([Utiles isLogin]) {
-        AddCommentViewController *addCommentViewController=[[AddCommentViewController alloc] init];
+        AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] init] autorelease];
         addCommentViewController.type=ArticleType;
         addCommentViewController.articleId=articleId;
         [self presentViewController:addCommentViewController animated:YES completion:nil];
@@ -129,7 +129,7 @@
 }
 
 -(void)comeIntoComBtClicked:(UIButton *)sender{
-    ComFieldViewController *com=[[ComFieldViewController alloc] init];
+    ComFieldViewController *com=[[[ComFieldViewController alloc] init] autorelease];
     com.browseType=SearchStockList;
     com.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
     [self presentViewController:com animated:YES completion:nil];
@@ -142,9 +142,9 @@
         
         self.artcleData=article;
         if (self.sourceType==GooGuuView) {
-            articleWeb=[[UIWebView alloc] initWithFrame:CGRectMake(0,40,self.view.bounds.size.width, self.view.bounds.size.height-38)];
+            articleWeb=[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-30)];
         } else {
-            articleWeb=[[UIWebView alloc] initWithFrame:CGRectMake(0,40,self.view.bounds.size.width, self.view.bounds.size.height-68)];
+            articleWeb=[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-60)];
         }
         articleWeb.delegate=self;
         [articleWeb loadHTMLString:[article objectForKey:@"content"] baseURL:nil];
@@ -208,7 +208,7 @@
     self.imageUrlList=tempArr;
     for (id obj in self.imageUrlList) {
         DemoPhoto *photo = nil;        
-        photo = [[DemoPhoto alloc] initWithURL:[NSURL URLWithString:obj]];
+        photo = [[[DemoPhoto alloc] initWithURL:[NSURL URLWithString:obj]] autorelease];
         [self.photoDataSource addObject:photo];
     }
     [articleWeb stringByEvaluatingJavaScriptFromString:botySise];
@@ -277,7 +277,7 @@
         
         [navBarView setBackgroundColor:[UIColor clearColor]];
         
-        UIView *bkgView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, size.width, size.height)];
+        UIView *bkgView = [[[UIView alloc] initWithFrame:CGRectMake( 0, 0, size.width, size.height)] autorelease];
         [bkgView setBackgroundColor:[UIColor blackColor]];
         bkgView.alpha = 0.2;
         bkgView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

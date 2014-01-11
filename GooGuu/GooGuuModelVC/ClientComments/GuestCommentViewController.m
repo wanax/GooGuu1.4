@@ -130,7 +130,7 @@ static NSString * const UserCellIdentifier = @"UserCellIdentifier";
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor redColor]];
     [self getComments];
-    self.table=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-92)];
+    self.table=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-70)];
     [self.table setBackgroundColor:[Utiles colorWithHexString:@"#EFEBD9"]];
     self.table.delegate=self;
     [self.view addSubview:self.table];
