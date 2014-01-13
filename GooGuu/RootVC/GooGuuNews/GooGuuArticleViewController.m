@@ -75,13 +75,7 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-    CATransition *transition=[CATransition animation];
-    transition.duration=0.4f;
-    transition.fillMode=kCAFillModeRemoved;
-    transition.type=kCATruncationMiddle;
-    transition.subtype=kCATransitionFromRight;
-    [self.parentViewController.navigationController.navigationBar.layer addAnimation:transition forKey:@"animation"];
-    self.parentViewController.navigationItem.rightBarButtonItem=nil;
+    self.parentViewController.parentViewController.parentViewController.navigationItem.rightBarButtonItem=nil;
 }
 -(void)addComponents{
     

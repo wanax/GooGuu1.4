@@ -171,6 +171,9 @@
 		AE518759187E42F10055B9AE /* CQMFloatingMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518750187E42F10055B9AE /* CQMFloatingMaskControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518753187E42F10055B9AE /* CQMFloatingNavigationBar.m */; };
 		AE51875B187E42F10055B9AE /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518755187E42F10055B9AE /* CQMPathUtilities.m */; };
+		AE58A7261883899600E044BD /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = AE58A7251883899600E044BD /* XYPieChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		AE58A72E18838A3200E044BD /* WishesPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE58A72D18838A3200E044BD /* WishesPieViewController.m */; };
+		AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5EBBC11883C3940019B48F /* WishesComListViewController.m */; };
 		AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */; };
 		AE74DF8E187E44DE002AE169 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8B187E44DE002AE169 /* LoginView.m */; };
 		AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */; };
@@ -684,6 +687,12 @@
 		AE518753187E42F10055B9AE /* CQMFloatingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingNavigationBar.m; sourceTree = "<group>"; };
 		AE518754187E42F10055B9AE /* CQMPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMPathUtilities.h; sourceTree = "<group>"; };
 		AE518755187E42F10055B9AE /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
+		AE58A7241883899600E044BD /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
+		AE58A7251883899600E044BD /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
+		AE58A72C18838A3200E044BD /* WishesPieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WishesPieViewController.h; sourceTree = "<group>"; };
+		AE58A72D18838A3200E044BD /* WishesPieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishesPieViewController.m; sourceTree = "<group>"; };
+		AE5EBBC01883C3940019B48F /* WishesComListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WishesComListViewController.h; sourceTree = "<group>"; };
+		AE5EBBC11883C3940019B48F /* WishesComListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishesComListViewController.m; sourceTree = "<group>"; };
 		AE74DF87187E44D3002AE169 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
 		AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterViewController.m; sourceTree = "<group>"; };
 		AE74DF8A187E44DE002AE169 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -1030,6 +1039,7 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				AE58A7211883898B00E044BD /* XYPieChart */,
 				AE74DFA9187E458E002AE169 /* IQKeyBoardManager */,
 				AE518748187E42E30055B9AE /* CQMFloating */,
 				AE16E97F187D5714003588FA /* Release-iphonesimulator */,
@@ -1247,6 +1257,7 @@
 		AE0D3CFF187D405B00E0E141 /* GooGuuIndex */ = {
 			isa = PBXGroup;
 			children = (
+				AE58A72B18838A2200E044BD /* ClientWishes */,
 			);
 			path = GooGuuIndex;
 			sourceTree = "<group>";
@@ -1631,6 +1642,26 @@
 				AE518755187E42F10055B9AE /* CQMPathUtilities.m */,
 			);
 			path = CQMFloating;
+			sourceTree = "<group>";
+		};
+		AE58A7211883898B00E044BD /* XYPieChart */ = {
+			isa = PBXGroup;
+			children = (
+				AE58A7241883899600E044BD /* XYPieChart.h */,
+				AE58A7251883899600E044BD /* XYPieChart.m */,
+			);
+			path = XYPieChart;
+			sourceTree = "<group>";
+		};
+		AE58A72B18838A2200E044BD /* ClientWishes */ = {
+			isa = PBXGroup;
+			children = (
+				AE58A72C18838A3200E044BD /* WishesPieViewController.h */,
+				AE58A72D18838A3200E044BD /* WishesPieViewController.m */,
+				AE5EBBC01883C3940019B48F /* WishesComListViewController.h */,
+				AE5EBBC11883C3940019B48F /* WishesComListViewController.m */,
+			);
+			path = ClientWishes;
 			sourceTree = "<group>";
 		};
 		AE74DF83187E4480002AE169 /* ClientCenter */ = {
@@ -2338,6 +2369,7 @@
 				AE518758187E42F10055B9AE /* CQMFloatingFrameView.m in Sources */,
 				AE74DFAE187E4595002AE169 /* IQKeyBoardManager.m in Sources */,
 				AE0D3D5B187D467300E0E141 /* NSDate+convenience.m in Sources */,
+				AE58A72E18838A3200E044BD /* WishesPieViewController.m in Sources */,
 				AE74DFA2187E4509002AE169 /* AgreementViewController.m in Sources */,
 				AE0D3D23187D410800E0E141 /* FinanPicCollectCell.m in Sources */,
 				AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */,
@@ -2398,6 +2430,7 @@
 				AE0D3D5D187D467300E0E141 /* UIColor+expanded.m in Sources */,
 				AE0D3D79187D469800E0E141 /* UserCell.m in Sources */,
 				AE518756187E42F10055B9AE /* CQMFloatingContentOverlayView.m in Sources */,
+				AE58A7261883899600E044BD /* XYPieChart.m in Sources */,
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
 				AE0D3D83187D469800E0E141 /* ReportCell.m in Sources */,
 				AE51873D187E412B0055B9AE /* UserCell+ConfigureForComment.m in Sources */,
@@ -2415,6 +2448,7 @@
 				AE0D3D33187D413000E0E141 /* GooNewsViewController.m in Sources */,
 				AE0D3D11187D407700E0E141 /* ConcernedViewController.m in Sources */,
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
+				AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */,
 				AE0D3CF5187D3A9B00E0E141 /* PrettyTabBarViewController.m in Sources */,
 				AE74DFA1187E4509002AE169 /* DisclaimersViewController.m in Sources */,
 				AE0D3CCE187D3A2E00E0E141 /* EGORefreshTableHeaderView.m in Sources */,

@@ -79,10 +79,14 @@
     
 }
 
-/*-(CGSize)getLabelSizeFromString:(NSString *)str font:(NSString *)font fontSize:(float)fontSize{
-    //CGSize size = CGSizeMake(320,2000);
-    //return [str sizeWithFont:[UIFont fontWithName:font size:fontSize] constrainedToSize:size lineBreakMode:NSLineBreakByCharWrapping];
-}*/
+-(CGSize)getLabelSizeFromString:(NSString *)str font:(NSString *)font fontSize:(float)fontSize{
+    
+    CGSize size = CGSizeMake(SCREEN_WIDTH,MAXFLOAT);
+    NSDictionary * tdic = @{NSFontAttributeName:[UIFont fontWithName:font size:fontSize], NSForegroundColorAttributeName:[UIColor blackColor]};
+    CGSize  actualsize =[str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin  attributes:tdic context:nil].size;
+    
+    return actualsize;
+}
 
 -(UIButton *)addButtonToView:(UIView *)view withTitle:(NSString *)title Tag:(NSInteger)tag frame:(CGRect)rect andFun:(SEL)fun withType:(UIButtonType)buttonType andColor:(NSString *)color textColor:(NSString *)txtColor normalBackGroundImg:(NSString *)bUrl highBackGroundImg:(NSString *)hUrl{
     
@@ -225,7 +229,7 @@ NSComparator cmptr = ^(id obj1, id obj2){
     
     CPTMutableTextStyle *textStyle = [CPTTextStyle textStyle];
     textStyle.color                   = [CPTColor grayColor];
-    textStyle.fontSize                = 18.0f;
+    textStyle.fontSize                = 12.0f;
     textStyle.textAlignment           = CPTTextAlignmentCenter;
     graph.titleTextStyle           = textStyle;
     graph.titleDisplacement        = CGPointMake(0.0f, -5.0f);

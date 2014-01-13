@@ -25,47 +25,13 @@
 
 static NSString * BAR_IDENTIFIER =@"bar_identifier";
 
-@synthesize comInfo;
-@synthesize colorArr;
-@synthesize points;
-@synthesize jsonForChart;
-@synthesize barPlot;
-@synthesize yAxisUnit;
-@synthesize trueUnit;
-@synthesize webView;
-@synthesize graph;
-@synthesize hostView;
-@synthesize plotSpace;
-@synthesize modelRatioViewController;
-@synthesize modelChartViewController;
-@synthesize modelOtherViewController;
-@synthesize financalTitleLabel;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(trueUnit);
-    SAFE_RELEASE(colorArr);
-    SAFE_RELEASE(financalTitleLabel);
-    SAFE_RELEASE(comInfo);
-    [yAxisUnit release];yAxisUnit=nil;
-    [modelRatioViewController release];modelRatioViewController=nil;
-    [modelChartViewController release];modelChartViewController=nil;
-    [modelOtherViewController release];modelOtherViewController=nil;
-    [hostView release];hostView=nil;
-    [points release];points=nil;
-    [jsonForChart release];jsonForChart=nil;
-    [barPlot release];barPlot=nil;
-    [webView release];webView=nil;
-    [graph release];graph=nil;
-    [plotSpace release];plotSpace=nil;
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.grade2BtList=[[NSMutableArray alloc] init];
+        NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
+        self.grade2BtList = temps;
     }
     return self;
 }
@@ -80,26 +46,32 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[Utiles colorWithHexString:@"#F2EFE1"]];
-    
-    colorArr=[NSArray arrayWithObjects:@"e92058",@"b700b7",@"216dcb",@"13bbca",@"65d223",@"f09c32",@"f15a38",nil];
+    NSLog(@"2");
+    self.colorArr=[NSArray arrayWithObjects:@"e92058",@"b700b7",@"216dcb",@"13bbca",@"65d223",@"f09c32",@"f15a38",nil];
     
     AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    comInfo=delegate.comInfo;
-    self.modelRatioViewController=[[ModelClassGrade2ViewController alloc] init];
+    self.comInfo=delegate.comInfo;
+    
+    ModelClassGrade2ViewController *temp1 = [[[ModelClassGrade2ViewController alloc] init] autorelease];
+    self.modelRatioViewController = temp1;
     self.modelRatioViewController.delegate=self;
-    self.modelChartViewController=[[ModelClassGrade2ViewController alloc] init];
+    ModelClassGrade2ViewController *temp2 = [[[ModelClassGrade2ViewController alloc] init] autorelease];
+    self.modelChartViewController = temp2;
     self.modelChartViewController.delegate=self;
-    self.modelOtherViewController=[[ModelClassGrade2ViewController alloc] init];
+    ModelClassGrade2ViewController *temp3 = [[[ModelClassGrade2ViewController alloc] init] autorelease];
+    self.modelOtherViewController = temp3;
     self.modelOtherViewController.delegate=self;
     self.modelRatioViewController.classTitle=@"财务比例";
     self.modelChartViewController.classTitle=@"财务图表";
     self.modelOtherViewController.classTitle=@"其它指标";
     
-    webView=[[UIWebView alloc] init];
-    webView.delegate=self;
+    UIWebView *tempWeb = [[[UIWebView alloc] init] autorelease];
+    self.webView = tempWeb;
+    self.webView.delegate=self;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"cnew" ofType:@"html"];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
-    self.points=[[NSMutableArray alloc] init];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
+    NSMutableArray *tempPoints = [[[NSMutableArray alloc] init] autorelease];
+    self.points = tempPoints;
     
     [self initFinancalModelViewComponents];
     [self initBarChart];
@@ -107,48 +79,46 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 }
 
 -(void)initFinancalModelViewComponents{
-    UIImageView *topBar=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]];
+    UIImageView *topBar=[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]] autorelease];
     
     [self.view addSubview:topBar];
-    DrawChartTool *tool=[[DrawChartTool alloc] init];
+    DrawChartTool *tool=[[[DrawChartTool alloc] init] autorelease];
     tool.standIn=self;
     int iOS7Height;
     iOS7Height=25;
     topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
-    financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:11 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:12.0 color:nil textColor:@"#63573d" location:NSTextAlignmentLeft];
+    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:11 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:12.0 color:nil textColor:@"#63573d" location:NSTextAlignmentLeft];
     
     
     [tool addButtonToView:self.view withTitle:@"返回" Tag:FinancialBack frame:CGRectMake(10,iOS7Height,50,32) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
     [tool addButtonToView:self.view withTitle:@"原始财务数据" Tag:FinancialRatio frame:CGRectMake(SCREEN_HEIGHT-205,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"ratioBt" highBackGroundImg:@"selectedRatioBt"];
     [tool addButtonToView:self.view withTitle:@"财务分析" Tag:FinancialChart frame:CGRectMake(SCREEN_HEIGHT-105,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"otherBt" highBackGroundImg:@"selectedChartBt"];
-    
-    [tool release];
 }
 
 -(void)initBarChart{
     //初始化图形视图
     @try {
-        graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
+        self.graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
         //CPTTheme *theme=[CPTTheme themeNamed:kCPTPlainWhiteTheme];
         //[graph applyTheme:theme];
-        graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
+        self.graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
         //graph.cornerRadius  = 15.0f;
-        hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(10,70,SCREEN_HEIGHT-20,220)];
-        [self.view addSubview:hostView];
-        [hostView setHostedGraph : graph ];
-        hostView.collapsesLayers = YES;
+        self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(10,70,SCREEN_HEIGHT-20,220)];
+        [self.view addSubview:self.hostView];
+        [self.hostView setHostedGraph : self.graph ];
+        self.hostView.collapsesLayers = YES;
     }
     @catch (NSException *exception) {
         NSLog(@"%@",exception);
     }
     
-    graph . paddingLeft = 0.0f ;
-    graph . paddingRight = 0.0f ;
-    graph . paddingTop = 0 ;
-    graph . paddingBottom = 0 ;
+    self.graph . paddingLeft = 0.0f ;
+    self.graph . paddingRight = 0.0f ;
+    self.graph . paddingTop = 0 ;
+    self.graph . paddingBottom = 0 ;
     
     //绘制图形空间
-    plotSpace=(CPTXYPlotSpace *)graph.defaultPlotSpace;
+    self.plotSpace=(CPTXYPlotSpace *)self.graph.defaultPlotSpace;
     DrawXYAxisWithoutYAxis;
     [self initBarPlot];
 }
@@ -165,11 +135,11 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     
     floatingController.frameColor=[Utiles colorWithHexString:@"#e26b17"];
     if(sender.tag==FinancialRatio){
-        [self presentViewController:modelRatioViewController animated:YES completion:nil];
+        [self presentViewController:self.modelRatioViewController animated:YES completion:nil];
     }else if(sender.tag==FinancialChart){
-        [self presentViewController:modelChartViewController animated:YES completion:nil];
+        [self presentViewController:self.modelChartViewController animated:YES completion:nil];
     }else if(sender.tag==FinancialOther){
-        [self presentViewController:modelOtherViewController animated:YES completion:nil];
+        [self presentViewController:self.modelOtherViewController animated:YES completion:nil];
     }
     
 }
@@ -259,8 +229,8 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     }
     self.points=tempHisPoints;
     [self setXYAxis];
-    barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
-    [graph reloadData];
+    self.barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
+    [self.graph reloadData];
     SAFE_RELEASE(tempHisPoints);
     
 }
@@ -287,7 +257,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
         self.modelOtherViewController.indicator=@"listOther";
         
         [self modelClassChanged:[[[transObj objectForKey:@"listRatio"] objectAtIndex:0] objectForKey:@"id"]];
-        barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
+        self.barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
         [MBProgressHUD hideHUDForView:self.hostView animated:YES];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
@@ -420,20 +390,20 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     lineStyle.miterLimit=0.0f;
     lineStyle.lineWidth=0.0f;
     lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
-    barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor colorWithComponentRed:134/255.0 green:171/255.0 blue:125/255.0 alpha:1.0] horizontalBars:NO];
-    barPlot. dataSource = self ;
-    barPlot.delegate=self;
-    barPlot.lineStyle=lineStyle;
-    barPlot.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:[colorArr objectAtIndex:arc4random()%7] andAlpha:0.6]];
+    self.barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor colorWithComponentRed:134/255.0 green:171/255.0 blue:125/255.0 alpha:1.0] horizontalBars:NO];
+    self.barPlot. dataSource = self ;
+    self.barPlot.delegate=self;
+    self.barPlot.lineStyle=lineStyle;
+    self.barPlot.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:[self.colorArr objectAtIndex:arc4random()%7] andAlpha:0.6]];
     // 图形向右偏移： 0.25
-    barPlot.barOffset = CPTDecimalFromFloat(0.0f) ;
+    self.barPlot.barOffset = CPTDecimalFromFloat(0.0f) ;
     // 在 SDK 中， barCornerRadius 被 cornerRadius 替代
-    barPlot.barCornerRadius=3.0;
-    barPlot.barWidth=CPTDecimalFromFloat(1.0f);
-    barPlot.barWidthScale=0.5f;
-    barPlot.labelOffset=0;
-    barPlot.identifier = BAR_IDENTIFIER;
-    barPlot.opacity=0.0f;
+    self.barPlot.barCornerRadius=3.0;
+    self.barPlot.barWidth=CPTDecimalFromFloat(1.0f);
+    self.barPlot.barWidthScale=0.5f;
+    self.barPlot.labelOffset=0;
+    self.barPlot.identifier = BAR_IDENTIFIER;
+    self.barPlot.opacity=0.0f;
     
     
     CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -441,9 +411,9 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     fadeInAnimation.removedOnCompletion = NO;
     fadeInAnimation.fillMode            = kCAFillModeForwards;
     fadeInAnimation.toValue             = [NSNumber numberWithFloat:1.0];
-    [barPlot addAnimation:fadeInAnimation forKey:@"shadowOffset"];
+    [self.barPlot addAnimation:fadeInAnimation forKey:@"shadowOffset"];
     // 添加图形到绘图空间
-    [graph addPlot :barPlot toPlotSpace :plotSpace];
+    [self.graph addPlot :self.barPlot toPlotSpace :self.plotSpace];
 }
 
 -(void)setXYAxis{

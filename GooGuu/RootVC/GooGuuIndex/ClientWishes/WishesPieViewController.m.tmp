@@ -1,0 +1,45 @@
+/*
+    Generated for Injection of class implementations
+*/
+
+#define INJECTION_NOIMPL
+#define INJECTION_BUNDLE InjectionBundle13
+
+#import "/Applications/Injection Plugin.app/Contents/Resources/BundleInjection.h"
+
+#undef _instatic
+#define _instatic extern
+
+#undef _inglobal
+#define _inglobal extern
+
+#undef _inval
+#define _inval( _val... ) /* = _val */
+
+
+
+@interface InjectionBundle13 : NSObject
+@end
+@implementation InjectionBundle13
+
++ (void)load {
+    Class bundleInjection = NSClassFromString(@"BundleInjection");
+    extern Class OBJC_CLASS_$_WishesPieViewController;
+	[bundleInjection loadedClass:INJECTION_BRIDGE(Class)(void *)&OBJC_CLASS_$_WishesPieViewController notify:4];
+    [bundleInjection loadedNotify:4];
+}
+
+@end
+
+extern int injectionHook(void);
+
+int injectionHook() {
+    NSLog( @"injectionHook():" );
+    [InjectionBundle13 load];
+    return YES;
+}
+
+#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuIndex/ClientWishes/WishesPieViewController.m"
+
+
+

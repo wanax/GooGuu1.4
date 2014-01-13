@@ -38,7 +38,6 @@
 
 #define UserDefaults [NSUserDefaults standardUserDefaults]
 #define Application [UIApplication sharedApplication]
-#define Delegate [[UIApplication sharedApplication] delegate]
 
 //use dlog to print while in debug model
 

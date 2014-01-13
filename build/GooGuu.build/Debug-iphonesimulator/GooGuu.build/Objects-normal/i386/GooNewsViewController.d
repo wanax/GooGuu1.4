@@ -26,4 +26,5 @@ dependencies: \
   /Users/xcode/wanax/oc/GooGuu/GooGuu/ClientCenter/ProjectSetting/HelpViewController.h \
   /Users/xcode/wanax/oc/GooGuu/Pods/Headers/Reachability/Reachability.h \
   /Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Toast/Toast+UIView.h \
-  /Users/xcode/wanax/oc/GooGuu/GooGuu/CustomCell/DailyStock2Cell.h
+  /Users/xcode/wanax/oc/GooGuu/GooGuu/CustomCell/DailyStock2Cell.h \
+  /Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuIndex/ClientWishes/WishesComListViewController.h

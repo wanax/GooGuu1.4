@@ -21,6 +21,7 @@
 #import "Reachability.h"
 #import "Toast+UIView.h"
 #import "DailyStock2Cell.h"
+#import "WishesComListViewController.h"
 
 
 
@@ -451,10 +452,14 @@
     if(indexPath.section==0){
         AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
         delegate.comInfo=self.companyInfo;
-        ComFieldViewController *com=[[[ComFieldViewController alloc] init] autorelease];
+        ComFieldViewController *com = [[ComFieldViewController alloc] init];
         com.browseType=ValuationModelType;
         com.view.frame=CGRectMake(0,20,SCREEN_WIDTH,SCREEN_HEIGHT);
-        [self presentViewController:com animated:YES completion:nil];
+        //[self presentViewController:com animated:YES completion:nil];
+        
+        WishesComListViewController *wishesList = [[[WishesComListViewController alloc] init] autorelease];
+        wishesList.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:wishesList animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
     }else if(indexPath.section==1){
         
