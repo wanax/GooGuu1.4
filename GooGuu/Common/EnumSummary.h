@@ -143,7 +143,11 @@ typedef enum {
     
 } ChartType;
 
-
+typedef enum {
+    TopCompany,
+    RiseSpace,
+    FallSpace
+} TopPoints;//首页热点
 
 
 

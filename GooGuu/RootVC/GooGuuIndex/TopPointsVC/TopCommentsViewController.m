@@ -1,18 +1,18 @@
 //
-//  TopArticlesViewController.m
+//  TopCommentsViewController.m
 //  GooGuu
 //
 //  Created by Xcode on 14-1-14.
 //  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "TopArticlesViewController.h"
+#import "TopCommentsViewController.h"
 
-@interface TopArticlesViewController ()
+@interface TopCommentsViewController ()
 
 @end
 
-@implementation TopArticlesViewController
+@implementation TopCommentsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"热门文章";
+    self.title = @"精彩评论";
 	[self initComponents];
     [self getArticlesInfo];
 }
@@ -37,15 +37,15 @@
     temp.delegate = self;
     temp.dataSource = self;
     temp.showsVerticalScrollIndicator = NO;
-    self.articleTable = temp;
-    [self.view addSubview:self.articleTable];
+    self.commentTable = temp;
+    [self.view addSubview:self.commentTable];
     
     UIRefreshControl *tempRefresh = [[[UIRefreshControl alloc] init] autorelease];
     tempRefresh.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
     [tempRefresh addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = tempRefresh;
-    [self.articleTable addSubview:self.refreshControl];
-
+    [self.commentTable addSubview:self.refreshControl];
+    
 }
 
 -(void)handleRefresh:(UIRefreshControl *)control {
@@ -59,7 +59,7 @@
     [self.refreshControl endRefreshing];
     self.refreshControl.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
     [self getArticlesInfo];
-
+    
 }
 
 #pragma mark -
@@ -67,14 +67,14 @@
 
 -(void)getArticlesInfo {
     
-    [Utiles getNetInfoWithPath:@"GetTopArticles" andParams:nil besidesBlock:^(id obj) {
-
+    [Utiles getNetInfoWithPath:@"GetTopComments" andParams:nil besidesBlock:^(id obj) {
+        
         NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
         for (id model in obj) {
             [temps addObject:model];
         }
-        self.articleList = temps;
-        [self.articleTable reloadData];
+        self.commentList = temps;
+        [self.commentTable reloadData];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -90,7 +90,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.articleList count];
+    return [self.commentList count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -107,9 +107,9 @@
     cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:14.0f];
     cell.detailTextLabel.textColor = [UIColor tangerineColor];
     
-    id model = self.articleList[indexPath.row];
-    cell.textLabel.text = model[@"title"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@]%@",model[@"classify"],[Utiles secondToDate:[model[@"updatetime"] doubleValue]]];
+    id model = self.commentList[indexPath.row];
+    cell.textLabel.text = model[@"replycontent"];
+
     
     return cell;
 }
@@ -129,7 +129,6 @@
 -(BOOL)shouldAutorotate{
     return NO;
 }
-
 
 - (void)didReceiveMemoryWarning
 {

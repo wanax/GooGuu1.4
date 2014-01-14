@@ -3,7 +3,7 @@
 */
 
 #define INJECTION_NOIMPL
-#define INJECTION_BUNDLE InjectionBundle3
+#define INJECTION_BUNDLE InjectionBundle6
 
 #import "/Applications/Injection Plugin.app/Contents/Resources/BundleInjection.h"
 
@@ -18,14 +18,14 @@
 
 
 
-@interface InjectionBundle3 : NSObject
+@interface InjectionBundle6 : NSObject
 @end
-@implementation InjectionBundle3
+@implementation InjectionBundle6
 
 + (void)load {
     Class bundleInjection = NSClassFromString(@"BundleInjection");
-    extern Class OBJC_CLASS_$_TopArticlesViewController;
-	[bundleInjection loadedClass:INJECTION_BRIDGE(Class)(void *)&OBJC_CLASS_$_TopArticlesViewController notify:4];
+    extern Class OBJC_CLASS_$_GooGuuIndexViewController;
+	[bundleInjection loadedClass:INJECTION_BRIDGE(Class)(void *)&OBJC_CLASS_$_GooGuuIndexViewController notify:4];
     [bundleInjection loadedNotify:4];
 }
 
@@ -35,11 +35,11 @@ extern int injectionHook(void);
 
 int injectionHook() {
     NSLog( @"injectionHook():" );
-    [InjectionBundle3 load];
+    [InjectionBundle6 load];
     return YES;
 }
 
-#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuIndex/TopPointsVC/TopArticlesViewController.m"
+#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuIndex/GooGuuIndexViewController.m"
 
 
 

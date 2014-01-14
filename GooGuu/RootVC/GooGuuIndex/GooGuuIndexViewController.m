@@ -9,6 +9,9 @@
 #import "GooGuuIndexViewController.h"
 #import "DailyStock2Cell.h"
 #import "TopArticlesViewController.h"
+#import "TopComsViewController.h"
+#import "TopCommentsViewController.h"
+#import "WishesComListViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuIndexViewController ()
@@ -222,26 +225,55 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     int section = indexPath.section;
     int row = indexPath.row;
+    //dailyCompany
     if (section == 0) {
         
-    } else if (section == 1) {
+    } else if (section == 1) {//custom
         
+        if (row == 0) {//modelvalue
+            
+        } else if (row == 1) {//wishes
+            
+            WishesComListViewController *wishList = [[[WishesComListViewController alloc] init] autorelease];
+            wishList.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:wishList animated:YES];
+            
+        } else if (row == 2) {//financepic
+            
+        }
         
-    } else if (section == 2) {
+    } else if (section == 2) {//topPoints
         
+        //topArticle
         if (row == 0) {
             
             TopArticlesViewController *articleVC = [[[TopArticlesViewController alloc] init] autorelease];
             articleVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:articleVC animated:YES];
             
-        } else if (row == 1) {
+        } else if (row == 1) {//topCompany
             
-        } else if (row == 2) {
+            TopComsViewController *comVC = [[[TopComsViewController alloc] initWithTopical:@"热门公司" type:TopCompany] autorelease];
+            comVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:comVC animated:YES];
             
-        } else if (row == 3) {
+        } else if (row == 2) {//risespace
             
-        } else if (row == 4) {
+            TopComsViewController *comVC = [[[TopComsViewController alloc] initWithTopical:@"上涨潜力" type:RiseSpace] autorelease];
+            comVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:comVC animated:YES];
+            
+        } else if (row == 3) {//fallspace
+            
+            TopComsViewController *comVC = [[[TopComsViewController alloc] initWithTopical:@"下跌空间" type:FallSpace] autorelease];
+            comVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:comVC animated:YES];
+            
+        } else if (row == 4) {//topcomments
+            
+            TopCommentsViewController *commentVC = [[[TopCommentsViewController alloc] init] autorelease];
+            commentVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:commentVC animated:YES];
             
         }
         

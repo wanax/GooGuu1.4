@@ -183,6 +183,12 @@
 		AE74DFA8187E4518002AE169 /* SettingCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFA6187E4518002AE169 /* SettingCenterViewController.m */; };
 		AE74DFAE187E4595002AE169 /* IQKeyBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAB187E4595002AE169 /* IQKeyBoardManager.m */; };
 		AE74DFAF187E4595002AE169 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */; };
+		AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */; };
+		AE7C1AC418851359006D37B5 /* TopComCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1AC318851359006D37B5 /* TopComCell.xib */; };
+		AE7C1AC7188515D6006D37B5 /* TopComCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AC6188515D6006D37B5 /* TopComCell.m */; };
+		AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */; };
+		AE7C1ACF18851FB5006D37B5 /* stockDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */; };
+		AE7C1AD218852FE1006D37B5 /* TopCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */; };
 		AE7EE30F1884CEC100A0E5BF /* GooGuuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */; };
 		AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */; };
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
@@ -713,6 +719,15 @@
 		AE74DFAB187E4595002AE169 /* IQKeyBoardManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQKeyBoardManager.m; sourceTree = "<group>"; };
 		AE74DFAC187E4595002AE169 /* IQSegmentedNextPrevious.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQSegmentedNextPrevious.h; sourceTree = "<group>"; };
 		AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
+		AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopComsViewController.h; sourceTree = "<group>"; };
+		AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopComsViewController.m; sourceTree = "<group>"; };
+		AE7C1AC318851359006D37B5 /* TopComCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TopComCell.xib; path = ../../../NibFile/CellNib/TopComCell.xib; sourceTree = "<group>"; };
+		AE7C1AC5188515D6006D37B5 /* TopComCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopComCell.h; sourceTree = "<group>"; };
+		AE7C1AC6188515D6006D37B5 /* TopComCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopComCell.m; sourceTree = "<group>"; };
+		AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockUpArrow.png; sourceTree = "<group>"; };
+		AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockDownArrow.png; sourceTree = "<group>"; };
+		AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentsViewController.h; sourceTree = "<group>"; };
+		AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentsViewController.m; sourceTree = "<group>"; };
 		AE7EE30D1884CEC100A0E5BF /* GooGuuIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuIndexViewController.h; sourceTree = "<group>"; };
 		AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuIndexViewController.m; sourceTree = "<group>"; };
 		AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
@@ -1028,6 +1043,8 @@
 				AE0D3D75187D469800E0E141 /* ValueViewCell.m */,
 				AE0D3D76187D469800E0E141 /* ReportCell.h */,
 				AE0D3D77187D469800E0E141 /* ReportCell.m */,
+				AE7C1AC5188515D6006D37B5 /* TopComCell.h */,
+				AE7C1AC6188515D6006D37B5 /* TopComCell.m */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1035,6 +1052,7 @@
 		AE018869187CFC3F004C6A5D /* NibFile */ = {
 			isa = PBXGroup;
 			children = (
+				AE7C1AC21885133F006D37B5 /* CellNib */,
 				AE0D3D84187D46CF00E0E141 /* CenterSetting */,
 				AE0D3D85187D46CF00E0E141 /* Common */,
 				AE0D3D86187D46CF00E0E141 /* FinanTools */,
@@ -1737,11 +1755,23 @@
 			path = IQKeyBoardManager;
 			sourceTree = "<group>";
 		};
+		AE7C1AC21885133F006D37B5 /* CellNib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CellNib;
+			sourceTree = "<group>";
+		};
 		AE7EE3251884DC0C00A0E5BF /* TopPointsVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE7C1AC318851359006D37B5 /* TopComCell.xib */,
 				AE7EE3261884DD0700A0E5BF /* TopArticlesViewController.h */,
 				AE7EE3271884DD0700A0E5BF /* TopArticlesViewController.m */,
+				AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */,
+				AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */,
+				AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */,
+				AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */,
 			);
 			path = TopPointsVC;
 			sourceTree = "<group>";
@@ -1776,6 +1806,8 @@
 		AE949CDB187E7A69004FC1AB /* IndexImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */,
+				AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */,
 				AE949CF2187E8074004FC1AB /* dailystockbackground.png */,
 				AE949CF3187E8074004FC1AB /* dailyStockLittleIcon.png */,
 			);
@@ -2162,6 +2194,7 @@
 				AE949D8D187E81E5004FC1AB /* grayArrow@2x.png in Resources */,
 				AE018896187D02D0004C6A5D /* agreement.txt in Resources */,
 				AE018875187D00A7004C6A5D /* Images.xcassets in Resources */,
+				AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */,
 				AE949D39187E8169004FC1AB /* savedBt.png in Resources */,
 				AE949CF7187E8085004FC1AB /* addComment.png in Resources */,
 				AE949DC6187E8262004FC1AB /* ASTOCK.png in Resources */,
@@ -2189,6 +2222,7 @@
 				AE949DB9187E8239004FC1AB /* readed.png in Resources */,
 				AE949D92187E81E5004FC1AB /* whiteArrow@2x.png in Resources */,
 				AE949D38187E8169004FC1AB /* mainIncomeBt.png in Resources */,
+				AE7C1AC418851359006D37B5 /* TopComCell.xib in Resources */,
 				AE949DE1187E8298004FC1AB /* googuuViewBar@2x.png in Resources */,
 				AE949D48187E817C004FC1AB /* backButton.png in Resources */,
 				AE018890187D02BC004C6A5D /* BenchmarkIndex.plist in Resources */,
@@ -2230,6 +2264,7 @@
 				AE949D6E187E81D8004FC1AB /* guide3.png in Resources */,
 				AE0D3DAB187D470B00E0E141 /* BetaFactorCountView.xib in Resources */,
 				AE949D5D187E81A2004FC1AB /* inputBack.png in Resources */,
+				AE7C1ACF18851FB5006D37B5 /* stockDownArrow.png in Resources */,
 				AE949D23187E8154004FC1AB /* hasDoneRequestedBt.png in Resources */,
 				AE949D37187E8169004FC1AB /* selectedMainIncome.png in Resources */,
 				AE949D29187E8154004FC1AB /* valuationModelBackBt.png in Resources */,
@@ -2366,6 +2401,7 @@
 				AE06B8E6187EAB7900DA93E2 /* FinanceToolsViewController.m in Sources */,
 				AE7EE3231884DB3B00A0E5BF /* GooNewsViewController.m in Sources */,
 				AE0D3CBF187D36B200E0E141 /* Utiles.m in Sources */,
+				AE7C1AC7188515D6006D37B5 /* TopComCell.m in Sources */,
 				AE518757187E42F10055B9AE /* CQMFloatingController.m in Sources */,
 				AE518728187E40EC0055B9AE /* IntroductionViewController.m in Sources */,
 				AE0D3D2A187D411800E0E141 /* GooGuuViewController.m in Sources */,
@@ -2378,6 +2414,7 @@
 				AE0D3D7C187D469800E0E141 /* GooNewsCell.m in Sources */,
 				AE0D3D80187D469800E0E141 /* LabelSwitchCell.m in Sources */,
 				AE0D3CC0187D36B200E0E141 /* CommonlyMacros.m in Sources */,
+				AE7C1AD218852FE1006D37B5 /* TopCommentsViewController.m in Sources */,
 				AE518758187E42F10055B9AE /* CQMFloatingFrameView.m in Sources */,
 				AE74DFAE187E4595002AE169 /* IQKeyBoardManager.m in Sources */,
 				AE0D3D5B187D467300E0E141 /* NSDate+convenience.m in Sources */,
@@ -2401,6 +2438,7 @@
 				AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */,
 				AE0D3D47187D414400E0E141 /* StockSearchListViewController.m in Sources */,
 				AE0D3CFD187D3B7F00E0E141 /* GCDiscreetNotificationView.m in Sources */,
+				AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */,
 				AE74DFA0187E4509002AE169 /* HelpViewController.m in Sources */,
 				AE0D3D12187D407700E0E141 /* MyGooguuViewController.m in Sources */,
 				AE518737187E411A0055B9AE /* AnalyDetailContainerViewController.m in Sources */,
