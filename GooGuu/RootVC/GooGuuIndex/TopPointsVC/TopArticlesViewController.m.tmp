@@ -3,7 +3,7 @@
 */
 
 #define INJECTION_NOIMPL
-#define INJECTION_BUNDLE InjectionBundle3
+#define INJECTION_BUNDLE InjectionBundle2
 
 #import "/Applications/Injection Plugin.app/Contents/Resources/BundleInjection.h"
 
@@ -18,14 +18,14 @@
 
 
 
-@interface InjectionBundle3 : NSObject
+@interface InjectionBundle2 : NSObject
 @end
-@implementation InjectionBundle3
+@implementation InjectionBundle2
 
 + (void)load {
     Class bundleInjection = NSClassFromString(@"BundleInjection");
-    extern Class OBJC_CLASS_$_GooNewsViewController;
-	[bundleInjection loadedClass:INJECTION_BRIDGE(Class)(void *)&OBJC_CLASS_$_GooNewsViewController notify:4];
+    extern Class OBJC_CLASS_$_TopArticlesViewController;
+	[bundleInjection loadedClass:INJECTION_BRIDGE(Class)(void *)&OBJC_CLASS_$_TopArticlesViewController notify:4];
     [bundleInjection loadedNotify:4];
 }
 
@@ -35,11 +35,11 @@ extern int injectionHook(void);
 
 int injectionHook() {
     NSLog( @"injectionHook():" );
-    [InjectionBundle3 load];
+    [InjectionBundle2 load];
     return YES;
 }
 
-#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuNews/GooNewsViewController.m"
+#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuIndex/TopPointsVC/TopArticlesViewController.m"
 
 
 

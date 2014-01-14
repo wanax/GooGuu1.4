@@ -11,6 +11,7 @@
 #import "FinPicKeyWordListViewController.h"
 #import "GooGuuViewController.h"
 #import "GooNewsViewController.h"
+#import "GooGuuIndexViewController.h"
 #import "UniverseViewController.h"
 #import "Reachability.h"
 #import "PonyDebugger.h"
@@ -211,7 +212,7 @@
     toolsViewController.tabBarItem=barItem3;
     UINavigationController *toolsNav=nil;
     //估股新闻
-    GooNewsViewController *gooNewsViewController=[[[GooNewsViewController alloc] init] autorelease];
+    GooGuuIndexViewController *gooNewsViewController=[[[GooGuuIndexViewController alloc] init] autorelease];
     gooNewsViewController.tabBarItem=barItem;
     UINavigationController *gooNewsNavController=nil;
     //股票列表
