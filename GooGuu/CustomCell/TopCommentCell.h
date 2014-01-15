@@ -1,5 +1,5 @@
 //
-//  CommentCell.h
+//  TopCommentCell
 //  GooGuu
 //
 //  Created by Xcode on 14-1-15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommentCell : UITableViewCell
+@interface TopCommentCell : UITableViewCell
 
 @property (nonatomic,retain) NSString *content;
 @property (nonatomic,retain) NSString *userName;

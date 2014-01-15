@@ -321,7 +321,14 @@
 		AE949DE4187E8298004FC1AB /* myGooGuuBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949DDA187E8298004FC1AB /* myGooGuuBar.png */; };
 		AE949DE5187E8298004FC1AB /* myGooGuuBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949DDB187E8298004FC1AB /* myGooGuuBar@2x.png */; };
 		AE9B2C86188669190077B56D /* NSStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B2C85188669190077B56D /* NSStringWrapper.m */; };
-		AEAD1F1018862220004C4D38 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* CommentCell.m */; };
+		AE9B2C8B188681E60077B56D /* GGModelIndexVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B2C8A188681E60077B56D /* GGModelIndexVC.m */; };
+		AE9B2C8D188682190077B56D /* GGModelIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C8C188682190077B56D /* GGModelIndexView.xib */; };
+		AE9B2C921886965E0077B56D /* REPORT.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C8E1886965E0077B56D /* REPORT.png */; };
+		AE9B2C931886965E0077B56D /* FINDATA.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C8F1886965E0077B56D /* FINDATA.png */; };
+		AE9B2C941886965E0077B56D /* GGVIEW.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C901886965E0077B56D /* GGVIEW.png */; };
+		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
+		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
+		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
 		AEAD1F16188637DF004C4D38 /* wishesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F13188637DF004C4D38 /* wishesIcon.png */; };
 		AEAD1F17188637DF004C4D38 /* valueModelIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F14188637DF004C4D38 /* valueModelIcon.png */; };
 		AEAD1F18188637DF004C4D38 /* finPicIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F15188637DF004C4D38 /* finPicIcon.png */; };
@@ -872,8 +879,16 @@
 		AE949DDB187E8298004FC1AB /* myGooGuuBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myGooGuuBar@2x.png"; sourceTree = "<group>"; };
 		AE9B2C84188669190077B56D /* NSStringWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringWrapper.h; sourceTree = "<group>"; };
 		AE9B2C85188669190077B56D /* NSStringWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringWrapper.m; sourceTree = "<group>"; };
-		AEAD1F0E18862220004C4D38 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
-		AEAD1F0F18862220004C4D38 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		AE9B2C89188681E60077B56D /* GGModelIndexVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGModelIndexVC.h; sourceTree = "<group>"; };
+		AE9B2C8A188681E60077B56D /* GGModelIndexVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGModelIndexVC.m; sourceTree = "<group>"; };
+		AE9B2C8C188682190077B56D /* GGModelIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GGModelIndexView.xib; path = ../NibFile/Common/GGModelIndexView.xib; sourceTree = "<group>"; };
+		AE9B2C8E1886965E0077B56D /* REPORT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = REPORT.png; sourceTree = "<group>"; };
+		AE9B2C8F1886965E0077B56D /* FINDATA.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FINDATA.png; sourceTree = "<group>"; };
+		AE9B2C901886965E0077B56D /* GGVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GGVIEW.png; sourceTree = "<group>"; };
+		AE9B2C911886965E0077B56D /* VALUEMODEL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VALUEMODEL.png; sourceTree = "<group>"; };
+		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
+		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
+		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
 		AEAD1F13188637DF004C4D38 /* wishesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wishesIcon.png; sourceTree = "<group>"; };
 		AEAD1F14188637DF004C4D38 /* valueModelIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valueModelIcon.png; sourceTree = "<group>"; };
 		AEAD1F15188637DF004C4D38 /* finPicIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finPicIcon.png; sourceTree = "<group>"; };
@@ -1059,8 +1074,8 @@
 				AE0D3D77187D469800E0E141 /* ReportCell.m */,
 				AE7C1AC5188515D6006D37B5 /* TopComCell.h */,
 				AE7C1AC6188515D6006D37B5 /* TopComCell.m */,
-				AEAD1F0E18862220004C4D38 /* CommentCell.h */,
-				AEAD1F0F18862220004C4D38 /* CommentCell.m */,
+				AEAD1F0E18862220004C4D38 /* TopCommentCell.h */,
+				AEAD1F0F18862220004C4D38 /* TopCommentCell.m */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1570,6 +1585,9 @@
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE9B2C8C188682190077B56D /* GGModelIndexView.xib */,
+				AE9B2C89188681E60077B56D /* GGModelIndexVC.h */,
+				AE9B2C8A188681E60077B56D /* GGModelIndexVC.m */,
 				AE518745187E41FF0055B9AE /* ComFieldViewController.h */,
 				AE518746187E41FF0055B9AE /* ComFieldViewController.m */,
 				AE51872C187E410A0055B9AE /* ContainerViewController.h */,
@@ -2041,6 +2059,11 @@
 		AE949DBA187E825B004FC1AB /* FinToolsIcon */ = {
 			isa = PBXGroup;
 			children = (
+				AE9B2C96188699CD0077B56D /* MSG.png */,
+				AE9B2C8E1886965E0077B56D /* REPORT.png */,
+				AE9B2C8F1886965E0077B56D /* FINDATA.png */,
+				AE9B2C901886965E0077B56D /* GGVIEW.png */,
+				AE9B2C911886965E0077B56D /* VALUEMODEL.png */,
 				AE949DBB187E8262004FC1AB /* ASTOCK.png */,
 				AE949DBC187E8262004FC1AB /* BETA.png */,
 				AE949DBD187E8262004FC1AB /* CASHCOUNT.png */,
@@ -2173,7 +2196,9 @@
 				AE949D28187E8154004FC1AB /* searchBarBack.png in Resources */,
 				AEAD1F16188637DF004C4D38 /* wishesIcon.png in Resources */,
 				AE0D3D99187D46EB00E0E141 /* MainWindow.xib in Resources */,
+				AE9B2C921886965E0077B56D /* REPORT.png in Resources */,
 				AE949D90187E81E5004FC1AB /* shadowUp.png in Resources */,
+				AE9B2C931886965E0077B56D /* FINDATA.png in Resources */,
 				AE949D13187E8122004FC1AB /* chartBt.png in Resources */,
 				AE01888B187D02BC004C6A5D /* InterestList.plist in Resources */,
 				AE0D3DA8187D46EB00E0E141 /* ReportCell.xib in Resources */,
@@ -2205,6 +2230,7 @@
 				AE949D35187E8169004FC1AB /* selectedDiscount.png in Resources */,
 				AE0D3DAC187D470B00E0E141 /* ChoseBetaFactorView.xib in Resources */,
 				AE949D22187E8154004FC1AB /* hasBriefSymbol.png in Resources */,
+				AE9B2C941886965E0077B56D /* GGVIEW.png in Resources */,
 				AE949CEA187E7B73004FC1AB /* theIcon.png in Resources */,
 				AE018897187D02D0004C6A5D /* announce.txt in Resources */,
 				AE949CE9187E7B73004FC1AB /* icon1.png in Resources */,
@@ -2266,6 +2292,7 @@
 				AE949D8C187E81E5004FC1AB /* grayArrow.png in Resources */,
 				AE0D3D9D187D46EB00E0E141 /* AddCommentView.xib in Resources */,
 				AE949CE7187E7B73004FC1AB /* icon.png in Resources */,
+				AE9B2C97188699CD0077B56D /* MSG.png in Resources */,
 				AE949DCD187E8262004FC1AB /* HSTOCK.png in Resources */,
 				AE949D27187E8154004FC1AB /* requestValuationBt.png in Resources */,
 				AE949CFF187E80A5004FC1AB /* addCommentBt.png in Resources */,
@@ -2275,6 +2302,7 @@
 				AE949D6C187E81D8004FC1AB /* guide1.png in Resources */,
 				AE949D6F187E81D8004FC1AB /* guide4.png in Resources */,
 				AE949DB0187E8218004FC1AB /* userInfoBack.png in Resources */,
+				AE9B2C8D188682190077B56D /* GGModelIndexView.xib in Resources */,
 				AE949D5B187E81A2004FC1AB /* loginBack2.png in Resources */,
 				AE949DB8187E8239004FC1AB /* unread.png in Resources */,
 				AE949DD0187E8262004FC1AB /* WACC.png in Resources */,
@@ -2299,6 +2327,7 @@
 				AE949DB7187E8239004FC1AB /* unread2.png in Resources */,
 				AE01888E187D02BC004C6A5D /* colorconfigure.plist in Resources */,
 				AE018874187D00A7004C6A5D /* GooGuu-Info.plist in Resources */,
+				AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */,
 				AE0D3DA2187D46EB00E0E141 /* DiscountRateView.xib in Resources */,
 				AE949D18187E8122004FC1AB /* selectedRatioBt.png in Resources */,
 				AE949D9D187E81F7004FC1AB /* myGGOutLookingLable.png in Resources */,
@@ -2453,7 +2482,7 @@
 				AE0D3CB6187D36A000E0E141 /* UITabBarController+Autorotate.m in Sources */,
 				AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */,
 				AE51872B187E40FB0055B9AE /* ModelViewController.m in Sources */,
-				AEAD1F1018862220004C4D38 /* CommentCell.m in Sources */,
+				AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */,
 				AE0D3CE8187D3A9200E0E141 /* PrettyGridTableViewCell.m in Sources */,
 				AE0D3D44187D414400E0E141 /* StockContainerViewController.m in Sources */,
 				AE0D3D7B187D469800E0E141 /* AddCell.m in Sources */,
@@ -2529,6 +2558,7 @@
 				AE518736187E411A0055B9AE /* AnalyDetailViewController.m in Sources */,
 				AE06B8E7187EAB7900DA93E2 /* FinanceToolsGrade2ViewController.m in Sources */,
 				AE0D3CC4187D38B700E0E141 /* UIImageView+Addition.m in Sources */,
+				AE9B2C8B188681E60077B56D /* GGModelIndexVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

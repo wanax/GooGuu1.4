@@ -1,15 +1,15 @@
 //
-//  CommentCell.m
+//  TopCommentCell.m
 //  GooGuu
 //
 //  Created by Xcode on 14-1-15.
 //  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "CommentCell.h"
+#import "TopCommentCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation CommentCell
+@implementation TopCommentCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

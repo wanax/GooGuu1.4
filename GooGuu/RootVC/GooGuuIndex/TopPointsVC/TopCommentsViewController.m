@@ -7,7 +7,7 @@
 //
 
 #import "TopCommentsViewController.h"
-#import "CommentCell.h"
+#import "TopCommentCell.h"
 #import "RegexKitLite.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -109,12 +109,12 @@
     
     static NSString *TopCommentCellIdentifier = @"TopCommentCellIdentifier";
     
-    CommentCell *cell = (CommentCell *)[tableView cellForRowAtIndexPath:indexPath];
+    TopCommentCell *cell = (TopCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
                          
     id model = self.commentList[indexPath.row];
     
     if (cell == nil) {
-        cell = [[[CommentCell alloc]
+        cell = [[[TopCommentCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle
                  reuseIdentifier:TopCommentCellIdentifier] autorelease];
     }

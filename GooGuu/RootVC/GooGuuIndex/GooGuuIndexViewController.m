@@ -12,6 +12,7 @@
 #import "TopComsViewController.h"
 #import "TopCommentsViewController.h"
 #import "WishesComListViewController.h"
+#import "GGModelIndexVC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuIndexViewController ()
@@ -227,6 +228,10 @@
     int row = indexPath.row;
     //dailyCompany
     if (section == 0) {
+        
+        GGModelIndexVC *modelIndex = [[[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil] autorelease];
+        modelIndex.hidesBottomBarWhenPushed = YES;
+        [self presentViewController:modelIndex animated:YES completion:nil];
         
     } else if (section == 1) {//custom
         
