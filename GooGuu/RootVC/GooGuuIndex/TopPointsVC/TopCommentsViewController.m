@@ -7,6 +7,9 @@
 //
 
 #import "TopCommentsViewController.h"
+#import "CommentCell.h"
+#import "RegexKitLite.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TopCommentsViewController ()
 
@@ -86,7 +89,16 @@
 #pragma Table DataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0;
+    
+    NSArray *arr = [self.commentList[indexPath.row][@"replycontent"] split:@"<br/>"];
+    CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
+    
+    if ([arr count] > 1) {
+        return size.height + 95;
+    } else {
+       return size.height + 45;
+    }
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -95,22 +107,33 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *TopArticleCellIdentifier = @"TopArticleCellIdentifier";
+    static NSString *TopCommentCellIdentifier = @"TopCommentCellIdentifier";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             TopArticleCellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc]
-                 initWithStyle:UITableViewCellStyleSubtitle
-                 reuseIdentifier:TopArticleCellIdentifier] autorelease];
-    }
-    cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:14.0f];
-    cell.detailTextLabel.textColor = [UIColor tangerineColor];
-    
+    CommentCell *cell = (CommentCell *)[tableView cellForRowAtIndexPath:indexPath];
+                         
     id model = self.commentList[indexPath.row];
-    cell.textLabel.text = model[@"replycontent"];
-
     
+    if (cell == nil) {
+        cell = [[[CommentCell alloc]
+                 initWithStyle:UITableViewCellStyleSubtitle
+                 reuseIdentifier:TopCommentCellIdentifier] autorelease];
+    }
+    
+    NSArray *arr = [model[@"replycontent"] split:@"<br/>"];
+    
+    cell.content = arr[0];
+    cell.userName = model[@"realname"];
+    cell.artTitle = [NSString stringWithFormat:@"[%@]%@",model[@"classify"],model[@"title"]];
+    cell.updateTime = [Utiles intervalSinceNow:model[@"replytime"]];
+    cell.avaURL = model[@"headerpicurl"];
+    
+    //添加评论缩略图
+    if ([arr count] > 1) {
+        NSString *regexString  = @"http.*((.gif)|(.jpg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))";
+        NSArray  *matchArray  = [[arr JSONString] componentsMatchedByRegex:regexString];
+        cell.thumbnailsURL = matchArray;
+    }
+
     return cell;
 }
 

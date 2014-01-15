@@ -172,15 +172,15 @@
         if (row == 0) {
             cell.textLabel.text = @"估值模型";
             cell.detailTextLabel.text = @"上市公司现金流折现模型";
-            cell.imageView.image = [UIImage imageNamed:@"ASTOCK"];
+            cell.imageView.image = [UIImage imageNamed:@"valueModelIcon"];
         } else if (row == 1) {
             cell.textLabel.text = @"心愿榜";
             cell.detailTextLabel.text = @"希望看到哪些公司的财务模型";
-            cell.imageView.image = [UIImage imageNamed:@"ASTOCK"];
+            cell.imageView.image = [UIImage imageNamed:@"wishesIcon"];
         } else if (row ==2) {
             cell.textLabel.text = @"财经图汇";
             cell.detailTextLabel.text = @"金融图谱虽简，熟悉经济生活";
-            cell.imageView.image = [UIImage imageNamed:@"ASTOCK"];
+            cell.imageView.image = [UIImage imageNamed:@"finPicIcon"];
         }
         return cell;
         

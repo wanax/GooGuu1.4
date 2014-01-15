@@ -75,5 +75,7 @@
 
 +(void)iOS7StatusBar:(UIViewController *)vc;
 
++(CGSize)getLabelSizeFromString:(NSString *)str font:(UIFont *)font width:(float)width;
+
 
 @end

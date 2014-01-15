@@ -22,6 +22,7 @@
     #import "AppDelegate.h"
     #import "BaiduMobStat.h"
     #import "FlatUIKit.h"
+    #import "NSStringWrapper.h"
 #endif
 
 // From here to end of file added by Injection Plugin //

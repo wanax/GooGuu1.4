@@ -28,6 +28,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/GooNewsCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/LabelSwitchCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CommonlyMacros.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/TopCommentsViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CQMFloatingFrameView.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/IQKeyBoardManager.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/NSDate+convenience.o
@@ -44,6 +45,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UITabBarController+Autorotate.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/DrawChartTool.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/ModelViewController.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CommentCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyGridTableViewCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/StockContainerViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AddCell.o
@@ -104,6 +106,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/GooGuuContainerViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AppDelegate.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UINavigationController+Autorotate.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/NSStringWrapper.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyNavigationController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/VRGCalendarView.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyShadowPlainTableview.o

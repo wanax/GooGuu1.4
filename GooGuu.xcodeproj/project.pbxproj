@@ -320,6 +320,11 @@
 		AE949DE3187E8298004FC1AB /* graphExchangeBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949DD9187E8298004FC1AB /* graphExchangeBar@2x.png */; };
 		AE949DE4187E8298004FC1AB /* myGooGuuBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949DDA187E8298004FC1AB /* myGooGuuBar.png */; };
 		AE949DE5187E8298004FC1AB /* myGooGuuBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949DDB187E8298004FC1AB /* myGooGuuBar@2x.png */; };
+		AE9B2C86188669190077B56D /* NSStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B2C85188669190077B56D /* NSStringWrapper.m */; };
+		AEAD1F1018862220004C4D38 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* CommentCell.m */; };
+		AEAD1F16188637DF004C4D38 /* wishesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F13188637DF004C4D38 /* wishesIcon.png */; };
+		AEAD1F17188637DF004C4D38 /* valueModelIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F14188637DF004C4D38 /* valueModelIcon.png */; };
+		AEAD1F18188637DF004C4D38 /* finPicIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F15188637DF004C4D38 /* finPicIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -865,6 +870,13 @@
 		AE949DD9187E8298004FC1AB /* graphExchangeBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "graphExchangeBar@2x.png"; sourceTree = "<group>"; };
 		AE949DDA187E8298004FC1AB /* myGooGuuBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myGooGuuBar.png; sourceTree = "<group>"; };
 		AE949DDB187E8298004FC1AB /* myGooGuuBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myGooGuuBar@2x.png"; sourceTree = "<group>"; };
+		AE9B2C84188669190077B56D /* NSStringWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringWrapper.h; sourceTree = "<group>"; };
+		AE9B2C85188669190077B56D /* NSStringWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringWrapper.m; sourceTree = "<group>"; };
+		AEAD1F0E18862220004C4D38 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		AEAD1F0F18862220004C4D38 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		AEAD1F13188637DF004C4D38 /* wishesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wishesIcon.png; sourceTree = "<group>"; };
+		AEAD1F14188637DF004C4D38 /* valueModelIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valueModelIcon.png; sourceTree = "<group>"; };
+		AEAD1F15188637DF004C4D38 /* finPicIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finPicIcon.png; sourceTree = "<group>"; };
 		F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1004,6 +1016,8 @@
 		AE018866187CFC3F004C6A5D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AE9B2C84188669190077B56D /* NSStringWrapper.h */,
+				AE9B2C85188669190077B56D /* NSStringWrapper.m */,
 				AE49AB401880E41900386C49 /* DrawChartTool.h */,
 				AE49AB411880E41900386C49 /* DrawChartTool.m */,
 				AE0D3CB9187D36B200E0E141 /* Utiles.h */,
@@ -1045,6 +1059,8 @@
 				AE0D3D77187D469800E0E141 /* ReportCell.m */,
 				AE7C1AC5188515D6006D37B5 /* TopComCell.h */,
 				AE7C1AC6188515D6006D37B5 /* TopComCell.m */,
+				AEAD1F0E18862220004C4D38 /* CommentCell.h */,
+				AEAD1F0F18862220004C4D38 /* CommentCell.m */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -1808,6 +1824,9 @@
 			children = (
 				AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */,
 				AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */,
+				AEAD1F13188637DF004C4D38 /* wishesIcon.png */,
+				AEAD1F14188637DF004C4D38 /* valueModelIcon.png */,
+				AEAD1F15188637DF004C4D38 /* finPicIcon.png */,
 				AE949CF2187E8074004FC1AB /* dailystockbackground.png */,
 				AE949CF3187E8074004FC1AB /* dailyStockLittleIcon.png */,
 			);
@@ -2152,6 +2171,7 @@
 				AE949D24187E8154004FC1AB /* hasModelSymbol.png in Resources */,
 				AE949D01187E80A5004FC1AB /* enterCompanyBt.png in Resources */,
 				AE949D28187E8154004FC1AB /* searchBarBack.png in Resources */,
+				AEAD1F16188637DF004C4D38 /* wishesIcon.png in Resources */,
 				AE0D3D99187D46EB00E0E141 /* MainWindow.xib in Resources */,
 				AE949D90187E81E5004FC1AB /* shadowUp.png in Resources */,
 				AE949D13187E8122004FC1AB /* chartBt.png in Resources */,
@@ -2223,6 +2243,7 @@
 				AE949D92187E81E5004FC1AB /* whiteArrow@2x.png in Resources */,
 				AE949D38187E8169004FC1AB /* mainIncomeBt.png in Resources */,
 				AE7C1AC418851359006D37B5 /* TopComCell.xib in Resources */,
+				AEAD1F17188637DF004C4D38 /* valueModelIcon.png in Resources */,
 				AE949DE1187E8298004FC1AB /* googuuViewBar@2x.png in Resources */,
 				AE949D48187E817C004FC1AB /* backButton.png in Resources */,
 				AE018890187D02BC004C6A5D /* BenchmarkIndex.plist in Resources */,
@@ -2235,6 +2256,7 @@
 				AE949D93187E81E5004FC1AB /* tabUnSelected.png in Resources */,
 				AE949D96187E81E5004FC1AB /* riseArrow.png in Resources */,
 				AE949D4F187E817C004FC1AB /* topDone@2x.png in Resources */,
+				AEAD1F18188637DF004C4D38 /* finPicIcon.png in Resources */,
 				AE949DE0187E8298004FC1AB /* googuuViewBar.png in Resources */,
 				AE949CF5187E8074004FC1AB /* dailyStockLittleIcon.png in Resources */,
 				AE01888C187D02BC004C6A5D /* OccupationalList.plist in Resources */,
@@ -2431,6 +2453,7 @@
 				AE0D3CB6187D36A000E0E141 /* UITabBarController+Autorotate.m in Sources */,
 				AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */,
 				AE51872B187E40FB0055B9AE /* ModelViewController.m in Sources */,
+				AEAD1F1018862220004C4D38 /* CommentCell.m in Sources */,
 				AE0D3CE8187D3A9200E0E141 /* PrettyGridTableViewCell.m in Sources */,
 				AE0D3D44187D414400E0E141 /* StockContainerViewController.m in Sources */,
 				AE0D3D7B187D469800E0E141 /* AddCell.m in Sources */,
@@ -2491,6 +2514,7 @@
 				AE0D3D13187D407700E0E141 /* GooGuuContainerViewController.m in Sources */,
 				AE018847187CF636004C6A5D /* AppDelegate.m in Sources */,
 				AE0D3CB5187D36A000E0E141 /* UINavigationController+Autorotate.m in Sources */,
+				AE9B2C86188669190077B56D /* NSStringWrapper.m in Sources */,
 				AE0D3CF4187D3A9B00E0E141 /* PrettyNavigationController.m in Sources */,
 				AE0D3D5F187D467300E0E141 /* VRGCalendarView.m in Sources */,
 				AE0D3CED187D3A9200E0E141 /* PrettyShadowPlainTableview.m in Sources */,

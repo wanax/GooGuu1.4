@@ -138,16 +138,16 @@ static NSDateFormatter *formatter;
         NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory , NSUserDomainMask , YES );
         NSString *documentsDirectory = [paths objectAtIndex:0];
         NSString* filePath = [NSString stringWithFormat:@"%@/%@.plist",documentsDirectory,fileName];
-        dictionary = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+        dictionary = [[[NSDictionary alloc] initWithContentsOfFile:filePath] autorelease];
     }else{
         NSString *plistPath = [[NSBundle mainBundle] pathForResource:fileName ofType:@"plist"];
-        dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        dictionary = [[[NSDictionary alloc] initWithContentsOfFile:plistPath] autorelease];
     }
     
     if(key!=nil){
-        return [[dictionary objectForKey:key] autorelease];
+        return [dictionary objectForKey:key];
     }else{
-        return [dictionary autorelease];
+        return dictionary;
     }
     
   
@@ -277,12 +277,15 @@ static NSDateFormatter *formatter;
         timeString = [timeString substringToIndex:timeString.length-7];
         timeString=[NSString stringWithFormat:@"%@小时前", timeString];
     }
-    if (cha/86400>1)
+    if (cha/86400 > 1 && cha/86400 < 604800)
     {
         timeString = [NSString stringWithFormat:@"%f", cha/86400];
         timeString = [timeString substringToIndex:timeString.length-7];
         timeString=[NSString stringWithFormat:@"%@天前", timeString];
         
+    }
+    if (cha >= 604800) {
+        timeString = [theDate substringToIndex:theDate.length-8];
     }
     [date release];
     return timeString;
@@ -567,6 +570,15 @@ NSComparator cmptr1 = ^(id obj1, id obj2){
             vc.modalPresentationCapturesStatusBarAppearance = NO;
         }
     #endif  // #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+}
+
++(CGSize)getLabelSizeFromString:(NSString *)str font:(UIFont *)font width:(float)width{
+    
+    CGSize size = CGSizeMake(width,MAXFLOAT);
+    NSDictionary * tdic = @{NSFontAttributeName:font, NSForegroundColorAttributeName:[UIColor blackColor]};
+    CGSize  actualsize =[str boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin  attributes:tdic context:nil].size;
+    
+    return actualsize;
 }
 
 
