@@ -30,9 +30,10 @@
 - (IBAction)comExpectSegClicked:(id)sender;
 
 - (IBAction)ggReportBtClicked:(id)sender;
-@property (retain, nonatomic) IBOutlet UIButton *ggValueModelBtClicked;
-@property (retain, nonatomic) IBOutlet UIButton *finDataBtClicked;
-@property (retain, nonatomic) IBOutlet UIButton *ggViewBtClicked;
+- (IBAction)ggModelBtClicked:(id)sender;
+- (IBAction)ggFinBtClicked:(id)sender;
+- (IBAction)ggViewBtClicked:(id)sender;
+
 -(IBAction)backUp:(UIBarButtonItem *)bt;
 
 @end

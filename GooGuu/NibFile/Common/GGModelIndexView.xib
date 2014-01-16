@@ -7,16 +7,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GGModelIndexVC">
             <connections>
                 <outlet property="comAboutTable" destination="gS1-el-gGf" id="maC-w7-LWJ"/>
-                <outlet property="comExpectSeg" destination="xj8-c5-tsN" id="Mrs-kt-0hW"/>
+                <outlet property="comExpectSeg" destination="f04-sI-dre" id="OUt-Hi-LGN"/>
                 <outlet property="comIconImg" destination="IY0-OL-rq6" id="7MW-dn-p2p"/>
-                <outlet property="comInfoSeg" destination="bR8-0N-fj8" id="veS-MC-4LE"/>
+                <outlet property="comInfoSeg" destination="rNG-Kg-2RQ" id="bt4-dT-ZBk"/>
                 <outlet property="comNameLabel" destination="R3i-yY-e3V" id="3ff-HI-pqX"/>
-                <outlet property="finDataBtClicked" destination="nIH-IJ-l5O" id="zAh-h9-ybw"/>
                 <outlet property="ggFinDataButton" destination="nIH-IJ-l5O" id="BAO-L3-Ayc"/>
                 <outlet property="ggReportButton" destination="DH8-AB-xQg" id="88T-jS-XV5"/>
-                <outlet property="ggValueModelBtClicked" destination="NcN-2N-YIc" id="UL0-ZX-Gw4"/>
                 <outlet property="ggValueModelButton" destination="NcN-2N-YIc" id="C9I-oR-KQ6"/>
-                <outlet property="ggViewBtClicked" destination="c1E-hM-2NE" id="mKN-cA-nK1"/>
                 <outlet property="ggViewButton" destination="c1E-hM-2NE" id="Kjx-Rt-Lhx"/>
                 <outlet property="googuuPriLabel" destination="NPP-1M-MDX" id="pcc-TU-VRD"/>
                 <outlet property="marketPriLabel" destination="v2O-4x-f5e" id="fWU-GZ-WsE"/>
@@ -33,25 +30,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UtG-mZ-dco">
-                    <rect key="frame" x="6" y="50" width="308" height="102"/>
+                    <rect key="frame" x="6" y="50" width="308" height="96"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IY0-OL-rq6">
                             <rect key="frame" x="6" y="6" width="95" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="296" placeholderIntrinsicHeight="34" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="bR8-0N-fj8">
-                            <rect key="frame" x="6" y="62" width="296" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="公司简介"/>
-                                <segment title="关注"/>
-                                <segment title="模型"/>
-                            </segments>
-                            <connections>
-                                <action selector="comInfoSegClicked:" destination="-1" eventType="valueChanged" id="sds-sf-M3H"/>
-                            </connections>
-                        </segmentedControl>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="市场价" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kB-34-NS2">
                             <rect key="frame" x="107" y="6" width="51" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -74,7 +59,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPP-1M-MDX">
-                            <rect key="frame" x="164" y="35" width="51" height="22"/>
+                            <rect key="frame" x="164" y="34" width="51" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -91,6 +76,18 @@
                             <rect key="frame" x="221" y="19" width="24" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="rNG-Kg-2RQ">
+                            <rect key="frame" x="6" y="62" width="296" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="公司简介"/>
+                                <segment title="关注"/>
+                                <segment title="模型"/>
+                            </segments>
+                            <connections>
+                                <action selector="comInfoSegClicked:" destination="-1" eventType="valueChanged" id="bcE-C4-Ukp"/>
+                            </connections>
+                        </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
@@ -111,74 +108,75 @@
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="308" placeholderIntrinsicHeight="35" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xj8-c5-tsN">
-                    <rect key="frame" x="6" y="167" width="308" height="36"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="f04-sI-dre">
+                    <rect key="frame" x="6" y="162" width="308" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="看多"/>
                         <segment title="看空"/>
                     </segments>
                     <connections>
-                        <action selector="comExpectSegClicked:" destination="-1" eventType="valueChanged" id="5kC-up-cgF"/>
+                        <action selector="comExpectSegClicked:" destination="-1" eventType="valueChanged" id="qkF-pm-0fa"/>
                     </connections>
                 </segmentedControl>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DH8-AB-xQg">
-                    <rect key="frame" x="46" y="217" width="108" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DH8-AB-xQg">
+                    <rect key="frame" x="6" y="206" width="146" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
-                    <state key="normal" title="业绩简报">
+                    <inset key="imageEdgeInsets" minX="-46" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="业绩简报" image="report_small_icon.png">
+                        <color key="titleColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="ggReportBtClicked:" destination="-1" eventType="touchUpInside" id="fHB-G2-ubi"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcN-2N-YIc">
-                    <rect key="frame" x="206" y="217" width="108" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NcN-2N-YIc">
+                    <rect key="frame" x="168" y="206" width="146" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
-                    <state key="normal" title="估值模型">
+                    <inset key="imageEdgeInsets" minX="-46" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="估值模型" image="model_small_icon.png">
+                        <color key="titleColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="ggModelBtClicked:" destination="-1" eventType="touchUpInside" id="trh-rH-4dw"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIH-IJ-l5O">
-                    <rect key="frame" x="46" y="272" width="108" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIH-IJ-l5O">
+                    <rect key="frame" x="6" y="262" width="146" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
-                    <state key="normal" title="财务数据">
+                    <inset key="imageEdgeInsets" minX="-46" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="财务数据" image="fin_small_icon.png">
+                        <color key="titleColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="ggFinBtClicked:" destination="-1" eventType="touchUpInside" id="dtA-sR-cL9"/>
+                    </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-hM-2NE">
-                    <rect key="frame" x="206" y="272" width="108" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1E-hM-2NE">
+                    <rect key="frame" x="168" y="262" width="146" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
-                    <state key="normal" title="估值观点">
+                    <inset key="imageEdgeInsets" minX="-46" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="估值观点" image="view_small_icon.png">
+                        <color key="titleColor" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="ggViewBtClicked:" destination="-1" eventType="touchUpInside" id="2NO-56-YIj"/>
+                    </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="REPORT.png" translatesAutoresizingMaskIntoConstraints="NO" id="pic-iU-fY9">
-                    <rect key="frame" x="6" y="217" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="VALUEMODEL.png" translatesAutoresizingMaskIntoConstraints="NO" id="sAR-TL-ZdQ">
-                    <rect key="frame" x="166" y="217" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FINDATA.png" translatesAutoresizingMaskIntoConstraints="NO" id="lFK-bq-0R6">
-                    <rect key="frame" x="6" y="272" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="GGVIEW.png" translatesAutoresizingMaskIntoConstraints="NO" id="ypW-Be-QFE">
-                    <rect key="frame" x="166" y="272" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="gS1-el-gGf">
-                    <rect key="frame" x="6" y="327" width="308" height="132"/>
+                    <rect key="frame" x="6" y="318" width="308" height="132"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
@@ -192,9 +190,9 @@
         </view>
     </objects>
     <resources>
-        <image name="FINDATA.png" width="64" height="64"/>
-        <image name="GGVIEW.png" width="64" height="64"/>
-        <image name="REPORT.png" width="64" height="64"/>
-        <image name="VALUEMODEL.png" width="64" height="64"/>
+        <image name="fin_small_icon.png" width="32" height="32"/>
+        <image name="model_small_icon.png" width="32" height="32"/>
+        <image name="report_small_icon.png" width="32" height="32"/>
+        <image name="view_small_icon.png" width="32" height="32"/>
     </resources>
 </document>

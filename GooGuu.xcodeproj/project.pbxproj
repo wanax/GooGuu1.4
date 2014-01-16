@@ -145,6 +145,15 @@
 		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
 		AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */; };
 		AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB411880E41900386C49 /* DrawChartTool.m */; };
+		AE517A82188773D9004B6D5C /* report_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A81188773D9004B6D5C /* report_small_icon.png */; };
+		AE517A8A188776DC004B6D5C /* view_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A87188776DB004B6D5C /* view_small_icon.png */; };
+		AE517A8B188776DC004B6D5C /* model_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A88188776DC004B6D5C /* model_small_icon.png */; };
+		AE517A8D18877703004B6D5C /* fin_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A8C18877703004B6D5C /* fin_small_icon.png */; };
+		AE517A9118877DB3004B6D5C /* dahon_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A8E18877DB3004B6D5C /* dahon_small_icon.png */; };
+		AE517A9218877DB3004B6D5C /* post_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A8F18877DB3004B6D5C /* post_small_icon.png */; };
+		AE517A9318877DB3004B6D5C /* msg_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A9018877DB3004B6D5C /* msg_small_icon.png */; };
+		AE517AA41887813C004B6D5C /* wishes_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517AA21887813C004B6D5C /* wishes_small_icon.png */; };
+		AE517AA51887813C004B6D5C /* finpic_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517AA31887813C004B6D5C /* finpic_small_icon.png */; };
 		AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518712187E40370055B9AE /* FinancalModelChartViewController.m */; };
 		AE518716187E40370055B9AE /* FinanceDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518714187E40370055B9AE /* FinanceDataViewController.m */; };
 		AE51871C187E40550055B9AE /* DiscountRateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE51871B187E40550055B9AE /* DiscountRateViewController.m */; };
@@ -329,9 +338,6 @@
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
-		AEAD1F16188637DF004C4D38 /* wishesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F13188637DF004C4D38 /* wishesIcon.png */; };
-		AEAD1F17188637DF004C4D38 /* valueModelIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F14188637DF004C4D38 /* valueModelIcon.png */; };
-		AEAD1F18188637DF004C4D38 /* finPicIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEAD1F15188637DF004C4D38 /* finPicIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -654,6 +660,15 @@
 		AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DahonValuationViewController.m; sourceTree = "<group>"; };
 		AE49AB401880E41900386C49 /* DrawChartTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawChartTool.h; sourceTree = "<group>"; };
 		AE49AB411880E41900386C49 /* DrawChartTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawChartTool.m; sourceTree = "<group>"; };
+		AE517A81188773D9004B6D5C /* report_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = report_small_icon.png; path = ../IndexImg/report_small_icon.png; sourceTree = "<group>"; };
+		AE517A87188776DB004B6D5C /* view_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = view_small_icon.png; sourceTree = "<group>"; };
+		AE517A88188776DC004B6D5C /* model_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = model_small_icon.png; sourceTree = "<group>"; };
+		AE517A8C18877703004B6D5C /* fin_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fin_small_icon.png; sourceTree = "<group>"; };
+		AE517A8E18877DB3004B6D5C /* dahon_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dahon_small_icon.png; sourceTree = "<group>"; };
+		AE517A8F18877DB3004B6D5C /* post_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_small_icon.png; sourceTree = "<group>"; };
+		AE517A9018877DB3004B6D5C /* msg_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = msg_small_icon.png; sourceTree = "<group>"; };
+		AE517AA21887813C004B6D5C /* wishes_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wishes_small_icon.png; sourceTree = "<group>"; };
+		AE517AA31887813C004B6D5C /* finpic_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finpic_small_icon.png; sourceTree = "<group>"; };
 		AE518711187E40370055B9AE /* FinancalModelChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinancalModelChartViewController.h; sourceTree = "<group>"; };
 		AE518712187E40370055B9AE /* FinancalModelChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = FinancalModelChartViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE518713187E40370055B9AE /* FinanceDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanceDataViewController.h; sourceTree = "<group>"; };
@@ -889,9 +904,6 @@
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
-		AEAD1F13188637DF004C4D38 /* wishesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wishesIcon.png; sourceTree = "<group>"; };
-		AEAD1F14188637DF004C4D38 /* valueModelIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valueModelIcon.png; sourceTree = "<group>"; };
-		AEAD1F15188637DF004C4D38 /* finPicIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finPicIcon.png; sourceTree = "<group>"; };
 		F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1582,6 +1594,29 @@
 			path = DaHonVC;
 			sourceTree = "<group>";
 		};
+		AE517A8518877677004B6D5C /* Index */ = {
+			isa = PBXGroup;
+			children = (
+				AE517A8E18877DB3004B6D5C /* dahon_small_icon.png */,
+				AE517A8F18877DB3004B6D5C /* post_small_icon.png */,
+				AE517A9018877DB3004B6D5C /* msg_small_icon.png */,
+				AE517A8C18877703004B6D5C /* fin_small_icon.png */,
+				AE517A87188776DB004B6D5C /* view_small_icon.png */,
+				AE517A88188776DC004B6D5C /* model_small_icon.png */,
+				AE517A81188773D9004B6D5C /* report_small_icon.png */,
+			);
+			name = Index;
+			sourceTree = "<group>";
+		};
+		AE517A9D18877F39004B6D5C /* Icon */ = {
+			isa = PBXGroup;
+			children = (
+				AE517AA21887813C004B6D5C /* wishes_small_icon.png */,
+				AE517AA31887813C004B6D5C /* finpic_small_icon.png */,
+			);
+			name = Icon;
+			sourceTree = "<group>";
+		};
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1840,11 +1875,9 @@
 		AE949CDB187E7A69004FC1AB /* IndexImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE517A9D18877F39004B6D5C /* Icon */,
 				AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */,
 				AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */,
-				AEAD1F13188637DF004C4D38 /* wishesIcon.png */,
-				AEAD1F14188637DF004C4D38 /* valueModelIcon.png */,
-				AEAD1F15188637DF004C4D38 /* finPicIcon.png */,
 				AE949CF2187E8074004FC1AB /* dailystockbackground.png */,
 				AE949CF3187E8074004FC1AB /* dailyStockLittleIcon.png */,
 			);
@@ -1854,6 +1887,7 @@
 		AE949CDC187E7A69004FC1AB /* ModelsImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE517A8518877677004B6D5C /* Index */,
 				AE949D02187E80FD004FC1AB /* DaHonImg */,
 				AE949D03187E80FD004FC1AB /* FinanceImg */,
 				AE949D04187E80FD004FC1AB /* ValueImg */,
@@ -2194,17 +2228,18 @@
 				AE949D24187E8154004FC1AB /* hasModelSymbol.png in Resources */,
 				AE949D01187E80A5004FC1AB /* enterCompanyBt.png in Resources */,
 				AE949D28187E8154004FC1AB /* searchBarBack.png in Resources */,
-				AEAD1F16188637DF004C4D38 /* wishesIcon.png in Resources */,
 				AE0D3D99187D46EB00E0E141 /* MainWindow.xib in Resources */,
 				AE9B2C921886965E0077B56D /* REPORT.png in Resources */,
 				AE949D90187E81E5004FC1AB /* shadowUp.png in Resources */,
 				AE9B2C931886965E0077B56D /* FINDATA.png in Resources */,
 				AE949D13187E8122004FC1AB /* chartBt.png in Resources */,
 				AE01888B187D02BC004C6A5D /* InterestList.plist in Resources */,
+				AE517AA51887813C004B6D5C /* finpic_small_icon.png in Resources */,
 				AE0D3DA8187D46EB00E0E141 /* ReportCell.xib in Resources */,
 				AE949D25187E8154004FC1AB /* hasnoBriefSymbol.png in Resources */,
 				AE949DC7187E8262004FC1AB /* BETA.png in Resources */,
 				AE0D3D9B187D46EB00E0E141 /* GooNewsCell.xib in Resources */,
+				AE517A9318877DB3004B6D5C /* msg_small_icon.png in Resources */,
 				AE949DB6187E8239004FC1AB /* read2.png in Resources */,
 				AE01887F187D02B0004C6A5D /* c.html in Resources */,
 				AE0D3D26187D410800E0E141 /* PicCollectionCell.xib in Resources */,
@@ -2213,6 +2248,7 @@
 				AE949D08187E810F004FC1AB /* reflashBt.png in Resources */,
 				AE949D3D187E8169004FC1AB /* backBt.png in Resources */,
 				AE018892187D02BC004C6A5D /* FrameParamConfig.plist in Resources */,
+				AE517A8A188776DC004B6D5C /* view_small_icon.png in Resources */,
 				AE949D0C187E8118004FC1AB /* discountBack.png in Resources */,
 				AE949D3B187E8169004FC1AB /* saveBt.png in Resources */,
 				AE0D3D9A187D46EB00E0E141 /* CustomCell.xib in Resources */,
@@ -2242,6 +2278,7 @@
 				AE018875187D00A7004C6A5D /* Images.xcassets in Resources */,
 				AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */,
 				AE949D39187E8169004FC1AB /* savedBt.png in Resources */,
+				AE517AA41887813C004B6D5C /* wishes_small_icon.png in Resources */,
 				AE949CF7187E8085004FC1AB /* addComment.png in Resources */,
 				AE949DC6187E8262004FC1AB /* ASTOCK.png in Resources */,
 				AE949CFE187E80A5004FC1AB /* addAttentionBt.png in Resources */,
@@ -2260,6 +2297,7 @@
 				AE018880187D02B0004C6A5D /* calu.html in Resources */,
 				AE949DCE187E8262004FC1AB /* INVESTCOM.png in Resources */,
 				AE018898187D02D0004C6A5D /* Entitlements.plist in Resources */,
+				AE517A8B188776DC004B6D5C /* model_small_icon.png in Resources */,
 				AE949D4A187E817C004FC1AB /* backImage.png in Resources */,
 				AE01888F187D02BC004C6A5D /* userconfigure.plist in Resources */,
 				AE0D3DA1187D46EB00E0E141 /* AboutUsAndCopyrightView.xib in Resources */,
@@ -2269,7 +2307,6 @@
 				AE949D92187E81E5004FC1AB /* whiteArrow@2x.png in Resources */,
 				AE949D38187E8169004FC1AB /* mainIncomeBt.png in Resources */,
 				AE7C1AC418851359006D37B5 /* TopComCell.xib in Resources */,
-				AEAD1F17188637DF004C4D38 /* valueModelIcon.png in Resources */,
 				AE949DE1187E8298004FC1AB /* googuuViewBar@2x.png in Resources */,
 				AE949D48187E817C004FC1AB /* backButton.png in Resources */,
 				AE018890187D02BC004C6A5D /* BenchmarkIndex.plist in Resources */,
@@ -2282,7 +2319,6 @@
 				AE949D93187E81E5004FC1AB /* tabUnSelected.png in Resources */,
 				AE949D96187E81E5004FC1AB /* riseArrow.png in Resources */,
 				AE949D4F187E817C004FC1AB /* topDone@2x.png in Resources */,
-				AEAD1F18188637DF004C4D38 /* finPicIcon.png in Resources */,
 				AE949DE0187E8298004FC1AB /* googuuViewBar.png in Resources */,
 				AE949CF5187E8074004FC1AB /* dailyStockLittleIcon.png in Resources */,
 				AE01888C187D02BC004C6A5D /* OccupationalList.plist in Resources */,
@@ -2329,8 +2365,10 @@
 				AE018874187D00A7004C6A5D /* GooGuu-Info.plist in Resources */,
 				AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */,
 				AE0D3DA2187D46EB00E0E141 /* DiscountRateView.xib in Resources */,
+				AE517A82188773D9004B6D5C /* report_small_icon.png in Resources */,
 				AE949D18187E8122004FC1AB /* selectedRatioBt.png in Resources */,
 				AE949D9D187E81F7004FC1AB /* myGGOutLookingLable.png in Resources */,
+				AE517A8D18877703004B6D5C /* fin_small_icon.png in Resources */,
 				AE949D97187E81E5004FC1AB /* help.png in Resources */,
 				AE949D5E187E81A2004FC1AB /* autoLoginCheck.png in Resources */,
 				AE949DE3187E8298004FC1AB /* graphExchangeBar@2x.png in Resources */,
@@ -2345,7 +2383,9 @@
 				AE949D16187E8122004FC1AB /* selectedChartBt.png in Resources */,
 				AE0D3D9E187D46EB00E0E141 /* DailyStockCell.xib in Resources */,
 				AE949D62187E81A2004FC1AB /* pwdImg.png in Resources */,
+				AE517A9218877DB3004B6D5C /* post_small_icon.png in Resources */,
 				AE949D49187E817C004FC1AB /* backButtonSelected.png in Resources */,
+				AE517A9118877DB3004B6D5C /* dahon_small_icon.png in Resources */,
 				AE949D3A187E8169004FC1AB /* resetBt.png in Resources */,
 				AE949D63187E81A2004FC1AB /* quest.png in Resources */,
 				AE949D61187E81A2004FC1AB /* loginBt.png in Resources */,

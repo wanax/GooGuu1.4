@@ -28,6 +28,11 @@
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor cloudsColor];
     self.comAboutTable.scrollEnabled = NO;
+    
+    self.ggReportButton.layer.cornerRadius = 4.0;
+    self.ggValueModelButton.layer.cornerRadius = 4.0;
+    self.ggFinDataButton.layer.cornerRadius = 4.0;
+    self.ggViewButton.layer.cornerRadius = 4.0;
 }
 
 #pragma mark -
@@ -47,6 +52,15 @@
 }
 
 - (IBAction)ggReportBtClicked:(id)sender {
+}
+
+- (IBAction)ggModelBtClicked:(id)sender {
+}
+
+- (IBAction)ggFinBtClicked:(id)sender {
+}
+
+- (IBAction)ggViewBtClicked:(id)sender {
 }
 
 -(IBAction)backUp:(UIBarButtonItem *)bt {
@@ -72,19 +86,20 @@
                  reuseIdentifier:CustomCellIdentifier] autorelease];
     }
     cell.textLabel.font = [UIFont fontWithName:@"Heiti SC" size:14.0f];
-    cell.detailTextLabel.textColor = [UIColor grayColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //cell.imageView.frame = CGRectMake(0,0,10,10);
+    cell.imageView.contentMode = UIViewContentModeCenter;
     int row = indexPath.row;
     
     if (row == 0) {
         cell.textLabel.text = @"公司公告";
-        cell.imageView.image = [UIImage imageNamed:@"ASTOCK"];
+        cell.imageView.image = [UIImage imageNamed:@"post_small_icon"];
     } else if (row == 1) {
         cell.textLabel.text = @"大行估值";
-        cell.imageView.image = [UIImage imageNamed:@"FUNDTIME"];
+        cell.imageView.image = [UIImage imageNamed:@"dahon_small_icon"];
     } else if (row ==2) {
         cell.textLabel.text = @"估友评论";
-        cell.imageView.image = [UIImage imageNamed:@"MSG"];
+        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
     }
     return cell;
     
@@ -107,7 +122,6 @@
     [_part1View release];
     [_topBar release];
     [_comNameLabel release];
-    [_comInfoSeg release];
     [_comIconImg release];
     [_comInfoSeg release];
     [_marketPriLabel release];
@@ -119,9 +133,6 @@
     [_ggValueModelButton release];
     [_ggFinDataButton release];
     [_ggViewButton release];
-    [_ggValueModelBtClicked release];
-    [_finDataBtClicked release];
-    [_ggViewBtClicked release];
     [_comAboutTable release];
     [super dealloc];
 }
