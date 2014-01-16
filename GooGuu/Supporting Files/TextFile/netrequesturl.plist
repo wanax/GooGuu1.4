@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CompanyPost</key>
+	<string>/m/companynotice</string>
+	<key>CompanyBrief</key>
+	<string>/m/companyintro</string>
+	<key>GetCompanyInfo</key>
+	<string>/m/companyinfo</string>
 	<key>GetTopComments</key>
 	<string>/m/featuredreview</string>
 	<key>FallSpace</key>

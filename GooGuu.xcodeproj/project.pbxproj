@@ -179,6 +179,7 @@
 		AE58A7261883899600E044BD /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = AE58A7251883899600E044BD /* XYPieChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE58A72E18838A3200E044BD /* WishesPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE58A72D18838A3200E044BD /* WishesPieViewController.m */; };
 		AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE5EBBC11883C3940019B48F /* WishesComListViewController.m */; };
+		AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */; };
 		AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */; };
 		AE74DF8E187E44DE002AE169 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8B187E44DE002AE169 /* LoginView.m */; };
 		AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */; };
@@ -720,6 +721,8 @@
 		AE58A72D18838A3200E044BD /* WishesPieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishesPieViewController.m; sourceTree = "<group>"; };
 		AE5EBBC01883C3940019B48F /* WishesComListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WishesComListViewController.h; sourceTree = "<group>"; };
 		AE5EBBC11883C3940019B48F /* WishesComListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WishesComListViewController.m; sourceTree = "<group>"; };
+		AE71CACC1887DD10005B3A2D /* CompanyPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyPostListViewController.h; sourceTree = "<group>"; };
+		AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyPostListViewController.m; sourceTree = "<group>"; };
 		AE74DF87187E44D3002AE169 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
 		AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterViewController.m; sourceTree = "<group>"; };
 		AE74DF8A187E44DE002AE169 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
@@ -1620,15 +1623,11 @@
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE71CACB1887DCFD005B3A2D /* Accessory */,
+				AE71CAC81887DCC2005B3A2D /* OldVC */,
 				AE9B2C8C188682190077B56D /* GGModelIndexView.xib */,
 				AE9B2C89188681E60077B56D /* GGModelIndexVC.h */,
 				AE9B2C8A188681E60077B56D /* GGModelIndexVC.m */,
-				AE518745187E41FF0055B9AE /* ComFieldViewController.h */,
-				AE518746187E41FF0055B9AE /* ComFieldViewController.m */,
-				AE51872C187E410A0055B9AE /* ContainerViewController.h */,
-				AE51872D187E410A0055B9AE /* ContainerViewController.m */,
-				AE518729187E40FB0055B9AE /* ModelViewController.h */,
-				AE51872A187E40FB0055B9AE /* ModelViewController.m */,
 				AE518720187E40C50055B9AE /* ClientComments */,
 				AE518721187E40C50055B9AE /* ComPic */,
 				AE518722187E40C50055B9AE /* ComReports */,
@@ -1750,6 +1749,28 @@
 				AE5EBBC11883C3940019B48F /* WishesComListViewController.m */,
 			);
 			path = ClientWishes;
+			sourceTree = "<group>";
+		};
+		AE71CAC81887DCC2005B3A2D /* OldVC */ = {
+			isa = PBXGroup;
+			children = (
+				AE518745187E41FF0055B9AE /* ComFieldViewController.h */,
+				AE518746187E41FF0055B9AE /* ComFieldViewController.m */,
+				AE51872C187E410A0055B9AE /* ContainerViewController.h */,
+				AE51872D187E410A0055B9AE /* ContainerViewController.m */,
+				AE518729187E40FB0055B9AE /* ModelViewController.h */,
+				AE51872A187E40FB0055B9AE /* ModelViewController.m */,
+			);
+			name = OldVC;
+			sourceTree = "<group>";
+		};
+		AE71CACB1887DCFD005B3A2D /* Accessory */ = {
+			isa = PBXGroup;
+			children = (
+				AE71CACC1887DD10005B3A2D /* CompanyPostListViewController.h */,
+				AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */,
+			);
+			path = Accessory;
 			sourceTree = "<group>";
 		};
 		AE74DF83187E4480002AE169 /* ClientCenter */ = {
@@ -2557,6 +2578,7 @@
 				AE0D3D16187D407700E0E141 /* Indicator2View.m in Sources */,
 				AE74DF8E187E44DE002AE169 /* LoginView.m in Sources */,
 				AE74DF9F187E4509002AE169 /* FeedBackViewController.m in Sources */,
+				AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */,
 				AE74DF9D187E4509002AE169 /* StockRiseDownColorSettingViewController.m in Sources */,
 				AE0D3D81187D469800E0E141 /* SearchStockCell.m in Sources */,
 				AE0D3D7F187D469800E0E141 /* DoubleLabelCell.m in Sources */,

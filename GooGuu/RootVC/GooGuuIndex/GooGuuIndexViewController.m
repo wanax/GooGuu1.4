@@ -52,9 +52,9 @@
     [Utiles getNetInfoWithPath:@"DailyStock" andParams:nil besidesBlock:^(id obj) {
         self.imageUrl = [NSString stringWithFormat:@"%@",[obj objectForKey:@"imageurl"]];
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[obj objectForKey:@"stockcode"],@"stockcode", nil];
-        [Utiles getNetInfoWithPath:@"QueryCompany" andParams:params besidesBlock:^(id resObj) {
+        [Utiles getNetInfoWithPath:@"GetCompanyInfo" andParams:params besidesBlock:^(id resObj) {
             
-            self.companyInfo = resObj;
+            self.dailyComInfo = resObj;
             [self.indexTable reloadData];
             
         } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
@@ -137,12 +137,12 @@
         [cell.indicatorLable setFont:[UIFont fontWithName:@"Heiti SC" size:13.0]];
         [cell.indicatorLable setTextColor:[UIColor whiteColor]];
         
-        NSNumber *marketPrice=[self.companyInfo objectForKey:@"marketprice"];
-        NSNumber *ggPrice=[self.companyInfo objectForKey:@"googuuprice"];
+        NSNumber *marketPrice=self.dailyComInfo[@"marketprice"];
+        NSNumber *ggPrice=self.dailyComInfo[@"googuuprice"];
         float outLook=([ggPrice floatValue]-[marketPrice floatValue])/[marketPrice floatValue];
         
-        cell.indicatorLable.text=[NSString stringWithFormat:@" %@(%@.%@) 潜在空间:%@",[self.companyInfo objectForKey:@"companyname"],[self.companyInfo objectForKey:@"stockcode"],[self.companyInfo objectForKey:@"marketname"],[NSString stringWithFormat:@"%.2f%%",outLook*100]];
-        if(!self.companyInfo){
+        cell.indicatorLable.text=[NSString stringWithFormat:@" %@(%@.%@) 潜在空间:%@",self.dailyComInfo[@"companyname"],self.dailyComInfo[@"stockcode"],self.dailyComInfo[@"market"],[NSString stringWithFormat:@"%.2f%%",outLook*100]];
+        if(!self.dailyComInfo){
             cell.indicatorLable.text=@"";
         }
         
@@ -231,6 +231,7 @@
     if (section == 0) {
         
         GGModelIndexVC *modelIndex = [[[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil] autorelease];
+        modelIndex.companyInfo = self.dailyComInfo;
         UINavigationController *navModel = [[[UINavigationController alloc] initWithRootViewController:modelIndex] autorelease];
         [self presentViewController:navModel animated:YES completion:nil];
         

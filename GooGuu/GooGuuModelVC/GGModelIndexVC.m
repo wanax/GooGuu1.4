@@ -7,6 +7,9 @@
 //
 
 #import "GGModelIndexVC.h"
+#import "CompanyPostListViewController.h"
+#import "DahonValuationViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
 
@@ -35,7 +38,7 @@
     self.navigationItem.leftBarButtonItem = back;
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:18.0]};
-    self.title = @"title";
+    self.title = self.companyInfo[@"companyname"];
     
     self.view.backgroundColor = [UIColor cloudsColor];
     self.comAboutTable.scrollEnabled = NO;
@@ -45,6 +48,23 @@
     self.ggFinDataButton.layer.cornerRadius = 4.0;
     self.ggViewButton.layer.cornerRadius = 4.0;
     
+    [self.comIconImg setImageWithURL:[NSURL URLWithString:self.companyInfo[@"comanylogourl"]] placeholderImage:[UIImage imageNamed:@"defaultCompanyLogo"]];
+    
+    float marketPri = [self.companyInfo[@"marketprice"] floatValue];
+    float ggPri = [self.companyInfo[@"googuuprice"] floatValue];
+    self.marketPriLabel.text = [NSString stringWithFormat:@"%.2f",marketPri];
+    self.googuuPriLabel.text = [NSString stringWithFormat:@"%.2f",ggPri];
+    
+    float percent = (ggPri - marketPri) / marketPri;
+    self.percentLabel.text = [NSString stringWithFormat:@"%.0f%%",percent*100];
+    if (percent > 0) {
+        self.updownIndicator.image = [UIImage imageNamed:@"stockUpArrow"];
+    } else {
+        self.updownIndicator.image = [UIImage imageNamed:@"stockDownArrow"];
+    }
+    
+    [self.comInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",self.companyInfo[@"attentioncount"]] forSegmentAtIndex:1];
+    [self.comInfoSeg setTitle:[NSString stringWithFormat:@"模型(%@)",self.companyInfo[@"usersavecount"]] forSegmentAtIndex:2];
 }
 
 #pragma mark -
@@ -58,7 +78,38 @@
 #pragma mark -
 #pragma Button Action
 
-- (IBAction)comInfoSegClicked:(id)sender {
+- (IBAction)comInfoSegClicked:(UISegmentedControl *)sender {
+    //公司简介
+    if (sender.selectedSegmentIndex == 0) {
+        
+        NSDictionary *params = @{
+                                 @"stockcode":self.companyInfo[@"stockcode"]
+                                 };
+
+        [Utiles getNetInfoWithPath:@"CompanyBrief" andParams:params besidesBlock:^(id obj) {
+
+            NSString *cont = @"";
+            if ([Utiles isBlankString:[obj JSONString]]) {
+                cont = @"暂无数据";
+            } else {
+                cont = obj[@"introduction"];
+            }
+            UIAlertView *comInfoAlert = [[[UIAlertView alloc] initWithTitle:@"公司简介" message:cont delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
+            [comInfoAlert show];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+
+    } else if (sender.selectedSegmentIndex == 1) {//关注用户
+        
+    } else if (sender.selectedSegmentIndex == 2){//保存用户
+        
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
 }
 
 - (IBAction)comExpectSegClicked:(id)sender {
@@ -122,6 +173,21 @@
 #pragma Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    int row = indexPath.row;
+    //公司公告
+    if (row == 0) {
+        CompanyPostListViewController *postVC = [[[CompanyPostListViewController alloc] init] autorelease];
+        postVC.stockCode = self.companyInfo[@"stockcode"];
+        [self.navigationController pushViewController:postVC animated:YES];
+    } else if (row == 1) {//大行估值
+        DahonValuationViewController *dahonVC = [[[DahonValuationViewController alloc] init] autorelease];
+        dahonVC.comInfo = self.companyInfo;
+        [self presentViewController:dahonVC animated:YES completion:nil];
+    } else if (row == 2) {//估右评论
+        
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

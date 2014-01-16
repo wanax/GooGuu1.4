@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GGModelIndexVC : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface GGModelIndexVC : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
+
+@property (nonatomic,retain) id companyInfo;
 
 @property (retain, nonatomic) IBOutlet UIView *part1View;
 @property (retain, nonatomic) IBOutlet UIToolbar *topBar;

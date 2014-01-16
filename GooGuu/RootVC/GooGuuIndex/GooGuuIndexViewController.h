@@ -12,7 +12,7 @@
 
 @property (nonatomic,retain) UITableView *indexTable;
 
-@property (nonatomic,retain) id companyInfo;
+@property (nonatomic,retain) id dailyComInfo;
 @property (nonatomic,retain) NSString *imageUrl;
 
 @end

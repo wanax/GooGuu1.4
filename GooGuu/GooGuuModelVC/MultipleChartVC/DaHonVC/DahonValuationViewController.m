@@ -187,7 +187,9 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    self.comInfo = delegate.comInfo;
+    if (delegate.comInfo) {
+        self.comInfo = delegate.comInfo;
+    }
     NSDictionary *params=@{@"stockcode": self.comInfo[@"stockcode"]};
     [Utiles getNetInfoWithPath:@"GetStockHistoryData" andParams:params besidesBlock:^(id resObj){
         NSNumberFormatter * formatter   = [[NSNumberFormatter alloc] init];
