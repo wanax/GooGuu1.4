@@ -3,7 +3,7 @@
 */
 
 #define INJECTION_NOIMPL
-#define INJECTION_BUNDLE InjectionBundle6
+#define INJECTION_BUNDLE InjectionBundle3
 
 #import "/Applications/Injection Plugin.app/Contents/Resources/BundleInjection.h"
 
@@ -18,9 +18,9 @@
 
 
 
-@interface InjectionBundle6 : NSObject
+@interface InjectionBundle3 : NSObject
 @end
-@implementation InjectionBundle6
+@implementation InjectionBundle3
 
 + (void)load {
     Class bundleInjection = NSClassFromString(@"BundleInjection");
@@ -35,7 +35,7 @@ extern int injectionHook(void);
 
 int injectionHook() {
     NSLog( @"injectionHook():" );
-    [InjectionBundle6 load];
+    [InjectionBundle3 load];
     return YES;
 }
 

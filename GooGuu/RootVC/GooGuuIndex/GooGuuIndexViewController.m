@@ -230,9 +230,9 @@
     //dailyCompany
     if (section == 0) {
         
-        GGModelIndexVC *modelIndex = [[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil];
-        modelIndex.hidesBottomBarWhenPushed = YES;
-        [self presentViewController:modelIndex animated:YES completion:nil];
+        GGModelIndexVC *modelIndex = [[[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil] autorelease];
+        UINavigationController *navModel = [[[UINavigationController alloc] initWithRootViewController:modelIndex] autorelease];
+        [self presentViewController:navModel animated:YES completion:nil];
         
     } else if (section == 1) {//custom
         

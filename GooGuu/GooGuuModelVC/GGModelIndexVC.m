@@ -26,19 +26,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	self.view.backgroundColor = [UIColor cloudsColor];
+    [self initComponents];
+}
+
+-(void)initComponents {
+    
+    UIBarButtonItem *back = [[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self  action:@selector(backUp:)] autorelease];
+    self.navigationItem.leftBarButtonItem = back;
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:18.0]};
+    self.title = @"title";
+    
+    self.view.backgroundColor = [UIColor cloudsColor];
     self.comAboutTable.scrollEnabled = NO;
     
     self.ggReportButton.layer.cornerRadius = 4.0;
     self.ggValueModelButton.layer.cornerRadius = 4.0;
     self.ggFinDataButton.layer.cornerRadius = 4.0;
     self.ggViewButton.layer.cornerRadius = 4.0;
+    
 }
 
 #pragma mark -
 #pragma NetWork
 
 -(void)getComInfo {
+    
     
 }
 
