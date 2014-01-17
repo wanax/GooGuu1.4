@@ -48,8 +48,12 @@
     self.ggFinDataButton.layer.cornerRadius = 4.0;
     self.ggViewButton.layer.cornerRadius = 4.0;
     
-    [self.comIconImg setImageWithURL:[NSURL URLWithString:self.companyInfo[@"comanylogourl"]] placeholderImage:[UIImage imageNamed:@"defaultCompanyLogo"]];
-    
+    if (![Utiles isBlankString:self.companyInfo[@"comanylogourl"]]) {
+        [self.comIconImg setImageWithURL:[NSURL URLWithString:self.companyInfo[@"comanylogourl"]] placeholderImage:[UIImage imageNamed:@"defaultCompanyLogo"]];
+    } else {
+        [self.comIconImg setImage:[UIImage imageNamed:@"defaultPic"]];
+    }
+
     float marketPri = [self.companyInfo[@"marketprice"] floatValue];
     float ggPri = [self.companyInfo[@"googuuprice"] floatValue];
     self.marketPriLabel.text = [NSString stringWithFormat:@"%.2f",marketPri];

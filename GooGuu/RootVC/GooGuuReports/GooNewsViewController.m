@@ -461,6 +461,7 @@
         wishesList.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:wishesList animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
     }else if(indexPath.section==1){
         
     }

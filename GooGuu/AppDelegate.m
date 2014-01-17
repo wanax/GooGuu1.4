@@ -194,41 +194,35 @@
 #pragma mark Generate Components
 
 -(void)initComponents{
-    UITabBarItem *barItem=[[[UITabBarItem alloc] initWithTitle:@"最新简报" image:[UIImage imageNamed:@"googuuNewsBar"] tag:1] autorelease];
-    UITabBarItem *barItem2=[[[UITabBarItem alloc] initWithTitle:@"我的估股" image:[UIImage imageNamed:@"myGooGuuBar"] tag:2] autorelease];
-    UITabBarItem *barItem3=[[[UITabBarItem alloc] initWithTitle:@"估值观点" image:[UIImage imageNamed:@"googuuViewBar"] tag:3] autorelease];
-    UITabBarItem *barItem4=[[[UITabBarItem alloc] initWithTitle:@"金融图汇" image:[UIImage imageNamed:@"graphExchangeBar"] tag:4] autorelease];
-    UITabBarItem *barItem5=[[[UITabBarItem alloc] initWithTitle:@"估值模型" image:[UIImage imageNamed:@"companyListBar"] tag:5] autorelease];
-    //股票关注
-    MyGooguuViewController *myGooGuu=[[[MyGooguuViewController alloc] init] autorelease];
-    myGooGuu.tabBarItem=barItem2;
-    UINavigationController *myGooGuuNavController=nil;
-    //金融图汇
-    FinPicKeyWordListViewController *picView=[[[FinPicKeyWordListViewController alloc] init] autorelease];
-    picView.tabBarItem=barItem4;
-    UINavigationController *picKeyWordNav=nil;
+    UITabBarItem *barItem=[[[UITabBarItem alloc] initWithTitle:@"估股首页" image:[UIImage imageNamed:@"googuuNewsBar"] tag:1] autorelease];
+    UITabBarItem *barItem2=[[[UITabBarItem alloc] initWithTitle:@"业绩简报" image:[UIImage imageNamed:@"googuuNewsBar"] tag:2] autorelease];
+    UITabBarItem *barItem3=[[[UITabBarItem alloc] initWithTitle:@"估值模型" image:[UIImage imageNamed:@"companyListBar"] tag:3] autorelease];
+    UITabBarItem *barItem4=[[[UITabBarItem alloc] initWithTitle:@"估值观点" image:[UIImage imageNamed:@"googuuViewBar"] tag:4] autorelease];
+    UITabBarItem *barItem5=[[[UITabBarItem alloc] initWithTitle:@"我的估股" image:[UIImage imageNamed:@"myGooGuuBar"] tag:5] autorelease];
+    //估股首页
+    GooGuuIndexViewController *ggIndexVC = [[[GooGuuIndexViewController alloc] init] autorelease];
+    ggIndexVC.tabBarItem = barItem;
+    UINavigationController *ggIndexNav = [[[UINavigationController alloc] initWithRootViewController:ggIndexVC] autorelease];
+    //业绩简报
+    GooNewsViewController *ggNewsVC = [[[GooNewsViewController alloc] init] autorelease];
+    ggNewsVC.tabBarItem = barItem2;
+    UINavigationController *ggNewsNav = [[[UINavigationController alloc] initWithRootViewController:ggNewsVC] autorelease];
+    //估值模型
+    MyGooguuViewController *ggModelVC = [[[MyGooguuViewController alloc] init] autorelease];
+    ggModelVC.tabBarItem=barItem3;
+    UINavigationController *ggModelNav = [[[UINavigationController alloc] initWithRootViewController:ggModelVC] autorelease];
     //估值观点
-    GooGuuViewController *toolsViewController=[[[GooGuuViewController alloc] init] autorelease];
-    toolsViewController.tabBarItem=barItem3;
-    UINavigationController *toolsNav=nil;
-    //估股新闻
-    GooGuuIndexViewController *gooNewsViewController=[[[GooGuuIndexViewController alloc] init] autorelease];
-    gooNewsViewController.tabBarItem=barItem;
-    UINavigationController *gooNewsNavController=nil;
-    //股票列表
-    UniverseViewController *universeViewController=[[[UniverseViewController alloc] init] autorelease];
-    universeViewController.tabBarItem=barItem5;
-    UINavigationController *universeNav=nil;
-    
-    myGooGuuNavController=[[[UINavigationController alloc] initWithRootViewController:myGooGuu] autorelease];
-    gooNewsNavController=[[[UINavigationController alloc] initWithRootViewController:gooNewsViewController] autorelease];
-    universeNav=[[[UINavigationController alloc] initWithRootViewController:universeViewController] autorelease];
-    toolsNav=[[[UINavigationController alloc] initWithRootViewController:toolsViewController] autorelease];
-    picKeyWordNav=[[[UINavigationController alloc] initWithRootViewController:picView] autorelease];
+    GooGuuViewController *ggViewVC = [[[GooGuuViewController alloc] init] autorelease];
+    ggViewVC.tabBarItem = barItem4;
+    UINavigationController *ggViewNav = [[[UINavigationController alloc] initWithRootViewController:ggViewVC] autorelease];
+    //我的估股
+    UniverseViewController *myGGVC = [[[UniverseViewController alloc] init] autorelease];
+    myGGVC.tabBarItem = barItem5;
+    UINavigationController *myGGNav = [[[UINavigationController alloc] initWithRootViewController:myGGVC] autorelease];
     
     UITabBarController *tempBar = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController = tempBar;
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:gooNewsNavController,toolsNav,universeNav,picKeyWordNav, myGooGuuNavController,nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:ggIndexNav,ggNewsNav,ggModelNav,ggViewNav,myGGNav,nil];
     
     self.window.backgroundColor=[UIColor clearColor];
     self.window.rootViewController = self.tabBarController;

@@ -115,11 +115,12 @@
         [Utiles postNetInfoWithPath:@"Votes" andParams:params besidesBlock:^(id obj) {
             
             if ([obj[@"status"] isEqualToString:@"1"]) {
-                WishesPieViewController *pieChart = [[[WishesPieViewController alloc] initWithComList:self.comList] autorelease];
-                [self.navigationController pushViewController:pieChart animated:YES];
+                [self pushVC];
                 [tableView deselectRowAtIndexPath:indexPath animated:YES];
             } else {
+                
                 [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.0];
+                [self performSelector:@selector(pushVC) withObject:nil afterDelay:1.0];
                 [tableView deselectRowAtIndexPath:indexPath animated:YES];
             }
             
@@ -134,6 +135,10 @@
     
 }
 
+-(void)pushVC {
+    WishesPieViewController *pieChart = [[[WishesPieViewController alloc] initWithComList:self.comList] autorelease];
+    [self.navigationController pushViewController:pieChart animated:YES];
+}
 
 
 -(BOOL)shouldAutorotate{

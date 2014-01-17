@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "411558378.160326"
+            timestampString = "411618533.34454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
             landmarkName = "-comInfoSegClicked:"
             landmarkType = "5">
          </BreakpointContent>
