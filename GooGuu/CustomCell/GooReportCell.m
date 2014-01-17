@@ -1,14 +1,14 @@
 //
-//  GooNewsCell.m
+//  GooReportCell.m
 //  UIDemo
 //
 //  Created by Xcode on 13-6-14.
 //  Copyright (c) 2013年 Xcode. All rights reserved.
 //
 
-#import "GooNewsCell.h"
+#import "GooReportCell.h"
 
-@implementation GooNewsCell
+@implementation GooReportCell
 
 @synthesize titleLabel;
 @synthesize contentLabel;

@@ -101,7 +101,7 @@
 		AE0D3D79187D469800E0E141 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D63187D469800E0E141 /* UserCell.m */; };
 		AE0D3D7A187D469800E0E141 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D65187D469800E0E141 /* CustomCell.m */; };
 		AE0D3D7B187D469800E0E141 /* AddCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D67187D469800E0E141 /* AddCell.m */; };
-		AE0D3D7C187D469800E0E141 /* GooNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D69187D469800E0E141 /* GooNewsCell.m */; };
+		AE0D3D7C187D469800E0E141 /* GooReportCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D69187D469800E0E141 /* GooReportCell.m */; };
 		AE0D3D7D187D469800E0E141 /* DailyStockCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D6B187D469800E0E141 /* DailyStockCell.m */; };
 		AE0D3D7E187D469800E0E141 /* DailyStock2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D6D187D469800E0E141 /* DailyStock2Cell.m */; };
 		AE0D3D7F187D469800E0E141 /* DoubleLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D6F187D469800E0E141 /* DoubleLabelCell.m */; };
@@ -112,7 +112,7 @@
 		AE0D3D98187D46EB00E0E141 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D87187D46EB00E0E141 /* UserCell.xib */; };
 		AE0D3D99187D46EB00E0E141 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D88187D46EB00E0E141 /* MainWindow.xib */; };
 		AE0D3D9A187D46EB00E0E141 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D89187D46EB00E0E141 /* CustomCell.xib */; };
-		AE0D3D9B187D46EB00E0E141 /* GooNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8A187D46EB00E0E141 /* GooNewsCell.xib */; };
+		AE0D3D9B187D46EB00E0E141 /* GooReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */; };
 		AE0D3D9C187D46EB00E0E141 /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8B187D46EB00E0E141 /* StockCell.xib */; };
 		AE0D3D9D187D46EB00E0E141 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8C187D46EB00E0E141 /* AddCommentView.xib */; };
 		AE0D3D9E187D46EB00E0E141 /* DailyStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8D187D46EB00E0E141 /* DailyStockCell.xib */; };
@@ -203,7 +203,7 @@
 		AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */; };
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
 		AE7EE3211884DB3B00A0E5BF /* GooGuuArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */; };
-		AE7EE3231884DB3B00A0E5BF /* GooNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GooNewsViewController.m */; };
+		AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */; };
 		AE7EE3281884DD0700A0E5BF /* TopArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3271884DD0700A0E5BF /* TopArticlesViewController.m */; };
 		AE949CE7187E7B73004FC1AB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE3187E7B73004FC1AB /* icon.png */; };
 		AE949CE8187E7B73004FC1AB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE4187E7B73004FC1AB /* icon@2x.png */; };
@@ -523,8 +523,8 @@
 		AE0D3D65187D469800E0E141 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		AE0D3D66187D469800E0E141 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
 		AE0D3D67187D469800E0E141 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
-		AE0D3D68187D469800E0E141 /* GooNewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooNewsCell.h; sourceTree = "<group>"; };
-		AE0D3D69187D469800E0E141 /* GooNewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooNewsCell.m; sourceTree = "<group>"; };
+		AE0D3D68187D469800E0E141 /* GooReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooReportCell.h; sourceTree = "<group>"; };
+		AE0D3D69187D469800E0E141 /* GooReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooReportCell.m; sourceTree = "<group>"; };
 		AE0D3D6A187D469800E0E141 /* DailyStockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyStockCell.h; sourceTree = "<group>"; };
 		AE0D3D6B187D469800E0E141 /* DailyStockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyStockCell.m; sourceTree = "<group>"; };
 		AE0D3D6C187D469800E0E141 /* DailyStock2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyStock2Cell.h; sourceTree = "<group>"; };
@@ -542,7 +542,7 @@
 		AE0D3D87187D46EB00E0E141 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		AE0D3D88187D46EB00E0E141 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		AE0D3D89187D46EB00E0E141 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
-		AE0D3D8A187D46EB00E0E141 /* GooNewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GooNewsCell.xib; sourceTree = "<group>"; };
+		AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GooReportCell.xib; path = ../../NibFile/Common/GooReportCell.xib; sourceTree = "<group>"; };
 		AE0D3D8B187D46EB00E0E141 /* StockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockCell.xib; sourceTree = "<group>"; };
 		AE0D3D8C187D46EB00E0E141 /* AddCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCommentView.xib; sourceTree = "<group>"; };
 		AE0D3D8D187D46EB00E0E141 /* DailyStockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyStockCell.xib; sourceTree = "<group>"; };
@@ -766,8 +766,8 @@
 		AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCommentViewController.m; sourceTree = "<group>"; };
 		AE7EE3181884DB3B00A0E5BF /* GooGuuArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuArticleViewController.h; sourceTree = "<group>"; };
 		AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuArticleViewController.m; sourceTree = "<group>"; };
-		AE7EE31B1884DB3B00A0E5BF /* GooNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooNewsViewController.h; sourceTree = "<group>"; };
-		AE7EE31C1884DB3B00A0E5BF /* GooNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooNewsViewController.m; sourceTree = "<group>"; };
+		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
+		AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGReportListVC.m; sourceTree = "<group>"; };
 		AE7EE3261884DD0700A0E5BF /* TopArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopArticlesViewController.h; sourceTree = "<group>"; };
 		AE7EE3271884DD0700A0E5BF /* TopArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopArticlesViewController.m; sourceTree = "<group>"; };
 		AE949CE3187E7B73004FC1AB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
@@ -1071,8 +1071,8 @@
 				AE0D3D65187D469800E0E141 /* CustomCell.m */,
 				AE0D3D66187D469800E0E141 /* AddCell.h */,
 				AE0D3D67187D469800E0E141 /* AddCell.m */,
-				AE0D3D68187D469800E0E141 /* GooNewsCell.h */,
-				AE0D3D69187D469800E0E141 /* GooNewsCell.m */,
+				AE0D3D68187D469800E0E141 /* GooReportCell.h */,
+				AE0D3D69187D469800E0E141 /* GooReportCell.m */,
 				AE0D3D6A187D469800E0E141 /* DailyStockCell.h */,
 				AE0D3D6B187D469800E0E141 /* DailyStockCell.m */,
 				AE0D3D6C187D469800E0E141 /* DailyStock2Cell.h */,
@@ -1356,14 +1356,15 @@
 		AE0D3D02187D405B00E0E141 /* GooGuuReports */ = {
 			isa = PBXGroup;
 			children = (
+				AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */,
+				AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */,
+				AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */,
 				AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */,
 				AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */,
 				AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */,
 				AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */,
 				AE7EE3181884DB3B00A0E5BF /* GooGuuArticleViewController.h */,
 				AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */,
-				AE7EE31B1884DB3B00A0E5BF /* GooNewsViewController.h */,
-				AE7EE31C1884DB3B00A0E5BF /* GooNewsViewController.m */,
 			);
 			path = GooGuuReports;
 			sourceTree = "<group>";
@@ -1439,7 +1440,6 @@
 				AE0D3D87187D46EB00E0E141 /* UserCell.xib */,
 				AE0D3D88187D46EB00E0E141 /* MainWindow.xib */,
 				AE0D3D89187D46EB00E0E141 /* CustomCell.xib */,
-				AE0D3D8A187D46EB00E0E141 /* GooNewsCell.xib */,
 				AE0D3D8B187D46EB00E0E141 /* StockCell.xib */,
 				AE0D3D8C187D46EB00E0E141 /* AddCommentView.xib */,
 				AE0D3D8D187D46EB00E0E141 /* DailyStockCell.xib */,
@@ -2259,7 +2259,7 @@
 				AE0D3DA8187D46EB00E0E141 /* ReportCell.xib in Resources */,
 				AE949D25187E8154004FC1AB /* hasnoBriefSymbol.png in Resources */,
 				AE949DC7187E8262004FC1AB /* BETA.png in Resources */,
-				AE0D3D9B187D46EB00E0E141 /* GooNewsCell.xib in Resources */,
+				AE0D3D9B187D46EB00E0E141 /* GooReportCell.xib in Resources */,
 				AE517A9318877DB3004B6D5C /* msg_small_icon.png in Resources */,
 				AE949DB6187E8239004FC1AB /* read2.png in Resources */,
 				AE01887F187D02B0004C6A5D /* c.html in Resources */,
@@ -2511,7 +2511,7 @@
 				AE0D3D15187D407700E0E141 /* IndicatorView.m in Sources */,
 				AE0D3D4C187D45E400E0E141 /* AOTag.m in Sources */,
 				AE06B8E6187EAB7900DA93E2 /* FinanceToolsViewController.m in Sources */,
-				AE7EE3231884DB3B00A0E5BF /* GooNewsViewController.m in Sources */,
+				AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */,
 				AE0D3CBF187D36B200E0E141 /* Utiles.m in Sources */,
 				AE7C1AC7188515D6006D37B5 /* TopComCell.m in Sources */,
 				AE518757187E42F10055B9AE /* CQMFloatingController.m in Sources */,
@@ -2523,7 +2523,7 @@
 				AE74DFA8187E4518002AE169 /* SettingCenterViewController.m in Sources */,
 				AE518735187E411A0055B9AE /* AnalysisReportViewController.m in Sources */,
 				AE0D3D48187D414400E0E141 /* IndicatorSearchView.m in Sources */,
-				AE0D3D7C187D469800E0E141 /* GooNewsCell.m in Sources */,
+				AE0D3D7C187D469800E0E141 /* GooReportCell.m in Sources */,
 				AE0D3D80187D469800E0E141 /* LabelSwitchCell.m in Sources */,
 				AE0D3CC0187D36B200E0E141 /* CommonlyMacros.m in Sources */,
 				AE7C1AD218852FE1006D37B5 /* TopCommentsViewController.m in Sources */,

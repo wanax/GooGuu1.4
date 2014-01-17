@@ -13,6 +13,7 @@
 #import "TopCommentsViewController.h"
 #import "WishesComListViewController.h"
 #import "GGModelIndexVC.h"
+#import "HelpViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuIndexViewController ()
@@ -30,6 +31,26 @@
     return self;
 }
 
+-(void)helpAction:(id)sender{
+    
+    HelpViewController *help=[[HelpViewController alloc] init];
+    help.type=UserHelp;
+    help.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:help animated:YES];
+    SAFE_RELEASE(help);
+    
+}
+-(void)addHelpBt{
+    
+    UIButton *wanSay = [[[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)] autorelease];
+    [wanSay setImage:[UIImage imageNamed:@"helpBt"] forState:UIControlStateNormal];
+    [wanSay addTarget:self action:@selector(helpAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
+    [self.navigationItem setRightBarButtonItem:nextStepBarBtn animated:YES];
+    
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -39,7 +60,12 @@
 }
 
 -(void)initComponents {
+    
+    [self addHelpBt];
+    
     UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain] autorelease];
+    temp.backgroundColor = [UIColor cloudsColor];
+    temp.showsVerticalScrollIndicator = NO;
     temp.delegate = self;
     temp.dataSource = self;
     self.indexTable = temp;
@@ -128,7 +154,7 @@
         }
         static NSNumberFormatter *formatter;
         if(formatter==nil){
-            formatter=[[NSNumberFormatter alloc] init];
+            formatter=[[[NSNumberFormatter alloc] init] autorelease];
             [formatter setPositiveFormat:@"##0.##"];
         }
         
@@ -150,8 +176,7 @@
         cell.backLabel.layer.cornerRadius = 5;
         cell.backLabel.layer.borderColor = [UIColor grayColor].CGColor;
         cell.backLabel.layer.borderWidth = 0;
-        
-        SAFE_RELEASE(formatter);
+
         return cell;
         
     } else if (indexPath.section == 1) {

@@ -10,7 +10,7 @@
 #import "MyGooguuViewController.h"
 #import "FinPicKeyWordListViewController.h"
 #import "GooGuuViewController.h"
-#import "GooNewsViewController.h"
+#import "GGReportListVC.h"
 #import "GooGuuIndexViewController.h"
 #import "UniverseViewController.h"
 #import "Reachability.h"
@@ -204,7 +204,7 @@
     ggIndexVC.tabBarItem = barItem;
     UINavigationController *ggIndexNav = [[[UINavigationController alloc] initWithRootViewController:ggIndexVC] autorelease];
     //业绩简报
-    GooNewsViewController *ggNewsVC = [[[GooNewsViewController alloc] init] autorelease];
+    GGReportListVC *ggNewsVC = [[[GGReportListVC alloc] init] autorelease];
     ggNewsVC.tabBarItem = barItem2;
     UINavigationController *ggNewsNav = [[[UINavigationController alloc] initWithRootViewController:ggNewsVC] autorelease];
     //估值模型

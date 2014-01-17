@@ -10,7 +10,6 @@
 
 #import <UIKit/UIKit.h>
 #import "CXPhotoBrowser.h"
-#import "DemoPhoto.h"
 
 #define FINGERCHANGEDISTANCE 100.0
 

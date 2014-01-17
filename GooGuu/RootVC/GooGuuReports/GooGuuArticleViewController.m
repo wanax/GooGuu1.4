@@ -7,25 +7,11 @@
 //
 
 #import "GooGuuArticleViewController.h"
-#import "MHTabBarController.h"
-#import "MHTabBarController.h"
 #import "UIImageView+WebCache.h"
-#import "UIImageView+Addition.h"
 #import "CXPhotoBrowser.h"
-#import "DemoPhoto.h"
-#import "UIButton+BGColor.h"
+#import "CXPhoto.h"
 #import "AddCommentViewController.h"
-#import "AppDelegate.h"
 #import "ComFieldViewController.h"
-#import "FlatUIKit.h"
-
-#define BUNDLE_NAME @"Resource"
-
-#define IMAGE_NAME @"sharesdk_img"
-#define IMAGE_EXT @"jpg"
-
-#define CONTENT @"ShareSDK不仅集成简单、支持如QQ好友、微信、新浪微博、腾讯微博等所有社交平台，而且还有强大的统计分析管理后台，实时了解用户、信息流、回流率、传播效应等数据，详情见官网http://sharesdk.cn @ShareSDK"
-#define SHARE_URL @"http://www.sharesdk.cn"
 
 @interface GooGuuArticleViewController ()
 
@@ -37,27 +23,6 @@
 
 @implementation GooGuuArticleViewController
 
-@synthesize articleTitle;
-@synthesize articleId;
-@synthesize articleWeb;
-@synthesize imageUrlList;
-@synthesize imageTitleLabel;
-@synthesize browser;
-@synthesize photoDataSource;
-@synthesize comInfo;
-
-- (void)dealloc
-{
-    SAFE_RELEASE(comInfo);
-    SAFE_RELEASE(imageTitleLabel);
-    SAFE_RELEASE(imageUrlList);
-    SAFE_RELEASE(browser);
-    SAFE_RELEASE(photoDataSource);
-    SAFE_RELEASE(articleTitle);
-    [articleWeb release];
-    [articleId release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,28 +34,16 @@
     return self;
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    //[[BaiduMobStat defaultStat] pageviewEndWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-}
 
--(void)viewDidAppear:(BOOL)animated{
-    //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-    self.parentViewController.parentViewController.parentViewController.navigationItem.rightBarButtonItem=nil;
-}
 -(void)addComponents{
     
     UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,40)];
     [titleLabel setBackgroundColor:[UIColor whiteColor]];
     [titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:16.0]];
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [titleLabel setText:articleTitle];
+    [titleLabel setText:self.articleTitle];
     [self.view addSubview:titleLabel];
     SAFE_RELEASE(titleLabel);
-    
-    if (self.sourceType!=GooGuuView) {
-        [self addButtons:@"进入公司" fun:@selector(comeIntoComBtClicked:) frame:CGRectMake(0,SCREEN_HEIGHT-123, 106, 30)];
-        [self addButtons:@"添加评论" fun:@selector(addCommentBtClicked) frame:CGRectMake(106,SCREEN_HEIGHT-123, 106, 30)];
-    }
     
 }
 -(void)addButtons:(NSString *)title fun:(SEL)fun frame:(CGRect)rect{
@@ -115,7 +68,7 @@
     if ([Utiles isLogin]) {
         AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] init] autorelease];
         addCommentViewController.type=ArticleType;
-        addCommentViewController.articleId=articleId;
+        addCommentViewController.articleId=self.articleId;
         [self presentViewController:addCommentViewController animated:YES completion:nil];
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"请先登录" duration:1.5];
@@ -131,22 +84,23 @@
 
 
 -(void)initWebView{
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articleId,@"articleid", nil];
+    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:self.articleId,@"articleid", nil];
     [Utiles getNetInfoWithPath:@"ArticleURL" andParams:params besidesBlock:^(id article){
         
         self.artcleData=article;
-        if (self.sourceType==GooGuuView) {
-            articleWeb=[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-30)];
+        if (self.sourceType == GooGuuView) {
+            UIWebView *tempWeb = [[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-30)] autorelease];
+            self.articleWeb = tempWeb;
         } else {
-            articleWeb=[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-60)];
+            UIWebView *tempWeb = [[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-60)] autorelease];
+            self.articleWeb = tempWeb;
         }
-        articleWeb.delegate=self;
-        [articleWeb loadHTMLString:[article objectForKey:@"content"] baseURL:nil];
+        self.articleWeb.delegate=self;
+        [self.articleWeb loadHTMLString:[article objectForKey:@"content"] baseURL:nil];
         
         [self addTapOnWebView];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self.view addSubview:articleWeb];
-        [articleWeb release];
+        [self.view addSubview:self.articleWeb];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
         [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -158,23 +112,20 @@
 {
     [super viewDidLoad];
     if (self.sourceType==GooGuuView) {
-        self.parentViewController.title=@"估值观点";
+        self.parentViewController.title = @"估值观点";
     } else {
-        self.parentViewController.title=@"公司简报";
+        self.parentViewController.title = @"公司简报";
     }
     [[SDImageCache sharedImageCache] clearDisk];
     [[SDImageCache sharedImageCache] clearMemory];
-    self.browser = [[CXPhotoBrowser alloc] initWithDataSource:self delegate:self];
-    //self.browser.wantsFullScreenLayout = NO;
+    CXPhotoBrowser *tempBrowser = [[[CXPhotoBrowser alloc] initWithDataSource:self delegate:self] autorelease];
+    self.browser = tempBrowser;
     AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    self.comInfo=delegate.comInfo;
+    self.comInfo = delegate.comInfo;
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self initWebView];
     [self addComponents];
-    UIPanGestureRecognizer *pan=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-    [self.view addGestureRecognizer:pan];
-    [pan release];
     
 }
 
@@ -187,7 +138,7 @@
                        temp[i].style.width = '300px';\
                        temp[i].style.height = '200px';\
                        }"];
-    NSString *urlStr=[articleWeb stringByEvaluatingJavaScriptFromString:@"var str=\"\";\
+    NSString *urlStr=[self.articleWeb stringByEvaluatingJavaScriptFromString:@"var str=\"\";\
                    function imgUrl(){\
                    var temp = document.getElementsByTagName(\"img\");\
                    for (var i = 0; i < temp.length; i ++) {\
@@ -200,12 +151,12 @@
     [tempArr removeLastObject];
     self.imageUrlList=tempArr;
     for (id obj in self.imageUrlList) {
-        DemoPhoto *photo = nil;        
-        photo = [[[DemoPhoto alloc] initWithURL:[NSURL URLWithString:obj]] autorelease];
+        CXPhoto *photo = nil;
+        photo = [[[CXPhoto alloc] initWithURL:[NSURL URLWithString:obj]] autorelease];
         [self.photoDataSource addObject:photo];
     }
-    [articleWeb stringByEvaluatingJavaScriptFromString:botySise];
-    [articleWeb stringByEvaluatingJavaScriptFromString:imgSize];
+    [self.articleWeb stringByEvaluatingJavaScriptFromString:botySise];
+    [self.articleWeb stringByEvaluatingJavaScriptFromString:imgSize];
     SAFE_RELEASE(botySise);
     SAFE_RELEASE(imgSize);
     SAFE_RELEASE(tempArr);
@@ -244,7 +195,7 @@
 #pragma mark CXPhotoBrowserDelegate
 
 - (void)photoBrowser:(CXPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index{
-    [imageTitleLabel setText:[NSString stringWithFormat:@"%d/%d",(index+1),[self.imageUrlList count]]];
+    [self.imageTitleLabel setText:[NSString stringWithFormat:@"%d/%d",(index+1),[self.imageUrlList count]]];
 }
 
 #pragma mark - CXPhotoBrowserDataSource
@@ -290,17 +241,17 @@
         doneButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
         [navBarView addSubview:doneButton];
         
-        imageTitleLabel = [[UILabel alloc] init];
-        [imageTitleLabel setFrame:CGRectMake((size.width - 60)/2, 10, 60, 40)];
-        [imageTitleLabel setCenter:navBarView.center];
-        [imageTitleLabel setTextAlignment:NSTextAlignmentCenter];
-        [imageTitleLabel setFont:[UIFont boldSystemFontOfSize:20.]];
-        [imageTitleLabel setTextColor:[UIColor whiteColor]];
-        [imageTitleLabel setBackgroundColor:[UIColor clearColor]];
-        [imageTitleLabel setText:@""];
-        imageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        [imageTitleLabel setTag:BROWSER_TITLE_LBL_TAG];
-        [navBarView addSubview:imageTitleLabel];
+        self.imageTitleLabel = [[[UILabel alloc] init] autorelease];
+        [self.imageTitleLabel setFrame:CGRectMake((size.width - 60)/2, 10, 60, 40)];
+        [self.imageTitleLabel setCenter:navBarView.center];
+        [self.imageTitleLabel setTextAlignment:NSTextAlignmentCenter];
+        [self.imageTitleLabel setFont:[UIFont boldSystemFontOfSize:20.]];
+        [self.imageTitleLabel setTextColor:[UIColor whiteColor]];
+        [self.imageTitleLabel setBackgroundColor:[UIColor clearColor]];
+        [self.imageTitleLabel setText:@""];
+        self.imageTitleLabel.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        [self.imageTitleLabel setTag:BROWSER_TITLE_LBL_TAG];
+        [navBarView addSubview:self.imageTitleLabel];
     }
     
     return navBarView;
@@ -313,15 +264,6 @@
 }
 
 
--(void)panView:(UIPanGestureRecognizer *)tap{
-    CGPoint change=[tap translationInView:self.view];
-    
-    if(change.x<-FINGERCHANGEDISTANCE){
-        [(MHTabBarController *)self.parentViewController setSelectedIndex:1 animated:YES];
-    }
-}
-
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -329,10 +271,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSUInteger)supportedInterfaceOrientations{
-
-    return UIInterfaceOrientationMaskPortrait;
-}
 - (BOOL)shouldAutorotate{
     return NO;
 }
