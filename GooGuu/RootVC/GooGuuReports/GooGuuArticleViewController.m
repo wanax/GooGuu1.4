@@ -24,10 +24,12 @@
 @implementation GooGuuArticleViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithModel:(id)model andType:(BrowseSourceType)type
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
+        self.articleInfo = model;
+        self.sourceType = type;
         NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
         self.photoDataSource = temp;
     }

@@ -7,22 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EGORefreshTableHeaderView.h"
 
-@interface GooGuuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{
-    
-    EGORefreshTableHeaderView *_refreshHeaderView;
-    BOOL _reloading;//主要是记录是否在刷新中
-    
-    __strong UIActivityIndicatorView *_activityIndicatorView;
-    
-}
+@interface GooGuuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,NSLayoutManagerDelegate>
 
-@property (nonatomic,retain) UITableView *cusTable;
 @property (nonatomic,retain) NSString *articleId;
 @property (nonatomic,retain) NSArray *viewDataArr;
 @property (nonatomic,retain) NSDictionary *readingMarksDic;
 
-- (void)doneLoadingTableViewData;
+@property (nonatomic,retain) UITableView *cusTable;
+@property (nonatomic,retain) UIRefreshControl *refreshControl;
 
 @end

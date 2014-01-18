@@ -78,7 +78,8 @@ typedef enum {
     ChartSaved,
     DiscountSaved,
     SearchStockList,
-    GooGuuView
+    GooGuuView,
+    GooGuuReport
 } BrowseSourceType;
 
 typedef enum {

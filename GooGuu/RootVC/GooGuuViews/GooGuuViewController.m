@@ -8,12 +8,11 @@
 
 #import "GooGuuViewController.h"
 #import "ValueViewCell.h"
-#import "UIImageView+WebCache.h"
 #import "GooGuuArticleViewController.h"
 #import "ArticleCommentViewController.h"
 #import "MHTabBarController.h"
-#import "UIImageView+AFNetworking.h"
 #import "SVPullToRefresh.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuViewController ()
 
@@ -25,18 +24,10 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.viewDataArr=[[NSArray alloc] init];
+        NSArray *arr = [[[NSArray alloc] init] autorelease];
+        self.viewDataArr = arr;
     }
     return self;
-}
-
--(void)viewDidDisappear:(BOOL)animated{
-    //[[BaiduMobStat defaultStat] pageviewEndWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [self.cusTable reloadData];
-    //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
 }
 
 - (void)viewDidLoad
@@ -51,27 +42,36 @@
 
 -(void)initComponents{
 
-    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-92) style:UITableViewStylePlain];
-    [self.view setBackgroundColor:[Utiles colorWithHexString:GetConfigure(@"colorconfigure", @"NormalCellColor", NO)]];
-    self.cusTable.delegate=self;
-    self.cusTable.dataSource=self;
-    self.cusTable.separatorStyle=UITableViewCellSeparatorStyleNone;
+    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain] autorelease];
+    self.cusTable = tempTable;
+    self.cusTable.delegate = self;
+    self.cusTable.dataSource = self;
+    
     [self.cusTable addInfiniteScrollingWithActionHandler:^{
         [self getValueViewData:self.articleId code:@""];
     }];
-    if(_refreshHeaderView == nil)
-    {
-        EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.cusTable.bounds.size.height, self.view.frame.size.width, self.cusTable.bounds.size.height)];
-        
-        view.delegate = self;
-        [self.cusTable addSubview:view];
-        _refreshHeaderView = view;
-        [view release];
-    }
-    [_refreshHeaderView refreshLastUpdatedDate];
-    [self.view addSubview:self.cusTable];
     
+    UIRefreshControl *tempRefresh = [[[UIRefreshControl alloc] init] autorelease];
+    tempRefresh.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
+    [tempRefresh addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = tempRefresh;
+    [self.cusTable addSubview:self.refreshControl];
+    
+    [self.view addSubview:self.cusTable];
 }
+
+-(void)handleRefresh:(UIRefreshControl *)control {
+    control.attributedTitle = [[[NSAttributedString alloc] initWithString:@"刷新中"] autorelease];
+    [control endRefreshing];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
+}
+
+-(void)loadData{
+    [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
+    [self getValueViewData:@"" code:@""];
+}
+
 -(void)getValueViewData:(NSString *)articleID code:(NSString *)stockCode{
     
     NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articleID,@"articleid",stockCode,@"stockcode", nil];
@@ -87,7 +87,7 @@
         self.viewDataArr=temp;
         self.articleId=[[temp lastObject] objectForKey:@"articleid"];
         [self.cusTable reloadData];
-        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.cusTable];
+
         [self.cusTable.infiniteScrollingView stopAnimating];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -99,11 +99,7 @@
 #pragma mark Table DataSource
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 216.0;
-}
-
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 1;
+    return 193.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -119,95 +115,43 @@
     if (cell == nil) {
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"ValueViewCell" owner:self options:nil];//加载自定义cell的xib文件
         cell = [array objectAtIndex:0];
+        cell.conciseTextView.layoutManager.delegate = self;
+        cell.conciseTextView.textContainer.size = CGSizeMake(304,100);
     }
     
     id model=[self.viewDataArr objectAtIndex:indexPath.row];
 
     if([model objectForKey:@"titleimgurl"]){
-        [cell.titleImgView setImageWithURLRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:[[model objectForKey:@"titleimgurl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]
-                success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image){
-                    if(image){
-                        cell.titleImgView.image=image;
-                    }
-                }
-                failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error){
-                    
-                }];
+        [cell.titleImgView setImageWithURL:[NSURL URLWithString:[model[@"titleimgurl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     }
     
-    [cell.titleLabel setText:[model objectForKey:@"title"]];
-    cell.titleLabel.lineBreakMode=NSLineBreakByWordWrapping;
-    cell.titleLabel.numberOfLines=0;
+    [cell.titleLabel setText:model[@"title"]];
+    cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.titleLabel.numberOfLines = 0;
     cell.titleLabel.font = [UIFont boldSystemFontOfSize:19];
-    [self setReadingMark:cell andTitle:[model objectForKey:@"title"]];
+    [self setReadingMark:cell andTitle:model[@"title"]];
     
-    cell.conciseWebView.backgroundColor = [UIColor clearColor];
-    cell.conciseWebView.opaque = NO;
-    cell.conciseWebView.dataDetectorTypes = UIDataDetectorTypeNone;
-    [(UIScrollView *)[[cell.conciseWebView subviews] objectAtIndex:0] setBounces:NO];
-    
-    NSString *webviewText = @"<style>body{margin:0px;background-color:transparent;font:16px/22px Custom-Font-Name}</style>";
-    
-    NSString *temp=[model objectForKey:@"concise"];
-    if([temp length]>80){
-        temp=[temp substringToIndex:80];
+    NSString *temp = model[@"concise"];
+    if([temp length] > 80){
+        temp = [NSString stringWithFormat:@"%@......",[temp substringToIndex:80]];
     }
-    NSString *htmlString = [webviewText stringByAppendingFormat:@"%@......", temp];
+
+    cell.conciseTextView.text = temp;
     
-    [cell.conciseWebView loadHTMLString:htmlString baseURL:nil];
-    
-    
-    [cell.updateTimeLabel setText:[model objectForKey:@"updatetime"]];
-    [cell.backLabel setBackgroundColor:[UIColor whiteColor]];
-    cell.backLabel.layer.cornerRadius = 5;
-    cell.backLabel.layer.borderColor = [UIColor grayColor].CGColor;
-    cell.backLabel.layer.borderWidth = 0;
-    
-    [cell.contentView setBackgroundColor:[Utiles colorWithHexString:[Utiles getConfigureInfoFrom:@"colorconfigure" andKey:@"NormalCellColor" inUserDomain:NO]]];
-    
-    UIButton *cellBt=[[[UIButton alloc] initWithFrame:CGRectMake(0,0,320,135)] autorelease];
-    cellBt.tag=indexPath.row;
-    [cellBt addTarget:self action:@selector(cellBtClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.contentView addSubview:cellBt];
-    
+    [cell.updateTimeLabel setText:model[@"updatetime"]];
+
     return cell;
     
 }
 
+#pragma mark - Layout
+
+- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
+	return 8;
+}
+
 #pragma mark -
 #pragma mark General Methods
-
--(void)cellBtClicked:(UIButton *)bt{
-    NSInteger row=bt.tag;
-    NSString *artId=[NSString stringWithFormat:@"%@",[[self.viewDataArr objectAtIndex:row] objectForKey:@"articleid"]];
-    GooGuuArticleViewController *articleViewController=[[GooGuuArticleViewController alloc] init];
-    articleViewController.articleInfo = self.viewDataArr[row];
-    articleViewController.sourceType=GooGuuView;
-    articleViewController.title=@"研究报告";
-    ArticleCommentViewController *articleCommentViewController=[[ArticleCommentViewController alloc] init];
-    articleCommentViewController.articleId=artId;
-    articleCommentViewController.title=@"评论";
-    articleCommentViewController.type=News;
-    MHTabBarController *container=[[MHTabBarController alloc] init];
-    NSArray *controllers=[NSArray arrayWithObjects:articleViewController,articleCommentViewController, nil];
-    container.viewControllers=controllers;
-    
-    UIViewController *contentVC = [[[UIViewController alloc] init] autorelease];
-    [contentVC addChildViewController:container];
-    [contentVC.view addSubview:container.view];
-    contentVC.view.frame = CGRectMake(0,44,SCREEN_WIDTH,SCREEN_HEIGHT-44);
-    
-    UIViewController *test = [[[UIViewController alloc] init] autorelease];
-    test.view.frame = CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT);
-    [test.view addSubview:contentVC.view];
-    [test addChildViewController:contentVC];
-    
-    [Utiles setConfigureInfoTo:@"googuuviewreadingmarks" forKey:[[self.viewDataArr objectAtIndex:row] objectForKey:@"title"] andContent:@"1"];
-    self.readingMarksDic=[Utiles getConfigureInfoFrom:@"googuuviewreadingmarks" andKey:nil inUserDomain:YES];
-    
-    test.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:test animated:YES];
-}
 
 -(void)setReadingMark:(ValueViewCell *)cell andTitle:(NSString *)title{
     
@@ -227,87 +171,24 @@
 #pragma mark Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    id model = self.viewDataArr[indexPath.row];
     
-    NSString *artId=[NSString stringWithFormat:@"%@",[[self.viewDataArr objectAtIndex:indexPath.row] objectForKey:@"articleid"]];
-    GooGuuArticleViewController *articleViewController=[[GooGuuArticleViewController alloc] init];
-    articleViewController.articleInfo = self.viewDataArr[indexPath.row];
-    articleViewController.sourceType=GooGuuView;
-    articleViewController.title=@"研究报告";
-    ArticleCommentViewController *articleCommentViewController=[[ArticleCommentViewController alloc] init];
-    articleCommentViewController.articleId=artId;
-    articleCommentViewController.title=@"评论";
-    articleCommentViewController.type=News;
-    MHTabBarController *container=[[MHTabBarController alloc] init];
-    NSArray *controllers=[NSArray arrayWithObjects:articleViewController,articleCommentViewController, nil];
-    container.viewControllers=controllers;
-    
-    [Utiles setConfigureInfoTo:@"googuuviewreadingmarks" forKey:[[self.viewDataArr objectAtIndex:indexPath.row] objectForKey:@"title"] andContent:@"1"];
-    self.readingMarksDic=[Utiles getConfigureInfoFrom:@"googuuviewreadingmarks" andKey:nil inUserDomain:YES];
-    
-    container.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:container animated:YES];
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    articleVC.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
+
+    SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
+    self.readingMarksDic=GetConfigure(@"googuuviewreadingmarks", nil, YES);
 }
-
-
-
-#pragma mark -
-#pragma mark - Table Header View Methods
-
-
-- (void)doneLoadingTableViewData{
-    
-    [self getValueViewData:@"" code:@""];
-    _reloading = NO;
-    
-}
-
-
-#pragma mark –
-#pragma mark UIScrollViewDelegate Methods
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-    
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    
-    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-    
-}
-
-#pragma mark –
-#pragma mark EGORefreshTableHeaderDelegate Methods
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-    
-    [_activityIndicatorView startAnimating];
-    [self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:1.0];
-    
-}
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-    
-    
-    return _reloading; // should return if data source model is reloading
-    
-}
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-    
-    return [NSDate date]; // should return date data source was last changed
-    
-}
-
 
 -(BOOL)shouldAutorotate{
     return NO;
 }
 
-
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

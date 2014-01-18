@@ -26,5 +26,6 @@
 @property (nonatomic, strong) CXPhotoBrowser *browser;
 @property (nonatomic, strong) NSMutableArray *photoDataSource;
 
+- (id)initWithModel:(id)model andType:(BrowseSourceType)type;
 
 @end

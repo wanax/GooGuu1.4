@@ -73,11 +73,9 @@
 }
 
 -(void)loadData{
-    
     [self.refreshControl endRefreshing];
     self.refreshControl.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
     [self getGooGuuNews];
-    
 }
 
 #pragma mark -
@@ -214,17 +212,15 @@
     AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
     delegate.comInfo=model;
 
-    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] init] autorelease];
-    articleVC.articleInfo = model;
-    articleVC.title = @"研究报告";
-
-    [Utiles setConfigureInfoTo:@"readingmarks" forKey:model[@"title"] andContent:@"1"];
-    self.readingMarksDic = GetConfigure(@"readingmarks", nil, YES);
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuReport] autorelease];
 
     articleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleVC animated:YES];
-
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    [Utiles setConfigureInfoTo:@"readingmarks" forKey:model[@"title"] andContent:@"1"];
+    SetConfigure(@"readingmarks", model[@"title"], @"1");
+    self.readingMarksDic = GetConfigure(@"readingmarks", nil, YES);
 }
 
 

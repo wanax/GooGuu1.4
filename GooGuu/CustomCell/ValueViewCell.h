@@ -12,10 +12,9 @@
 
 @property (nonatomic,retain) IBOutlet UIImageView *titleImgView;
 @property (nonatomic,retain) IBOutlet UILabel *titleLabel;
-@property (nonatomic,retain) IBOutlet UILabel *conciseLabel;
 @property (nonatomic,retain) IBOutlet UILabel *updateTimeLabel;
-@property (nonatomic,retain) IBOutlet UILabel *backLabel;
 @property (nonatomic,retain) IBOutlet UIWebView *conciseWebView;
+@property (nonatomic,retain) IBOutlet UITextView *conciseTextView;
 @property (nonatomic,retain) IBOutlet UIImageView *readMarkImg;
 
 @end

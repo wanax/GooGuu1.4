@@ -554,7 +554,7 @@
 		AE0D3D93187D46EB00E0E141 /* SearchStockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchStockCell.xib; sourceTree = "<group>"; };
 		AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLoginView.xib; sourceTree = "<group>"; };
 		AE0D3D95187D46EB00E0E141 /* ClientLoginView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLoginView5.xib; sourceTree = "<group>"; };
-		AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ValueViewCell.xib; sourceTree = "<group>"; };
+		AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValueViewCell.xib; path = ../../NibFile/Common/ValueViewCell.xib; sourceTree = "<group>"; };
 		AE0D3D97187D46EB00E0E141 /* ReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportCell.xib; sourceTree = "<group>"; };
 		AE0D3DA9187D470B00E0E141 /* BetaFactorCountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BetaFactorCountView.xib; sourceTree = "<group>"; };
 		AE0D3DAA187D470B00E0E141 /* ChoseBetaFactorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoseBetaFactorView.xib; sourceTree = "<group>"; };
@@ -1372,6 +1372,7 @@
 		AE0D3D03187D405B00E0E141 /* GooGuuViews */ = {
 			isa = PBXGroup;
 			children = (
+				AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */,
 				AE0D3D28187D411800E0E141 /* GooGuuViewController.h */,
 				AE0D3D29187D411800E0E141 /* GooGuuViewController.m */,
 			);
@@ -1451,7 +1452,6 @@
 				AE0D3D93187D46EB00E0E141 /* SearchStockCell.xib */,
 				AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */,
 				AE0D3D95187D46EB00E0E141 /* ClientLoginView5.xib */,
-				AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */,
 				AE0D3D97187D46EB00E0E141 /* ReportCell.xib */,
 			);
 			path = Common;
