@@ -4,18 +4,6 @@ PODS:
   - FlatUIKit (1.2)
   - JSONKit (1.5pre)
   - KKProgressTimer (0.0.1)
-  - MMDrawerController (0.4.0):
-    - MMDrawerController/Core
-    - MMDrawerController/MMDrawerBarButtonItem
-    - MMDrawerController/MMDrawerVisualStates
-    - MMDrawerController/Subclass
-  - MMDrawerController/Core (0.4.0)
-  - MMDrawerController/MMDrawerBarButtonItem (0.4.0):
-    - MMDrawerController/Core
-  - MMDrawerController/MMDrawerVisualStates (0.4.0):
-    - MMDrawerController/Core
-  - MMDrawerController/Subclass (0.4.0):
-    - MMDrawerController/Core
   - NSLogger (1.1)
   - PonyDebugger (0.3.1):
     - SocketRocket
@@ -35,7 +23,6 @@ DEPENDENCIES:
   - FlatUIKit
   - JSONKit (~> 1.4)
   - KKProgressTimer (from `http://github.com/gin0606/KKProgressTimer.git`)
-  - MMDrawerController (~> 0.4.0)
   - NSLogger
   - PonyDebugger (~> 0.3.0)
   - Reachability (~> 3.0.0)
@@ -55,7 +42,6 @@ SPEC CHECKSUMS:
   FlatUIKit: 43b2acaa6f4ef57539b51b00e4ce62d506e33e11
   JSONKit: 409734ab3407fce90ef7eaa95d7168f38d9a6601
   KKProgressTimer: 87a1001670f911a827cab5d8afb776c5db259953
-  MMDrawerController: 44baaee6b79487b4681eb61597fb790586909c0c
   NSLogger: 4567fef08d0db18a89cce91b2053823fc0950738
   PonyDebugger: d31607145d785b2315cd6f6a4ebaa378eb0c1340
   Reachability: 500bd76bf6cd8ff2c6fb715fc5f44ef6e4c024f2

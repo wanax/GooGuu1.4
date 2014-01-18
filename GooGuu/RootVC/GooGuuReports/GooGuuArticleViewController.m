@@ -34,41 +34,61 @@
     return self;
 }
 
-
--(void)addComponents{
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
-    UILabel *titleLabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,40)];
-    [titleLabel setBackgroundColor:[UIColor whiteColor]];
-    [titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:16.0]];
-    [titleLabel setTextAlignment:NSTextAlignmentCenter];
-    [titleLabel setText:self.articleTitle];
-    [self.view addSubview:titleLabel];
-    SAFE_RELEASE(titleLabel);
+    self.title = self.articleInfo[@"companyname"];
     
+    [[SDImageCache sharedImageCache] clearDisk];
+    [[SDImageCache sharedImageCache] clearMemory];
+    CXPhotoBrowser *tempBrowser = [[[CXPhotoBrowser alloc] initWithDataSource:self delegate:self] autorelease];
+    self.browser = tempBrowser;
+    
+    [self initComponts];
+    [self getArticleContent];
 }
--(void)addButtons:(NSString *)title fun:(SEL)fun frame:(CGRect)rect{
+
+
+-(void)initComponts {
     
-    FUIButton *bt=[FUIButton buttonWithType:UIButtonTypeCustom];
-    [bt.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15.0]];
+    UIWebView *tempWeb = [[[UIWebView alloc] initWithFrame:CGRectMake(0,44,SCREEN_WIDTH, SCREEN_HEIGHT-74)] autorelease];
+    self.articleWeb = tempWeb;
+    self.articleWeb.delegate=self;
+
+    [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,80,30) title:@"公司" image:@"icon_company_small"];
+    [self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
+    [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,80,30) title:@"评论" image:@"icon_msg_small"];
+    [self addButton:CGRectMake(240,SCREEN_HEIGHT-30,80,30) title:@"多空" image:@"icon_pie_small"];
+}
+
+-(void)addButton:(CGRect)frame title:(NSString *)title image:(NSString *)url{
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    bt.frame = frame;
+    bt.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:14.0];
+    bt.backgroundColor = [UIColor cloudsColor];
+    [bt setImage:[UIImage imageNamed:url] forState:UIControlStateNormal];
+    [bt setImageEdgeInsets:UIEdgeInsetsMake(0,-20,0,0)];
+    [bt setTitleColor:[UIColor peterRiverColor] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [bt setTitle:title forState:UIControlStateNormal];
-    [bt setFrame:rect];
-    bt.buttonColor = [UIColor turquoiseColor];
-    bt.shadowColor = [UIColor greenSeaColor];
-    bt.shadowHeight = 3.0f;
-    bt.cornerRadius = 6.0f;
-    bt.titleLabel.font = [UIFont boldFlatFontOfSize:16];
-    [bt setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [bt setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
-    [bt addTarget:self action:fun forControlEvents:UIControlEventTouchUpInside];
+    [bt setTintColor:[UIColor peterRiverColor]];
+    [bt addTarget:self action:@selector(actionBtClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt];
 }
+
 #pragma mark -
 #pragma mark Buttons Clicks
+
+-(void)actionBtClicked:(UIButton *)bt {
+    
+}
+
 -(void)addCommentBtClicked{
     if ([Utiles isLogin]) {
         AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] init] autorelease];
         addCommentViewController.type=ArticleType;
-        addCommentViewController.articleId=self.articleId;
+        addCommentViewController.articleId = self.articleInfo[@"articleid"];
         [self presentViewController:addCommentViewController animated:YES completion:nil];
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"请先登录" duration:1.5];
@@ -83,51 +103,21 @@
 }
 
 
--(void)initWebView{
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:self.articleId,@"articleid", nil];
+-(void)getArticleContent {
+    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:self.articleInfo[@"articleid"],@"articleid", nil];
     [Utiles getNetInfoWithPath:@"ArticleURL" andParams:params besidesBlock:^(id article){
-        
-        self.artcleData=article;
-        if (self.sourceType == GooGuuView) {
-            UIWebView *tempWeb = [[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-30)] autorelease];
-            self.articleWeb = tempWeb;
-        } else {
-            UIWebView *tempWeb = [[[UIWebView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH, SCREEN_HEIGHT-60)] autorelease];
-            self.articleWeb = tempWeb;
-        }
-        self.articleWeb.delegate=self;
+
         [self.articleWeb loadHTMLString:[article objectForKey:@"content"] baseURL:nil];
         
         [self addTapOnWebView];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.view addSubview:self.articleWeb];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    if (self.sourceType==GooGuuView) {
-        self.parentViewController.title = @"估值观点";
-    } else {
-        self.parentViewController.title = @"公司简报";
-    }
-    [[SDImageCache sharedImageCache] clearDisk];
-    [[SDImageCache sharedImageCache] clearMemory];
-    CXPhotoBrowser *tempBrowser = [[[CXPhotoBrowser alloc] initWithDataSource:self delegate:self] autorelease];
-    self.browser = tempBrowser;
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    self.comInfo = delegate.comInfo;
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self initWebView];
-    [self addComponents];
-    
-}
+
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
@@ -228,17 +218,14 @@
         [navBarView addSubview:bkgView];
         
         UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [doneButton.titleLabel setFont:[UIFont boldSystemFontOfSize:12.]];
+        doneButton.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:14.0];
         [doneButton setTitle:NSLocalizedString(@"返回",@"Dismiss button title") forState:UIControlStateNormal];
-        [doneButton setFrame:CGRectMake(size.width - 60, 10, 50, 30)];
+        [doneButton setFrame:CGRectMake(size.width - 60, 5, 50, 30)];
         [doneButton addTarget:self action:@selector(photoBrowserDidTapDoneButton:) forControlEvents:UIControlEventTouchUpInside];
-        [doneButton.layer setMasksToBounds:YES];
         [doneButton.layer setCornerRadius:4.0];
         [doneButton.layer setBorderWidth:1.0];
-        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-        CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 1, 1, 1, 1 });
-        [doneButton.layer setBorderColor:colorref];
-        doneButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+        doneButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+
         [navBarView addSubview:doneButton];
         
         self.imageTitleLabel = [[[UILabel alloc] init] autorelease];
@@ -258,17 +245,12 @@
 }
 
 #pragma mark - PhotBrower Actions
-- (void)photoBrowserDidTapDoneButton:(UIButton *)sender
-{
+- (void)photoBrowserDidTapDoneButton:(UIButton *)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning{
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (BOOL)shouldAutorotate{

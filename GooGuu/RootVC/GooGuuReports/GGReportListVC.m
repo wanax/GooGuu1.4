@@ -32,16 +32,8 @@
     return self;
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [self.customTableView reloadData];
-}
-
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
     self.title=@"最新简报";
     self.readingMarksDic=[Utiles getConfigureInfoFrom:@"readingmarks" andKey:nil inUserDomain:YES];
@@ -50,14 +42,12 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self getGooGuuNews];    
     [self addTableAction];
-    
 }
 
 -(void)addTable{
     
     UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain] autorelease];
     self.customTableView = tempTable;
-    self.customTableView.separatorStyle=UITableViewCellSeparatorStyleNone;
     self.customTableView.dataSource=self;
     self.customTableView.delegate=self;
     [self.view addSubview:self.customTableView];
@@ -135,7 +125,7 @@
 #pragma mark Table Data Source Methods
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 195.0;
+    return 199.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -158,9 +148,9 @@
     id model=[self.arrList objectAtIndex:row];
     
     cell.title=[model objectForKey:@"title"];
-    cell.titleLabel.lineBreakMode=NSLineBreakByWordWrapping;
+    cell.titleLabel.lineBreakMode=NSLineBreakByCharWrapping;
     cell.titleLabel.numberOfLines=0;
-    cell.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    cell.titleLabel.font = [UIFont boldSystemFontOfSize:15];
     [self setReadingMark:cell andTitle:[model objectForKey:@"title"]];
     
     NSString *temp=[model objectForKey:@"concise"];
@@ -174,12 +164,7 @@
     if([model objectForKey:@"comanylogourl"]){
         [cell.comIconImg setImageWithURL:[NSURL URLWithString:[model objectForKey:@"comanylogourl"]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     }
-    
-    [cell.backLabel setBackgroundColor:[UIColor whiteColor]];
-    cell.backLabel.layer.cornerRadius = 5;
-    cell.backLabel.layer.borderColor = [UIColor grayColor].CGColor;
-    cell.backLabel.layer.borderWidth = 0;
-    cell.contentView.backgroundColor = [UIColor cloudsColor];
+
     return cell;
 
 }
@@ -230,8 +215,7 @@
     delegate.comInfo=model;
 
     GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] init] autorelease];
-    articleVC.articleTitle = model[@"title"];
-    articleVC.articleId = model[@"articleid"];
+    articleVC.articleInfo = model;
     articleVC.title = @"研究报告";
 
     [Utiles setConfigureInfoTo:@"readingmarks" forKey:model[@"title"] andContent:@"1"];

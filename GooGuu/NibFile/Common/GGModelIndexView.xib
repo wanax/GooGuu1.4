@@ -10,7 +10,6 @@
                 <outlet property="comExpectSeg" destination="f04-sI-dre" id="OUt-Hi-LGN"/>
                 <outlet property="comIconImg" destination="IY0-OL-rq6" id="7MW-dn-p2p"/>
                 <outlet property="comInfoSeg" destination="rNG-Kg-2RQ" id="bt4-dT-ZBk"/>
-                <outlet property="comNameLabel" destination="R3i-yY-e3V" id="3ff-HI-pqX"/>
                 <outlet property="ggFinDataButton" destination="nIH-IJ-l5O" id="BAO-L3-Ayc"/>
                 <outlet property="ggReportButton" destination="DH8-AB-xQg" id="88T-jS-XV5"/>
                 <outlet property="ggValueModelButton" destination="NcN-2N-YIc" id="C9I-oR-KQ6"/>
@@ -19,7 +18,6 @@
                 <outlet property="marketPriLabel" destination="v2O-4x-f5e" id="fWU-GZ-WsE"/>
                 <outlet property="part1View" destination="UtG-mZ-dco" id="lJx-6j-VzI"/>
                 <outlet property="percentLabel" destination="HGr-wj-c4o" id="LDt-Sf-Mdw"/>
-                <outlet property="topBar" destination="i9V-u2-0PL" id="Gaq-0h-Dp0"/>
                 <outlet property="updownIndicator" destination="JC8-hb-ODI" id="OCh-XK-cDB"/>
                 <outlet property="view" destination="1" id="Li3-6k-U86"/>
             </connections>
@@ -176,23 +174,6 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i9V-u2-0PL">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-            <items>
-                <barButtonItem title="返回" id="EHL-cy-aVU">
-                    <connections>
-                        <action selector="backUp:" destination="-1" id="2yJ-MO-p6q"/>
-                    </connections>
-                </barButtonItem>
-            </items>
-        </toolbar>
-        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="R3i-yY-e3V">
-            <rect key="frame" x="0.0" y="0.0" width="204" height="44"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
-            <nil key="highlightedColor"/>
-        </label>
     </objects>
     <resources>
         <image name="fin_small_icon.png" width="32" height="32"/>

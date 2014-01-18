@@ -181,8 +181,7 @@
     NSInteger row=bt.tag;
     NSString *artId=[NSString stringWithFormat:@"%@",[[self.viewDataArr objectAtIndex:row] objectForKey:@"articleid"]];
     GooGuuArticleViewController *articleViewController=[[GooGuuArticleViewController alloc] init];
-    articleViewController.articleTitle=[[self.viewDataArr objectAtIndex:row] objectForKey:@"title"];
-    articleViewController.articleId=artId;
+    articleViewController.articleInfo = self.viewDataArr[row];
     articleViewController.sourceType=GooGuuView;
     articleViewController.title=@"研究报告";
     ArticleCommentViewController *articleCommentViewController=[[ArticleCommentViewController alloc] init];
@@ -231,8 +230,7 @@
     
     NSString *artId=[NSString stringWithFormat:@"%@",[[self.viewDataArr objectAtIndex:indexPath.row] objectForKey:@"articleid"]];
     GooGuuArticleViewController *articleViewController=[[GooGuuArticleViewController alloc] init];
-    articleViewController.articleTitle=[[self.viewDataArr objectAtIndex:indexPath.row] objectForKey:@"title"];
-    articleViewController.articleId=artId;
+    articleViewController.articleInfo = self.viewDataArr[indexPath.row];
     articleViewController.sourceType=GooGuuView;
     articleViewController.title=@"研究报告";
     ArticleCommentViewController *articleCommentViewController=[[ArticleCommentViewController alloc] init];
