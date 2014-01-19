@@ -208,7 +208,7 @@
     ggNewsVC.tabBarItem = barItem2;
     UINavigationController *ggNewsNav = [[[UINavigationController alloc] initWithRootViewController:ggNewsVC] autorelease];
     //估值模型
-    MyGooguuViewController *ggModelVC = [[[MyGooguuViewController alloc] init] autorelease];
+    UniverseViewController *ggModelVC = [[[UniverseViewController alloc] init] autorelease];
     ggModelVC.tabBarItem=barItem3;
     UINavigationController *ggModelNav = [[[UINavigationController alloc] initWithRootViewController:ggModelVC] autorelease];
     //估值观点
@@ -216,7 +216,7 @@
     ggViewVC.tabBarItem = barItem4;
     UINavigationController *ggViewNav = [[[UINavigationController alloc] initWithRootViewController:ggViewVC] autorelease];
     //我的估股
-    UniverseViewController *myGGVC = [[[UniverseViewController alloc] init] autorelease];
+    MyGooguuViewController *myGGVC = [[[MyGooguuViewController alloc] init] autorelease];
     myGGVC.tabBarItem = barItem5;
     UINavigationController *myGGNav = [[[UINavigationController alloc] initWithRootViewController:myGGVC] autorelease];
     

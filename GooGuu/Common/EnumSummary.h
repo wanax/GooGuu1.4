@@ -151,6 +151,12 @@ typedef enum {
 } TopPoints;//首页热点
 
 
+typedef enum {
+    ComAttentionClients,//关注了公司
+    ComSaveClients//保存过公司模型
+} CompanyFans;//公司关注
+
+
 
 
 @end

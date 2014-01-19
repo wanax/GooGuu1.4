@@ -38,28 +38,28 @@
     self.usListViewController = temp2;
     CompanyListViewController *temp3 = [[[CompanyListViewController alloc] init] autorelease];
     self.szListViewController = temp3;
-    CompanyListViewController *temp4 = [[[CompanyListViewController alloc] init] autorelease];
-    self.shListViewController = temp4;
+    //CompanyListViewController *temp4 = [[[CompanyListViewController alloc] init] autorelease];
+    //self.shListViewController = temp4;
 
     self.hkListViewController.comType=@"港股";
     self.usListViewController.comType=@"美股";
-    self.szListViewController.comType=@"深市";
-    self.shListViewController.comType=@"沪市";
+    self.szListViewController.comType=@"A股";
+    //self.shListViewController.comType=@"沪市";
     
     self.hkListViewController.title=@"港股";
     self.usListViewController.title=@"美股";
-    self.szListViewController.title=@"深市";
-    self.shListViewController.title=@"沪市";
+    self.szListViewController.title=@"A股";
+    //self.shListViewController.title=@"沪市";
     
     self.hkListViewController.type=HK;
     self.usListViewController.type=NANY;
-    self.szListViewController.type=SZSE;
-    self.shListViewController.type=SHSE;
+    self.szListViewController.type=SHSZSE;
+    //self.shListViewController.type=SHSE;
     
     self.hkListViewController.isSearchList=NO;
     self.usListViewController.isSearchList=NO;
     self.szListViewController.isSearchList=NO;
-    self.shListViewController.isSearchList=NO;
+    //self.shListViewController.isSearchList=NO;
   
 	NSArray *viewControllers = [NSArray arrayWithObjects:self.hkListViewController, self.usListViewController,self.szListViewController,self.shListViewController, nil];
     MHTabBarController *tempMh = [[[MHTabBarController alloc] init] autorelease];

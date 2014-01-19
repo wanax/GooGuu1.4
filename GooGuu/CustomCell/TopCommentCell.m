@@ -34,20 +34,20 @@
 
 -(void)drawRect:(CGRect)rect {
     
-    UIImageView *tempAva = [[[UIImageView alloc] initWithFrame:CGRectMake(5,7,25,25)] autorelease];
+    UIImageView *tempAva = [[[UIImageView alloc] initWithFrame:CGRectMake(5,10,40,40)] autorelease];
     self.avatarImg = tempAva;
     [self addSubview:self.avatarImg];
     [self.avatarImg setImageWithURL:[NSURL URLWithString:self.avaURL] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
 
-    self.userNameLabel = [self createLabel:CGRectMake(40,5,200,15) font:[UIFont fontWithName:@"Heiti SC" size:12.0] color:[UIColor blackColor] content:self.userName];
+    self.userNameLabel = [self createLabel:CGRectMake(50,7,200,15) font:[UIFont fontWithName:@"Heiti SC" size:14.0] color:[UIColor blackColor] content:self.userName];
     
-    self.artTitleLabel = [self createLabel:CGRectMake(40,20,250,15) font:[UIFont fontWithName:@"Heiti SC" size:11.0] color:[UIColor peterRiverColor] content:self.artTitle];
+    self.artTitleLabel = [self createLabel:CGRectMake(50,25,250,15) font:[UIFont fontWithName:@"Heiti SC" size:12.0] color:[UIColor peterRiverColor] content:self.artTitle];
     
-    self.updateTimeLabel = [self createLabel:CGRectMake(250,5,60,15) font:[UIFont fontWithName:@"Heiti SC" size:10.0] color:[UIColor pumpkinColor] content:self.updateTime];
+    self.updateTimeLabel = [self createLabel:CGRectMake(250,7,60,15) font:[UIFont fontWithName:@"Heiti SC" size:10.0] color:[UIColor pumpkinColor] content:self.updateTime];
     self.updateTimeLabel.textAlignment = NSTextAlignmentRight;
     
-    CGSize size = [Utiles getLabelSizeFromString:self.content font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
-    self.contentLabel = [self createLabel:CGRectMake(40,35,size.width, size.height) font:[UIFont fontWithName:@"Heiti SC" size:12.0] color:[UIColor blackColor] content:self.content];
+    CGSize size = [Utiles getLabelSizeFromString:self.content font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:265];
+    self.contentLabel = [self createLabel:CGRectMake(50,45,size.width, size.height) font:[UIFont fontWithName:@"Heiti SC" size:12.0] color:[UIColor blackColor] content:self.content];
     self.contentLabel.numberOfLines = 0;
     self.contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     
@@ -62,7 +62,7 @@
     for (int n = 0;n < [self.thumbnailsURL count];n ++) {
 
         UIImageView *temp = self.thumbnails[n];
-        temp.frame = CGRectMake(40,40+size.height,50,50);
+        temp.frame = CGRectMake(55,50+size.height,50,50);
         [self addSubview:temp];
         [temp setImageWithURL:[NSURL URLWithString:self.thumbnailsURL[n]] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
     }

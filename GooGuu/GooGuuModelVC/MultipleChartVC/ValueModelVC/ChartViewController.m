@@ -197,8 +197,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     [self initPlotSpace];
 }
 -(void)initVariable{
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    comInfo=delegate.comInfo;
+
     self.changedDriverIds=[[NSMutableArray alloc] init];
     linkage=YES;
     _isSaved=YES;

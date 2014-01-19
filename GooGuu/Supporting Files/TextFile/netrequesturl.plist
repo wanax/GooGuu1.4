@@ -4,6 +4,10 @@
 <dict>
 	<key>CompanyPost</key>
 	<string>/m/companynotice</string>
+	<key>ComAttentionClients</key>
+	<string>/m/attentioncompanyuser</string>
+	<key>ComSavedClients</key>
+	<string>/m/savecompanyuser</string>
 	<key>CompanyBrief</key>
 	<string>/m/companyintro</string>
 	<key>GetCompanyInfo</key>

@@ -127,12 +127,15 @@
     
     [cell.titleLabel setText:model[@"title"]];
     cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    cell.titleLabel.numberOfLines = 0;
     cell.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    cell.titleLabel.numberOfLines=2;
+    cell.titleLabel.adjustsFontSizeToFitWidth = YES;
+    //设置文字过长时的显示格式截去尾部
+    cell.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
     [self setReadingMark:cell andTitle:model[@"title"]];
     
     NSString *temp = model[@"concise"];
-    if([temp length] > 80){
+    if([temp length] > 95){
         temp = [NSString stringWithFormat:@"%@......",[temp substringToIndex:80]];
     }
 

@@ -9,6 +9,11 @@
 #import "GGModelIndexVC.h"
 #import "CompanyPostListViewController.h"
 #import "DahonValuationViewController.h"
+#import "CompanyFansVC.h"
+#import "GGReportListVC.h"
+#import "GooGuuViewController.h"
+#import "ChartViewController.h"
+#import "FinancalModelChartViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
@@ -106,9 +111,15 @@
         }];
 
     } else if (sender.selectedSegmentIndex == 1) {//关注用户
-        
+
+        CompanyFansVC *attentionClientVC = [[[CompanyFansVC alloc] initWithStockCode:self.companyInfo[@"stockcode"] type:ComAttentionClients] autorelease];
+        [self.navigationController pushViewController:attentionClientVC animated:YES];
+
     } else if (sender.selectedSegmentIndex == 2){//保存用户
         
+        CompanyFansVC *saveClientsVC = [[[CompanyFansVC alloc] initWithStockCode:self.companyInfo[@"stockcode"] type:ComSaveClients] autorelease];
+        [self.navigationController pushViewController:saveClientsVC animated:YES];
+
     }
 }
 
@@ -119,16 +130,30 @@
 - (IBAction)comExpectSegClicked:(id)sender {
 }
 
+//业绩简报
 - (IBAction)ggReportBtClicked:(id)sender {
+    GGReportListVC *reportListVC = [[[GGReportListVC alloc] init] autorelease];
+    [self.navigationController pushViewController:reportListVC animated:YES];
 }
 
+//估值模型
 - (IBAction)ggModelBtClicked:(id)sender {
+    ChartViewController *modelChartVC = [[[ChartViewController alloc] init] autorelease];
+    modelChartVC.comInfo = self.companyInfo;
+    [self presentViewController:modelChartVC animated:YES completion:nil];
 }
 
+//财务数据
 - (IBAction)ggFinBtClicked:(id)sender {
+    FinancalModelChartViewController *finChartVC = [[[FinancalModelChartViewController alloc] init] autorelease];
+    finChartVC.comInfo = self.companyInfo;
+    [self presentViewController:finChartVC animated:YES completion:nil];
 }
 
+//估值观点
 - (IBAction)ggViewBtClicked:(id)sender {
+    GooGuuViewController *viewListVC = [[[GooGuuViewController alloc] init] autorelease];
+    [self.navigationController pushViewController:viewListVC animated:YES];
 }
 
 -(IBAction)backUp:(UIBarButtonItem *)bt {

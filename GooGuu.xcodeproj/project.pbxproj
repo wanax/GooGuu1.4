@@ -139,6 +139,7 @@
 		AE16E97C187D56BF003588FA /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97B187D56BF003588FA /* libstdc++.dylib */; };
 		AE16E97E187D56CD003588FA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97D187D56CD003588FA /* CoreTelephony.framework */; };
 		AE16E982187D5714003588FA /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E981187D5714003588FA /* libBaiduMobStat.a */; };
+		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
@@ -216,7 +217,6 @@
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
 		AE7EE3211884DB3B00A0E5BF /* GooGuuArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */; };
 		AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */; };
-		AE7EE3281884DD0700A0E5BF /* TopArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3271884DD0700A0E5BF /* TopArticlesViewController.m */; };
 		AE949CE7187E7B73004FC1AB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE3187E7B73004FC1AB /* icon.png */; };
 		AE949CE8187E7B73004FC1AB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE4187E7B73004FC1AB /* icon@2x.png */; };
 		AE949CE9187E7B73004FC1AB /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE5187E7B73004FC1AB /* icon1.png */; };
@@ -339,6 +339,7 @@
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
+		AEF0AEBF188AAB3C008A499A /* TopArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF0AEBE188AAB3C008A499A /* TopArticlesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -573,6 +574,8 @@
 		AE16E97D187D56CD003588FA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		AE16E980187D5714003588FA /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
 		AE16E981187D5714003588FA /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		AE23677F188B660500D74674 /* CompanyFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFansVC.h; sourceTree = "<group>"; };
+		AE236780188B660500D74674 /* CompanyFansVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyFansVC.m; sourceTree = "<group>"; };
 		AE2B489B187D2AC2007ABEC8 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../download/code/CorePlot_1.4/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		AE2B48A6187D2BDD007ABEC8 /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
 		AE2B48A7187D2BDD007ABEC8 /* CPTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnimation.h; sourceTree = "<group>"; };
@@ -780,8 +783,6 @@
 		AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuArticleViewController.m; sourceTree = "<group>"; };
 		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
 		AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGReportListVC.m; sourceTree = "<group>"; };
-		AE7EE3261884DD0700A0E5BF /* TopArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopArticlesViewController.h; sourceTree = "<group>"; };
-		AE7EE3271884DD0700A0E5BF /* TopArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopArticlesViewController.m; sourceTree = "<group>"; };
 		AE949CE3187E7B73004FC1AB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AE949CE4187E7B73004FC1AB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		AE949CE5187E7B73004FC1AB /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
@@ -907,6 +908,8 @@
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
+		AEF0AEBD188AAB3C008A499A /* TopArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopArticlesViewController.h; sourceTree = "<group>"; };
+		AEF0AEBE188AAB3C008A499A /* TopArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopArticlesViewController.m; sourceTree = "<group>"; };
 		F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1623,6 +1626,7 @@
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
+				AEF0AEBC188AA8E4008A499A /* ComFans */,
 				AE71CACB1887DCFD005B3A2D /* Accessory */,
 				AE71CAC81887DCC2005B3A2D /* OldVC */,
 				AE9B2C8C188682190077B56D /* GGModelIndexView.xib */,
@@ -1883,8 +1887,8 @@
 			isa = PBXGroup;
 			children = (
 				AE7C1AC318851359006D37B5 /* TopComCell.xib */,
-				AE7EE3261884DD0700A0E5BF /* TopArticlesViewController.h */,
-				AE7EE3271884DD0700A0E5BF /* TopArticlesViewController.m */,
+				AEF0AEBD188AAB3C008A499A /* TopArticlesViewController.h */,
+				AEF0AEBE188AAB3C008A499A /* TopArticlesViewController.m */,
 				AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */,
 				AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */,
 				AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */,
@@ -2149,6 +2153,15 @@
 				AE949DDB187E8298004FC1AB /* myGooGuuBar@2x.png */,
 			);
 			path = BarIcon;
+			sourceTree = "<group>";
+		};
+		AEF0AEBC188AA8E4008A499A /* ComFans */ = {
+			isa = PBXGroup;
+			children = (
+				AE23677F188B660500D74674 /* CompanyFansVC.h */,
+				AE236780188B660500D74674 /* CompanyFansVC.m */,
+			);
+			path = ComFans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2535,7 +2548,6 @@
 				AE0D3D23187D410800E0E141 /* FinanPicCollectCell.m in Sources */,
 				AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */,
 				AE518744187E41BD0055B9AE /* ModelClassGrade2ViewController.m in Sources */,
-				AE7EE3281884DD0700A0E5BF /* TopArticlesViewController.m in Sources */,
 				AE0D3CEE187D3A9200E0E141 /* PrettyTabBar.m in Sources */,
 				AE06B8E9187EAB7900DA93E2 /* CounterBankViewController.m in Sources */,
 				AE0D3D14187D407700E0E141 /* CalendarViewController.m in Sources */,
@@ -2578,6 +2590,7 @@
 				AE0D3D16187D407700E0E141 /* Indicator2View.m in Sources */,
 				AE74DF8E187E44DE002AE169 /* LoginView.m in Sources */,
 				AE74DF9F187E4509002AE169 /* FeedBackViewController.m in Sources */,
+				AE236781188B660500D74674 /* CompanyFansVC.m in Sources */,
 				AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */,
 				AE74DF9D187E4509002AE169 /* StockRiseDownColorSettingViewController.m in Sources */,
 				AE0D3D81187D469800E0E141 /* SearchStockCell.m in Sources */,
@@ -2595,6 +2608,7 @@
 				AE0D3D5D187D467300E0E141 /* UIColor+expanded.m in Sources */,
 				AE0D3D79187D469800E0E141 /* UserCell.m in Sources */,
 				AE518756187E42F10055B9AE /* CQMFloatingContentOverlayView.m in Sources */,
+				AEF0AEBF188AAB3C008A499A /* TopArticlesViewController.m in Sources */,
 				AE58A7261883899600E044BD /* XYPieChart.m in Sources */,
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
 				AE0D3D83187D469800E0E141 /* ReportCell.m in Sources */,

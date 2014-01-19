@@ -54,7 +54,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"估股";
+    self.title = @"估股首页";
 	[self initComponents];
     [self getGooGuuNews];
 }
@@ -129,7 +129,7 @@
 
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0){
-        return 164.0;
+        return 171.0;
     } else if (indexPath.section == 1) {
         return 50.0;
     } else if (indexPath.section == 2) {

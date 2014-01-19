@@ -193,17 +193,19 @@
             }else if(change.x>FINGERCHANGEDISTANCE){
                 [(MHTabBarController *)self.parentViewController setSelectedIndex:0 animated:YES];
             }
-        }else if([self.comType isEqualToString:@"深市"]){
-            if(change.x<-FINGERCHANGEDISTANCE){
-                [(MHTabBarController *)self.parentViewController setSelectedIndex:3 animated:YES];
-            }else if(change.x>FINGERCHANGEDISTANCE){
+        }else if([self.comType isEqualToString:@"A股"]){
+            if(change.x>FINGERCHANGEDISTANCE){
                 [(MHTabBarController *)self.parentViewController setSelectedIndex:1 animated:YES];
             }
-        }else if([self.comType isEqualToString:@"沪市"]){
-            if(change.x>FINGERCHANGEDISTANCE){
-                [(MHTabBarController *)self.parentViewController setSelectedIndex:2 animated:YES];
-            }
+            //else if(change.x>FINGERCHANGEDISTANCE){
+            //    [(MHTabBarController *)self.parentViewController setSelectedIndex:1 animated:YES];
+            //}
         }
+        //else if([self.comType isEqualToString:@"沪市"]){
+         //   if(change.x>FINGERCHANGEDISTANCE){
+         //       [(MHTabBarController *)self.parentViewController setSelectedIndex:2 animated:YES];
+        //    }
+        //}
     }
   
 }
