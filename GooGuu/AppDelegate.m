@@ -12,6 +12,7 @@
 #import "GooGuuViewController.h"
 #import "GGReportListVC.h"
 #import "GooGuuIndexViewController.h"
+#import "MyGGIndexViewController.h"
 #import "UniverseViewController.h"
 #import "Reachability.h"
 #import "PonyDebugger.h"
@@ -216,7 +217,7 @@
     ggViewVC.tabBarItem = barItem4;
     UINavigationController *ggViewNav = [[[UINavigationController alloc] initWithRootViewController:ggViewVC] autorelease];
     //我的估股
-    MyGooguuViewController *myGGVC = [[[MyGooguuViewController alloc] init] autorelease];
+    MyGGIndexViewController *myGGVC = [[[MyGGIndexViewController alloc] init] autorelease];
     myGGVC.tabBarItem = barItem5;
     UINavigationController *myGGNav = [[[UINavigationController alloc] initWithRootViewController:myGGVC] autorelease];
     

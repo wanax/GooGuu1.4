@@ -19,6 +19,7 @@
     #import "MBProgressHUD.h"
     #import "Utiles.h"
     #import "CommonlyMacros.h"
+    #import "CommonFunction.h"
     #import "AppDelegate.h"
     #import "BaiduMobStat.h"
     #import "FlatUIKit.h"

@@ -217,6 +217,9 @@
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
 		AE7EE3211884DB3B00A0E5BF /* GooGuuArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */; };
 		AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */; };
+		AE9028D9188B9D9F006BE518 /* MyGGIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */; };
+		AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */; };
+		AE9028E2188BAAF4006BE518 /* CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028E1188BAAF4006BE518 /* CommonFunction.m */; };
 		AE949CE7187E7B73004FC1AB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE3187E7B73004FC1AB /* icon.png */; };
 		AE949CE8187E7B73004FC1AB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE4187E7B73004FC1AB /* icon@2x.png */; };
 		AE949CE9187E7B73004FC1AB /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE5187E7B73004FC1AB /* icon1.png */; };
@@ -783,6 +786,11 @@
 		AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuArticleViewController.m; sourceTree = "<group>"; };
 		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
 		AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGReportListVC.m; sourceTree = "<group>"; };
+		AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGGIndexView.xib; sourceTree = "<group>"; };
+		AE9028DC188B9DBC006BE518 /* MyGGIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGGIndexViewController.h; sourceTree = "<group>"; };
+		AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGGIndexViewController.m; sourceTree = "<group>"; };
+		AE9028E0188BAAF4006BE518 /* CommonFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunction.h; sourceTree = "<group>"; };
+		AE9028E1188BAAF4006BE518 /* CommonFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunction.m; sourceTree = "<group>"; };
 		AE949CE3187E7B73004FC1AB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AE949CE4187E7B73004FC1AB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		AE949CE5187E7B73004FC1AB /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
@@ -1049,6 +1057,8 @@
 		AE018866187CFC3F004C6A5D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AE9028E0188BAAF4006BE518 /* CommonFunction.h */,
+				AE9028E1188BAAF4006BE518 /* CommonFunction.m */,
 				AE9B2C84188669190077B56D /* NSStringWrapper.h */,
 				AE9B2C85188669190077B56D /* NSStringWrapper.m */,
 				AE49AB401880E41900386C49 /* DrawChartTool.h */,
@@ -1385,6 +1395,9 @@
 		AE0D3D04187D405B00E0E141 /* MyGooGuu */ = {
 			isa = PBXGroup;
 			children = (
+				AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */,
+				AE9028DC188B9DBC006BE518 /* MyGGIndexViewController.h */,
+				AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */,
 				AE0D3D05187D407700E0E141 /* ConcernedViewController.h */,
 				AE0D3D06187D407700E0E141 /* ConcernedViewController.m */,
 				AE0D3D07187D407700E0E141 /* MyGooguuViewController.h */,
@@ -2351,6 +2364,7 @@
 				AE949DA3187E8204004FC1AB /* cancelConcernBtt.png in Resources */,
 				AE949D93187E81E5004FC1AB /* tabUnSelected.png in Resources */,
 				AE949D96187E81E5004FC1AB /* riseArrow.png in Resources */,
+				AE9028D9188B9D9F006BE518 /* MyGGIndexView.xib in Resources */,
 				AE949D4F187E817C004FC1AB /* topDone@2x.png in Resources */,
 				AE949DE0187E8298004FC1AB /* googuuViewBar.png in Resources */,
 				AE949CF5187E8074004FC1AB /* dailyStockLittleIcon.png in Resources */,
@@ -2611,10 +2625,12 @@
 				AEF0AEBF188AAB3C008A499A /* TopArticlesViewController.m in Sources */,
 				AE58A7261883899600E044BD /* XYPieChart.m in Sources */,
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
+				AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */,
 				AE0D3D83187D469800E0E141 /* ReportCell.m in Sources */,
 				AE51873D187E412B0055B9AE /* UserCell+ConfigureForComment.m in Sources */,
 				AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */,
 				AE0D3CC1187D36B200E0E141 /* EnumSummary.m in Sources */,
+				AE9028E2188BAAF4006BE518 /* CommonFunction.m in Sources */,
 				AE0D3D5E187D467300E0E141 /* UIView+convenience.m in Sources */,
 				AE0D3D13187D407700E0E141 /* GooGuuContainerViewController.m in Sources */,
 				AE018847187CF636004C6A5D /* AppDelegate.m in Sources */,

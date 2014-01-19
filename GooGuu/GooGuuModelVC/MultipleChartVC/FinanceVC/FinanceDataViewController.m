@@ -130,9 +130,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     
     sender.showsTouchWhenHighlighted=YES;
 	CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-    //floatingController.frameSize=CGSizeMake(280,280);
-    
-    
+ 
     floatingController.frameColor=[Utiles colorWithHexString:@"#e26b17"];
     if(sender.tag==FinancialRatio){
         [self presentViewController:self.modelRatioViewController animated:YES completion:nil];
