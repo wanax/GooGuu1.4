@@ -32,9 +32,13 @@
 }
 
 -(void)initComponents {
+    
     self.title = @"我的估股";
     self.view.backgroundColor = [UIColor cloudsColor];
     self.clientTable.scrollEnabled = NO;
+    
+    UIBarButtonItem *settingButton = [[[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self  action:@selector(setttingBtClicked:)] autorelease];
+    self.navigationItem.rightBarButtonItem = settingButton;
 }
 
 #pragma mark -
@@ -64,7 +68,26 @@
     
 }
 
-- (IBAction)clientInfoSegClicked:(id)sender {
+#pragma mark -
+#pragma UIControl Action
+
+-(void)setttingBtClicked:(UIBarButtonItem *)bt {
+    
+}
+
+- (IBAction)clientInfoSegClicked:(UISegmentedControl *)sender {
+    
+    //用户信息
+    if (sender.selectedSegmentIndex == 0) {
+        
+    } else if(sender.selectedSegmentIndex == 1) {//私信
+        
+    } else if(sender.selectedSegmentIndex == 2) {//关注
+        
+    } else if(sender.selectedSegmentIndex == 3) {//粉丝
+        
+    }
+    
 }
 
 - (IBAction)clientActionBtClicked:(id)sender {
