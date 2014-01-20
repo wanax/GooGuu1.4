@@ -156,6 +156,19 @@ typedef enum {
     ComSaveClients//保存过公司模型
 } CompanyFans;//公司关注
 
+typedef enum {
+    ClientFans,//我的粉丝
+    ClientAttentions,//我的关注
+    ClientPriMsgs,//私信列表
+    ClientBlackList//黑名单列表
+} RelationClientType;//用户关系类型
+
+
+typedef enum {
+    MyComment,//我的
+    TaComment//Ta的
+} UserCommentType;//某人的评论列表
+
 
 
 

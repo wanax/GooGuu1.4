@@ -46,26 +46,7 @@
 #pragma mark -
 #pragma mark Start Process
 -(void)startProcess{
-    if (GetUserDefaults(@"firstLaunch") == nil) {
-        SetConfigure(@"userconfigure", @"checkUpdate", @"0");
-        TipViewController * startView = [[TipViewController alloc]init];
-        self.window.rootViewController = startView;
-        [startView release];
-    }else if([[NSUserDefaults standardUserDefaults] objectForKey:@"agreement"]==nil){
-        
-        AgreementViewController * agreement = [[AgreementViewController alloc]init];
-        self.window.rootViewController = agreement;
-        [agreement release];
-        
-    }else {
-        if(GetConfigure(@"userconfigure", @"checkUpdate", YES)){
-            BOOL isOn=[Utiles stringToBool:GetConfigure(@"userconfigure", @"checkUpdate", YES)];
-            if(isOn){
-                [self checkUpdate];
-            }
-        }
-        [self initComponents];
-    }
+    [self initComponents];
 }
 
 #pragma mark -
@@ -195,7 +176,7 @@
 #pragma mark Generate Components
 
 -(void)initComponents{
-    UITabBarItem *barItem=[[[UITabBarItem alloc] initWithTitle:@"估股首页" image:[UIImage imageNamed:@"googuuNewsBar"] tag:1] autorelease];
+    UITabBarItem *barItem=[[[UITabBarItem alloc] initWithTitle:@"估股首页" image:[UIImage imageNamed:@"googuuLogoBar"] tag:1] autorelease];
     UITabBarItem *barItem2=[[[UITabBarItem alloc] initWithTitle:@"业绩简报" image:[UIImage imageNamed:@"googuuNewsBar"] tag:2] autorelease];
     UITabBarItem *barItem3=[[[UITabBarItem alloc] initWithTitle:@"估值模型" image:[UIImage imageNamed:@"companyListBar"] tag:3] autorelease];
     UITabBarItem *barItem4=[[[UITabBarItem alloc] initWithTitle:@"估值观点" image:[UIImage imageNamed:@"googuuViewBar"] tag:4] autorelease];
@@ -222,11 +203,35 @@
     UINavigationController *myGGNav = [[[UINavigationController alloc] initWithRootViewController:myGGVC] autorelease];
     
     UITabBarController *tempBar = [[[UITabBarController alloc] init] autorelease];
+    //AppDelegate本身无法完成代理任务，交给ggIndexVC完成
+    tempBar.delegate = ggIndexVC;
     self.tabBarController = tempBar;
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:ggIndexNav,ggNewsNav,ggModelNav,ggViewNav,myGGNav,nil];
-    
+    [self configureBarIndicator];
     self.window.backgroundColor=[UIColor clearColor];
     self.window.rootViewController = self.tabBarController;
+}
+
+-(void)configureBarIndicator {
+    
+    [Utiles getNetInfoWithPath:@"GetRootBarIndicator" andParams:nil besidesBlock:^(id obj) {
+        
+        int viewCount = [GetConfigure(@"BarIndicator", @"ViewCount", YES) integerValue];
+        int modelCount = [GetConfigure(@"BarIndicator", @"ModelCount", YES) integerValue];
+        int reportCount = [GetConfigure(@"BarIndicator", @"ReportCount", YES) integerValue];
+        
+        viewCount = [obj[@"ggviewcount"] integerValue] - viewCount;
+        modelCount = [obj[@"modelcount"] integerValue] - modelCount;
+        reportCount = [obj[@"reportcount"] integerValue] - reportCount;
+        
+        [self.tabBarController.tabBar.items[1] setBadgeValue:reportCount == 0?nil:[NSString stringWithFormat:@"%d",reportCount]];
+        [self.tabBarController.tabBar.items[2] setBadgeValue:modelCount == 0?nil:[NSString stringWithFormat:@"%d",modelCount]];
+        [self.tabBarController.tabBar.items[3] setBadgeValue:viewCount == 0?nil:[NSString stringWithFormat:@"%d",viewCount]];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
 }
 
 

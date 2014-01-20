@@ -7,6 +7,13 @@
 //
 
 #import "MyGGIndexViewController.h"
+#import "MyCollectsViewController.h"
+#import "MyCommentViewController.h"
+#import "RelationClientsViewController.h"
+#import "ClientFansViewController.h"
+#import "ClientAttentonsViewController.h"
+#import "ClientPriMsgsViewController.h"
+#import "ClientBlackListViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyGGIndexViewController ()
@@ -28,7 +35,9 @@
 {
     [super viewDidLoad];
 	[self initComponents];
-    [self getClientInfo];
+    if([Utiles isLogin]) {
+        [self getClientInfo];
+    }
 }
 
 -(void)initComponents {
@@ -59,6 +68,7 @@
             [self.clientActionButton setTitle:@"注销" forState:UIControlStateNormal];
             [self.clientInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",clientInfo[@"myattentioncount"]] forSegmentAtIndex:2];
             [self.clientInfoSeg setTitle:[NSString stringWithFormat:@"粉丝(%@)",clientInfo[@"fanscount"]] forSegmentAtIndex:3];
+            self.userid = clientInfo[@"userid"];
         } else {
             [Utiles showToastView:self.view withTitle:nil andContent:@"用户信息获取失败" duration:0.5];
         }
@@ -77,17 +87,24 @@
 
 - (IBAction)clientInfoSegClicked:(UISegmentedControl *)sender {
     
+    int index = sender.selectedSegmentIndex;
     //用户信息
-    if (sender.selectedSegmentIndex == 0) {
+    if (index == 0) {
         
-    } else if(sender.selectedSegmentIndex == 1) {//私信
+    } else {
         
-    } else if(sender.selectedSegmentIndex == 2) {//关注
-        
-    } else if(sender.selectedSegmentIndex == 3) {//粉丝
-        
+        RelationClientsViewController *clientsVC = nil;
+        ////私信列表
+        if (index == 1) {
+            clientsVC = [[[ClientPriMsgsViewController alloc] initWithListType:ClientPriMsgs] autorelease];
+        } else if (index == 2) {//关注列表
+            clientsVC = [[[ClientAttentonsViewController alloc] initWithListType:ClientAttentions] autorelease];
+        } else if (index == 3) {//粉丝列表
+            clientsVC = [[[ClientFansViewController alloc] initWithListType:ClientFans] autorelease];
+        }
+        clientsVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:clientsVC animated:YES];
     }
-    
 }
 
 - (IBAction)clientActionBtClicked:(id)sender {
@@ -142,24 +159,24 @@
     if (indexPath.section == 0) {
         if (row == 0) {
             cell.textLabel.text = @"我的投资组合";
-            cell.imageView.image = [UIImage imageNamed:@"post_small_icon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_stock_small_icon"];
         } else if (row == 1) {
             cell.textLabel.text = @"我的估值模型";
-            cell.imageView.image = [UIImage imageNamed:@"dahon_small_icon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_model_small_icon"];
         } else if (row ==2) {
             cell.textLabel.text = @"投资日历";
-            cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_calender_small_icon"];
         }
     } else {
         if (row == 0) {
             cell.textLabel.text = @"我的收藏";
-            cell.imageView.image = [UIImage imageNamed:@"post_small_icon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_collect_small_icon"];
         } else if (row == 1) {
             cell.textLabel.text = @"我的评论";
-            cell.imageView.image = [UIImage imageNamed:@"dahon_small_icon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_msg_small_icon"];
         } else if (row ==2) {
             cell.textLabel.text = @"黑名单";
-            cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_blacklist_small_icon"];
         }
     }
     
@@ -171,7 +188,24 @@
 #pragma Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    int section = indexPath.section;
+    int row = indexPath.row;
+    if (section == 0) {
+    } else if (section == 1) {
+        if (row == 0) {
+            MyCollectsViewController *myCollectVC = [[[MyCollectsViewController alloc] init] autorelease];
+            myCollectVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myCollectVC animated:YES];
+        }else if (row == 1){
+            MyCommentViewController *myCommentVC = [[[MyCommentViewController alloc] initWithAccount:self.userid type:MyComment] autorelease];
+            myCommentVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:myCommentVC animated:YES];
+        }else if (row == 2){
+            ClientBlackListViewController *blackListVC = [[[ClientBlackListViewController alloc] initWithListType:ClientBlackList] autorelease];
+            blackListVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:blackListVC animated:YES];
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

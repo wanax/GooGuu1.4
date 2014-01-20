@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GooGuuIndexViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface GooGuuIndexViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITabBarControllerDelegate>
 
 @property (nonatomic,retain) UITableView *indexTable;
 

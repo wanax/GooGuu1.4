@@ -36,6 +36,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AgreementViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/FinanPicCollectCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CQMFloatingNavigationBar.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/MyCommentVC.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/ModelClassGrade2ViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyTabBar.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CounterBankViewController.o
@@ -43,6 +44,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UniverseViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UITabBarController+Autorotate.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/DrawChartTool.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/MyCollectVC.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/ModelViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/TopCommentCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyGridTableViewCell.o
@@ -105,7 +107,9 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UserCell+ConfigureForComment.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AddCommentViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/EnumSummary.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CommonFunction.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UIView+convenience.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UserFriendVC.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/GooGuuContainerViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AppDelegate.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UINavigationController+Autorotate.o

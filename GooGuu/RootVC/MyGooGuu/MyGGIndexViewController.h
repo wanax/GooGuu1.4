@@ -10,6 +10,7 @@
 
 @interface MyGGIndexViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,retain) NSString *userid;
 
 @property (retain, nonatomic) IBOutlet UIView *part1View;
 @property (retain, nonatomic) IBOutlet UIImageView *clientAvatar;

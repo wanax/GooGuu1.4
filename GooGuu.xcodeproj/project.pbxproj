@@ -138,7 +138,6 @@
 		AE16E97A187D56A9003588FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E979187D56A9003588FA /* CoreLocation.framework */; };
 		AE16E97C187D56BF003588FA /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97B187D56BF003588FA /* libstdc++.dylib */; };
 		AE16E97E187D56CD003588FA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97D187D56CD003588FA /* CoreTelephony.framework */; };
-		AE16E982187D5714003588FA /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E981187D5714003588FA /* libBaiduMobStat.a */; };
 		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
@@ -220,6 +219,17 @@
 		AE9028D9188B9D9F006BE518 /* MyGGIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */; };
 		AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */; };
 		AE9028E2188BAAF4006BE518 /* CommonFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028E1188BAAF4006BE518 /* CommonFunction.m */; };
+		AE9028E9188BBD0B006BE518 /* user_blacklist_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028E3188BBD0B006BE518 /* user_blacklist_small_icon.png */; };
+		AE9028EA188BBD0B006BE518 /* user_calender_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028E4188BBD0B006BE518 /* user_calender_small_icon.png */; };
+		AE9028EB188BBD0B006BE518 /* user_collect_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028E5188BBD0B006BE518 /* user_collect_small_icon.png */; };
+		AE9028EC188BBD0B006BE518 /* user_model_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028E6188BBD0B006BE518 /* user_model_small_icon.png */; };
+		AE9028ED188BBD0B006BE518 /* user_msg_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028E7188BBD0B006BE518 /* user_msg_small_icon.png */; };
+		AE9028EE188BBD0B006BE518 /* user_stock_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028E8188BBD0B006BE518 /* user_stock_small_icon.png */; };
+		AE9028F0188BD4E6006BE518 /* searchBt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028EF188BD4E6006BE518 /* searchBt.png */; };
+		AE9028F3188BD53E006BE518 /* googuuLogoBar.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028F1188BD53E006BE518 /* googuuLogoBar.png */; };
+		AE9028F4188BD53E006BE518 /* googuuLogoBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9028F2188BD53E006BE518 /* googuuLogoBar@2x.png */; };
+		AE9028FE188BDA66006BE518 /* MyCollectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028F7188BDA66006BE518 /* MyCollectsViewController.m */; };
+		AE9028FF188BDA66006BE518 /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028FA188BDA66006BE518 /* MyCommentViewController.m */; };
 		AE949CE7187E7B73004FC1AB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE3187E7B73004FC1AB /* icon.png */; };
 		AE949CE8187E7B73004FC1AB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE4187E7B73004FC1AB /* icon@2x.png */; };
 		AE949CE9187E7B73004FC1AB /* icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE949CE5187E7B73004FC1AB /* icon1.png */; };
@@ -342,6 +352,13 @@
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
+		AEE0FDB7188CB24F00C70120 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE0FDB6188CB24F00C70120 /* libBaiduMobStat.a */; };
+		AEE0FDBB188CB3C200C70120 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE0FDBA188CB3C200C70120 /* libBaiduMobStat.a */; };
+		AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */; };
+		AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */; };
+		AEE0FDCF188CD28C00C70120 /* ClientAttentonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCE188CD28C00C70120 /* ClientAttentonsViewController.m */; };
+		AEE0FDD2188CD3BA00C70120 /* ClientPriMsgsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDD1188CD3BA00C70120 /* ClientPriMsgsViewController.m */; };
+		AEE0FDD5188CD41D00C70120 /* ClientBlackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDD4188CD41D00C70120 /* ClientBlackListViewController.m */; };
 		AEF0AEBF188AAB3C008A499A /* TopArticlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEF0AEBE188AAB3C008A499A /* TopArticlesViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -575,8 +592,6 @@
 		AE16E979187D56A9003588FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AE16E97B187D56BF003588FA /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		AE16E97D187D56CD003588FA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		AE16E980187D5714003588FA /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE16E981187D5714003588FA /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE23677F188B660500D74674 /* CompanyFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFansVC.h; sourceTree = "<group>"; };
 		AE236780188B660500D74674 /* CompanyFansVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyFansVC.m; sourceTree = "<group>"; };
 		AE2B489B187D2AC2007ABEC8 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../download/code/CorePlot_1.4/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
@@ -788,9 +803,22 @@
 		AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGReportListVC.m; sourceTree = "<group>"; };
 		AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGGIndexView.xib; sourceTree = "<group>"; };
 		AE9028DC188B9DBC006BE518 /* MyGGIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyGGIndexViewController.h; sourceTree = "<group>"; };
-		AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyGGIndexViewController.m; sourceTree = "<group>"; };
+		AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MyGGIndexViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE9028E0188BAAF4006BE518 /* CommonFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunction.h; sourceTree = "<group>"; };
 		AE9028E1188BAAF4006BE518 /* CommonFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunction.m; sourceTree = "<group>"; };
+		AE9028E3188BBD0B006BE518 /* user_blacklist_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_blacklist_small_icon.png; sourceTree = "<group>"; };
+		AE9028E4188BBD0B006BE518 /* user_calender_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_calender_small_icon.png; sourceTree = "<group>"; };
+		AE9028E5188BBD0B006BE518 /* user_collect_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_collect_small_icon.png; sourceTree = "<group>"; };
+		AE9028E6188BBD0B006BE518 /* user_model_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_model_small_icon.png; sourceTree = "<group>"; };
+		AE9028E7188BBD0B006BE518 /* user_msg_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_msg_small_icon.png; sourceTree = "<group>"; };
+		AE9028E8188BBD0B006BE518 /* user_stock_small_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_stock_small_icon.png; sourceTree = "<group>"; };
+		AE9028EF188BD4E6006BE518 /* searchBt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBt.png; sourceTree = "<group>"; };
+		AE9028F1188BD53E006BE518 /* googuuLogoBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = googuuLogoBar.png; sourceTree = "<group>"; };
+		AE9028F2188BD53E006BE518 /* googuuLogoBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "googuuLogoBar@2x.png"; sourceTree = "<group>"; };
+		AE9028F6188BDA66006BE518 /* MyCollectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectsViewController.h; sourceTree = "<group>"; };
+		AE9028F7188BDA66006BE518 /* MyCollectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectsViewController.m; sourceTree = "<group>"; };
+		AE9028F9188BDA66006BE518 /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
+		AE9028FA188BDA66006BE518 /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
 		AE949CE3187E7B73004FC1AB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		AE949CE4187E7B73004FC1AB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		AE949CE5187E7B73004FC1AB /* icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon1.png; sourceTree = "<group>"; };
@@ -916,6 +944,20 @@
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
+		AEE0FDB5188CB24F00C70120 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AEE0FDB6188CB24F00C70120 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		AEE0FDB9188CB3C200C70120 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AEE0FDBA188CB3C200C70120 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		AEE0FDC4188CCB4600C70120 /* ClientFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientFansViewController.h; sourceTree = "<group>"; };
+		AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientFansViewController.m; sourceTree = "<group>"; };
+		AEE0FDCA188CCFB600C70120 /* RelationClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationClientsViewController.h; sourceTree = "<group>"; };
+		AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelationClientsViewController.m; sourceTree = "<group>"; };
+		AEE0FDCD188CD28C00C70120 /* ClientAttentonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientAttentonsViewController.h; sourceTree = "<group>"; };
+		AEE0FDCE188CD28C00C70120 /* ClientAttentonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientAttentonsViewController.m; sourceTree = "<group>"; };
+		AEE0FDD0188CD3BA00C70120 /* ClientPriMsgsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientPriMsgsViewController.h; sourceTree = "<group>"; };
+		AEE0FDD1188CD3BA00C70120 /* ClientPriMsgsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientPriMsgsViewController.m; sourceTree = "<group>"; };
+		AEE0FDD3188CD41D00C70120 /* ClientBlackListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientBlackListViewController.h; sourceTree = "<group>"; };
+		AEE0FDD4188CD41D00C70120 /* ClientBlackListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientBlackListViewController.m; sourceTree = "<group>"; };
 		AEF0AEBD188AAB3C008A499A /* TopArticlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopArticlesViewController.h; sourceTree = "<group>"; };
 		AEF0AEBE188AAB3C008A499A /* TopArticlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopArticlesViewController.m; sourceTree = "<group>"; };
 		F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -927,12 +969,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE16E97E187D56CD003588FA /* CoreTelephony.framework in Frameworks */,
-				AE16E982187D5714003588FA /* libBaiduMobStat.a in Frameworks */,
 				AE16E97C187D56BF003588FA /* libstdc++.dylib in Frameworks */,
 				AE16E97A187D56A9003588FA /* CoreLocation.framework in Frameworks */,
 				AE0D3DD7187D564300E0E141 /* AdSupport.framework in Frameworks */,
 				AE0D3CA7187D2DD600E0E141 /* libz.1.2.5.dylib in Frameworks */,
 				AE0D3CA5187D2DC100E0E141 /* ImageIO.framework in Frameworks */,
+				AEE0FDB7188CB24F00C70120 /* libBaiduMobStat.a in Frameworks */,
+				AEE0FDBB188CB3C200C70120 /* libBaiduMobStat.a in Frameworks */,
 				AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */,
 				AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */,
 				AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */,
@@ -1122,10 +1165,11 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				AEE0FDB8188CB3C200C70120 /* Release-iphonesimulator */,
+				AEE0FDB4188CB24F00C70120 /* Release-iphoneos */,
 				AE58A7211883898B00E044BD /* XYPieChart */,
 				AE74DFA9187E458E002AE169 /* IQKeyBoardManager */,
 				AE518748187E42E30055B9AE /* CQMFloating */,
-				AE16E97F187D5714003588FA /* Release-iphonesimulator */,
 				AE0D3DB5187D4A2700E0E141 /* CXPhotoBrowser */,
 				AE0D3D50187D467300E0E141 /* Vurig Calendar */,
 				AE0D3D49187D45DD00E0E141 /* AOTag */,
@@ -1395,6 +1439,9 @@
 		AE0D3D04187D405B00E0E141 /* MyGooGuu */ = {
 			isa = PBXGroup;
 			children = (
+				AEE0FDC0188CC0B300C70120 /* RelationClients */,
+				AE9028F5188BDA66006BE518 /* MyCollect */,
+				AE9028F8188BDA66006BE518 /* MyComment */,
 				AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */,
 				AE9028DC188B9DBC006BE518 /* MyGGIndexViewController.h */,
 				AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */,
@@ -1491,15 +1538,6 @@
 				AE0D3DD3187D4A3200E0E141 /* DemoPhoto.m */,
 			);
 			path = CXPhotoBrowser;
-			sourceTree = "<group>";
-		};
-		AE16E97F187D5714003588FA /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				AE16E980187D5714003588FA /* BaiduMobStat.h */,
-				AE16E981187D5714003588FA /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		AE2B489C187D2AC2007ABEC8 /* Products */ = {
@@ -1910,6 +1948,24 @@
 			path = TopPointsVC;
 			sourceTree = "<group>";
 		};
+		AE9028F5188BDA66006BE518 /* MyCollect */ = {
+			isa = PBXGroup;
+			children = (
+				AE9028F6188BDA66006BE518 /* MyCollectsViewController.h */,
+				AE9028F7188BDA66006BE518 /* MyCollectsViewController.m */,
+			);
+			path = MyCollect;
+			sourceTree = "<group>";
+		};
+		AE9028F8188BDA66006BE518 /* MyComment */ = {
+			isa = PBXGroup;
+			children = (
+				AE9028F9188BDA66006BE518 /* MyCommentViewController.h */,
+				AE9028FA188BDA66006BE518 /* MyCommentViewController.m */,
+			);
+			path = MyComment;
+			sourceTree = "<group>";
+		};
 		AE949CD7187E7690004FC1AB /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -1975,6 +2031,12 @@
 		AE949CDD187E7A69004FC1AB /* MyGooGuuImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE9028E3188BBD0B006BE518 /* user_blacklist_small_icon.png */,
+				AE9028E4188BBD0B006BE518 /* user_calender_small_icon.png */,
+				AE9028E5188BBD0B006BE518 /* user_collect_small_icon.png */,
+				AE9028E6188BBD0B006BE518 /* user_model_small_icon.png */,
+				AE9028E7188BBD0B006BE518 /* user_msg_small_icon.png */,
+				AE9028E8188BBD0B006BE518 /* user_stock_small_icon.png */,
 				AE949DA4187E820D004FC1AB /* myGGCellBack.png */,
 			);
 			path = MyGooGuuImg;
@@ -1990,6 +2052,7 @@
 		AE949CE1187E7B39004FC1AB /* CommonImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE9028EF188BD4E6006BE518 /* searchBt.png */,
 				AE949D65187E81D3004FC1AB /* FirstLanuchImg */,
 				AE949D70187E81E4004FC1AB /* defaultDiagram.png */,
 				AE949D71187E81E4004FC1AB /* defaultCompanyLogo.png */,
@@ -2154,6 +2217,8 @@
 		AE949DD1187E8289004FC1AB /* BarIcon */ = {
 			isa = PBXGroup;
 			children = (
+				AE9028F1188BD53E006BE518 /* googuuLogoBar.png */,
+				AE9028F2188BD53E006BE518 /* googuuLogoBar@2x.png */,
 				AE949DD2187E8298004FC1AB /* companyListBar.png */,
 				AE949DD3187E8298004FC1AB /* companyListBar@2x.png */,
 				AE949DD4187E8298004FC1AB /* googuuNewsBar.png */,
@@ -2166,6 +2231,41 @@
 				AE949DDB187E8298004FC1AB /* myGooGuuBar@2x.png */,
 			);
 			path = BarIcon;
+			sourceTree = "<group>";
+		};
+		AEE0FDB4188CB24F00C70120 /* Release-iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				AEE0FDB5188CB24F00C70120 /* BaiduMobStat.h */,
+				AEE0FDB6188CB24F00C70120 /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphoneos";
+			sourceTree = "<group>";
+		};
+		AEE0FDB8188CB3C200C70120 /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AEE0FDB9188CB3C200C70120 /* BaiduMobStat.h */,
+				AEE0FDBA188CB3C200C70120 /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
+		AEE0FDC0188CC0B300C70120 /* RelationClients */ = {
+			isa = PBXGroup;
+			children = (
+				AEE0FDCA188CCFB600C70120 /* RelationClientsViewController.h */,
+				AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */,
+				AEE0FDC4188CCB4600C70120 /* ClientFansViewController.h */,
+				AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */,
+				AEE0FDCD188CD28C00C70120 /* ClientAttentonsViewController.h */,
+				AEE0FDCE188CD28C00C70120 /* ClientAttentonsViewController.m */,
+				AEE0FDD0188CD3BA00C70120 /* ClientPriMsgsViewController.h */,
+				AEE0FDD1188CD3BA00C70120 /* ClientPriMsgsViewController.m */,
+				AEE0FDD3188CD41D00C70120 /* ClientBlackListViewController.h */,
+				AEE0FDD4188CD41D00C70120 /* ClientBlackListViewController.m */,
+			);
+			path = RelationClients;
 			sourceTree = "<group>";
 		};
 		AEF0AEBC188AA8E4008A499A /* ComFans */ = {
@@ -2285,6 +2385,7 @@
 				AE0D3DA8187D46EB00E0E141 /* ReportCell.xib in Resources */,
 				AE949D25187E8154004FC1AB /* hasnoBriefSymbol.png in Resources */,
 				AE949DC7187E8262004FC1AB /* BETA.png in Resources */,
+				AE9028F4188BD53E006BE518 /* googuuLogoBar@2x.png in Resources */,
 				AE0D3D9B187D46EB00E0E141 /* GooReportCell.xib in Resources */,
 				AE517A9318877DB3004B6D5C /* msg_small_icon.png in Resources */,
 				AE01887F187D02B0004C6A5D /* c.html in Resources */,
@@ -2339,6 +2440,7 @@
 				AE949DCC187E8262004FC1AB /* FUNDTIME.png in Resources */,
 				AE949D8E187E81E5004FC1AB /* MHTabBarActiveTab.png in Resources */,
 				AE0D3DA5187D46EB00E0E141 /* ClientLoginView.xib in Resources */,
+				AE9028F3188BD53E006BE518 /* googuuLogoBar.png in Resources */,
 				AE0D3DA7187D46EB00E0E141 /* ValueViewCell.xib in Resources */,
 				AE018880187D02B0004C6A5D /* calu.html in Resources */,
 				AE949DCE187E8262004FC1AB /* INVESTCOM.png in Resources */,
@@ -2404,10 +2506,12 @@
 				AE949D29187E8154004FC1AB /* valuationModelBackBt.png in Resources */,
 				AE949D8B187E81E5004FC1AB /* blueArrow@2x.png in Resources */,
 				AE949D6D187E81D8004FC1AB /* guide2.png in Resources */,
+				AE9028EB188BBD0B006BE518 /* user_collect_small_icon.png in Resources */,
 				AE949D89187E81E5004FC1AB /* blackArrow@2x.png in Resources */,
 				AE949D91187E81E5004FC1AB /* whiteArrow.png in Resources */,
 				AE01887D187D02B0004C6A5D /* cnew.html in Resources */,
 				AE01888E187D02BC004C6A5D /* colorconfigure.plist in Resources */,
+				AE9028EC188BBD0B006BE518 /* user_model_small_icon.png in Resources */,
 				AE018874187D00A7004C6A5D /* GooGuu-Info.plist in Resources */,
 				AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */,
 				AE0D3DA2187D46EB00E0E141 /* DiscountRateView.xib in Resources */,
@@ -2429,12 +2533,14 @@
 				AE0D3D9E187D46EB00E0E141 /* DailyStockCell.xib in Resources */,
 				AE68DEDA188A609F000C7D8C /* icon_share_small.png in Resources */,
 				AE949D62187E81A2004FC1AB /* pwdImg.png in Resources */,
+				AE9028EE188BBD0B006BE518 /* user_stock_small_icon.png in Resources */,
 				AE517A9218877DB3004B6D5C /* post_small_icon.png in Resources */,
 				AE949D49187E817C004FC1AB /* backButtonSelected.png in Resources */,
 				AE517A9118877DB3004B6D5C /* dahon_small_icon.png in Resources */,
 				AE949D3A187E8169004FC1AB /* resetBt.png in Resources */,
 				AE949D63187E81A2004FC1AB /* quest.png in Resources */,
 				AE949D61187E81A2004FC1AB /* loginBt.png in Resources */,
+				AE9028E9188BBD0B006BE518 /* user_blacklist_small_icon.png in Resources */,
 				AE949DCF187E8262004FC1AB /* PE.png in Resources */,
 				AE01888A187D02BC004C6A5D /* TradeList.plist in Resources */,
 				AE0D3DB2187D471F00E0E141 /* LabelSwitchCell.xib in Resources */,
@@ -2443,10 +2549,13 @@
 				AE949D3F187E8169004FC1AB /* mainFeeBt.png in Resources */,
 				AE01887E187D02B0004C6A5D /* cc.html in Resources */,
 				AE018873187D00A7004C6A5D /* InfoPlist.strings in Resources */,
+				AE9028F0188BD4E6006BE518 /* searchBt.png in Resources */,
 				AE949D88187E81E5004FC1AB /* blackArrow.png in Resources */,
+				AE9028ED188BBD0B006BE518 /* user_msg_small_icon.png in Resources */,
 				AE949D4E187E817C004FC1AB /* topDone.png in Resources */,
 				AE0D3D9C187D46EB00E0E141 /* StockCell.xib in Resources */,
 				AE6B68BF188A2B8700C3ADBF /* read2.png in Resources */,
+				AE9028EA188BBD0B006BE518 /* user_calender_small_icon.png in Resources */,
 				AE0D3D9F187D46EB00E0E141 /* DailyStock2Cell.xib in Resources */,
 				AE949D5F187E81A2004FC1AB /* cancelLoginBt.png in Resources */,
 				AE949D4C187E817C004FC1AB /* defaultPic.png in Resources */,
@@ -2523,6 +2632,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEE0FDD5188CD41D00C70120 /* ClientBlackListViewController.m in Sources */,
 				AE0D3D5C187D467300E0E141 /* NSMutableArray+convenience.m in Sources */,
 				AE51873C187E412B0055B9AE /* ComfieldTabelDataSource.m in Sources */,
 				AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */,
@@ -2532,6 +2642,7 @@
 				AE0D3DD5187D4A3200E0E141 /* DemoPhoto.m in Sources */,
 				AE0D3CEA187D3A9200E0E141 /* PrettyTableViewCell.m in Sources */,
 				AE51875B187E42F10055B9AE /* CQMPathUtilities.m in Sources */,
+				AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */,
 				AE518725187E40E60055B9AE /* GuestCommentViewController.m in Sources */,
 				AE0D3D27187D410800E0E141 /* FinPic2ViewController.m in Sources */,
 				AE518747187E41FF0055B9AE /* ComFieldViewController.m in Sources */,
@@ -2549,6 +2660,7 @@
 				AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */,
 				AE74DFA8187E4518002AE169 /* SettingCenterViewController.m in Sources */,
 				AE518735187E411A0055B9AE /* AnalysisReportViewController.m in Sources */,
+				AEE0FDCF188CD28C00C70120 /* ClientAttentonsViewController.m in Sources */,
 				AE0D3D48187D414400E0E141 /* IndicatorSearchView.m in Sources */,
 				AE0D3D7C187D469800E0E141 /* GooReportCell.m in Sources */,
 				AE0D3D80187D469800E0E141 /* LabelSwitchCell.m in Sources */,
@@ -2561,6 +2673,7 @@
 				AE74DFA2187E4509002AE169 /* AgreementViewController.m in Sources */,
 				AE0D3D23187D410800E0E141 /* FinanPicCollectCell.m in Sources */,
 				AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */,
+				AE9028FF188BDA66006BE518 /* MyCommentViewController.m in Sources */,
 				AE518744187E41BD0055B9AE /* ModelClassGrade2ViewController.m in Sources */,
 				AE0D3CEE187D3A9200E0E141 /* PrettyTabBar.m in Sources */,
 				AE06B8E9187EAB7900DA93E2 /* CounterBankViewController.m in Sources */,
@@ -2568,6 +2681,8 @@
 				AE0D3D45187D414400E0E141 /* UniverseViewController.m in Sources */,
 				AE0D3CB6187D36A000E0E141 /* UITabBarController+Autorotate.m in Sources */,
 				AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */,
+				AE9028FE188BDA66006BE518 /* MyCollectsViewController.m in Sources */,
+				AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */,
 				AE51872B187E40FB0055B9AE /* ModelViewController.m in Sources */,
 				AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */,
 				AE0D3CE8187D3A9200E0E141 /* PrettyGridTableViewCell.m in Sources */,
@@ -2645,6 +2760,7 @@
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
 				AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */,
 				AE0D3CF5187D3A9B00E0E141 /* PrettyTabBarViewController.m in Sources */,
+				AEE0FDD2188CD3BA00C70120 /* ClientPriMsgsViewController.m in Sources */,
 				AE74DFA1187E4509002AE169 /* DisclaimersViewController.m in Sources */,
 				AE0D3CCE187D3A2E00E0E141 /* EGORefreshTableHeaderView.m in Sources */,
 				AE518736187E411A0055B9AE /* AnalyDetailViewController.m in Sources */,
@@ -2788,6 +2904,7 @@
 					"$(inherited)",
 					/Users/xcode/wanax/oc/GooGuu,
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
+					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2815,6 +2932,7 @@
 					"$(inherited)",
 					/Users/xcode/wanax/oc/GooGuu,
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
+					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;

@@ -2,6 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GetRootBarIndicator</key>
+	<string>/m/updatestatus</string>
+	<key>ClientFans</key>
+	<string>/m/myfans</string>
+	<key>ClientAttentions</key>
+	<string>/m/attentionuserlist</string>
+	<key>ClientCollects</key>
+	<string>/m/favorites</string>
+	<key>ClientPrivateMsgs</key>
+	<string>/m/newprivatemsg</string>
+	<key>ClientComments</key>
+	<string>/m/comment</string>
+	<key>ClientBlackList</key>
+	<string>/m/blacklist</string>
 	<key>CompanyPost</key>
 	<string>/m/companynotice</string>
 	<key>ComAttentionClients</key>

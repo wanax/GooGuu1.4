@@ -43,7 +43,7 @@
 -(void)addHelpBt{
     
     UIButton *wanSay = [[[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)] autorelease];
-    [wanSay setImage:[UIImage imageNamed:@"helpBt"] forState:UIControlStateNormal];
+    [wanSay setImage:[UIImage imageNamed:@"searchBt"] forState:UIControlStateNormal];
     [wanSay addTarget:self action:@selector(helpAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
     [self.navigationItem setRightBarButtonItem:nextStepBarBtn animated:YES];
@@ -314,7 +314,30 @@
 }
 
 
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController{
+    
+    [Utiles getNetInfoWithPath:@"GetRootBarIndicator" andParams:nil besidesBlock:^(id obj) {
+        
+        //业绩简报
+        if (tabBarController.selectedIndex == 1) {
 
+            SetConfigure(@"BarIndicator", @"ReportCount", obj[@"reportcount"]);
+            
+        } else if (tabBarController.selectedIndex == 2) {//估值模型
+            
+            SetConfigure(@"BarIndicator", @"ModelCount", obj[@"modelcount"]);
+            
+        } else if (tabBarController.selectedIndex == 3) {//估值观点
+            
+            SetConfigure(@"BarIndicator", @"ViewCount", obj[@"ggviewcount"]);
+ 
+        }
+        viewController.tabBarItem.badgeValue = nil;
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
 
 
 

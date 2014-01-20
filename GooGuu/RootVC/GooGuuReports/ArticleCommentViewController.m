@@ -232,7 +232,6 @@
 #pragma mark -
 #pragma mark Table Methods Delegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIFont *font =[UIFont fontWithName:@"Heiti SC" size:12.0];
     DrawChartTool *tool=[[[DrawChartTool alloc] init] autorelease];
     CGSize size =[tool getLabelSizeFromString:[[self.commentArr objectAtIndex:indexPath.row] objectForKey:@"content"] font:@"Heiti SC" fontSize:12.0];
     return size.height+80;
