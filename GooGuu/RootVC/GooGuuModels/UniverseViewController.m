@@ -29,9 +29,19 @@
   
     [self.view addSubview:content.view];
     [self addChildViewController:content];
-
+    
+    [self addSearchBt];
 }
 
+-(void)addSearchBt{
+    
+    UIButton *wanSay = [[[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)] autorelease];
+    [wanSay setImage:[UIImage imageNamed:@"searchBt"] forState:UIControlStateNormal];
+    //[wanSay addTarget:self action:@selector(helpAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
+    [self.navigationItem setRightBarButtonItem:nextStepBarBtn animated:YES];
+    
+}
 
 - (void)viewDidAppear:(BOOL)animated {
     //[self.theSearchBar becomeFirstResponder];
@@ -40,28 +50,6 @@
 
 
 
-#pragma mark -
-#pragma mark Search Delegate Methods
-
-
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    
-    [self.theSearchBar resignFirstResponder];
-    CompanyListViewController *nextController=[[[CompanyListViewController alloc] init] autorelease];
-    nextController.comType=@"全部";
-    nextController.isShowSearchBar=YES;
-    nextController.type=ALL;
-    
-    if(![self.navigationController.topViewController isKindOfClass:[CompanyListViewController class]]){
-        @try{
-            [self.navigationController pushViewController:nextController animated:YES];
-            [self.theSearchBar resignFirstResponder];
-        }@catch (NSException *e) {
-            NSLog(@"%@",e);
-        }
-    }
-    [self resignFirstResponder];
-}
 
 
 

@@ -109,7 +109,7 @@
     
     id model = self.articleList[indexPath.row];
     cell.textLabel.text = model[@"title"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@]%@",model[@"classify"],[Utiles secondToDate:[model[@"updatetime"] doubleValue]]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@]%@",model[@"classify"],[Utiles milsecondToDate:[model[@"updatetime"] doubleValue]]];
     
     return cell;
 }

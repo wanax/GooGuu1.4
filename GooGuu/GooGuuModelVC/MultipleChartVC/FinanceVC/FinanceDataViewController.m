@@ -46,7 +46,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[Utiles colorWithHexString:@"#F2EFE1"]];
-    NSLog(@"2");
+
     self.colorArr=[NSArray arrayWithObjects:@"e92058",@"b700b7",@"216dcb",@"13bbca",@"65d223",@"f09c32",@"f15a38",nil];
     
     AppDelegate *delegate=[[UIApplication sharedApplication] delegate];

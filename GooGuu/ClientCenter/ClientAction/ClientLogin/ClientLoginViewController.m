@@ -14,7 +14,6 @@
 #import "LoginView.h"
 #import "MBProgressHUD.h"
 #import "PrettyTabBarViewController.h"
-#import "GooGuuContainerViewController.h"
 #import "MHTabBarController.h"
 #import "ConcernedViewController.h"
 #import "UserRegisterViewController.h"
@@ -125,7 +124,10 @@
         NSString *name=[userNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSString *pwd=[userPwdField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
-        [self userLoginUserName:name pwd:pwd];
+        [CommonFunction userLoginUserName:name pwd:pwd callBack:^(id obj) {
+            NSLog(@"%@",obj);
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
         [textField resignFirstResponder];
     }
     return YES;
@@ -157,85 +159,19 @@
 }
 
 -(IBAction)loginBtClicked:(id)sender{
-    [self userLoginUserName:userNameField.text pwd:userPwdField.text];
+    [CommonFunction userLoginUserName:userNameField.text pwd:userPwdField.text callBack:^(id obj) {
+        NSLog(@"%@",obj);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 -(IBAction)cancelBtClicked:(UIButton *)bt{
-    [self viewDisMiss];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)backGroundIsClicked{
     [self.userNameField resignFirstResponder];
     [self.userPwdField resignFirstResponder];
-}
-
--(void)viewDisMiss{
-    [userNameField resignFirstResponder];
-    [userPwdField resignFirstResponder];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    if(isGoIn){
-        [delegate.tabBarController setSelectedIndex:sourceType];
-    }else if(!isGoIn){
-        if (sourceType==MyGooGuuBar) {
-            [delegate.tabBarController setSelectedIndex:NewsBar];
-        } else {
-            [delegate.tabBarController setSelectedIndex:sourceType];
-        }
-    }
-}
-
--(void)userLoginUserName:(NSString *)userName pwd:(NSString *)pwd{
-    if ([Utiles isNetConnected]) {
-        
-        [MBProgressHUD showHUDAddedTo:self.view withTitle:@"正在登录" animated:YES];
-       
-        NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[userName lowercaseString],@"username",[Utiles md5:pwd],@"password",@"googuu",@"from", nil];
-        
-        [Utiles getNetInfoWithPath:@"Login" andParams:params besidesBlock:^(id info){
-
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-            if([[info objectForKey:@"status"] isEqualToString:@"1"]){
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginKeeping" object:nil];
-                [[NSUserDefaults standardUserDefaults] setObject:[info objectForKey:@"token"] forKey:@"UserToken"];
-                
-                NSDictionary *userInfo=[NSDictionary dictionaryWithObjectsAndKeys:userName,@"username",pwd,@"password", nil];
-                [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"UserInfo"];
-                
-                NSLog(@"%@",[info objectForKey:@"token"]);
-                isGoIn=YES;
-                
-                [self viewDisMiss];
-                
-            }else {
-                NSString *msg=@"";
-                if ([info[@"status"] isEqual:@"0"]) {
-                    msg=@"用户不存在";
-                } else if ([info[@"status"] isEqual:@"2"]){
-                    msg=@"邮箱未激活";
-                } else if ([info[@"status"] isEqual:@"3"]){
-                    msg=@"密码错误";
-                }
-                [Utiles ToastNotification:msg andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
-            }
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            
-        } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-        }];
-    } else {
-        [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-    }
-    
-  
-}
-
--(void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void *)context{
-    NSLog(@"finished");
 }
 
 - (void)didReceiveMemoryWarning

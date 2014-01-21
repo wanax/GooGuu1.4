@@ -12,7 +12,6 @@
 
 @property (nonatomic,retain) NSString *articleId;
 @property (nonatomic,retain) NSArray *viewDataArr;
-@property (nonatomic,retain) NSDictionary *readingMarksDic;
 
 @property (nonatomic,retain) UITableView *cusTable;
 @property (nonatomic,retain) UIRefreshControl *refreshControl;

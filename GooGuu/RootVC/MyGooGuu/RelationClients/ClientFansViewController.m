@@ -8,6 +8,8 @@
 
 #import "ClientFansViewController.h"
 #import "SVPullToRefresh.h"
+#import "UserFriendCell.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ClientFansViewController ()
 
@@ -110,7 +112,7 @@
 #pragma Table DataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0;
+    return 56.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -125,7 +127,7 @@
                              ComPostCellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc]
-                 initWithStyle:UITableViewCellStyleValue1
+                 initWithStyle:UITableViewCellStyleDefault
                  reuseIdentifier:ComPostCellIdentifier] autorelease];
     }
     cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:14.0f];
@@ -135,7 +137,8 @@
     id model = self.clientList[indexPath.row];
     
     cell.textLabel.text = model[@"realname"];
-    cell.detailTextLabel.text = model[@"username"];
+    
+    [cell.imageView setImageWithURL:[NSURL URLWithString:model[@"userheaderimg"]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
 
     return cell;
 }

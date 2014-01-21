@@ -16,10 +16,10 @@
 
         NSDictionary *params = @{@"username":[userName lowercaseString],
                                  @"password":[Utiles md5:pwd],
-                                 @"from":@"googuu",
-                                 @"version":@"1"};
+                                 @"from":@"googuu"
+                                 };
         
-        [Utiles getNetInfoWithPath:@"UserLoginWithInfo" andParams:params besidesBlock:^(id info){
+        [Utiles getNetInfoWithPath:@"Login" andParams:params besidesBlock:^(id info){
             
             if([[info objectForKey:@"status"] isEqualToString:@"1"]){
 

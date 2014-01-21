@@ -18,7 +18,7 @@
                         <rect key="frame" x="98" y="8" width="214" height="38"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="38" id="ebf-Vx-hCD"/>
+                            <constraint firstAttribute="height" constant="38" id="89V-Sw-IoB"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="14"/>
                         <color key="textColor" red="0.070588238537311554" green="0.20392158627510071" blue="0.40000003576278687" alpha="1" colorSpace="deviceRGB"/>
@@ -28,25 +28,18 @@
                         <rect key="frame" x="98" y="54" width="69" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="69" id="JSr-Hi-RzN"/>
+                            <constraint firstAttribute="height" constant="18" id="oPC-iF-LAU"/>
+                            <constraint firstAttribute="width" constant="69" id="xM9-8S-0Cu"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="10"/>
                         <color key="textColor" red="0.87058830261230469" green="0.50980395078659058" blue="0.23921570181846619" alpha="1" colorSpace="deviceRGB"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="90">
-                        <rect key="frame" x="282" y="55" width="30" height="15"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="2xk-qe-K6y"/>
-                            <constraint firstAttribute="height" constant="15" id="3BR-80-n41"/>
-                        </constraints>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yLJ-dP-Fwi">
                         <rect key="frame" x="8" y="16" width="82" height="45"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="82" id="cD3-7L-R8o"/>
+                            <constraint firstAttribute="width" constant="82" id="PXg-vN-wTw"/>
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6w9-zO-aF2">
@@ -58,27 +51,23 @@
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6w9-zO-aF2" firstAttribute="centerX" secondItem="tnz-J4-iE9" secondAttribute="centerX" id="AWp-HO-t5g"/>
-                    <constraint firstItem="14" firstAttribute="leading" secondItem="yLJ-dP-Fwi" secondAttribute="trailing" constant="8" symbolic="YES" id="Ejr-oH-cha"/>
-                    <constraint firstItem="14" firstAttribute="trailing" secondItem="90" secondAttribute="trailing" id="IM7-UR-Z2X"/>
-                    <constraint firstItem="6w9-zO-aF2" firstAttribute="top" secondItem="71" secondAttribute="bottom" constant="8" symbolic="YES" id="KOK-gn-1rO"/>
-                    <constraint firstItem="90" firstAttribute="top" secondItem="14" secondAttribute="bottom" constant="9" id="RRy-Ok-cdK"/>
-                    <constraint firstItem="yLJ-dP-Fwi" firstAttribute="leading" secondItem="6w9-zO-aF2" secondAttribute="leading" id="Rzh-lF-zOq"/>
-                    <constraint firstItem="71" firstAttribute="leading" secondItem="yLJ-dP-Fwi" secondAttribute="trailing" constant="8" symbolic="YES" id="Scf-WO-2af"/>
-                    <constraint firstItem="yLJ-dP-Fwi" firstAttribute="leading" secondItem="tnz-J4-iE9" secondAttribute="leading" constant="8" id="ZnF-Su-lsf"/>
-                    <constraint firstItem="6w9-zO-aF2" firstAttribute="top" secondItem="90" secondAttribute="bottom" constant="10" id="czU-Cr-IUu"/>
-                    <constraint firstItem="71" firstAttribute="top" secondItem="14" secondAttribute="bottom" constant="8" symbolic="YES" id="dwC-XK-BUm"/>
-                    <constraint firstItem="6w9-zO-aF2" firstAttribute="top" secondItem="yLJ-dP-Fwi" secondAttribute="bottom" constant="19" id="oZY-9p-APl"/>
-                    <constraint firstAttribute="bottom" secondItem="6w9-zO-aF2" secondAttribute="bottom" constant="8" id="pbD-sY-gid"/>
-                    <constraint firstItem="yLJ-dP-Fwi" firstAttribute="top" secondItem="tnz-J4-iE9" secondAttribute="top" constant="16" id="pmd-04-MZg"/>
-                    <constraint firstItem="14" firstAttribute="top" secondItem="tnz-J4-iE9" secondAttribute="top" constant="8" id="qdM-pk-knW"/>
-                    <constraint firstItem="90" firstAttribute="trailing" secondItem="6w9-zO-aF2" secondAttribute="trailing" id="wzB-wE-cqY"/>
+                    <constraint firstItem="yLJ-dP-Fwi" firstAttribute="leading" secondItem="tnz-J4-iE9" secondAttribute="leading" constant="8" id="29E-HS-zcU"/>
+                    <constraint firstItem="6w9-zO-aF2" firstAttribute="top" secondItem="yLJ-dP-Fwi" secondAttribute="bottom" constant="19" id="3Sa-iy-cU7"/>
+                    <constraint firstItem="6w9-zO-aF2" firstAttribute="centerX" secondItem="tnz-J4-iE9" secondAttribute="centerX" id="6sc-OK-dTu"/>
+                    <constraint firstItem="6w9-zO-aF2" firstAttribute="top" secondItem="71" secondAttribute="bottom" constant="8" symbolic="YES" id="Beg-4Y-bsw"/>
+                    <constraint firstItem="14" firstAttribute="trailing" secondItem="6w9-zO-aF2" secondAttribute="trailing" id="D8a-1A-J4d"/>
+                    <constraint firstAttribute="bottom" secondItem="6w9-zO-aF2" secondAttribute="bottom" constant="8" id="KDL-TM-Nau"/>
+                    <constraint firstItem="14" firstAttribute="leading" secondItem="yLJ-dP-Fwi" secondAttribute="trailing" constant="8" symbolic="YES" id="Sis-T7-OtV"/>
+                    <constraint firstItem="71" firstAttribute="top" secondItem="14" secondAttribute="bottom" constant="8" symbolic="YES" id="UfR-YT-kYT"/>
+                    <constraint firstItem="6w9-zO-aF2" firstAttribute="leading" secondItem="yLJ-dP-Fwi" secondAttribute="leading" id="asI-z4-WHO"/>
+                    <constraint firstItem="14" firstAttribute="top" secondItem="tnz-J4-iE9" secondAttribute="top" constant="8" id="boP-2K-0K2"/>
+                    <constraint firstItem="71" firstAttribute="leading" secondItem="yLJ-dP-Fwi" secondAttribute="trailing" constant="8" symbolic="YES" id="bqn-v8-T0n"/>
+                    <constraint firstItem="yLJ-dP-Fwi" firstAttribute="top" secondItem="tnz-J4-iE9" secondAttribute="top" constant="16" id="jOr-Rs-3ZG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="comIconImg" destination="yLJ-dP-Fwi" id="4p9-Qi-vuY"/>
                 <outlet property="contentTextView" destination="6w9-zO-aF2" id="4Ax-WP-eDt"/>
-                <outlet property="readMarkImg" destination="90" id="104"/>
                 <outlet property="timeDiferLabel" destination="71" id="84"/>
                 <outlet property="titleLabel" destination="14" id="31"/>
             </connections>

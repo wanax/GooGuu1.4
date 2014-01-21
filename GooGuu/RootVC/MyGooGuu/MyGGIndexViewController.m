@@ -14,6 +14,10 @@
 #import "ClientAttentonsViewController.h"
 #import "ClientPriMsgsViewController.h"
 #import "ClientBlackListViewController.h"
+#import "ConcernedViewController.h"
+#import "CalendarViewController.h"
+#import "ClientRelationComListVC.h"
+#import "SettingCenterViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyGGIndexViewController ()
@@ -50,6 +54,7 @@
     self.navigationItem.rightBarButtonItem = settingButton;
 }
 
+
 #pragma mark -
 #pragma Net
 
@@ -82,6 +87,11 @@
 #pragma UIControl Action
 
 -(void)setttingBtClicked:(UIBarButtonItem *)bt {
+    
+    SettingCenterViewController *set=[[[SettingCenterViewController alloc] init] autorelease];
+    set.title=@"功能设置";
+    set.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:set animated:YES];
     
 }
 
@@ -191,6 +201,22 @@
     int section = indexPath.section;
     int row = indexPath.row;
     if (section == 0) {
+        //关注的模型
+        UIViewController *vc = nil;
+        if (row == 0) {
+            ClientRelationComListVC *comVC = [[[ClientRelationComListVC alloc] initWithTopical:@"投资组合" type:@"AttentionData"] autorelease];
+            comVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:comVC animated:YES];
+        } else if (row == 1) {//保存的模型
+            ClientRelationComListVC *savedVC = [[[ClientRelationComListVC alloc] initWithTopical:@"我的模型" type:@"SavedData"] autorelease];
+            savedVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:savedVC animated:YES];
+        } else if (row == 2) {//投资日历
+            CalendarViewController *calendarVC = [[[CalendarViewController alloc] init] autorelease];
+            calendarVC.view.frame = CGRectMake(0,100,SCREEN_WIDTH,600);
+            [self.navigationController pushViewController:calendarVC animated:YES];
+        }
+        
     } else if (section == 1) {
         if (row == 0) {
             MyCollectsViewController *myCollectVC = [[[MyCollectsViewController alloc] init] autorelease];

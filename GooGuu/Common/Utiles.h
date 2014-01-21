@@ -50,6 +50,7 @@
 //日期与秒数转换since1970
 +(double)dateToSecond:(NSString *)date;
 +(NSString *)secondToDate:(double)second;
++(NSString *)milsecondToDate:(double)second;
 
 +(BOOL)isDate1:(NSString *)date1 beforeThanDate2:(NSString *)date2;
 

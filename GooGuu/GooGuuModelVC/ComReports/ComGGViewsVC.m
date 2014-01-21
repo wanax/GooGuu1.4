@@ -1,30 +1,28 @@
 //
-//  GooGuuViewController.m
-//  googuu
+//  ComGGViewsVC.m
+//  GooGuu
 //
-//  Created by Xcode on 13-10-16.
-//  Copyright (c) 2013年 Xcode. All rights reserved.
+//  Created by Xcode on 14-1-21.
+//  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "GooGuuViewController.h"
+#import "ComGGViewsVC.h"
 #import "ValueViewCell.h"
 #import "GooGuuArticleViewController.h"
 #import "ArticleCommentViewController.h"
-#import "SVPullToRefresh.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface GooGuuViewController ()
+@interface ComGGViewsVC ()
 
 @end
 
-@implementation GooGuuViewController
+@implementation ComGGViewsVC
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStockCode:(NSString *)code
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        NSArray *arr = [[[NSArray alloc] init] autorelease];
-        self.viewDataArr = arr;
+        self.stockCode = code;
     }
     return self;
 }
@@ -35,58 +33,33 @@
     [self setTitle:@"估值观点"];
     
 	[self initComponents];
-    [self getValueViewData:@"" code:@""];
+    [self getValueViewData];
 }
 
 -(void)initComponents{
-
+    
     UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain] autorelease];
     self.cusTable = tempTable;
     self.cusTable.delegate = self;
     self.cusTable.dataSource = self;
     
-    [self.cusTable addInfiniteScrollingWithActionHandler:^{
-        [self getValueViewData:self.articleId code:@""];
-    }];
-    
-    UIRefreshControl *tempRefresh = [[[UIRefreshControl alloc] init] autorelease];
-    tempRefresh.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
-    [tempRefresh addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = tempRefresh;
-    [self.cusTable addSubview:self.refreshControl];
-    
     [self.view addSubview:self.cusTable];
 }
 
--(void)handleRefresh:(UIRefreshControl *)control {
-    control.attributedTitle = [[[NSAttributedString alloc] initWithString:@"刷新中"] autorelease];
-    [control endRefreshing];
-    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
-}
-
--(void)loadData{
-    [self.refreshControl endRefreshing];
-    self.refreshControl.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
-    [self getValueViewData:@"" code:@""];
-}
-
--(void)getValueViewData:(NSString *)articleID code:(NSString *)stockCode{
+-(void)getValueViewData {
     
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articleID,@"articleid",stockCode,@"stockcode", nil];
+    NSDictionary *params = @{
+                             @"stockcode":self.stockCode
+                             };
     [Utiles getNetInfoWithPath:@"GooGuuView" andParams:params besidesBlock:^(id obj) {
         
         NSMutableArray *temp=[[[NSMutableArray alloc] init] autorelease];
-        for(id obj in self.viewDataArr){
-            [temp addObject:obj];
-        }
         for (id data in obj) {
             [temp addObject:data];
         }
         self.viewDataArr=temp;
-        self.articleId=[[temp lastObject] objectForKey:@"articleid"];
         [self.cusTable reloadData];
 
-        [self.cusTable.infiniteScrollingView stopAnimating];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
     }];
@@ -118,25 +91,24 @@
     }
     
     id model=[self.viewDataArr objectAtIndex:indexPath.row];
-
+    
     if([model objectForKey:@"titleimgurl"]){
         [cell.titleImgView setImageWithURL:[NSURL URLWithString:[model[@"titleimgurl"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     }
     
     [cell.titleLabel setText:model[@"title"]];
-    cell.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-    cell.titleLabel.numberOfLines = 2;
-    cell.titleLabel.adjustsFontSizeToFitWidth = YES;
-    
+    cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    cell.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+
     NSString *temp = model[@"concise"];
     if([temp length] > 95){
         temp = [NSString stringWithFormat:@"%@......",[temp substringToIndex:80]];
     }
-
+    
     cell.conciseTextView.text = temp;
     
     [cell.updateTimeLabel setText:model[@"updatetime"]];
-
+    
     return cell;
     
 }
@@ -147,28 +119,25 @@
 	return 8;
 }
 
-
 #pragma mark -
 #pragma mark Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     id model = self.viewDataArr[indexPath.row];
     
     GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
     articleVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
     SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
 }
 
--(BOOL)shouldAutorotate{
-    return NO;
-}
-
-- (void)didReceiveMemoryWarning{
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end

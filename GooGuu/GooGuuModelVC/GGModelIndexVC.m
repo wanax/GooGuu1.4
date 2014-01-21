@@ -11,9 +11,11 @@
 #import "DahonValuationViewController.h"
 #import "CompanyFansVC.h"
 #import "GGReportListVC.h"
-#import "GooGuuViewController.h"
+#import "ComGGViewsVC.h"
 #import "ChartViewController.h"
 #import "FinancalModelChartViewController.h"
+#import "FinanceDataViewController.h"
+#import "AnalysisReportViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
@@ -48,17 +50,13 @@
     self.view.backgroundColor = [UIColor cloudsColor];
     self.comAboutTable.scrollEnabled = NO;
     
-    self.ggReportButton.layer.cornerRadius = 4.0;
-    self.ggValueModelButton.layer.cornerRadius = 4.0;
-    self.ggFinDataButton.layer.cornerRadius = 4.0;
-    self.ggViewButton.layer.cornerRadius = 4.0;
-    
+    //IMG
     if (![Utiles isBlankString:self.companyInfo[@"comanylogourl"]]) {
         [self.comIconImg setImageWithURL:[NSURL URLWithString:self.companyInfo[@"comanylogourl"]] placeholderImage:[UIImage imageNamed:@"defaultCompanyLogo"]];
     } else {
         [self.comIconImg setImage:[UIImage imageNamed:@"defaultPic"]];
     }
-
+    //LABEL
     float marketPri = [self.companyInfo[@"marketprice"] floatValue];
     float ggPri = [self.companyInfo[@"googuuprice"] floatValue];
     self.marketPriLabel.text = [NSString stringWithFormat:@"%.2f",marketPri];
@@ -71,9 +69,17 @@
     } else {
         self.updownIndicator.image = [UIImage imageNamed:@"stockDownArrow"];
     }
-    
+    //SEGMENT
     [self.comInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",self.companyInfo[@"attentioncount"]] forSegmentAtIndex:1];
     [self.comInfoSeg setTitle:[NSString stringWithFormat:@"模型(%@)",self.companyInfo[@"usersavecount"]] forSegmentAtIndex:2];
+    //BUTTON
+    self.ggReportButton.layer.cornerRadius = 4.0;
+    self.ggValueModelButton.layer.cornerRadius = 4.0;
+    self.ggFinDataButton.layer.cornerRadius = 4.0;
+    self.ggViewButton.layer.cornerRadius = 4.0;
+    if (![self.companyInfo[@"hasmodel"] boolValue]) {
+        [self.ggValueModelButton setTitle:@"请求估值" forState:UIControlStateNormal];
+    }
 }
 
 #pragma mark -
@@ -123,36 +129,63 @@
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-
-}
-
 - (IBAction)comExpectSegClicked:(id)sender {
 }
 
 //业绩简报
 - (IBAction)ggReportBtClicked:(id)sender {
-    GGReportListVC *reportListVC = [[[GGReportListVC alloc] init] autorelease];
+    AnalysisReportViewController *reportListVC = [[[AnalysisReportViewController alloc] init] autorelease];
+    reportListVC.companyInfo = self.companyInfo;
     [self.navigationController pushViewController:reportListVC animated:YES];
 }
 
 //估值模型
 - (IBAction)ggModelBtClicked:(id)sender {
-    ChartViewController *modelChartVC = [[[ChartViewController alloc] init] autorelease];
-    modelChartVC.comInfo = self.companyInfo;
-    [self presentViewController:modelChartVC animated:YES completion:nil];
+    
+    if ([self.companyInfo[@"hasmodel"] boolValue]) {
+        ChartViewController *modelChartVC = [[[ChartViewController alloc] init] autorelease];
+        modelChartVC.comInfo = self.companyInfo;
+        [self presentViewController:modelChartVC animated:YES completion:nil];
+    } else {
+        [self requestValution];
+    }
+    
+}
+
+-(void)requestValution{
+
+    NSDictionary *params = @{
+                             @"stockcode":self.companyInfo[@"stockcode"]
+                             };
+    [Utiles postNetInfoWithPath:@"RequestValuation" andParams:params besidesBlock:^(id resObj){
+        if(resObj){
+            if([[resObj objectForKey:@"status"] boolValue]){
+                [Utiles showToastView:self.view withTitle:@"谢谢" andContent:[NSString stringWithFormat:@"共计已发送%@次请求,我们会尽快处理.",[resObj objectForKey:@"data"]] duration:2.0];
+            }
+        }
+    } failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
+    }];
 }
 
 //财务数据
 - (IBAction)ggFinBtClicked:(id)sender {
-    FinancalModelChartViewController *finChartVC = [[[FinancalModelChartViewController alloc] init] autorelease];
-    finChartVC.comInfo = self.companyInfo;
-    [self presentViewController:finChartVC animated:YES completion:nil];
+    
+    if ([self.companyInfo[@"hasmodel"] boolValue]) {
+        FinancalModelChartViewController *finChartVC = [[[FinancalModelChartViewController alloc] init] autorelease];
+        finChartVC.comInfo = self.companyInfo;
+        [self presentViewController:finChartVC animated:YES completion:nil];
+    } else {
+        FinanceDataViewController *finChartVC = [[[FinanceDataViewController alloc] init] autorelease];
+        finChartVC.comInfo = self.companyInfo;
+        [self presentViewController:finChartVC animated:YES completion:nil];
+    }
+    
 }
 
 //估值观点
 - (IBAction)ggViewBtClicked:(id)sender {
-    GooGuuViewController *viewListVC = [[[GooGuuViewController alloc] init] autorelease];
+    ComGGViewsVC *viewListVC = [[[ComGGViewsVC alloc] initWithStockCode:self.companyInfo[@"stockcode"]] autorelease];
     [self.navigationController pushViewController:viewListVC animated:YES];
 }
 

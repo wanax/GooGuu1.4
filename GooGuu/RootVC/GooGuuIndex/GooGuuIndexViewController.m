@@ -13,7 +13,7 @@
 #import "TopCommentsViewController.h"
 #import "WishesComListViewController.h"
 #import "GGModelIndexVC.h"
-#import "HelpViewController.h"
+#import "StockSearchListViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuIndexViewController ()
@@ -31,23 +31,17 @@
     return self;
 }
 
--(void)helpAction:(id)sender{
+-(void)searchAction:(id)sender{
     
-    HelpViewController *help=[[HelpViewController alloc] init];
-    help.type=UserHelp;
-    help.hidesBottomBarWhenPushed=YES;
-    [self.navigationController pushViewController:help animated:YES];
-    SAFE_RELEASE(help);
-    
+    StockSearchListViewController *searchVC = [[[StockSearchListViewController alloc] init] autorelease];
+    searchVC.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
+
 }
--(void)addHelpBt{
-    
-    UIButton *wanSay = [[[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)] autorelease];
-    [wanSay setImage:[UIImage imageNamed:@"searchBt"] forState:UIControlStateNormal];
-    [wanSay addTarget:self action:@selector(helpAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
-    [self.navigationItem setRightBarButtonItem:nextStepBarBtn animated:YES];
-    
+
+-(void)addSearchBt{
+    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)] autorelease];
+    self.navigationItem.rightBarButtonItem = nextStepBarBtn;
 }
 
 
@@ -61,7 +55,7 @@
 
 -(void)initComponents {
     
-    [self addHelpBt];
+    [self addSearchBt];
     
     UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT) style:UITableViewStylePlain] autorelease];
     temp.backgroundColor = [UIColor cloudsColor];
@@ -199,7 +193,7 @@
         if (row == 0) {
             cell.textLabel.text = @"估值模型";
             cell.detailTextLabel.text = @"上市公司现金流折现模型";
-            cell.imageView.image = [UIImage imageNamed:@"modelIcon"];
+            cell.imageView.image = [UIImage imageNamed:@"user_model_small_icon"];
         } else if (row == 1) {
             cell.textLabel.text = @"心愿榜";
             cell.detailTextLabel.text = @"希望看到哪些公司的财务模型";

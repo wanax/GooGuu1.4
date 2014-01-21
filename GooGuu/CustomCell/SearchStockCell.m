@@ -12,16 +12,12 @@
 
 @synthesize companyNameLabel;
 @synthesize stockCodeLabel;
-@synthesize comBriefImg;
-@synthesize comModelImg;
 @synthesize requestValuationsBt;
 
 - (void)dealloc
 {
     SAFE_RELEASE(companyNameLabel);
     SAFE_RELEASE(stockCodeLabel);
-    SAFE_RELEASE(comBriefImg);
-    SAFE_RELEASE(comModelImg);
     SAFE_RELEASE(requestValuationsBt);
     [super dealloc];
 }

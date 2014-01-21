@@ -123,34 +123,9 @@
 
 
 -(void)logoutBtClick:(id)sender{
-    
-    NSString *token= [Utiles getUserToken];
-    if(token){
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserToken"];
-        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                                token, @"token",@"googuu",@"from",
-                                nil];
-        [Utiles postNetInfoWithPath:@"LogOut" andParams:params besidesBlock:^(id info){
-           
-            if([[info objectForKey:@"status"] isEqualToString:@"1"]){
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"LogOut" object:nil];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserToken"];
-                [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserInfo"];
-                [self.navigationController popViewControllerAnimated:YES];
-            }else if([[info objectForKey:@"status"] isEqualToString:@"0"]){
-                NSLog(@"logout failed:%@",[info objectForKey:@"msg"]);
-            }
-            
-        } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-        }];
-        
-    }else{
-        NSLog(@"logout failed");
-    }
-    
-
+    [CommonFunction userLogoutcallBack:^(id obj) {
+        NSLog(@"%@",obj);
+    }];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

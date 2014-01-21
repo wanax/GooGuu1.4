@@ -1,26 +1,26 @@
 //
-//  TopComsViewController.m
+//  ClientRelationComListVC.m
 //  GooGuu
 //
-//  Created by Xcode on 14-1-14.
+//  Created by Xcode on 14-1-20.
 //  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "TopComsViewController.h"
+#import "ClientRelationComListVC.h"
 #import "CompanyCell.h"
 
-@interface TopComsViewController ()
+@interface ClientRelationComListVC ()
 
 @end
 
-@implementation TopComsViewController
+@implementation ClientRelationComListVC
 
-- (id)initWithTopical:(NSString *)topical type:(TopPoints)type
+- (id)initWithTopical:(NSString *)topical type:(NSString *)type
 {
     self = [super init];
     if (self) {
         self.topical = topical;
-        self.type = type;
+        self.sourceType = type;
     }
     return self;
 }
@@ -69,19 +69,15 @@
 
 -(void)getComsInfo {
     
-    NSString *url = @"";
-    if (self.type == TopCompany) {
-        url = @"GetTopCompanys";
-    } else if (self.type == RiseSpace) {
-        url = @"RiseSpace";
-    } else if (self.type == FallSpace) {
-        url = @"FallSpace";
-    }
+    NSDictionary *params1 = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [Utiles getUserToken], @"token",@"googuu",@"from",
+                            nil];
     
-    [Utiles getNetInfoWithPath:url andParams:nil besidesBlock:^(id obj) {
+    [Utiles getNetInfoWithPath:self.sourceType andParams:params1 besidesBlock:^(id obj) {
         
+        id models = obj[@"data"];
         NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
-        for (id model in obj) {
+        for (id model in models) {
             [temps addObject:model];
         }
         self.comList = temps;
@@ -105,7 +101,7 @@
             [codes addObject:model[@"stockcode"]];
         }
         self.attentionCodes = codes;
-        
+        [self.comTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -124,7 +120,7 @@
                              @"from":@"googuu",
                              @"state":@"1"
                              };
-   
+    
     if ([bt.titleLabel.text isEqualToString:@"添加关注"]) {
         
         [Utiles postNetInfoWithPath:@"AddAttention" andParams:params besidesBlock:^(id obj) {
@@ -179,7 +175,7 @@
     static NSString *CompanyCellIdentifier = @"CompanyCellIdentifier";
     
     CompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             CompanyCellIdentifier];
+                        CompanyCellIdentifier];
     if (cell == nil) {
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"CompanyCell" owner:self options:nil];
         cell = [array objectAtIndex:0];
@@ -199,22 +195,11 @@
         [cell.attentionBt setTitle:@"添加关注" forState:UIControlStateNormal];
     }
     
-    if (self.type == TopCompany) {
-        
-        float ggPrice = [model[@"googuuprice"] floatValue];
-
-        cell.marketLabel.text = [NSString stringWithFormat:@"%@.%@",model[@"stockcode"],model[@"market"]];
-        cell.googuuPriLable.text = [NSString stringWithFormat:@"%.2f",ggPrice];
-        percent = (ggPrice - marketPrice) / marketPrice;
-        
-    } else {
-        
-        float ggPrice = [model[@"analystprice"] floatValue];
-        cell.marketLabel.text = [NSString stringWithFormat:@"%@.%@",model[@"stockcode"],model[@"marketname"]];
-        cell.googuuPriLable.text = [NSString stringWithFormat:@"%.2f",ggPrice];
-        percent = (ggPrice - marketPrice) / marketPrice;
-
-    }
+    float ggPrice = [model[@"googuuprice"] floatValue];
+    
+    cell.marketLabel.text = [NSString stringWithFormat:@"%@.%@",model[@"stockcode"],model[@"market"]];
+    cell.googuuPriLable.text = [NSString stringWithFormat:@"%.2f",ggPrice];
+    percent = (ggPrice - marketPrice) / marketPrice;
     cell.percentLable.text = [NSString stringWithFormat:@"%.0f%%",percent*100];
     if (percent > 0) {
         cell.indicatorImg.image = [UIImage imageNamed:@"stockUpArrow"];

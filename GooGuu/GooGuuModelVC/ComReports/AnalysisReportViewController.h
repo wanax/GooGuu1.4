@@ -13,17 +13,11 @@
 
 @class CustomTableView;
 
-@interface AnalysisReportViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,EGORefreshTableHeaderDelegate>{
-    
-    EGORefreshTableHeaderView *_refreshHeaderView;
-    BOOL _reloading;//主要是记录是否在刷新中
-    
-    __strong UIActivityIndicatorView *_activityIndicatorView;
-    
-}
+@interface AnalysisReportViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,NSLayoutManagerDelegate>
+
 @property  BOOL nibsRegistered;
-@property (nonatomic,retain) NSMutableArray *analyReportList;
-@property (nonatomic,retain) UITableView *customTableView;
-@property (nonatomic,retain) NSDictionary *readingMarksDic;
+@property (nonatomic,retain) id companyInfo;
+@property (nonatomic,retain) NSMutableArray *analyReports;
+@property (nonatomic,retain) UITableView *reportTable;
 
 @end

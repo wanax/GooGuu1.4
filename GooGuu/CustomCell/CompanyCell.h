@@ -1,5 +1,5 @@
 //
-//  TopComCell.h
+//  CompanyCell.h
 //  GooGuu
 //
 //  Created by Xcode on 14-1-14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopComCell : UITableViewCell
+@interface CompanyCell : UITableViewCell
 
 @property (nonatomic,retain) IBOutlet UILabel *comNameLabel;
 @property (nonatomic,retain) IBOutlet UILabel *marketLabel;

@@ -28,11 +28,12 @@
 @implementation ConcernedViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithType:(NSString *)type andSource:(BrowseSourceType)source
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.type = type;
+        self.browseType = source;
     }
     return self;
 }

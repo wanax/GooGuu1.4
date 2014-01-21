@@ -352,6 +352,18 @@ static NSDateFormatter *formatter;
   
 }
 
+
++(NSString *)milsecondToDate:(double)second{
+    
+    if(formatter==nil){
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-mm-dd"];
+    }
+    NSDate *nd = [NSDate dateWithTimeIntervalSince1970:second/1000];
+    return [formatter stringFromDate:nd];
+    
+}
+
 +(BOOL)isDate1:(NSString *)date1 beforeThanDate2:(NSString *)date2{
 
     date1=[date1 stringByReplacingOccurrencesOfString:@"-" withString:@""];

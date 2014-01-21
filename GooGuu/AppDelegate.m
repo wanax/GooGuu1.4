@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "MyGooguuViewController.h"
 #import "FinPicKeyWordListViewController.h"
 #import "GooGuuViewController.h"
 #import "GGReportListVC.h"
@@ -132,9 +131,13 @@
 }
 
 - (void) handleTimer: (NSTimer *) timer{
-    
-    NSUserDefaults *userDeaults=[NSUserDefaults standardUserDefaults];
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[[[userDeaults objectForKey:@"UserInfo"] objectForKey:@"username"] lowercaseString],@"username",[Utiles md5:[[userDeaults objectForKey:@"UserInfo"] objectForKey:@"password"]],@"password",@"googuu",@"from", nil];
+
+    id userInfo = [GetUserDefaults(@"UserInfo") objectFromJSONString];
+    NSDictionary *params = @{
+                             @"username":userInfo[@"username"],
+                             @"password":[Utiles md5:userInfo[@"password"]],
+                             @"from":@"googuu"
+                             };
     [Utiles getNetInfoWithPath:@"Login" andParams:params besidesBlock:^(id resObj){
         
         if([[resObj objectForKey:@"status"] isEqualToString:@"1"]){

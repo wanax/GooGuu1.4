@@ -1,14 +1,14 @@
 //
-//  TopComCell.m
+//  CompanyCell.m
 //  GooGuu
 //
 //  Created by Xcode on 14-1-14.
 //  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "TopComCell.h"
+#import "CompanyCell.h"
 
-@implementation TopComCell
+@implementation CompanyCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

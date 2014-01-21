@@ -18,7 +18,6 @@
 #import "AddCommentViewController.h"
 #import "PrettyKit.h"
 #import "ComfieldTabelDataSource.h"
-#import "UserCell+ConfigureForComment.h"
 
 static NSString * const UserCellIdentifier = @"UserCellIdentifier";
 

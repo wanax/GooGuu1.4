@@ -37,7 +37,7 @@
 @property (nonatomic,strong) NSMutableArray *comInfoList;
 
 
-
+- (id)initWithType:(NSString *)type andSource:(BrowseSourceType)source;
 
 
 

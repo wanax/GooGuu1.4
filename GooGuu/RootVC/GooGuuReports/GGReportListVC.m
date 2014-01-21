@@ -36,7 +36,6 @@
 {
     [super viewDidLoad];
     self.title=@"业绩简报";
-    self.readingMarksDic=[Utiles getConfigureInfoFrom:@"readingmarks" andKey:nil inUserDomain:YES];
 
     [self addTable];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -146,12 +145,9 @@
     id model=[self.arrList objectAtIndex:row];
     
     cell.title=[model objectForKey:@"title"];
-    cell.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    cell.titleLabel.font = [UIFont boldSystemFontOfSize:16];
     cell.titleLabel.numberOfLines=2;
     cell.titleLabel.adjustsFontSizeToFitWidth = YES;
-    //设置文字过长时的显示格式截去尾部
-    cell.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-    [self setReadingMark:cell andTitle:[model objectForKey:@"title"]];
     
     NSString *temp=[model objectForKey:@"concise"];
     if([temp length]>95){
@@ -184,26 +180,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)cellBtClicked:(UIButton *)bt{
-    
-}
-
--(void)setReadingMark:(GooReportCell *)cell andTitle:(NSString *)title{
-    
-    if(self.readingMarksDic){
-        if ([[self.readingMarksDic allKeys] containsObject:title]) {
-            cell.readMarkImg.image=[UIImage imageNamed:@"read2"];
-        }else{
-            cell.readMarkImg.image=[UIImage imageNamed:@"unread2"];
-        }
-    }else{
-        cell.readMarkImg.image=[UIImage imageNamed:@"unread2"];
-    }
-    
-}
-
-
-
 #pragma mark -
 #pragma mark Table Delegate Methods
 
@@ -222,7 +198,6 @@
     
     [Utiles setConfigureInfoTo:@"readingmarks" forKey:model[@"title"] andContent:@"1"];
     SetConfigure(@"readingmarks", model[@"title"], @"1");
-    self.readingMarksDic = GetConfigure(@"readingmarks", nil, YES);
 }
 
 
