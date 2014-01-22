@@ -78,21 +78,21 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
     //title
-    self.titleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:6 frame:CGRectMake(10,5,450,30) fontSize:12.0 color:nil textColor:@"#63573d" location:NSTextAlignmentLeft];
+    self.titleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(10,5,450,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentLeft];
     
     //提示信息
     //[tool addLabelToView:self.view withTitle:@"*点击图标查看大行估值" Tag:6 frame:CGRectMake(450,5,80,30) fontSize:10.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
     
-    self.backBt=[tool addButtonToView:self.view withTitle:@"返回" Tag:OneMonth frame:CGRectMake(530,5,30,30) andFun:@selector(backToParent:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    self.backBt=[tool addButtonToView:self.view withTitle:@"返回" Tag:OneMonth frame:CGRectMake(450,5,30,30) andFun:@selector(backToParent:)];
     [self.backBt.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
     
-    self.oneMonth=[tool addButtonToView:self.view withTitle:@"一个月" Tag:OneMonth frame:CGRectMake(10,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    self.oneMonth=[tool addButtonToView:self.view withTitle:@"一个月" Tag:OneMonth frame:CGRectMake(10,290,40,25) andFun:@selector(changeDateInter:)];
     [self.oneMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
-    self.threeMonth=[tool addButtonToView:self.view withTitle:@"三个月" Tag:ThreeMonth frame:CGRectMake(60,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    self.threeMonth=[tool addButtonToView:self.view withTitle:@"三个月" Tag:ThreeMonth frame:CGRectMake(60,290,40,25) andFun:@selector(changeDateInter:)];
     [self.threeMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
-    self.sixMonth=[tool addButtonToView:self.view withTitle:@"六个月" Tag:SixMonth frame:CGRectMake(110,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#e97a31" normalBackGroundImg:nil highBackGroundImg:nil];
+    self.sixMonth=[tool addButtonToView:self.view withTitle:@"六个月" Tag:SixMonth frame:CGRectMake(110,290,40,25) andFun:@selector(changeDateInter:)];
     [self.sixMonth.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
-    self.oneYear=[tool addButtonToView:self.view withTitle:@"一年" Tag:OneYear frame:CGRectMake(160,290,40,25) andFun:@selector(changeDateInter:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"monthChoosenBt" highBackGroundImg:nil];
+    self.oneYear=[tool addButtonToView:self.view withTitle:@"一年" Tag:OneYear frame:CGRectMake(160,290,40,25) andFun:@selector(changeDateInter:)];
     [self.oneYear.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
     self.lastMarkBt=self.oneYear;
     [self.oneMonth setEnabled:NO];

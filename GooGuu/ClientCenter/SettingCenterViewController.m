@@ -344,12 +344,7 @@
                     [self logout];
                     [self.customTabel reloadData];
                 } else {
-                    ClientLoginViewController *loginViewController=nil;
-                    if (SCREEN_HEIGHT>500) {
-                        loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView5" bundle:nil] autorelease];
-                    } else {
-                        loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLoginView" bundle:nil] autorelease];
-                    }
+                    ClientLoginViewController *loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLogin2View" bundle:nil] autorelease];
                     loginViewController.sourceType=SettingBar;
                     [self presentViewController:loginViewController animated:YES completion:nil];
                 }

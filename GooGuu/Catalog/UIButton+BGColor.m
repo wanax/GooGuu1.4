@@ -14,7 +14,6 @@
 - (void)setBackgroundColor:(UIColor *)color forState:(UIControlState)state {
     CGRect buttonSize = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     UIView *bgView = [[[UIView alloc] initWithFrame:buttonSize] autorelease];
-    bgView.layer.cornerRadius = 5;
     bgView.clipsToBounds = true;
     bgView.backgroundColor = color;
     UIGraphicsBeginImageContext(self.frame.size);

@@ -72,6 +72,7 @@
 
 -(void)getValueViewData:(NSString *)articleID code:(NSString *)stockCode{
     
+    [ProgressHUD show:nil];
     NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articleID,@"articleid",stockCode,@"stockcode", nil];
     [Utiles getNetInfoWithPath:@"GooGuuView" andParams:params besidesBlock:^(id obj) {
         
@@ -85,10 +86,10 @@
         self.viewDataArr=temp;
         self.articleId=[[temp lastObject] objectForKey:@"articleid"];
         [self.cusTable reloadData];
-
         [self.cusTable.infiniteScrollingView stopAnimating];
+        [ProgressHUD dismiss];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+        NSLog(@"%@",error);
     }];
     
 }

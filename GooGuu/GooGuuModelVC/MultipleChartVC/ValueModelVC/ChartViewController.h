@@ -31,7 +31,7 @@
 
 #define FINGERCHANGEDISTANCE 100.0
 
-#define DrawXYAxis [DrawChartTool drawXYAxisIn:graph toPlot:plotSpace withXRANGEBEGIN:XRANGEBEGIN XRANGELENGTH:XRANGELENGTH YRANGEBEGIN:YRANGEBEGIN YRANGELENGTH:YRANGELENGTH XINTERVALLENGTH:XINTERVALLENGTH XORTHOGONALCOORDINATE:XORTHOGONALCOORDINATE XTICKSPERINTERVAL:XTICKSPERINTERVAL YINTERVALLENGTH:YINTERVALLENGTH YORTHOGONALCOORDINATE:YORTHOGONALCOORDINATE YTICKSPERINTERVAL:YTICKSPERINTERVAL to:self isY:YES isX:YES  type:DragabelModel]
+#define DrawXYAxis [DrawChartTool drawXYAxisIn:self.graph toPlot:self.plotSpace withXRANGEBEGIN:XRANGEBEGIN XRANGELENGTH:XRANGELENGTH YRANGEBEGIN:YRANGEBEGIN YRANGELENGTH:YRANGELENGTH XINTERVALLENGTH:XINTERVALLENGTH XORTHOGONALCOORDINATE:XORTHOGONALCOORDINATE XTICKSPERINTERVAL:XTICKSPERINTERVAL YINTERVALLENGTH:YINTERVALLENGTH YORTHOGONALCOORDINATE:YORTHOGONALCOORDINATE YTICKSPERINTERVAL:YTICKSPERINTERVAL to:self isY:YES isX:YES  type:DragabelModel]
 
 
 @interface ChartViewController : UIViewController<CPTScatterPlotDataSource,CPTScatterPlotDelegate,CPTBarPlotDataSource,CPTBarPlotDelegate,UIWebViewDelegate,CPTAxisDelegate,ModelClassGrade2Delegate>{
@@ -54,26 +54,9 @@
     float YINTERVALLENGTH;
     float YORTHOGONALCOORDINATE;
     float YTICKSPERINTERVAL;
-    
-
-    CPTXYGraph * graph ;
-    //可调整当前数据线
-    NSMutableArray *_forecastPoints;
-    //默认置灰当前可调整数据线，做调整后数据对比使用
-    NSMutableArray *_forecastDefaultPoints;
-    //不可调整历史数据线
-    NSMutableArray *_hisPoints;
-    //网络获取图表所需数据
-    NSString *_jsonForChart;
-    //股票种类
-    NSArray *_industryClass;
-    
-    NSMutableArray *_standard;
-    
-    BOOL _isSaved;
-    
 }
 
+@property BOOL isSaved;
 @property BOOL webIsLoaded;
 @property BOOL disCountIsChanged;
 @property BOOL isShowDiscountView;
@@ -131,9 +114,6 @@
 - (CGPoint)CoordinateTransformRealToAbstract:(CGPoint)point;
 //坐标转换方法，相对坐标转化实际坐标
 - (CGPoint)CoordinateTransformAbstractToReal:(CGPoint)point;
-//判断手指触摸点是否在折点旁边
--(BOOL)isNearByThePoint:(CGPoint)p;
-
 
 
 @end

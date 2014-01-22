@@ -35,12 +35,14 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
 {
     [super viewDidLoad];
     [self initComponents];
+    self.view.backgroundColor = [UIColor whiteColor];
     page=1;
-    self.photoDataSource=[[NSMutableArray alloc] init];
-    self.browser = [[CXPhotoBrowser alloc] initWithDataSource:self delegate:self];
-    //self.browser.wantsFullScreenLayout = NO;
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#FDFBE4"]];
-    self.images=[[NSArray alloc] init];
+    NSMutableArray *tempArr = [[[NSMutableArray alloc] init] autorelease];
+    self.photoDataSource = tempArr;
+    CXPhotoBrowser *tempBrowser = [[[CXPhotoBrowser alloc] initWithDataSource:self delegate:self] autorelease];
+    self.browser = tempBrowser;
+    NSArray *arr = [[[NSArray alloc] init] autorelease];
+    self.images = arr;
     [self addPics];
 }
 
@@ -51,7 +53,7 @@ static NSString *ItemIdentifier = @"ItemIdentifier";
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:flowLayout];
     [self.collectionView registerNib:[UINib nibWithNibName:@"PicCollectionCell" bundle:nil] forCellWithReuseIdentifier:ItemIdentifier];
-    [self.collectionView setBackgroundColor:[Utiles colorWithHexString:@"#FDFBE4"]];
+    [self.collectionView setBackgroundColor:[UIColor whiteColor]];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self.collectionView addInfiniteScrollingWithActionHandler:^{

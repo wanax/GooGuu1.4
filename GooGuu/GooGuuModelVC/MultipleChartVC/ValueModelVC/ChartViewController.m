@@ -8,17 +8,9 @@
 //  公司详细页图表绘制
 
 #import "ChartViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
-#import "math.h"
-#import <AddressBook/AddressBook.h>
 #import "ModelViewController.h"
-#import "MHTabBarController.h"
-#import "PrettyNavigationController.h"
 #import "DrawChartTool.h"
 #import "DiscountRateViewController.h"
-#import "UIButton+BGColor.h"
-#import <CoreText/CoreText.h>
 
 
 
@@ -28,96 +20,11 @@
 
 @implementation ChartViewController
 
-@synthesize trueUnit;
-@synthesize sourceType;
-@synthesize wantSavedType;
-@synthesize comInfo;
-@synthesize netComInfo;
-@synthesize disCountIsChanged;
-@synthesize globalDriverId;
-@synthesize valuesStr;
-@synthesize webIsLoaded;
-@synthesize changedDriverIds;
-@synthesize isShowDiscountView;
-
-@synthesize rateViewController;
-@synthesize modelMainViewController;
-@synthesize modelFeeViewController;
-@synthesize modelCapViewController;
-
-@synthesize forecastPoints=_forecastPoints;
-@synthesize forecastDefaultPoints=_forecastDefaultPoints;
-@synthesize hisPoints=_hisPoints;
-@synthesize standard=_standard;
-
-@synthesize jsonForChart=_jsonForChart;
-
-@synthesize forecastDefaultLinePlot;
-@synthesize forecastLinePlot;
-@synthesize historyLinePlot;
-@synthesize barPlot;
-
-@synthesize linkage;
-@synthesize isAddGesture;
-
-@synthesize industryClass=_industryClass;
-@synthesize yAxisUnit;
-@synthesize hostView;
-@synthesize plotSpace;
-@synthesize graph;
-
-@synthesize webView;
-@synthesize priceLabel;
-@synthesize myGGpriceLabel;
-@synthesize saveBt;
-@synthesize discountBt;
-
-
 static NSString * FORECAST_DATALINE_IDENTIFIER =@"forecast_dataline_identifier";
 static NSString * FORECAST_DEFAULT_DATALINE_IDENTIFIER =@"forecast_default_dataline_identifier";
 static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 
-
-- (void)dealloc
-{
-    SAFE_RELEASE(trueUnit);
-    SAFE_RELEASE(discountBt);
-    SAFE_RELEASE(changedDriverIds);
-    SAFE_RELEASE(saveBt);
-    SAFE_RELEASE(myGGpriceLabel);
-    SAFE_RELEASE(globalDriverId);
-    SAFE_RELEASE(comInfo);
-    SAFE_RELEASE(valuesStr);
-    SAFE_RELEASE(netComInfo);
-    
-    SAFE_RELEASE(rateViewController);
-    SAFE_RELEASE(modelMainViewController);
-    SAFE_RELEASE(modelFeeViewController);
-    SAFE_RELEASE(modelCapViewController);
-    
-    [yAxisUnit release];yAxisUnit=nil;
-    [graph release];graph=nil;
-    [plotSpace release];plotSpace=nil;
-    [hostView release];hostView=nil;
-    
-    [_forecastDefaultPoints release];_forecastDefaultPoints=nil;
-    [_forecastPoints release];_forecastPoints=nil;
-    [_hisPoints release];_hisPoints=nil;
-    [_jsonForChart release];_jsonForChart=nil;
-    [_industryClass release];_industryClass=nil;
-    [_standard release];_standard=nil;
-    
-    [forecastLinePlot release];forecastLinePlot=nil;
-    [forecastDefaultLinePlot release];forecastDefaultLinePlot=nil;
-    [historyLinePlot release];historyLinePlot=nil;
-    [barPlot release];barPlot=nil;
-    
-    [webView release];webView=nil;
-    [priceLabel release];priceLabel=nil;
-    
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark General Methods
@@ -129,8 +36,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 }
 -(void)addDiscountView{
     if([Utiles isNetConnected]){
-        if(!isShowDiscountView){
-            isShowDiscountView=YES;
+        if(!self.isShowDiscountView){
+            self.isShowDiscountView=YES;
             [self.discountBt setEnabled:NO];
             [self.view addSubview:self.rateViewController.view];
             CATransition *transition=[CATransition animation];
@@ -145,8 +52,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     }
 }
 -(void)removeDiscountView{
-    if(isShowDiscountView){
-        isShowDiscountView=NO;
+    if(self.isShowDiscountView){
+        self.isShowDiscountView=NO;
         [self.discountBt setEnabled:YES];
         CATransition *transition=[CATransition animation];
         transition.duration=0.1f;
@@ -165,42 +72,38 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 
 -(void)viewDidAppear:(BOOL)animated{
     //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-    if(webIsLoaded){
+    if(self.webIsLoaded){
         if(![Utiles isBlankString:self.valuesStr]){
             self.valuesStr=[self.valuesStr stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
             [Utiles getObjectDataFromJsFun:self.webView funName:@"setValues" byData:self.valuesStr shouldTrans:NO];
-            [self modelClassChanged:globalDriverId];
+            [self modelClassChanged:self.globalDriverId];
         }
     }
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    //[[BaiduMobStat defaultStat] pageviewEndWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-}
-
 - (void)viewDidLoad
 {
-    //NSLog(@"viewDidLoad");
+
     [super viewDidLoad];
-    
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#F6F1E6"]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.discountBt setEnabled:NO];
  
     [self initVariable];
     
-    webView=[[UIWebView alloc] init];
-    webView.delegate=self;
+    UIWebView *tempWeb = [[[UIWebView alloc] init] autorelease];
+    self.webView = tempWeb;
+    self.webView.delegate=self;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"c" ofType:@"html"];
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
     
     [self initPlotSpace];
 }
 -(void)initVariable{
 
     self.changedDriverIds=[[NSMutableArray alloc] init];
-    linkage=YES;
-    _isSaved=YES;
-    webIsLoaded=NO;
+    self.linkage=YES;
+    self.isSaved=YES;
+    self.webIsLoaded=NO;
     self.modelMainViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
     self.modelFeeViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
     self.modelCapViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
@@ -213,142 +116,113 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 }
 
 -(void)initPlotSpace{
-    self.forecastPoints=[[NSMutableArray alloc] init];
-    self.hisPoints=[[NSMutableArray alloc] init];
-    self.forecastDefaultPoints=[[NSMutableArray alloc] init];
-    self.standard=[[NSMutableArray alloc] init];
+    
+    NSMutableArray *temp1 = [[[NSMutableArray alloc] init] autorelease];
+    self.forecastPoints = temp1;
+    NSMutableArray *temp2 = [[[NSMutableArray alloc] init] autorelease];
+    self.hisPoints = temp2;
+    NSMutableArray *temp3 = [[[NSMutableArray alloc] init] autorelease];
+    self.forecastDefaultPoints = temp3;
+    NSMutableArray *temp4 = [[[NSMutableArray alloc] init] autorelease];
+    self.standard = temp4;
     
     //初始化图形视图
-    @try {
-        graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
-        graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
-        //graph.cornerRadius  = 5.0f;
-        hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(0,40,SCREEN_WIDTH,270) ];
-        [self.view addSubview:hostView];
-        [hostView setHostedGraph : graph ];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
+    CPTXYGraph *tempG = [[[CPTXYGraph alloc] initWithFrame:CGRectZero] autorelease];
+    self.graph = tempG;
+    self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#EADBB9" andAlpha:1.0]];
+
+    CPTGraphHostingView *tempHost = [[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(0,40,SCREEN_WIDTH,270)] autorelease];
+    self.hostView = tempHost;
+    [self.view addSubview:self.hostView];
+    [self.hostView setHostedGraph : self.graph ];
     
-    graph . paddingLeft = 0.0f ;
-    graph . paddingRight = 0.0f ;
-    graph . paddingTop = 0 ;
-    graph . paddingBottom = GRAPAHBOTTOMPAD ;
+    self.graph . paddingLeft = 0.0f ;
+    self.graph . paddingRight = 0.0f ;
+    self.graph . paddingTop = 0 ;
+    self.graph . paddingBottom = GRAPAHBOTTOMPAD ;
     
     //绘制图形空间
-    plotSpace=(CPTXYPlotSpace *)graph.defaultPlotSpace;
-    //plotSpace.allowsUserInteraction=YES;
+    self.plotSpace=(CPTXYPlotSpace *)self.graph.defaultPlotSpace;
     DrawXYAxis;
 }
 
+-(UIBarButtonItem *)addBarButton:(NSString *)title tag:(int)tag {
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    bt.frame = CGRectMake(0,0,55,40);
+    bt.tag = tag;
+    [bt setTitle:title forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor peterRiverColor] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    bt.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:13.0];
+    [bt addTarget:self action:@selector(toolBarAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barBt = [[[UIBarButtonItem alloc] initWithCustomView:bt] autorelease];
+    return barBt;
+}
+
 -(void)initChartViewComponents{
-    //NSLog(@"initChartViewComponents");
-    int iOS7H0,iOS7H1,iOS7H2;
-    iOS7H0=20;
-    iOS7H1=25;
-    iOS7H2=72;
-    UIImageView *topBar=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]];
-    topBar.frame=CGRectMake(0,iOS7H0,SCREEN_HEIGHT,40);
-    [self.view addSubview:topBar];
+
+    UIToolbar *toolBar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_HEIGHT,44)] autorelease];
+    
+    UIBarButtonItem *backButton = [self addBarButton:@"返回" tag:BackToSuperView];
+    UIBarButtonItem *mainIncomeButton = [self addBarButton:@"主营收入" tag:MainIncome];
+    UIBarButtonItem *operaFeeButton = [self addBarButton:@"运营费用" tag:OperaFee];
+    UIBarButtonItem *operaCapButton = [self addBarButton:@"运营资本" tag:OperaCap];
+    UIBarButtonItem *discountRateButton = [self addBarButton:@"折现率" tag:DiscountRate];
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil
+                                      action:nil];
+    [toolBar setItems:@[backButton,flexibleSpace,mainIncomeButton,operaFeeButton,operaCapButton,discountRateButton]];
+    [self.view addSubview:toolBar];
+    
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
+
+    self.saveBt=[tool addButtonToView:self.view withTitle:@"保存" Tag:SaveData frame:CGRectMake(SCREEN_HEIGHT-62,49,54,26) andFun:@selector(chartAction:)];
     
-    [tool addButtonToView:self.view withTitle:@"主营收入" Tag:MainIncome frame:CGRectMake(SCREEN_HEIGHT-403,iOS7H1,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"mainIncomeBt" highBackGroundImg:@"selectedMainIncome"];
+    self.linkBt=[tool addButtonToView:self.view withTitle:@"点动" Tag:DragChartType frame:CGRectMake(SCREEN_HEIGHT-180,49,54,26) andFun:@selector(chartAction:)];
     
-    [tool addButtonToView:self.view withTitle:@"运营费用" Tag:OperaFee frame:CGRectMake(SCREEN_HEIGHT-303,iOS7H1,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"mainFeeBt" highBackGroundImg:@"selectedMainfee"];
-    
-    [tool addButtonToView:self.view withTitle:@"运营资本" Tag:OperaCap frame:CGRectMake(SCREEN_HEIGHT-203,iOS7H1,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"mainFeeBt" highBackGroundImg:@"selectedMainfee"];
-    
-    self.discountBt=[tool addButtonToView:self.view withTitle:@"折现率" Tag:DiscountRate frame:CGRectMake(SCREEN_HEIGHT-103,iOS7H1,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"discountBt" highBackGroundImg:@"selectedDiscount"];
-    [self.discountBt setTitleColor:[UIColor whiteColor] forState:UIControlStateDisabled];
-    
-    [tool addButtonToView:self.view withTitle:@"返回" Tag:BackToSuperView frame:CGRectMake(10,iOS7H1,50,32) andFun:@selector(chartAction:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
-    
-    saveBt=[tool addButtonToView:self.view withTitle:@"保存" Tag:SaveData frame:CGRectMake(SCREEN_HEIGHT-62,iOS7H2,54,26) andFun:@selector(chartAction:) withType:UIButtonTypeRoundedRect andColor:@"#d0d1d2" textColor:@"#FFFEFE" normalBackGroundImg:@"saveBt" highBackGroundImg:nil];
-    
-    self.linkBt=[tool addButtonToView:self.view withTitle:@"点动" Tag:DragChartType frame:CGRectMake(SCREEN_HEIGHT-180,iOS7H2,54,26) andFun:@selector(chartAction:) withType:UIButtonTypeRoundedRect andColor:@"#2bc0a7" textColor:@"#FFFEFE" normalBackGroundImg:@"resetBt" highBackGroundImg:nil];
-    
-    self.resetBt=[tool addButtonToView:self.view withTitle:@"复位" Tag:ResetChart frame:CGRectMake(SCREEN_HEIGHT-121,iOS7H2,54,26) andFun:@selector(chartAction:) withType:UIButtonTypeRoundedRect andColor:@"#2bc0a7" textColor:@"#FFFEFE" normalBackGroundImg:@"resetBt" highBackGroundImg:nil];
-    
-    int iOSHeightStatusBar;
-    iOSHeightStatusBar=20;
-    
-    //公司名称label
-    CGSize labelsize1 = [tool getLabelSizeFromString:netComInfo[@"CompanyName"] font:@"Heiti SC" fontSize:14.0];
-    //公司股票行业label
-    //CGSize labelsize2 = [tool getLabelSizeFromString:[NSString stringWithFormat:@"(%@.%@)",netComInfo[@"StockCode"],netComInfo[@"Market"]] font:@"Heiti SC" fontSize:11.0];
-//    float maxWidthLenght=MAX(labelsize1.width,labelsize2.width);
-    
-    UILabel *comNameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@",netComInfo[@"CompanyName"]] Tag:0 frame:CGRectMake(0,40+iOSHeightStatusBar,SCREEN_HEIGHT-320,35) fontSize:14.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
+    self.resetBt=[tool addButtonToView:self.view withTitle:@"复位" Tag:ResetChart frame:CGRectMake(SCREEN_HEIGHT-121,49,54,26) andFun:@selector(chartAction:)];
+
+    UILabel *comNameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",self.netComInfo[@"CompanyName"],self.netComInfo[@"StockCode"],self.netComInfo[@"Market"]] frame:CGRectMake(0,44,280,45) fontSize:15.0 textColor:@"#63573d" location:NSTextAlignmentCenter];
     comNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
     comNameLabel.numberOfLines = 0;
     
-    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"(%@.%@)",netComInfo[@"StockCode"],netComInfo[@"Market"]] Tag:0 frame:CGRectMake(0,75+iOSHeightStatusBar,SCREEN_HEIGHT-320,15) fontSize:11.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
-    
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-    [numberFormatter setPositiveFormat:@"###0.##"];
-    NSString *ggPrice=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:@([netComInfo[@"GooguuValuation"] floatValue])]];
-    
-    CGFloat companyNameLabelLenght=SCREEN_HEIGHT-320;
-    //估值label
-    CGSize defaultGGpriceLabelSize=[tool getLabelSizeFromString:@"估股估值:HK$" font:@"Heiti SC" fontSize:10.0];
-    //估值数值label
-    NSString *defaultGprice=[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:@([netComInfo[@"GooguuValuation"] floatValue])]];
-    CGSize defaultPriceLabelSize=[tool getLabelSizeFromString:defaultGprice font:@"Heiti SC" fontSize:10.0];
-    [tool addLabelToView:self.view withTitle:@"估股估值:HK$" Tag:11 frame:CGRectMake(companyNameLabelLenght+40,43+(40+labelsize1.height)/2-defaultGGpriceLabelSize.height+iOSHeightStatusBar,defaultGGpriceLabelSize.width,defaultGGpriceLabelSize.height) fontSize:10.0 color:nil textColor:@"#817a6b" location:NSTextAlignmentLeft];
-    
-    [tool addLabelToView:self.view withTitle:defaultGprice Tag:11 frame:CGRectMake(companyNameLabelLenght+defaultGGpriceLabelSize.width+40,43+(40+labelsize1.height)/2-defaultGGpriceLabelSize.height+defaultGGpriceLabelSize.height-defaultPriceLabelSize.height+iOSHeightStatusBar,defaultPriceLabelSize.width,defaultPriceLabelSize.height) fontSize:10.0 color:nil textColor:@"#e18e14" location:NSTextAlignmentLeft];
-    
-    //我的估值label
-    CGSize myGGpriceLabelSize=[tool getLabelSizeFromString:@"我的估值:HK$" font:@"Heiti SC" fontSize:10.0];
-    //我的估值数值label
-    CGSize priceLabelSize=[tool getLabelSizeFromString:ggPrice font:@"Heiti SC" fontSize:13.0];
-    priceLabelSize.width=priceLabelSize.width+25;
-    //CGFloat priceLabelTap=300-myGGpriceLabelSize.width-priceLabelSize.width-5;
-    
-    myGGpriceLabel=[tool addLabelToView:self.view withTitle:@"我的估值:HK$" Tag:11 frame:CGRectMake(companyNameLabelLenght+40,74+iOSHeightStatusBar,myGGpriceLabelSize.width+3,myGGpriceLabelSize.height) fontSize:10.0 color:nil textColor:@"#817a6b" location:NSTextAlignmentLeft];
-    priceLabel=[tool addLabelToView:self.view withTitle:@"" Tag:11 frame:CGRectMake(companyNameLabelLenght+40+myGGpriceLabelSize.width,74+myGGpriceLabelSize.height-priceLabelSize.height+iOSHeightStatusBar,priceLabelSize.width+10,priceLabelSize.height) fontSize:13.0 color:nil textColor:@"#e18e14" location:NSTextAlignmentLeft];
-    if(self.sourceType!=MySavedType){
-        [myGGpriceLabel setHidden:YES];
-        [priceLabel setHidden:YES];
-    }
- 
     //市场价label
-    CGSize markPriceLabelSize=[tool getLabelSizeFromString:@"市场价:HK$" font:@"Heiti SC" fontSize:10.0];
-    [tool addLabelToView:self.view withTitle:@"市场价:HK$" Tag:11 frame:CGRectMake(companyNameLabelLenght+40,45+iOSHeightStatusBar,markPriceLabelSize.width,markPriceLabelSize.height) fontSize:10.0 color:nil textColor:@"#817a6b" location:NSTextAlignmentLeft];
+    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"市场价:$:%.2f",[self.netComInfo[@"MarketPrice"] floatValue]] frame:CGRectMake(280,44,110,22) fontSize:12.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
+    //估值数值label
+    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"估股估值:$:%.2f",[self.netComInfo[@"GooguuValuation"] floatValue]] frame:CGRectMake(280,67,100,22) fontSize:11.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
     
-    //市场价数值label
-    CGSize markPriceSize=[tool getLabelSizeFromString:[NSString stringWithFormat:@"%@",[numberFormatter stringFromNumber:@([netComInfo[@"MarketPrice"] floatValue])]] font:@"Heiti SC" fontSize:10.0];
-    [tool addLabelToView:self.view withTitle:[numberFormatter stringFromNumber:@([netComInfo[@"MarketPrice"] floatValue])] Tag:11 frame:CGRectMake(companyNameLabelLenght+40+markPriceLabelSize.width,45+iOSHeightStatusBar,markPriceSize.width,markPriceSize.height) fontSize:10.0 color:nil textColor:@"#817a6b" location:NSTextAlignmentLeft];
-    
+    self.myGGpriceLabel=[tool addLabelToView:self.view withTitle:@"我的估值:$" frame:CGRectMake(80,0,80,44) fontSize:14.0 textColor:@"#817a6b" location:NSTextAlignmentCenter];
+    self.priceLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(165,0,100,44) fontSize:18.0 textColor:@"#e18e14" location:NSTextAlignmentCenter];
+    if(self.sourceType!=MySavedType){
+        [self.myGGpriceLabel setHidden:YES];
+        [self.priceLabel setHidden:YES];
+    }
+
     [self addScatterChart];
     if ([Utiles isNetConnected]) {
         [self.discountBt setEnabled:YES];
     }
-    
-    SAFE_RELEASE(topBar);
+
     SAFE_RELEASE(tool);
-    SAFE_RELEASE(numberFormatter);
-    
 }
 
 #pragma mark -
 #pragma Button Clicked Methods
 -(void)chartAction:(UIButton *)bt{
-    //NSLog(@"chartAction");
-    bt.showsTouchWhenHighlighted=YES;
+
     if(bt.tag==SaveData){
         
-        id combinedData=[DrawChartTool changedDataCombinedWebView:self.webView comInfo:comInfo ggPrice:self.priceLabel.text dragChartChangedDriverIds:self.changedDriverIds disCountIsChanged:self.disCountIsChanged];
+        id combinedData=[DrawChartTool changedDataCombinedWebView:self.webView comInfo:self.comInfo ggPrice:self.priceLabel.text dragChartChangedDriverIds:self.changedDriverIds disCountIsChanged:self.disCountIsChanged];
         
         NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[Utiles getUserToken],@"token",@"googuu",@"from",[combinedData JSONString],@"data", nil];
 
         [Utiles postNetInfoWithPath:@"AddModelData" andParams:params besidesBlock:^(id resObj){
             if([resObj[@"status"] isEqual:@"1"]){
-                [bt setBackgroundImage:[UIImage imageNamed:@"savedBt"] forState:UIControlStateNormal];
+                [bt setBackgroundColor:[UIColor grayColor]];
                 [bt setEnabled:NO];
-                _isSaved=YES;
+                self.isSaved=YES;
                 [Utiles showToastView:self.view withTitle:nil andContent:resObj[@"msg"] duration:1.5];
             }else if([resObj[@"status"] isEqual:@"2"]){
                 [Utiles showToastView:self.view withTitle:nil andContent:resObj[@"msg"] duration:1.5];
@@ -361,14 +235,14 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         [self.changedDriverIds removeAllObjects];
         
     }else if(bt.tag==DragChartType){
-        if(linkage){
+        if(self.linkage){
             [bt setTitle:@"联动" forState:UIControlStateNormal];
             [self addBarChart];
-            linkage=NO;
+            self.linkage=NO;
         }else{
             [bt setTitle:@"点动" forState:UIControlStateNormal];
             [self addScatterChart];
-            linkage=YES;
+            self.linkage=YES;
         }
     }else if(bt.tag==ResetChart){
         [self.forecastPoints removeAllObjects];
@@ -377,59 +251,58 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         }
         [self.forecastPoints removeObjectAtIndex:0];
         [self.hisPoints lastObject][@"v"] = (self.forecastDefaultPoints)[1][@"v"];
-        [self addToDriverIds:globalDriverId];
+        [self addToDriverIds:self.globalDriverId];
         [self setStockPrice];
         [self setXYAxis];
-    }else if(bt.tag==BackToSuperView){
-        bt.showsTouchWhenHighlighted=YES;
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
 
 
--(void)selectIndustry:(UIButton *)sender forEvent:(UIEvent*)event{
-    //NSLog(@"selectIndustry");
-    sender.showsTouchWhenHighlighted=YES;
-	//CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
-    //floatingController.frameSize=CGSizeMake(280,280);
-    //floatingController.frameColor=[Utiles colorWithHexString:@"#e26b17"];
-    if(sender.tag==MainIncome){
-        modelMainViewController.isShowDiscountView=self.isShowDiscountView;
-        [self presentViewController:modelMainViewController animated:YES completion:nil];
-    }else if(sender.tag==OperaFee){
-        modelFeeViewController.isShowDiscountView=self.isShowDiscountView;
-        [self presentViewController:modelFeeViewController animated:YES completion:nil];
-    }else if(sender.tag==OperaCap){
-        modelCapViewController.isShowDiscountView=self.isShowDiscountView;
-        [self presentViewController:modelCapViewController animated:YES completion:nil];
-    }else if(sender.tag==DiscountRate){
-        NSString *values=[Utiles getObjectDataFromJsFun:self.webView funName:@"getValues" byData:nil shouldTrans:NO];
-        if (SCREEN_HEIGHT>500) {
-            rateViewController=[[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView5" bundle:nil];
-            rateViewController.view.frame=CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
+-(void)toolBarAction:(UIBarButtonItem *)bt{
+    
+    if (bt.tag == MainIncome) {
+        
+        self.modelMainViewController.isShowDiscountView=self.isShowDiscountView;
+        [self presentViewController:self.modelMainViewController animated:YES completion:nil];
+    } else if(bt.tag == OperaFee) {
+        
+        self.modelFeeViewController.isShowDiscountView=self.isShowDiscountView;
+        [self presentViewController:self.modelFeeViewController animated:YES completion:nil];
+    } else if(bt.tag == OperaCap) {
+        
+        self.modelCapViewController.isShowDiscountView=self.isShowDiscountView;
+        [self presentViewController:self.modelCapViewController animated:YES completion:nil];
+    } else if(bt.tag == DiscountRate) {
+        
+        NSString *values = [Utiles getObjectDataFromJsFun:self.webView funName:@"getValues" byData:nil shouldTrans:NO];
+        if (SCREEN_HEIGHT > 500) {
+            self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView5" bundle:nil];
+            self.rateViewController.view.frame = CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
         } else {
-            rateViewController=[[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil];
-            rateViewController.view.frame=CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
+            self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil];
+            self.rateViewController.view.frame = CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
         }   
-        rateViewController.jsonData=self.jsonForChart;
-        rateViewController.valuesStr=values;
-        rateViewController.dragChartChangedDriverIds=self.changedDriverIds;
-        rateViewController.chartViewController=self;
-        rateViewController.sourceType=ChartViewType;
+        self.rateViewController.jsonData = self.jsonForChart;
+        self.rateViewController.valuesStr = values;
+        self.rateViewController.dragChartChangedDriverIds = self.changedDriverIds;
+        self.rateViewController.chartViewController = self;
+        self.rateViewController.sourceType = ChartViewType;
         [self addDiscountView];
+    } else if (bt.tag == BackToSuperView) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     //NSLog(@"webViewDidFinishLoad");
-    webIsLoaded=YES;
+    self.webIsLoaded=YES;
     [ProgressHUD show:nil];
-    NSDictionary *params=@{@"stockCode": comInfo[@"stockcode"]};
+    NSDictionary *params=@{@"stockCode": self.comInfo[@"stockcode"]};
     [Utiles getNetInfoWithPath:@"CompanyModel" andParams:params besidesBlock:^(id resObj){
         
-        netComInfo=resObj[@"info"];
+        self.netComInfo=resObj[@"info"];
         [self initChartViewComponents];
         
         self.jsonForChart=[resObj JSONString];
@@ -447,22 +320,22 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         self.modelFeeViewController.indicator=@"listFee";
         self.modelCapViewController.indicator=@"listCap";
         
-        if(globalDriverId==0){
-            globalDriverId=self.industryClass[@"listMain"][0][@"id"];
+        if(self.globalDriverId==0){
+            self.globalDriverId=self.industryClass[@"listMain"][0][@"id"];
         }
         if(self.sourceType==MySavedType){
-            [self adjustChartDataForSaved:comInfo[@"stockcode"] andToken:[Utiles getUserToken]];
+            [self adjustChartDataForSaved:self.comInfo[@"stockcode"] andToken:[Utiles getUserToken]];
         }else{
-            [self modelClassChanged:globalDriverId];
+            [self modelClassChanged:self.globalDriverId];
         }
     
         [ProgressHUD dismiss];
-        if(!isAddGesture){
+        if(!self.isAddGesture){
             //手势添加
             UIPanGestureRecognizer *panGr=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(viewPan:)];
-            [hostView addGestureRecognizer:panGr];
+            [self.hostView addGestureRecognizer:panGr];
             [panGr release];
-            isAddGesture=YES;
+            self.isAddGesture=YES;
         }
      
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
@@ -486,7 +359,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 -(void)modelClassChanged:(NSString *)driverId{
     //NSLog(@"modelClassChanged");
     id chartData=[Utiles getObjectDataFromJsFun:self.webView funName:@"returnChartData" byData:driverId shouldTrans:YES];
-    globalDriverId=driverId;
+    self.globalDriverId=driverId;
     
     [self divideData:chartData];
  
@@ -494,7 +367,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     NSArray *sort=[Utiles arrSort:self.forecastPoints];
     self.yAxisUnit=[Utiles getUnitFromData:[[[sort lastObject] objectForKey:@"v"] stringValue] andUnit:self.trueUnit];
     
-    graph.title=[NSString stringWithFormat:@"%@(单位:%@)",chartData[@"title"],self.yAxisUnit];
+    self.graph.title=[NSString stringWithFormat:@"%@(单位:%@)",chartData[@"title"],self.yAxisUnit];
     [self setXYAxis];
     [self setStockPrice];
     [self removeDiscountView];
@@ -541,9 +414,9 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     [Utiles getNetInfoWithPath:@"AdjustedData" andParams:params besidesBlock:^(id resObj){
         if(resObj!=nil){
             id saveData=resObj[@"data"];
-            modelMainViewController.savedData=saveData;
-            modelCapViewController.savedData=saveData;
-            modelFeeViewController.savedData=saveData;
+            self.modelMainViewController.savedData=saveData;
+            self.modelCapViewController.savedData=saveData;
+            self.modelFeeViewController.savedData=saveData;
             for(id data in saveData){
                 id tempChartData=data[@"data"];
                 NSString *chartStr=[tempChartData JSONString];
@@ -553,7 +426,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
             if(self.wantSavedType==DiscountSaved){
                 [self.discountBt sendActionsForControlEvents: UIControlEventTouchUpInside];
             }else{
-                [self modelClassChanged:globalDriverId];
+                [self modelClassChanged:self.globalDriverId];
             }
                 
         }
@@ -616,8 +489,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         subscript=subscript>=[self.forecastPoints count]-1?[self.forecastPoints count]-1:subscript;
         NSAssert(subscript<=[self.forecastPoints count]-1&&coordinate.x>=0,@"over bounds");
         
-        if(linkage){
-            double l4 = YRANGELENGTH*change.y/hostView.frame.size.height/ (1 - exp(-2));
+        if(self.linkage){
+            double l4 = YRANGELENGTH*change.y/self.hostView.frame.size.height/ (1 - exp(-2));
             
             double l7 = 2 / ([(self.forecastPoints)[subscript][@"y"] doubleValue]);
             int i=0;
@@ -632,28 +505,28 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
             }
             
             [self setStockPrice];
-            [graph reloadData];
+            [self.graph reloadData];
             
         }else{
             
-            double changeD=-YRANGELENGTH*change.y/hostView.frame.size.height;
+            double changeD=-YRANGELENGTH*change.y/self.hostView.frame.size.height;
             double v=[(self.standard)[subscript] doubleValue]+changeD;
             (self.forecastPoints)[subscript][@"v"] = @(v);
             if(subscript==0){
                 [self.hisPoints lastObject][@"v"] = @(v);
             }
             [self setStockPrice];
-            [graph reloadData];
+            [self.graph reloadData];
             
         }
         [self.myGGpriceLabel setHidden:NO];
         [self.priceLabel setHidden:NO];
-        if(_isSaved){
-            [saveBt setEnabled:YES];
-            [saveBt setBackgroundImage:[UIImage imageNamed:@"saveBt"] forState:UIControlStateNormal];
-            _isSaved=NO;
+        if(self.isSaved){
+            [self.saveBt setEnabled:YES];
+            [self.saveBt setBackgroundColor:[UIColor tangerineColor]];
+            self.isSaved=NO;
         }
-        [self addToDriverIds:globalDriverId];
+        [self addToDriverIds:self.globalDriverId];
     }
     
 }
@@ -774,8 +647,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 //空间坐标转换:实际坐标转化自定义坐标
 -(CGPoint)CoordinateTransformRealToAbstract:(CGPoint)point{
     
-    float viewWidth=hostView.frame.size.width;
-    float viewHeight=hostView.frame.size.height;
+    float viewWidth=self.hostView.frame.size.width;
+    float viewHeight=self.hostView.frame.size.height;
     
     point.y=point.y-HOSTVIEWTOPPAD;
     
@@ -787,8 +660,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 //空间坐标转换:自定义坐标转化实际坐标
 -(CGPoint)CoordinateTransformAbstractToReal:(CGPoint)point{
     
-    float viewWidth=hostView.frame.size.width;
-    float viewHeight=hostView.frame.size.height;
+    float viewWidth=self.hostView.frame.size.width;
+    float viewHeight=self.hostView.frame.size.height;
     
     float coordinateX=(point.x-XRANGEBEGIN)*viewWidth/XRANGELENGTH;
     float coordinateY=(-1)*(point.y-YRANGEBEGIN-YRANGELENGTH)*(viewHeight-GRAPAHBOTTOMPAD-GRAPAHTOPPAD)/YRANGELENGTH;
@@ -868,7 +741,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         DrawXYAxis;
         SAFE_RELEASE(xTmp);
         SAFE_RELEASE(yTmp);
-        [graph reloadData];
+        [self.graph reloadData];
     }
     @catch (NSException *exception) {
         NSLog(@"%@",exception);
@@ -876,97 +749,94 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 }
 
 -(void)addBarChart{
-    NSLog(@"addBarChart");
-    if(![graph plotWithIdentifier:COLUMNAR_DATALINE_IDENTIFIER]){
+
+    if(![self.graph plotWithIdentifier:COLUMNAR_DATALINE_IDENTIFIER]){
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
         lineStyle.miterLimit=0.0f;
         lineStyle.lineWidth=0.0f;
         lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
         
-        barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor colorWithComponentRed:153/255.0 green:100/255.0 blue:49/255.0 alpha:0.3] horizontalBars:NO];
-        barPlot.baseValue  = CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
-        barPlot.dataSource = self;
-        barPlot.barOffset  = CPTDecimalFromFloat(-0.5f);
-        barPlot.lineStyle=lineStyle;
-        barPlot.fill=[CPTFill fillWithColor:[CPTColor colorWithComponentRed:174/255.0 green:10/255.0 blue:148/255.0 alpha:0.3]];
-        barPlot.identifier = COLUMNAR_DATALINE_IDENTIFIER;
-        barPlot.barWidth=CPTDecimalFromFloat(0.5f);
-        [graph addPlot:barPlot];
+        self.barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor colorWithComponentRed:153/255.0 green:100/255.0 blue:49/255.0 alpha:0.3] horizontalBars:NO];
+        self.barPlot.baseValue  = CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
+        self.barPlot.dataSource = self;
+        self.barPlot.barOffset  = CPTDecimalFromFloat(-0.5f);
+        self.barPlot.lineStyle=lineStyle;
+        self.barPlot.fill=[CPTFill fillWithColor:[CPTColor colorWithComponentRed:174/255.0 green:10/255.0 blue:148/255.0 alpha:0.3]];
+        self.barPlot.identifier = COLUMNAR_DATALINE_IDENTIFIER;
+        self.barPlot.barWidth=CPTDecimalFromFloat(0.5f);
+        [self.graph addPlot:self.barPlot];
         lineStyle.lineWidth=0.0f;
-        forecastLinePlot.dataLineStyle=lineStyle;
-        linkage=NO;
-        [barPlot release];
+        self.forecastLinePlot.dataLineStyle=lineStyle;
+        self.linkage=NO;
+        [self.barPlot release];
     }
     
 }
 
 -(void)addScatterChart{
     //NSLog(@"addScatterChart");
-    linkage=YES;
-    if([graph plotWithIdentifier:COLUMNAR_DATALINE_IDENTIFIER]){
-        [graph removePlot:barPlot];
+    self.linkage=YES;
+    if([self.graph plotWithIdentifier:COLUMNAR_DATALINE_IDENTIFIER]){
+        [self.graph removePlot:self.barPlot];
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-        lineStyle.lineWidth=2.0f;
+        lineStyle.lineWidth=1.0f;
         lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
-        forecastLinePlot.dataLineStyle=lineStyle;
+        self.forecastLinePlot.dataLineStyle=lineStyle;
     }
     
-    if(!([graph plotWithIdentifier:FORECAST_DATALINE_IDENTIFIER]&&[graph plotWithIdentifier:FORECAST_DEFAULT_DATALINE_IDENTIFIER])){
+    if(!([self.graph plotWithIdentifier:FORECAST_DATALINE_IDENTIFIER]&&[self.graph plotWithIdentifier:FORECAST_DEFAULT_DATALINE_IDENTIFIER])){
         
         //y. labelingPolicy = CPTAxisLabelingPolicyNone ;
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
         //修改折线图线段样式,创建可调整数据线段
-        forecastLinePlot=[[[CPTScatterPlot alloc] init] autorelease];
-        lineStyle.miterLimit=2.0f;
-        lineStyle.lineWidth=2.0f;
+        self.forecastLinePlot=[[[CPTScatterPlot alloc] init] autorelease];
+        lineStyle.lineWidth=1.0f;
         lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
-        forecastLinePlot.dataLineStyle=lineStyle;
-        forecastLinePlot.identifier=FORECAST_DATALINE_IDENTIFIER;
+        self.forecastLinePlot.dataLineStyle=lineStyle;
+        self.forecastLinePlot.identifier=FORECAST_DATALINE_IDENTIFIER;
         //forecastLinePlot.labelOffset=5;
-        forecastLinePlot.dataSource=self;//需实现委托
+        self.forecastLinePlot.dataSource=self;//需实现委托
         //forecastLinePlot.delegate=self;
         
         //创建默认对比数据线
-        lineStyle.lineWidth=1.0f;
+        lineStyle.lineWidth=0.8f;
         lineStyle.lineColor=[Utiles cptcolorWithHexString:@"#9B9689" andAlpha:0.8];
-        forecastDefaultLinePlot = [[CPTScatterPlot alloc] init];
-        forecastDefaultLinePlot.dataLineStyle = lineStyle;
-        forecastDefaultLinePlot.identifier = FORECAST_DEFAULT_DATALINE_IDENTIFIER;
-        forecastDefaultLinePlot.dataSource = self;
+        self.forecastDefaultLinePlot = [[CPTScatterPlot alloc] init];
+        self.forecastDefaultLinePlot.dataLineStyle = lineStyle;
+        self.forecastDefaultLinePlot.identifier = FORECAST_DEFAULT_DATALINE_IDENTIFIER;
+        self.forecastDefaultLinePlot.dataSource = self;
         
         
         //创建历史数据线段
-        lineStyle.lineWidth=2.0f;
+        lineStyle.lineWidth=1.5f;
         lineStyle.lineColor=[CPTColor colorWithComponentRed:144/255.0 green:142/255.0 blue:140/255.0 alpha:1.0];
-        historyLinePlot = [[CPTScatterPlot alloc] init];
-        historyLinePlot.dataLineStyle = lineStyle;
-        historyLinePlot.identifier = HISTORY_DATALINE_IDENTIFIER;
-        historyLinePlot.dataSource = self;
+        self.historyLinePlot = [[CPTScatterPlot alloc] init];
+        self.historyLinePlot.dataLineStyle = lineStyle;
+        self.historyLinePlot.identifier = HISTORY_DATALINE_IDENTIFIER;
+        self.historyLinePlot.dataSource = self;
         
         // Add plot symbols: 表示数值的符号的形状
-        //
         CPTMutableLineStyle * symbolLineStyle = [CPTMutableLineStyle lineStyle];
-        symbolLineStyle.lineColor = [CPTColor colorWithComponentRed:207/255.0 green:175/255.0 blue:114/255.0 alpha:1.0];
-        symbolLineStyle.lineWidth = 1.0;
-        
+        symbolLineStyle.lineColor = [Utiles cptcolorWithHexString:@"#3498DB" andAlpha:1.0];
+        symbolLineStyle.lineWidth = 1.5;
         CPTPlotSymbol * plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
-        plotSymbol.fill          = [CPTFill fillWithColor: [CPTColor colorWithComponentRed:222/255.0 green:119/255.0 blue:47/255.0 alpha:1.0]];
         plotSymbol.lineStyle     = symbolLineStyle;
+        plotSymbol.fill = [CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#EADBB9" andAlpha:1.0]];
         plotSymbol.size          = CGSizeMake(13, 13);
         
-        forecastLinePlot.plotSymbol = plotSymbol;
+        self.forecastLinePlot.plotSymbol = plotSymbol;
         symbolLineStyle.lineColor = [CPTColor whiteColor];
         plotSymbol.fill          = [CPTFill fillWithColor: [CPTColor whiteColor]];
         plotSymbol.size          = CGSizeMake(1, 1);
-        historyLinePlot.plotSymbol=plotSymbol;
+        self.historyLinePlot.plotSymbol=plotSymbol;
         
-        [graph addPlot:forecastDefaultLinePlot];
-        [graph addPlot:historyLinePlot];
-        [graph addPlot:forecastLinePlot];
+        [self.graph addPlot:self.forecastDefaultLinePlot];
+        [self.graph addPlot:self.historyLinePlot];
+        [self.graph addPlot:self.forecastLinePlot];
         
-        [forecastLinePlot release];
-        [forecastDefaultLinePlot release];
-        [historyLinePlot release];
+        [self.forecastLinePlot release];
+        [self.forecastDefaultLinePlot release];
+        [self.historyLinePlot release];
         
     }
     
@@ -981,7 +851,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        self.hostView.frame=CGRectMake(5,110,SCREEN_HEIGHT-10,205);
+        self.hostView.frame=CGRectMake(5,90,SCREEN_HEIGHT-10,225);
     }
 }
 

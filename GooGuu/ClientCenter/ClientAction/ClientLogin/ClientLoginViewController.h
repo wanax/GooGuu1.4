@@ -11,8 +11,6 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@class LoginView;
-
 @interface ClientLoginViewController : UIViewController<UITextFieldDelegate>{
     BOOL isGoIn;
 }

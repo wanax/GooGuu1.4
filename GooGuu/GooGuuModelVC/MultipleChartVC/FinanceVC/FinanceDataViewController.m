@@ -87,12 +87,12 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     int iOS7Height;
     iOS7Height=25;
     topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
-    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:11 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:12.0 color:nil textColor:@"#63573d" location:NSTextAlignmentLeft];
+    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentLeft];
     
     
-    [tool addButtonToView:self.view withTitle:@"返回" Tag:FinancialBack frame:CGRectMake(10,iOS7Height,50,32) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
-    [tool addButtonToView:self.view withTitle:@"原始财务数据" Tag:FinancialRatio frame:CGRectMake(SCREEN_HEIGHT-205,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"ratioBt" highBackGroundImg:@"selectedRatioBt"];
-    [tool addButtonToView:self.view withTitle:@"财务分析" Tag:FinancialChart frame:CGRectMake(SCREEN_HEIGHT-105,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"otherBt" highBackGroundImg:@"selectedChartBt"];
+    [tool addButtonToView:self.view withTitle:@"返回" Tag:FinancialBack frame:CGRectMake(10,iOS7Height,50,32) andFun:@selector(backTo:)];
+    [tool addButtonToView:self.view withTitle:@"原始财务数据" Tag:FinancialRatio frame:CGRectMake(SCREEN_HEIGHT-205,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:)];
+    [tool addButtonToView:self.view withTitle:@"财务分析" Tag:FinancialChart frame:CGRectMake(SCREEN_HEIGHT-105,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:)];
 }
 
 -(void)initBarChart{
@@ -268,7 +268,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
     UILabel *nameLabel=nil;
-    nameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",[comDetailInfo objectForKey:@"CompanyName"],[comDetailInfo objectForKey:@"StockCode"],[comDetailInfo objectForKey:@"Market"]] Tag:11 frame:CGRectMake(65,20,110,40) fontSize:11.0 color:nil textColor:@"#3e2000" location:NSTextAlignmentCenter];
+    nameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",[comDetailInfo objectForKey:@"CompanyName"],[comDetailInfo objectForKey:@"StockCode"],[comDetailInfo objectForKey:@"Market"]] frame:CGRectMake(65,20,110,40) fontSize:11.0 textColor:@"#3e2000" location:NSTextAlignmentCenter];
     nameLabel.lineBreakMode = NSLineBreakByCharWrapping;
     nameLabel.numberOfLines = 0;
     SAFE_RELEASE(tool);

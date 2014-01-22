@@ -29,13 +29,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#FDFBE4"]];
     self.title=@"金融图汇";
+    self.view.backgroundColor = [UIColor whiteColor];
     self.tag =nil;
-    self.tag = [[AOTagList alloc] initWithFrame:CGRectMake(-10.0f,
-                                                           150.0f,
-                                                           320.0f,
-                                                           300.0f)];
+    AOTagList *tempList = [[[AOTagList alloc] initWithFrame:CGRectMake(-10.0f,
+                                                                       150.0f,
+                                                                       320.0f,
+                                                                       300.0f)] autorelease];
+    self.tag = tempList;
     
     [self.tag setDelegate:self];
     [self.view addSubview:self.tag];

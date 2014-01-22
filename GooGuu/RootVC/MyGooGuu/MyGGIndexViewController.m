@@ -14,10 +14,10 @@
 #import "ClientAttentonsViewController.h"
 #import "ClientPriMsgsViewController.h"
 #import "ClientBlackListViewController.h"
-#import "ConcernedViewController.h"
 #import "CalendarViewController.h"
 #import "ClientRelationComListVC.h"
 #import "SettingCenterViewController.h"
+#import "ClientLoginViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyGGIndexViewController ()
@@ -35,20 +35,27 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    
+    if ([Utiles isLogin]) {
+        [self getClientInfo];
+    } else {
+        ClientLoginViewController *loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLogin2View" bundle:nil] autorelease];
+        loginViewController.sourceType=SettingBar;
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	[self initComponents];
-    if([Utiles isLogin]) {
-        [self getClientInfo];
-    }
 }
 
 -(void)initComponents {
     
     self.title = @"我的估股";
-    self.view.backgroundColor = [UIColor cloudsColor];
-    self.clientTable.scrollEnabled = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *settingButton = [[[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self  action:@selector(setttingBtClicked:)] autorelease];
     self.navigationItem.rightBarButtonItem = settingButton;
@@ -59,7 +66,7 @@
 #pragma Net
 
 -(void)getClientInfo {
-    
+    [ProgressHUD show:nil];
     NSDictionary *params = @{
                              @"token":[Utiles getUserToken],
                              @"from":@"googuu",
@@ -77,6 +84,7 @@
         } else {
             [Utiles showToastView:self.view withTitle:nil andContent:@"用户信息获取失败" duration:0.5];
         }
+        [ProgressHUD dismiss];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -122,7 +130,10 @@
     if ([self.clientActionButton.titleLabel.text equals:@"登录"]) {
         [self getClientInfo];
     } else {
-        
+        [CommonFunction userLogoutcallBack:^(id obj) {
+            AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+            delegate.tabBarController.selectedIndex = 0;
+        }];
     }
     
 }

@@ -67,7 +67,7 @@
 
 
 -(void)addTabel{
-    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,20,SCREEN_HEIGHT,SCREEN_HEIGHT)];
+    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_HEIGHT)];
     self.cusTable.delegate=self;
     self.cusTable.dataSource=self;
     [self.view addSubview:self.cusTable];

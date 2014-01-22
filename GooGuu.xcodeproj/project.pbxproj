@@ -72,10 +72,7 @@
 		AE0D3CF5187D3A9B00E0E141 /* PrettyTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CF3187D3A9B00E0E141 /* PrettyTabBarViewController.m */; };
 		AE0D3CF9187D3B2500E0E141 /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CF8187D3B2500E0E141 /* Toast+UIView.m */; };
 		AE0D3CFD187D3B7F00E0E141 /* GCDiscreetNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CFC187D3B7F00E0E141 /* GCDiscreetNotificationView.m */; };
-		AE0D3D11187D407700E0E141 /* ConcernedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D06187D407700E0E141 /* ConcernedViewController.m */; };
 		AE0D3D14187D407700E0E141 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D0C187D407700E0E141 /* CalendarViewController.m */; };
-		AE0D3D15187D407700E0E141 /* IndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D0E187D407700E0E141 /* IndicatorView.m */; };
-		AE0D3D16187D407700E0E141 /* Indicator2View.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D10187D407700E0E141 /* Indicator2View.m */; };
 		AE0D3D22187D410800E0E141 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D18187D410800E0E141 /* CustomCellBackground.m */; };
 		AE0D3D23187D410800E0E141 /* FinanPicCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D1A187D410800E0E141 /* FinanPicCollectCell.m */; };
 		AE0D3D24187D410800E0E141 /* FinancePicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3D1C187D410800E0E141 /* FinancePicViewController.m */; };
@@ -119,7 +116,6 @@
 		AE0D3DA3187D46EB00E0E141 /* DiscountRateView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */; };
 		AE0D3DA4187D46EB00E0E141 /* SearchStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D93187D46EB00E0E141 /* SearchStockCell.xib */; };
 		AE0D3DA5187D46EB00E0E141 /* ClientLoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */; };
-		AE0D3DA6187D46EB00E0E141 /* ClientLoginView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D95187D46EB00E0E141 /* ClientLoginView5.xib */; };
 		AE0D3DA7187D46EB00E0E141 /* ValueViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */; };
 		AE0D3DA8187D46EB00E0E141 /* CompanyReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D97187D46EB00E0E141 /* CompanyReportCell.xib */; };
 		AE0D3DAB187D470B00E0E141 /* BetaFactorCountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3DA9187D470B00E0E141 /* BetaFactorCountView.xib */; };
@@ -194,7 +190,6 @@
 		AE6B68C3188A2B8700C3ADBF /* valueModelBt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */; };
 		AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */; };
 		AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */; };
-		AE74DF8E187E44DE002AE169 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8B187E44DE002AE169 /* LoginView.m */; };
 		AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */; };
 		AE74DF9D187E4509002AE169 /* StockRiseDownColorSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF92187E4509002AE169 /* StockRiseDownColorSettingViewController.m */; };
 		AE74DF9E187E4509002AE169 /* AboutUsAndCopyrightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF94187E4509002AE169 /* AboutUsAndCopyrightViewController.m */; };
@@ -355,6 +350,7 @@
 		AE9B2C941886965E0077B56D /* GGVIEW.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C901886965E0077B56D /* GGVIEW.png */; };
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
+		AEA9E764188FB01E0002532F /* ClientLogin2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA9E763188FB01E0002532F /* ClientLogin2View.xib */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
 		AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */; };
 		AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */; };
@@ -489,14 +485,8 @@
 		AE0D3CF8187D3B2500E0E141 /* Toast+UIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Toast+UIView.m"; sourceTree = "<group>"; };
 		AE0D3CFB187D3B7F00E0E141 /* GCDiscreetNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDiscreetNotificationView.h; sourceTree = "<group>"; };
 		AE0D3CFC187D3B7F00E0E141 /* GCDiscreetNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDiscreetNotificationView.m; sourceTree = "<group>"; };
-		AE0D3D05187D407700E0E141 /* ConcernedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcernedViewController.h; sourceTree = "<group>"; };
-		AE0D3D06187D407700E0E141 /* ConcernedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConcernedViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE0D3D0B187D407700E0E141 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		AE0D3D0C187D407700E0E141 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
-		AE0D3D0D187D407700E0E141 /* IndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorView.h; sourceTree = "<group>"; };
-		AE0D3D0E187D407700E0E141 /* IndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorView.m; sourceTree = "<group>"; };
-		AE0D3D0F187D407700E0E141 /* Indicator2View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Indicator2View.h; sourceTree = "<group>"; };
-		AE0D3D10187D407700E0E141 /* Indicator2View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Indicator2View.m; sourceTree = "<group>"; };
 		AE0D3D17187D410800E0E141 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
 		AE0D3D18187D410800E0E141 /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
 		AE0D3D19187D410800E0E141 /* FinanPicCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinanPicCollectCell.h; sourceTree = "<group>"; };
@@ -567,8 +557,7 @@
 		AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountRateView.xib; sourceTree = "<group>"; };
 		AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountRateView5.xib; sourceTree = "<group>"; };
 		AE0D3D93187D46EB00E0E141 /* SearchStockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchStockCell.xib; path = ../../NibFile/Common/SearchStockCell.xib; sourceTree = "<group>"; };
-		AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLoginView.xib; sourceTree = "<group>"; };
-		AE0D3D95187D46EB00E0E141 /* ClientLoginView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLoginView5.xib; sourceTree = "<group>"; };
+		AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientLoginView.xib; path = ../../../NibFile/Common/ClientLoginView.xib; sourceTree = "<group>"; };
 		AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValueViewCell.xib; path = ../../NibFile/Common/ValueViewCell.xib; sourceTree = "<group>"; };
 		AE0D3D97187D46EB00E0E141 /* CompanyReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompanyReportCell.xib; path = ../../NibFile/Common/CompanyReportCell.xib; sourceTree = "<group>"; };
 		AE0D3DA9187D470B00E0E141 /* BetaFactorCountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BetaFactorCountView.xib; sourceTree = "<group>"; };
@@ -761,8 +750,6 @@
 		AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyPostListViewController.m; sourceTree = "<group>"; };
 		AE74DF87187E44D3002AE169 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
 		AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterViewController.m; sourceTree = "<group>"; };
-		AE74DF8A187E44DE002AE169 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
-		AE74DF8B187E44DE002AE169 /* LoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		AE74DF8C187E44DE002AE169 /* ClientLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientLoginViewController.h; sourceTree = "<group>"; };
 		AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ClientLoginViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE74DF91187E4509002AE169 /* StockRiseDownColorSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockRiseDownColorSettingViewController.h; sourceTree = "<group>"; };
@@ -951,6 +938,7 @@
 		AE9B2C901886965E0077B56D /* GGVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GGVIEW.png; sourceTree = "<group>"; };
 		AE9B2C911886965E0077B56D /* VALUEMODEL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VALUEMODEL.png; sourceTree = "<group>"; };
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
+		AEA9E763188FB01E0002532F /* ClientLogin2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLogin2View.xib; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
 		AEE0FDC4188CCB4600C70120 /* ClientFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientFansViewController.h; sourceTree = "<group>"; };
@@ -1441,14 +1429,8 @@
 				AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */,
 				AE8641A5188D246300935E4E /* ClientRelationComListVC.h */,
 				AE8641A6188D246300935E4E /* ClientRelationComListVC.m */,
-				AE0D3D05187D407700E0E141 /* ConcernedViewController.h */,
-				AE0D3D06187D407700E0E141 /* ConcernedViewController.m */,
 				AE0D3D0B187D407700E0E141 /* CalendarViewController.h */,
 				AE0D3D0C187D407700E0E141 /* CalendarViewController.m */,
-				AE0D3D0D187D407700E0E141 /* IndicatorView.h */,
-				AE0D3D0E187D407700E0E141 /* IndicatorView.m */,
-				AE0D3D0F187D407700E0E141 /* Indicator2View.h */,
-				AE0D3D10187D407700E0E141 /* Indicator2View.m */,
 			);
 			path = MyGooGuu;
 			sourceTree = "<group>";
@@ -1504,8 +1486,6 @@
 				AE0D3D90187D46EB00E0E141 /* AboutUsAndCopyrightView.xib */,
 				AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */,
 				AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */,
-				AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */,
-				AE0D3D95187D46EB00E0E141 /* ClientLoginView5.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1913,10 +1893,10 @@
 		AE74DF85187E44CA002AE169 /* ClientLogin */ = {
 			isa = PBXGroup;
 			children = (
-				AE74DF8A187E44DE002AE169 /* LoginView.h */,
-				AE74DF8B187E44DE002AE169 /* LoginView.m */,
+				AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */,
 				AE74DF8C187E44DE002AE169 /* ClientLoginViewController.h */,
 				AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */,
+				AEA9E763188FB01E0002532F /* ClientLogin2View.xib */,
 			);
 			path = ClientLogin;
 			sourceTree = "<group>";
@@ -2510,7 +2490,6 @@
 				AE949D27187E8154004FC1AB /* requestValuationBt.png in Resources */,
 				AE949DE5187E8298004FC1AB /* myGooGuuBar@2x.png in Resources */,
 				AE949D94187E81E5004FC1AB /* tabSelected.png in Resources */,
-				AE0D3DA6187D46EB00E0E141 /* ClientLoginView5.xib in Resources */,
 				AE949D6C187E81D8004FC1AB /* guide1.png in Resources */,
 				AE949D6F187E81D8004FC1AB /* guide4.png in Resources */,
 				AE949DB0187E8218004FC1AB /* userInfoBack.png in Resources */,
@@ -2571,6 +2550,7 @@
 				AE949DCF187E8262004FC1AB /* PE.png in Resources */,
 				AE01888A187D02BC004C6A5D /* TradeList.plist in Resources */,
 				AE0D3DB2187D471F00E0E141 /* LabelSwitchCell.xib in Resources */,
+				AEA9E764188FB01E0002532F /* ClientLogin2View.xib in Resources */,
 				AE949D17187E8122004FC1AB /* selectedOtherBt.png in Resources */,
 				AE949DB1187E8218004FC1AB /* userSetting.png in Resources */,
 				AE949D3F187E8169004FC1AB /* mainFeeBt.png in Resources */,
@@ -2674,7 +2654,6 @@
 				AE518725187E40E60055B9AE /* GuestCommentViewController.m in Sources */,
 				AE0D3D27187D410800E0E141 /* FinPic2ViewController.m in Sources */,
 				AE518747187E41FF0055B9AE /* ComFieldViewController.m in Sources */,
-				AE0D3D15187D407700E0E141 /* IndicatorView.m in Sources */,
 				AE8641A7188D246300935E4E /* ClientRelationComListVC.m in Sources */,
 				AE0D3D4C187D45E400E0E141 /* AOTag.m in Sources */,
 				AE06B8E6187EAB7900DA93E2 /* FinanceToolsViewController.m in Sources */,
@@ -2744,8 +2723,6 @@
 				AE0D3CB4187D36A000E0E141 /* NSDictionary+MutableDeepCopy.m in Sources */,
 				AE0D3CCB187D3A2900E0E141 /* MBProgressHUD.m in Sources */,
 				AE0D3D24187D410800E0E141 /* FinancePicViewController.m in Sources */,
-				AE0D3D16187D407700E0E141 /* Indicator2View.m in Sources */,
-				AE74DF8E187E44DE002AE169 /* LoginView.m in Sources */,
 				AE74DF9F187E4509002AE169 /* FeedBackViewController.m in Sources */,
 				AE236781188B660500D74674 /* CompanyFansVC.m in Sources */,
 				AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */,
@@ -2784,7 +2761,6 @@
 				AE0D3CE7187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m in Sources */,
 				AE06B8EB187EAB7900DA93E2 /* ChoseBetaFactorViewController.m in Sources */,
 				AE0A5666188D59CA00EC0DB0 /* UserFriendCell.m in Sources */,
-				AE0D3D11187D407700E0E141 /* ConcernedViewController.m in Sources */,
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
 				AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */,
 				AE0D3CF5187D3A9B00E0E141 /* PrettyTabBarViewController.m in Sources */,

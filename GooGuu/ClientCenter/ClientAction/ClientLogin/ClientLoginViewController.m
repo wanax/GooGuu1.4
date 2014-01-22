@@ -9,12 +9,8 @@
 
 
 #import "ClientLoginViewController.h"
-#import "LoginView.h"
-#import "ConcernedViewController.h"
-#import "LoginView.h"
 #import "PrettyTabBarViewController.h"
 #import "MHTabBarController.h"
-#import "ConcernedViewController.h"
 #import "UserRegisterViewController.h"
 
 
@@ -24,29 +20,6 @@
 
 @implementation ClientLoginViewController
 
-@synthesize userNameField;
-@synthesize userPwdField;
-@synthesize loginBt;
-@synthesize cancelBt;
-@synthesize regBt;
-@synthesize findPwdBt;
-@synthesize autoCheckImg;
-@synthesize autoLoginBt;
-@synthesize sourceType;
-
-- (void)dealloc
-{   
-    SAFE_RELEASE(userNameField);
-    SAFE_RELEASE(userPwdField);
-    SAFE_RELEASE(loginBt);
-    SAFE_RELEASE(regBt);
-    SAFE_RELEASE(cancelBt);
-    SAFE_RELEASE(findPwdBt);
-    SAFE_RELEASE(autoLoginBt);
-    SAFE_RELEASE(autoCheckImg);
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
-}
 
 -(void)viewDidDisappear:(BOOL)animated{
     //[[BaiduMobStat defaultStat] pageviewEndWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
@@ -60,7 +33,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        autoCheckImg=[[UIImageView alloc] init];
+        self.autoCheckImg=[[UIImageView alloc] init];
     }
     return self;
 }
@@ -68,18 +41,18 @@
 
 -(void)viewDidAppear:(BOOL)animated{
     if([Utiles isLogin]){
-        [self viewDisMiss];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     //[[BaiduMobStat defaultStat] pageviewStartWithName:[NSString stringWithUTF8String:object_getClassName(self)]];
-    if([[Utiles getConfigureInfoFrom:@"userconfigure" andKey:@"rememberPwd" inUserDomain:YES] isEqual:@"1"]){
-        id userInfo=[[NSUserDefaults standardUserDefaults] objectForKey:@"UserInfo"];
+    if([GetConfigure(@"userconfigure",@"rememberPwd",YES) isEqual:@"1"]){
+        id userInfo = [GetUserDefaults(@"UserInfo") objectFromJSONString];
         if (userInfo) {
             [self.userNameField setText:userInfo[@"username"]];
             [self.userPwdField setText:userInfo[@"password"]];
         }
-        [autoCheckImg setImage:[UIImage imageNamed:@"autoLoginCheck"]];
+        [self.autoCheckImg setImage:[UIImage imageNamed:@"autoLoginCheck"]];
     }else{
-        [autoCheckImg setImage:nil];
+        [self.autoCheckImg setImage:nil];
     }
     
 }
@@ -88,22 +61,12 @@
 {
     [super viewDidLoad];
     isGoIn=NO;
-    userNameField.delegate=self;
-    userPwdField.delegate=self;
+    self.userNameField.delegate=self;
+    self.userPwdField.delegate=self;
     
-    UIImageView *image=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userNameImg"]];
-    image.frame=CGRectMake(0,0,20,20);
-    userNameField.leftView=image;
-    userNameField.leftViewMode = UITextFieldViewModeUnlessEditing;
-    
-    UIImageView *image2=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"pwdImg"]];
-    image2.frame=CGRectMake(0,0,20,20);
-    userPwdField.leftView=image2;
-    userPwdField.leftViewMode = UITextFieldViewModeUnlessEditing;
-    
-    autoCheckImg.userInteractionEnabled=YES;
+    self.autoCheckImg.userInteractionEnabled=YES;
     UITapGestureRecognizer *rememberTap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(autoBtClicked:)];
-    [autoCheckImg addGestureRecognizer:rememberTap];
+    [self.autoCheckImg addGestureRecognizer:rememberTap];
     SAFE_RELEASE(rememberTap);
     
 
@@ -116,15 +79,15 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     
     if(textField.tag==100){
-        [userNameField resignFirstResponder];
-        [userPwdField becomeFirstResponder];
+        [self.userNameField resignFirstResponder];
+        [self.userPwdField becomeFirstResponder];
     }else if(textField.tag==200){
  
-        NSString *name=[userNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSString *pwd=[userPwdField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        
+        NSString *name=[self.userNameField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSString *pwd=[self.userPwdField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [ProgressHUD show:nil];
         [CommonFunction userLoginUserName:name pwd:pwd callBack:^(id obj) {
-            NSLog(@"%@",obj);
+            [ProgressHUD dismiss];
             [self dismissViewControllerAnimated:YES completion:nil];
         }];
         [textField resignFirstResponder];
@@ -137,17 +100,16 @@
 
 -(IBAction)autoBtClicked:(id)sender{
     if([[Utiles getConfigureInfoFrom:@"userconfigure" andKey:@"rememberPwd" inUserDomain:YES] isEqual:@"1"]){        
-        [autoCheckImg setImage:nil];
+        [self.autoCheckImg setImage:nil];
         [Utiles setConfigureInfoTo:@"userconfigure" forKey:@"rememberPwd" andContent:@"0"];
     }else{
-        [autoCheckImg setImage:[UIImage imageNamed:@"autoLoginCheck"]];
+        [self.autoCheckImg setImage:[UIImage imageNamed:@"autoLoginCheck"]];
         [Utiles setConfigureInfoTo:@"userconfigure" forKey:@"rememberPwd" andContent:@"1"];
     }
     
 }
 
 -(IBAction)freeRegBtClicked:(id)sender{
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.googuu.net/pages/user/newRegister.htm"]];
     UserRegisterViewController *regVC=[[[UserRegisterViewController alloc] init] autorelease];
     regVC.actionType=UserRegister;
     [self presentViewController:regVC animated:YES completion:nil];
@@ -158,14 +120,19 @@
 }
 
 -(IBAction)loginBtClicked:(id)sender{
-    [CommonFunction userLoginUserName:userNameField.text pwd:userPwdField.text callBack:^(id obj) {
-        NSLog(@"%@",obj);
+    [ProgressHUD show:nil];
+    [CommonFunction userLoginUserName:self.userNameField.text pwd:self.userPwdField.text callBack:^(id obj) {
+        [ProgressHUD dismiss];
         [self dismissViewControllerAnimated:YES completion:nil];
+        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        delegate.tabBarController.selectedIndex = 0;
     }];
 }
 
 -(IBAction)cancelBtClicked:(UIButton *)bt{
     [self dismissViewControllerAnimated:YES completion:nil];
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    delegate.tabBarController.selectedIndex = 0;
 }
 
 -(IBAction)backGroundIsClicked{

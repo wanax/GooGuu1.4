@@ -44,7 +44,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#F2EFE1"]];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
     self.colorArr=[NSArray arrayWithObjects:@"e92058",@"b700b7",@"216dcb",@"13bbca",@"65d223",@"f09c32",@"f15a38",nil];
 
     ModelClassGrade2ViewController *temp1 = [[[ModelClassGrade2ViewController alloc] init] autorelease];
@@ -73,32 +73,49 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 
 }
 
+-(UIBarButtonItem *)addBarButton:(NSString *)title tag:(int)tag {
+    UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
+    bt.frame = CGRectMake(0,0,55,40);
+    bt.tag = tag;
+    [bt setTitle:title forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor peterRiverColor] forState:UIControlStateNormal];
+    [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    bt.titleLabel.font = [UIFont fontWithName:@"Heiti SC" size:13.0];
+    [bt addTarget:self action:@selector(toolBarAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *barBt = [[[UIBarButtonItem alloc] initWithCustomView:bt] autorelease];
+    return barBt;
+}
+
+
 -(void)initFinancalModelViewComponents{
-    UIImageView *topBar=[[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dragChartBar"]] autorelease];
     
-    [self.view addSubview:topBar];
+    UIToolbar *toolBar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_HEIGHT,44)] autorelease];
+
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+                                      initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                      target:nil
+                                      action:nil];
+    [toolBar setItems:@[[self addBarButton:@"返回" tag:FinancialBack],
+                        flexibleSpace,
+                        [self addBarButton:@"财务比例" tag:FinancialRatio],
+                        [self addBarButton:@"财务图表" tag:FinancialChart],
+                        [self addBarButton:@"其它指标" tag:FinancialOther]
+                        ]];
+    [self.view addSubview:toolBar];
+    
     DrawChartTool *tool=[[[DrawChartTool alloc] init] autorelease];
     tool.standIn=self;
-    int iOS7Height;
-    iOS7Height=25;
-    topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
-    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" Tag:11 frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:12.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
-    
-    
-    [tool addButtonToView:self.view withTitle:@"返回" Tag:FinancialBack frame:CGRectMake(10,iOS7Height,50,32) andFun:@selector(backTo:) withType:UIButtonTypeCustom andColor:nil textColor:@"#FFFEFE" normalBackGroundImg:@"backBt" highBackGroundImg:nil];
-    [tool addButtonToView:self.view withTitle:@"财务比例" Tag:FinancialRatio frame:CGRectMake(SCREEN_HEIGHT-305,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"ratioBt" highBackGroundImg:@"selectedRatioBt"];
-    [tool addButtonToView:self.view withTitle:@"财务图表" Tag:FinancialChart frame:CGRectMake(SCREEN_HEIGHT-205,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"chartBt" highBackGroundImg:@"selectedChartBt"];
-    [tool addButtonToView:self.view withTitle:@"其它指标" Tag:FinancialOther frame:CGRectMake(SCREEN_HEIGHT-105,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:) withType:UIButtonTypeRoundedRect andColor:@"#FFFEFE" textColor:@"#000000" normalBackGroundImg:@"otherBt" highBackGroundImg:@"selectedChartBt"];
+    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(0,44,SCREEN_HEIGHT,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentCenter];
+
 }
 
 -(void)initBarChart{
     //初始化图形视图
     @try {
         self.graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
-        //CPTTheme *theme=[CPTTheme themeNamed:kCPTPlainWhiteTheme];
-        //[graph applyTheme:theme];
-        self.graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
-        //graph.cornerRadius  = 15.0f;        
+
+        self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#EADBB9" andAlpha:1.0]];
+       
         self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(10,70,SCREEN_HEIGHT-20,220)];
         [self.view addSubview:self.hostView];
         [self.hostView setHostedGraph : self.graph ];
@@ -122,16 +139,16 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 #pragma mark -
 #pragma Button Clicked Methods
 
--(void)selectIndustry:(UIButton *)sender forEvent:(UIEvent*)event{
+-(void)toolBarAction:(UIBarButtonItem *) bt{
     
-    sender.showsTouchWhenHighlighted=YES;
-
-    if(sender.tag==FinancialRatio){
+    if(bt.tag==FinancialRatio){
         [self presentViewController:self.modelRatioViewController animated:YES completion:nil];
-    }else if(sender.tag==FinancialChart){
+    }else if(bt.tag==FinancialChart){
         [self presentViewController:self.modelChartViewController animated:YES completion:nil];
-    }else if(sender.tag==FinancialOther){
+    }else if(bt.tag==FinancialOther){
         [self presentViewController:self.modelOtherViewController animated:YES completion:nil];
+    }else if (bt.tag == FinancialBack) {
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
     
 }
@@ -215,7 +232,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
     UILabel *nameLabel=nil;
-    nameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",[comDetailInfo objectForKey:@"CompanyName"],[comDetailInfo objectForKey:@"StockCode"],[comDetailInfo objectForKey:@"Market"]] Tag:11 frame:CGRectMake(65,20,110,40) fontSize:11.0 color:nil textColor:@"#3e2000" location:NSTextAlignmentCenter];
+    nameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",[comDetailInfo objectForKey:@"CompanyName"],[comDetailInfo objectForKey:@"StockCode"],[comDetailInfo objectForKey:@"Market"]] frame:CGRectMake(65,0,220,44) fontSize:14.0 textColor:@"#3e2000" location:NSTextAlignmentCenter];
     nameLabel.lineBreakMode = NSLineBreakByCharWrapping;
     nameLabel.numberOfLines = 0;
     SAFE_RELEASE(tool);
@@ -387,7 +404,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        self.hostView.frame=CGRectMake(10,90,SCREEN_HEIGHT-20,220);
+        self.hostView.frame=CGRectMake(10,70,SCREEN_HEIGHT-20,240);
     }
 }
 

@@ -117,25 +117,27 @@
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
     
-    NSDictionary *params2 = @{
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu",
-                             @"state":@"1"
-                             };
-    
-    [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
+    if ([Utiles isLogin]) {
+        NSDictionary *params2 = @{
+                                  @"token":[Utiles getUserToken],
+                                  @"from":@"googuu",
+                                  @"state":@"1"
+                                  };
         
-        NSMutableArray *codes = [[[NSMutableArray alloc] init] autorelease];
-        id data = obj[@"data"];
-        for (id model in data) {
-            [codes addObject:model[@"stockcode"]];
-        }
-        self.attentionCodes = codes;
-        [self.comsTable reloadData];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
-    
+        [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
+            
+            NSMutableArray *codes = [[[NSMutableArray alloc] init] autorelease];
+            id data = obj[@"data"];
+            for (id model in data) {
+                [codes addObject:model[@"stockcode"]];
+            }
+            self.attentionCodes = codes;
+            [self.comsTable reloadData];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }
+
 }
 
 -(BOOL)isAttention:(NSString *)stockCode {
@@ -144,49 +146,52 @@
 
 -(void)attentionBtClicked:(UIButton *)bt {
     
-    NSDictionary *params = @{
-                             @"stockcode":self.comList[bt.tag][@"stockcode"],
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu",
-                             @"state":@"1"
-                             };
-    
-    if ([bt.titleLabel.text isEqualToString:@"添加关注"]) {
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"stockcode":self.comList[bt.tag][@"stockcode"],
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu",
+                                 @"state":@"1"
+                                 };
         
-        [Utiles postNetInfoWithPath:@"AddAttention" andParams:params besidesBlock:^(id obj) {
+        if ([bt.titleLabel.text isEqualToString:@"添加关注"]) {
             
-            if ([obj[@"status"] isEqualToString:@"1"]) {
+            [Utiles postNetInfoWithPath:@"AddAttention" andParams:params besidesBlock:^(id obj) {
                 
-                [bt setTitle:@"取消关注" forState:UIControlStateNormal];
-                [self.attentionCodes addObject:self.comList[bt.tag][@"stockcode"]];
+                if ([obj[@"status"] isEqualToString:@"1"]) {
+                    
+                    [bt setTitle:@"取消关注" forState:UIControlStateNormal];
+                    [self.attentionCodes addObject:self.comList[bt.tag][@"stockcode"]];
+                    
+                } else {
+                    [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.0];
+                }
                 
-            } else {
-                [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.0];
-            }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"%@",error);
+            }];
             
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-        }];
-        
+        } else {
+            
+            [Utiles postNetInfoWithPath:@"DeleteAttention" andParams:params besidesBlock:^(id obj) {
+                
+                if ([obj[@"status"] isEqualToString:@"1"]) {
+                    
+                    [bt setTitle:@"添加关注" forState:UIControlStateNormal];
+                    [self.attentionCodes removeObject:self.comList[bt.tag][@"stockcode"]];
+                    
+                } else {
+                    [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.0];
+                }
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"%@",error);
+            }];
+            
+        }
     } else {
-        
-        [Utiles postNetInfoWithPath:@"DeleteAttention" andParams:params besidesBlock:^(id obj) {
-            
-            if ([obj[@"status"] isEqualToString:@"1"]) {
-                
-                [bt setTitle:@"添加关注" forState:UIControlStateNormal];
-                [self.attentionCodes removeObject:self.comList[bt.tag][@"stockcode"]];
-                
-            } else {
-                [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.0];
-            }
-            
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"%@",error);
-        }];
-        
+        [ProgressHUD showError:@"请先登录"];
     }
-    
 }
 
 -(void)panView:(UIPanGestureRecognizer *)tap{
