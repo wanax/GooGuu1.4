@@ -8,6 +8,7 @@
 
 #import "ClientRelationComListVC.h"
 #import "CompanyCell.h"
+#import "GGModelIndexVC.h"
 
 @interface ClientRelationComListVC ()
 
@@ -216,7 +217,20 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *params = @{
+                             @"stockcode":self.comList[indexPath.row][@"stockcode"]
+                             };
+    [Utiles getNetInfoWithPath:@"GetCompanyInfo" andParams:params besidesBlock:^(id obj) {
+        
+        GGModelIndexVC *modelIndexVC = [[[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil] autorelease];
+        modelIndexVC.companyInfo = obj;
+        UINavigationController *navModel = [[[UINavigationController alloc] initWithRootViewController:modelIndexVC] autorelease];
+        [self presentViewController:navModel animated:YES completion:nil];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 

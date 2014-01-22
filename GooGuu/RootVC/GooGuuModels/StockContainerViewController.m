@@ -9,8 +9,6 @@
 #import "StockContainerViewController.h"
 #import "MHTabBarController.h"
 #import "CompanyListViewController.h"
-#import "CommonlyMacros.h"
-#import "TestTableViewController.h"
 
 @interface StockContainerViewController ()
 

@@ -134,6 +134,11 @@
     SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
 }
 
+- (BOOL)shouldAutorotate{
+    
+    return NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

@@ -202,7 +202,6 @@
     int row = indexPath.row;
     if (section == 0) {
         //关注的模型
-        UIViewController *vc = nil;
         if (row == 0) {
             ClientRelationComListVC *comVC = [[[ClientRelationComListVC alloc] initWithTopical:@"投资组合" type:@"AttentionData"] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
@@ -213,7 +212,8 @@
             [self.navigationController pushViewController:savedVC animated:YES];
         } else if (row == 2) {//投资日历
             CalendarViewController *calendarVC = [[[CalendarViewController alloc] init] autorelease];
-            calendarVC.view.frame = CGRectMake(0,100,SCREEN_WIDTH,600);
+            
+            calendarVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:calendarVC animated:YES];
         }
         

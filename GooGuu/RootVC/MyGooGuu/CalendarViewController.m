@@ -33,6 +33,7 @@
     self.view.backgroundColor=[Utiles colorWithHexString:@"#FFFFFE"];
     VRGCalendarView *calendar = [[[VRGCalendarView alloc] init] autorelease];
     calendar.delegate=self;
+    calendar.center = CGPointMake(SCREEN_WIDTH/2,44);
     [self.view addSubview:calendar];
     calendar.userInteractionEnabled=YES;
     self.view.userInteractionEnabled=YES;

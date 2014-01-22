@@ -13,6 +13,8 @@
 #import "TopCommentsViewController.h"
 #import "WishesComListViewController.h"
 #import "GGModelIndexVC.h"
+#import "UniverseViewController.h"
+#import "FinPicKeyWordListViewController.h"
 #import "StockSearchListViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -253,6 +255,10 @@
         
         if (row == 0) {//modelvalue
             
+            UniverseViewController *ggModelsVC = [[[UniverseViewController alloc] init] autorelease];
+            ggModelsVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:ggModelsVC animated:YES];
+            
         } else if (row == 1) {//wishes
             
             WishesComListViewController *wishList = [[[WishesComListViewController alloc] init] autorelease];
@@ -260,6 +266,10 @@
             [self.navigationController pushViewController:wishList animated:YES];
             
         } else if (row == 2) {//financepic
+            
+            FinPicKeyWordListViewController *picsVC = [[[FinPicKeyWordListViewController alloc] init] autorelease];
+            picsVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:picsVC animated:YES];
             
         }
         
@@ -329,7 +339,10 @@
 }
 
 
-
+- (BOOL)shouldAutorotate{
+    
+    return NO;
+}
 
 
 - (void)didReceiveMemoryWarning

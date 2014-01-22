@@ -17,6 +17,7 @@
 #import "IndicatorComView.h"
 #import "StockSearchListViewController.h"
 #import "CompanyCell.h"
+#import "GGModelIndexVC.h"
 
 
 @interface CompanyListViewController ()
@@ -130,7 +131,7 @@
             [codes addObject:model[@"stockcode"]];
         }
         self.attentionCodes = codes;
-        
+        [self.comsTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -248,7 +249,7 @@
     }
     
     float ggPrice = [model[@"googuuprice"] floatValue];
-    cell.marketLabel.text = [NSString stringWithFormat:@"%@.%@",model[@"stockcode"],model[@"market"]];
+    cell.marketLabel.text = [NSString stringWithFormat:@"%@.%@",model[@"stockcode"],model[@"marketname"]];
     cell.googuuPriLable.text = [NSString stringWithFormat:@"%.2f",ggPrice];
     percent = (ggPrice - marketPrice) / marketPrice;
     
@@ -267,7 +268,20 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NSDictionary *params = @{
+                             @"stockcode":self.comList[indexPath.row][@"stockcode"]
+                             };
+    [Utiles getNetInfoWithPath:@"GetCompanyInfo" andParams:params besidesBlock:^(id obj) {
+        
+        GGModelIndexVC *modelIndexVC = [[[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil] autorelease];
+        modelIndexVC.companyInfo = obj;
+        UINavigationController *navModel = [[[UINavigationController alloc] initWithRootViewController:modelIndexVC] autorelease];
+        [self presentViewController:navModel animated:YES completion:nil];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (BOOL)shouldAutorotate

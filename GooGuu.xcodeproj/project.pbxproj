@@ -134,6 +134,7 @@
 		AE16E97A187D56A9003588FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E979187D56A9003588FA /* CoreLocation.framework */; };
 		AE16E97C187D56BF003588FA /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97B187D56BF003588FA /* libstdc++.dylib */; };
 		AE16E97E187D56CD003588FA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97D187D56CD003588FA /* CoreTelephony.framework */; };
+		AE1D13EA188F91A2007C9E51 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1D13E9188F91A2007C9E51 /* libBaiduMobStat.a */; };
 		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE244715188E0FF900C69752 /* IndicatorSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244712188E0FF900C69752 /* IndicatorSearchView.m */; };
 		AE244716188E0FF900C69752 /* StockSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244714188E0FF900C69752 /* StockSearchListViewController.m */; };
@@ -141,6 +142,7 @@
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
 		AE391478188F5BA400985CF0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE391475188F5BA400985CF0 /* ProgressHUD.bundle */; };
 		AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE391477188F5BA400985CF0 /* ProgressHUD.m */; };
+		AE39147F188F735200985CF0 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE39147E188F735200985CF0 /* libBaiduMobStat.a */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
 		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
 		AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */; };
@@ -205,7 +207,6 @@
 		AE74DFAE187E4595002AE169 /* IQKeyBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAB187E4595002AE169 /* IQKeyBoardManager.m */; };
 		AE74DFAF187E4595002AE169 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */; };
 		AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC83188E6DFE00FB73F5 /* ComGGViewsVC.m */; };
-		AE7ABC87188E8A6C00FB73F5 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC86188E8A6C00FB73F5 /* TestTableViewController.m */; };
 		AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */; };
 		AE7C1AC418851359006D37B5 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1AC318851359006D37B5 /* CompanyCell.xib */; };
@@ -355,8 +356,6 @@
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
-		AEE0FDB7188CB24F00C70120 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE0FDB6188CB24F00C70120 /* libBaiduMobStat.a */; };
-		AEE0FDBB188CB3C200C70120 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE0FDBA188CB3C200C70120 /* libBaiduMobStat.a */; };
 		AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */; };
 		AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */; };
 		AEE0FDCF188CD28C00C70120 /* ClientAttentonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCE188CD28C00C70120 /* ClientAttentonsViewController.m */; };
@@ -587,6 +586,8 @@
 		AE16E979187D56A9003588FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AE16E97B187D56BF003588FA /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		AE16E97D187D56CD003588FA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		AE1D13E8188F91A2007C9E51 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE1D13E9188F91A2007C9E51 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE23677F188B660500D74674 /* CompanyFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFansVC.h; sourceTree = "<group>"; };
 		AE236780188B660500D74674 /* CompanyFansVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyFansVC.m; sourceTree = "<group>"; };
 		AE244711188E0FF900C69752 /* IndicatorSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorSearchView.h; sourceTree = "<group>"; };
@@ -677,6 +678,8 @@
 		AE391475188F5BA400985CF0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		AE391476188F5BA400985CF0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		AE391477188F5BA400985CF0 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		AE39147D188F735200985CF0 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE39147E188F735200985CF0 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE3E6316187F8B9F005A71AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AE3E6318187F9374005A71AD /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		AE3E6319187F9374005A71AD /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
@@ -784,8 +787,6 @@
 		AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
 		AE7ABC82188E6DFE00FB73F5 /* ComGGViewsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComGGViewsVC.h; sourceTree = "<group>"; };
 		AE7ABC83188E6DFE00FB73F5 /* ComGGViewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComGGViewsVC.m; sourceTree = "<group>"; };
-		AE7ABC85188E8A6C00FB73F5 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
-		AE7ABC86188E8A6C00FB73F5 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
 		AE7ABC8B188E8CE900FB73F5 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarController.h; sourceTree = "<group>"; };
 		AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
 		AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopComsViewController.h; sourceTree = "<group>"; };
@@ -952,10 +953,6 @@
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
-		AEE0FDB5188CB24F00C70120 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AEE0FDB6188CB24F00C70120 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
-		AEE0FDB9188CB3C200C70120 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AEE0FDBA188CB3C200C70120 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AEE0FDC4188CCB4600C70120 /* ClientFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientFansViewController.h; sourceTree = "<group>"; };
 		AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientFansViewController.m; sourceTree = "<group>"; };
 		AEE0FDCA188CCFB600C70120 /* RelationClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationClientsViewController.h; sourceTree = "<group>"; };
@@ -982,8 +979,8 @@
 				AE0D3DD7187D564300E0E141 /* AdSupport.framework in Frameworks */,
 				AE0D3CA7187D2DD600E0E141 /* libz.1.2.5.dylib in Frameworks */,
 				AE0D3CA5187D2DC100E0E141 /* ImageIO.framework in Frameworks */,
-				AEE0FDB7188CB24F00C70120 /* libBaiduMobStat.a in Frameworks */,
-				AEE0FDBB188CB3C200C70120 /* libBaiduMobStat.a in Frameworks */,
+				AE39147F188F735200985CF0 /* libBaiduMobStat.a in Frameworks */,
+				AE1D13EA188F91A2007C9E51 /* libBaiduMobStat.a in Frameworks */,
 				AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */,
 				AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */,
 				AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */,
@@ -1174,10 +1171,10 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				AE1D13E7188F91A2007C9E51 /* Release-iphonesimulator */,
+				AE39147C188F735200985CF0 /* Release-iphoneos */,
 				AE391474188F5BA400985CF0 /* ProgressHUD */,
 				AE7ABC88188E8CE900FB73F5 /* MHTabBarController */,
-				AEE0FDB8188CB3C200C70120 /* Release-iphonesimulator */,
-				AEE0FDB4188CB24F00C70120 /* Release-iphoneos */,
 				AE58A7211883898B00E044BD /* XYPieChart */,
 				AE74DFA9187E458E002AE169 /* IQKeyBoardManager */,
 				AE518748187E42E30055B9AE /* CQMFloating */,
@@ -1403,8 +1400,6 @@
 				AE0D3D3C187D414400E0E141 /* UniverseViewController.m */,
 				AE0D3D3D187D414400E0E141 /* IndicatorComView.h */,
 				AE0D3D3E187D414400E0E141 /* IndicatorComView.m */,
-				AE7ABC85188E8A6C00FB73F5 /* TestTableViewController.h */,
-				AE7ABC86188E8A6C00FB73F5 /* TestTableViewController.m */,
 			);
 			path = GooGuuModels;
 			sourceTree = "<group>";
@@ -1535,6 +1530,15 @@
 			path = CXPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		AE1D13E7188F91A2007C9E51 /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AE1D13E8188F91A2007C9E51 /* BaiduMobStat.h */,
+				AE1D13E9188F91A2007C9E51 /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
 		AE244710188E0FF900C69752 /* SearchStocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1648,6 +1652,15 @@
 				AE391477188F5BA400985CF0 /* ProgressHUD.m */,
 			);
 			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		AE39147C188F735200985CF0 /* Release-iphoneos */ = {
+			isa = PBXGroup;
+			children = (
+				AE39147D188F735200985CF0 /* BaiduMobStat.h */,
+				AE39147E188F735200985CF0 /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphoneos";
 			sourceTree = "<group>";
 		};
 		AE3E630F187F8964005A71AD /* Welcome */ = {
@@ -2262,24 +2275,6 @@
 			path = BarIcon;
 			sourceTree = "<group>";
 		};
-		AEE0FDB4188CB24F00C70120 /* Release-iphoneos */ = {
-			isa = PBXGroup;
-			children = (
-				AEE0FDB5188CB24F00C70120 /* BaiduMobStat.h */,
-				AEE0FDB6188CB24F00C70120 /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphoneos";
-			sourceTree = "<group>";
-		};
-		AEE0FDB8188CB3C200C70120 /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				AEE0FDB9188CB3C200C70120 /* BaiduMobStat.h */,
-				AEE0FDBA188CB3C200C70120 /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphonesimulator";
-			sourceTree = "<group>";
-		};
 		AEE0FDC0188CC0B300C70120 /* RelationClients */ = {
 			isa = PBXGroup;
 			children = (
@@ -2789,7 +2784,6 @@
 				AE0D3CE7187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m in Sources */,
 				AE06B8EB187EAB7900DA93E2 /* ChoseBetaFactorViewController.m in Sources */,
 				AE0A5666188D59CA00EC0DB0 /* UserFriendCell.m in Sources */,
-				AE7ABC87188E8A6C00FB73F5 /* TestTableViewController.m in Sources */,
 				AE0D3D11187D407700E0E141 /* ConcernedViewController.m in Sources */,
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
 				AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */,
@@ -2924,6 +2918,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -2943,7 +2938,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A817363-2853-44DE-B100-E3B10E8A815D";
+				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -2954,6 +2949,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
@@ -2972,7 +2968,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6A817363-2853-44DE-B100-E3B10E8A815D";
+				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
