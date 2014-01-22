@@ -59,7 +59,6 @@
 		AE0D3CC4187D38B700E0E141 /* UIImageView+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CC3187D38B700E0E141 /* UIImageView+Addition.m */; };
 		AE0D3CCB187D3A2900E0E141 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CCA187D3A2900E0E141 /* MBProgressHUD.m */; };
 		AE0D3CCE187D3A2E00E0E141 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CCD187D3A2E00E0E141 /* EGORefreshTableHeaderView.m */; };
-		AE0D3CD1187D3A3800E0E141 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CD0187D3A3800E0E141 /* MHTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE0D3CE7187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CD5187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m */; };
 		AE0D3CE8187D3A9200E0E141 /* PrettyGridTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CD7187D3A9200E0E141 /* PrettyGridTableViewCell.m */; };
 		AE0D3CE9187D3A9200E0E141 /* PrettySegmentedControlTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0D3CD9187D3A9200E0E141 /* PrettySegmentedControlTableViewCell.m */; };
@@ -140,6 +139,8 @@
 		AE244716188E0FF900C69752 /* StockSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244714188E0FF900C69752 /* StockSearchListViewController.m */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
+		AE391478188F5BA400985CF0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE391475188F5BA400985CF0 /* ProgressHUD.bundle */; };
+		AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE391477188F5BA400985CF0 /* ProgressHUD.m */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
 		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
 		AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */; };
@@ -204,6 +205,8 @@
 		AE74DFAE187E4595002AE169 /* IQKeyBoardManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAB187E4595002AE169 /* IQKeyBoardManager.m */; };
 		AE74DFAF187E4595002AE169 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */; };
 		AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC83188E6DFE00FB73F5 /* ComGGViewsVC.m */; };
+		AE7ABC87188E8A6C00FB73F5 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC86188E8A6C00FB73F5 /* TestTableViewController.m */; };
+		AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */; };
 		AE7C1AC418851359006D37B5 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1AC318851359006D37B5 /* CompanyCell.xib */; };
 		AE7C1AC7188515D6006D37B5 /* CompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AC6188515D6006D37B5 /* CompanyCell.m */; };
@@ -460,8 +463,6 @@
 		AE0D3CCA187D3A2900E0E141 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		AE0D3CCC187D3A2E00E0E141 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		AE0D3CCD187D3A2E00E0E141 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
-		AE0D3CCF187D3A3800E0E141 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarController.h; sourceTree = "<group>"; };
-		AE0D3CD0187D3A3800E0E141 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MHTabBarController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AE0D3CD4187D3A9200E0E141 /* PrettyCustomViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyCustomViewTableViewCell.h; sourceTree = "<group>"; };
 		AE0D3CD5187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrettyCustomViewTableViewCell.m; sourceTree = "<group>"; };
 		AE0D3CD6187D3A9200E0E141 /* PrettyGridTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrettyGridTableViewCell.h; sourceTree = "<group>"; };
@@ -673,6 +674,9 @@
 		AE2B48F3187D2BDD007ABEC8 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AE391475188F5BA400985CF0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		AE391476188F5BA400985CF0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		AE391477188F5BA400985CF0 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		AE3E6316187F8B9F005A71AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AE3E6318187F9374005A71AD /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		AE3E6319187F9374005A71AD /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
@@ -780,6 +784,10 @@
 		AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQSegmentedNextPrevious.m; sourceTree = "<group>"; };
 		AE7ABC82188E6DFE00FB73F5 /* ComGGViewsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComGGViewsVC.h; sourceTree = "<group>"; };
 		AE7ABC83188E6DFE00FB73F5 /* ComGGViewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComGGViewsVC.m; sourceTree = "<group>"; };
+		AE7ABC85188E8A6C00FB73F5 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		AE7ABC86188E8A6C00FB73F5 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		AE7ABC8B188E8CE900FB73F5 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarController.h; sourceTree = "<group>"; };
+		AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
 		AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopComsViewController.h; sourceTree = "<group>"; };
 		AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopComsViewController.m; sourceTree = "<group>"; };
 		AE7C1AC318851359006D37B5 /* CompanyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyCell.xib; sourceTree = "<group>"; };
@@ -1166,6 +1174,8 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				AE391474188F5BA400985CF0 /* ProgressHUD */,
+				AE7ABC88188E8CE900FB73F5 /* MHTabBarController */,
 				AEE0FDB8188CB3C200C70120 /* Release-iphonesimulator */,
 				AEE0FDB4188CB24F00C70120 /* Release-iphoneos */,
 				AE58A7211883898B00E044BD /* XYPieChart */,
@@ -1179,7 +1189,6 @@
 				AE0D3CD2187D3A9200E0E141 /* PrettyKit */,
 				AE0D3CC5187D3A1B00E0E141 /* EGORefreshTableHeaderView */,
 				AE0D3CC6187D3A1B00E0E141 /* MBProgressHUD */,
-				AE0D3CC7187D3A1B00E0E141 /* MHTabBarController */,
 				AE2B48A5187D2BDD007ABEC8 /* CorePlotHeaders */,
 			);
 			path = Plugins;
@@ -1298,15 +1307,6 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
-		AE0D3CC7187D3A1B00E0E141 /* MHTabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				AE0D3CCF187D3A3800E0E141 /* MHTabBarController.h */,
-				AE0D3CD0187D3A3800E0E141 /* MHTabBarController.m */,
-			);
-			path = MHTabBarController;
-			sourceTree = "<group>";
-		};
 		AE0D3CD2187D3A9200E0E141 /* PrettyKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1403,6 +1403,8 @@
 				AE0D3D3C187D414400E0E141 /* UniverseViewController.m */,
 				AE0D3D3D187D414400E0E141 /* IndicatorComView.h */,
 				AE0D3D3E187D414400E0E141 /* IndicatorComView.m */,
+				AE7ABC85188E8A6C00FB73F5 /* TestTableViewController.h */,
+				AE7ABC86188E8A6C00FB73F5 /* TestTableViewController.m */,
 			);
 			path = GooGuuModels;
 			sourceTree = "<group>";
@@ -1636,6 +1638,16 @@
 				AE2B48F3187D2BDD007ABEC8 /* NSNumberExtensions.h */,
 			);
 			path = CorePlotHeaders;
+			sourceTree = "<group>";
+		};
+		AE391474188F5BA400985CF0 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				AE391475188F5BA400985CF0 /* ProgressHUD.bundle */,
+				AE391476188F5BA400985CF0 /* ProgressHUD.h */,
+				AE391477188F5BA400985CF0 /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
 		AE3E630F187F8964005A71AD /* Welcome */ = {
@@ -1933,6 +1945,15 @@
 				AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */,
 			);
 			path = IQKeyBoardManager;
+			sourceTree = "<group>";
+		};
+		AE7ABC88188E8CE900FB73F5 /* MHTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				AE7ABC8B188E8CE900FB73F5 /* MHTabBarController.h */,
+				AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */,
+			);
+			path = MHTabBarController;
 			sourceTree = "<group>";
 		};
 		AE7C1AC21885133F006D37B5 /* CellNib */ = {
@@ -2568,6 +2589,7 @@
 				AE6B68BF188A2B8700C3ADBF /* read2.png in Resources */,
 				AE9028EA188BBD0B006BE518 /* user_calender_small_icon.png in Resources */,
 				AE0D3D9F187D46EB00E0E141 /* DailyStock2Cell.xib in Resources */,
+				AE391478188F5BA400985CF0 /* ProgressHUD.bundle in Resources */,
 				AE949D5F187E81A2004FC1AB /* cancelLoginBt.png in Resources */,
 				AE949D4C187E817C004FC1AB /* defaultPic.png in Resources */,
 				AE949DA2187E8204004FC1AB /* addConcernBtt.png in Resources */,
@@ -2710,14 +2732,15 @@
 				AE0D3D22187D410800E0E141 /* CustomCellBackground.m in Sources */,
 				AE0D3D46187D414400E0E141 /* IndicatorComView.m in Sources */,
 				AE51871F187E40630055B9AE /* ChartViewController.m in Sources */,
+				AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */,
 				AE06B8EA187EAB7900DA93E2 /* BetaFactorCountViewController.m in Sources */,
+				AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */,
 				AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */,
 				AE0D3D43187D414400E0E141 /* CompanyListViewController.m in Sources */,
 				AE0D3CB8187D36A000E0E141 /* UIButton+BGColor.m in Sources */,
 				AE3E631A187F9374005A71AD /* TipViewController.m in Sources */,
 				AE0D3CEB187D3A9200E0E141 /* PrettyDrawing.m in Sources */,
 				AE0D3CF9187D3B2500E0E141 /* Toast+UIView.m in Sources */,
-				AE0D3CD1187D3A3800E0E141 /* MHTabBarController.m in Sources */,
 				AE518743187E41BD0055B9AE /* ModelClassViewController.m in Sources */,
 				AE518759187E42F10055B9AE /* CQMFloatingMaskControl.m in Sources */,
 				AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */,
@@ -2766,6 +2789,7 @@
 				AE0D3CE7187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m in Sources */,
 				AE06B8EB187EAB7900DA93E2 /* ChoseBetaFactorViewController.m in Sources */,
 				AE0A5666188D59CA00EC0DB0 /* UserFriendCell.m in Sources */,
+				AE7ABC87188E8A6C00FB73F5 /* TestTableViewController.m in Sources */,
 				AE0D3D11187D407700E0E141 /* ConcernedViewController.m in Sources */,
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
 				AE5EBBC21883C3940019B48F /* WishesComListViewController.m in Sources */,

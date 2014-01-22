@@ -96,7 +96,7 @@
             SAFE_RELEASE(dates);
             SAFE_RELEASE(f);
         }else{
-            [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+            [ProgressHUD showError:[resObj objectForKey:@"msg"]];
         }
       
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){

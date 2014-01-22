@@ -14,7 +14,6 @@
 #import <AddressBook/AddressBook.h>
 #import "ModelViewController.h"
 #import "MHTabBarController.h"
-#import "MBProgressHUD.h"
 #import "PrettyNavigationController.h"
 #import "DrawChartTool.h"
 #import "DiscountRateViewController.h"
@@ -426,7 +425,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     //NSLog(@"webViewDidFinishLoad");
     webIsLoaded=YES;
-    [MBProgressHUD showHUDAddedTo:self.hostView animated:YES];
+    [ProgressHUD show:nil];
     NSDictionary *params=@{@"stockCode": comInfo[@"stockcode"]};
     [Utiles getNetInfoWithPath:@"CompanyModel" andParams:params besidesBlock:^(id resObj){
         
@@ -457,7 +456,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
             [self modelClassChanged:globalDriverId];
         }
     
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+        [ProgressHUD dismiss];
         if(!isAddGesture){
             //手势添加
             UIPanGestureRecognizer *panGr=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(viewPan:)];
@@ -467,7 +466,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         }
      
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+        [ProgressHUD dismiss];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         [self.discountBt setEnabled:NO];
         [self.saveBt setEnabled:NO];
@@ -559,7 +558,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
                 
         }
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+        [ProgressHUD dismiss];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
 }

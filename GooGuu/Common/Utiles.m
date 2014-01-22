@@ -7,7 +7,6 @@
 //
 
 #import "Utiles.h"
-#import "MBProgressHUD.h"
 #import "Reachability.h"
 #import "Toast+UIView.h"
 #import "GCDiscreetNotificationView.h"
@@ -111,24 +110,6 @@ static NSDateFormatter *formatter;
             result[20], result[21],result[22], result[23],            
             result[24], result[25],result[26], result[27],            
             result[28], result[29],result[30], result[31]];    
-}
-
-+ (void)ToastNotification:(NSString *)text andView:(UIView *)view andLoading:(BOOL)isLoading andIsBottom:(BOOL)isBottom andIsHide:(BOOL)isHide
-{
-    GCDiscreetNotificationView *notificationView = [[GCDiscreetNotificationView alloc] initWithText:text showActivity:isLoading inPresentationMode:isBottom?GCDiscreetNotificationViewPresentationModeBottom:GCDiscreetNotificationViewPresentationModeTop inView:view];
-    [notificationView show:YES];
-    if(isHide){
-        [notificationView hideAnimatedAfter:2.0];
-    }
-}
-
-+ (void)showHUD:(NSString *)text andView:(UIView *)view andHUD:(MBProgressHUD *)hud
-{
-    [view addSubview:hud];
-    hud.labelText = text;
-    //hud.dimBackground = YES;
-    hud.square = YES;
-    [hud show:YES];
 }
 
 + (id)getConfigureInfoFrom:(NSString *)fileName andKey:(NSString *)key inUserDomain:(BOOL)isIn{

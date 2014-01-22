@@ -9,7 +9,7 @@
 #import "UniverseViewController.h"
 #import "StockContainerViewController.h"
 #import "CompanyListViewController.h"
-#import "CommonlyMacros.h"
+#import "StockSearchListViewController.h"
 
 @interface UniverseViewController ()
 
@@ -33,13 +33,18 @@
     [self addSearchBt];
 }
 
+-(void)searchAction:(id)sender{
+    
+    StockSearchListViewController *searchVC = [[[StockSearchListViewController alloc] init] autorelease];
+    searchVC.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:searchVC animated:YES];
+    
+}
+
 -(void)addSearchBt{
     
-    UIButton *wanSay = [[[UIButton alloc] initWithFrame:CGRectMake(200, 10.0, 30, 30)] autorelease];
-    [wanSay setImage:[UIImage imageNamed:@"searchBt"] forState:UIControlStateNormal];
-    //[wanSay addTarget:self action:@selector(helpAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
-    [self.navigationItem setRightBarButtonItem:nextStepBarBtn animated:YES];
+    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)] autorelease];
+    self.navigationItem.rightBarButtonItem = nextStepBarBtn;
     
 }
 

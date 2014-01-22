@@ -61,7 +61,7 @@
     [self addTableHeader];
     
     if ([Utiles isNetConnected]&&[Utiles isLogin]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [ProgressHUD show:nil];
         [self getComList];
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
@@ -152,12 +152,12 @@
                 }
                 
             }else{
-                [Utiles ToastNotification:[obj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                [ProgressHUD showError:[obj objectForKey:@"msg"]];
                 self.comInfoList=[NSMutableArray arrayWithCapacity:0];
             }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [ProgressHUD dismiss];
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [ProgressHUD dismiss];
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         }];
     }else{
@@ -306,7 +306,7 @@
             }
             [Utiles postNetInfoWithPath:netAction andParams:params besidesBlock:^(id resObj){
                 if(![[resObj objectForKey:@"status"] isEqualToString:@"1"]){
-                    [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                    [ProgressHUD showError:[resObj objectForKey:@"msg"]];
                 }
             } failure:^(AFHTTPRequestOperation *operation,NSError *error){
                 [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];

@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.frame=CGRectMake(0,0,SCREEN_WIDTH,30);
-        [self setBackgroundColor:[Utiles colorWithHexString:@"#412E1B"]];
+        [self setBackgroundColor:[UIColor cloudsColor]];
         
         [self addLabelTitle:@"公司名称" frame:CGRectMake(20,3,55,21)];
         [self addLabelTitle:@"股票代码" frame:CGRectMake(115,3,55,21)];

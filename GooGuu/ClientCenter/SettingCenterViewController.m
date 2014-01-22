@@ -337,7 +337,7 @@
                 if([Utiles isLogin]){
                     [self pushViewController:@"ClientCenterViewController"];
                 }else{
-                    [Utiles ToastNotification:@"您尚未登录" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                    [Utiles showToastView:self.view withTitle:nil andContent:@"您尚未登录" duration:1.0];
                 }
             } else if(row==1){
                 if ([Utiles isLogin]) {
@@ -424,7 +424,7 @@
             
             if([[info objectForKey:@"status"] isEqualToString:@"1"]){
                 
-                [Utiles ToastNotification:@"注销成功" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                [ProgressHUD showSuccess:@"注销成功"];
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"LogOut" object:nil];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserToken"];
                 //[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"UserInfo"];

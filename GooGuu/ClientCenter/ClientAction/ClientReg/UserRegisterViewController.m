@@ -158,10 +158,10 @@ typedef enum{
     NSString *phoneNum=[(UITextField *)[self.view viewWithTag:PhoneNum] text];
     NSString *passWord=[(UITextField *)[self.view viewWithTag:Pwd] text];
     NSString *code=[(UITextField *)[self.view viewWithTag:(CheckCode-1)] text];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
     NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:phoneNum,@"mobile",code,@"code",[Utiles md5:passWord],@"newpass", nil];
     [Utiles postNetInfoWithPath:@"UserFindPwd" andParams:params besidesBlock:^(id obj) {
-        [MBProgressHUD hideHUDForView:self.view animated:NO];
+
         [Utiles showToastView:self.view withTitle:nil andContent:[obj objectForKey:@"msg"] duration:2.0];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络错误" duration:1.0];
@@ -175,11 +175,10 @@ typedef enum{
     NSString *newPwd=[(UITextField *)[self.view viewWithTag:Pwd2] text];
     
     if (![oldPwd isEqualToString:newPwd]) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+
         NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:userName,@"username",[Utiles md5:oldPwd],@"oldpass",[Utiles md5:newPwd],@"newpass", nil];
         [Utiles postNetInfoWithPath:@"UserResetPwd" andParams:params besidesBlock:^(id obj) {
 
-            [MBProgressHUD hideHUDForView:self.view animated:NO];
             [Utiles showToastView:self.view withTitle:nil andContent:[obj objectForKey:@"msg"] duration:2.0];
             if([[obj objectForKey:@"status"] integerValue]==1){
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -201,12 +200,11 @@ typedef enum{
     NSString *code=[(UITextField *)[self.view viewWithTag:CheckCode] text];
     
     if ([passWord isEqualToString:checkPwd]) {
-        [MBProgressHUD showHUDAddedTo:self.view withTitle:@"" animated:YES];
+
         NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:phoneNum,@"mobile",code,@"code",[Utiles md5:passWord],@"password", nil];
         
         [Utiles postNetInfoWithPath:@"UserRegister" andParams:params besidesBlock:^(id obj) {
-            
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             if([[obj objectForKey:@"status"] integerValue]!=1){
                 [Utiles showToastView:self.view withTitle:nil andContent:[obj objectForKey:@"msg"] duration:2.0];
             }else{
@@ -324,10 +322,9 @@ typedef enum{
                 } else if ([info[@"status"] isEqual:@"3"]){
                     msg=@"密码错误";
                 }
-                [Utiles ToastNotification:msg andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
             }
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         }];
     } else {

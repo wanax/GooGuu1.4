@@ -13,6 +13,4 @@
 
 @interface UniverseViewController : UIViewController<UISearchBarDelegate>
 
-@property (nonatomic, retain) UISearchBar *theSearchBar;
-
 @end

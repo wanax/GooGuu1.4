@@ -14,7 +14,6 @@
 #import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 
-@class MBProgressHUD;
 @interface Utiles : NSObject
 
 
@@ -24,10 +23,9 @@
 
 //md5 32位 加密 （小写）
 + (NSString *)md5:(NSString *)str;
-//loading弹出框
-+ (void)showHUD:(NSString *)text andView:(UIView *)view andHUD:(MBProgressHUD *)hud;
-//长方形顶层弹出框
-+ (void)ToastNotification:(NSString *)text andView:(UIView *)view andLoading:(BOOL)isLoading andIsBottom:(BOOL)isBottom andIsHide:(BOOL)isHide;
+
++(void)showToastView:(UIView *)view withTitle:(NSString *)title andContent:(NSString *)content duration:(float)duration;
+
 //根据key值获取配置文件内容，可修改文件置于沙箱中，isIn为YES
 + (id)getConfigureInfoFrom:(NSString *)fileName andKey:(NSString *)key inUserDomain:(BOOL)isIn;
 +(void)setConfigureInfoTo:(NSString *)fileName forKey:(NSString *)key andContent:(NSString *)content;
@@ -71,8 +69,6 @@
 +(NSArray *)arrSort:(NSArray *)arr;
 
 +(BOOL)isNetConnected;
-
-+(void)showToastView:(UIView *)view withTitle:(NSString *)title andContent:(NSString *)content duration:(float)duration;
 
 +(void)iOS7StatusBar:(UIViewController *)vc;
 

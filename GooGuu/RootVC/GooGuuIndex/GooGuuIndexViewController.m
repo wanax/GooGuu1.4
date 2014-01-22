@@ -68,7 +68,6 @@
 
 //网络获取数据
 - (void)getGooGuuNews{
-    
     [Utiles getNetInfoWithPath:@"DailyStock" andParams:nil besidesBlock:^(id obj) {
         self.imageUrl = [NSString stringWithFormat:@"%@",[obj objectForKey:@"imageurl"]];
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[obj objectForKey:@"stockcode"],@"stockcode", nil];
@@ -79,16 +78,12 @@
             
         } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
             NSLog(@"%@",error.localizedDescription);
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }];
         [self.indexTable reloadData];
     } failure:^(AFHTTPRequestOperation *operation,NSError *error) {
         NSLog(@"%@",error.localizedDescription);
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
-    
-    
 }
 
 #pragma mark -

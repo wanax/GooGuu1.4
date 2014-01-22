@@ -188,7 +188,6 @@
         NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[Utiles getUserToken],@"token",@"googuu",@"from",[combinedData JSONString],@"data", nil];
         [Utiles postNetInfoWithPath:@"AddModelData" andParams:params besidesBlock:^(id resObj){
             if([resObj objectForKey:@"status"]){
-                [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.chartViewController.view andLoading:NO andIsBottom:NO andIsHide:YES];
                 self.disCountIsChanged=NO;
                 [saveBt setBackgroundImage:[UIImage imageNamed:@"savedBt"] forState:UIControlStateNormal];
                 [saveBt setEnabled:NO];

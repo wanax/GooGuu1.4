@@ -38,9 +38,8 @@
     self.title=@"业绩简报";
 
     [self addTable];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self getGooGuuNews];    
     [self addTableAction];
+    [self getGooGuuNews];
 }
 
 -(void)addTable{
@@ -103,16 +102,16 @@
 
 //网络获取数据
 - (void)getGooGuuNews{
- 
+    [ProgressHUD show:nil];
     [Utiles getNetInfoWithPath:@"GooGuuNewsURL" andParams:nil besidesBlock:^(id news){
         
         self.arrList=[news objectForKey:@"data"];
         [self.customTableView reloadData];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [ProgressHUD dismiss];
 
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
         NSLog(@"%@",error.localizedDescription);
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [ProgressHUD dismiss];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
 }

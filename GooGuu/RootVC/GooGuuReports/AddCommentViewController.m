@@ -76,7 +76,7 @@
             if([[obj objectForKey:@"status"] isEqualToString:@"1"]){
                 [self dismissViewControllerAnimated:YES completion:nil];
             }else{
-                [Utiles ToastNotification:@"发布失败" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                [ProgressHUD showError:@"发布失败"];
             }
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
@@ -92,7 +92,7 @@
                 }
                 
             }else{
-                [Utiles ToastNotification:@"发布失败" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                [ProgressHUD showError:@"发布失败"];
             }
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];

@@ -174,7 +174,6 @@ static NSString * const UserCellIdentifier = @"UserCellIdentifier";
             [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.table];
             [self setupTableView];
         }else{
-            [Utiles ToastNotification:@"暂无评论" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
             [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.table];
         }
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){

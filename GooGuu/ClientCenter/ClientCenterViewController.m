@@ -38,7 +38,7 @@
 
     if ([Utiles isNetConnected]) {
         if([Utiles isLogin]){            
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [ProgressHUD show:nil];
             self.logoutBt.hidden=NO;
             NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                                     [Utiles getUserToken], @"token",@"googuu",@"from",
@@ -74,12 +74,12 @@
                     }               
                     SAFE_RELEASE(date);
                 }else{
-                    [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                    [ProgressHUD showError:[resObj objectForKey:@"msg"]];
                 }
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [ProgressHUD dismiss];
                 
             } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [ProgressHUD dismiss];
                 [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
             }];            
         }

@@ -236,7 +236,7 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     _count=0;
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [ProgressHUD show:nil];
     SAFE_RELEASE(board);
 }
 
@@ -247,7 +247,7 @@
             self.savedStockList=[resObj objectForKey:@"data"];
             [self.savedTable reloadData];
             if(_count==1){
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [ProgressHUD dismiss];
                 _count=0;
             }else{
                 _count++;
@@ -269,7 +269,7 @@
         disViewController.jsonData=self.jsonForChart;
         disViewController.view.frame=CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_WIDTH);
         if(_count==1){
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [ProgressHUD dismiss];
             _count=0;
         }else{
             _count++;
@@ -407,13 +407,13 @@
                 self.inputField.text=@"";
                 [self.tabController setSelectedIndex:3 animated:YES];
             }else{
-                [Utiles ToastNotification:@"发布失败" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                [ProgressHUD showError:@"发布失败"];
             }
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         }];
     }else{
-        [Utiles ToastNotification:@"请填写内容" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+        [Utiles showToastView:self.view withTitle:nil andContent:@"请填写内容" duration:1.0];
     }
     
     return YES;
@@ -432,17 +432,16 @@
     [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id resObj){
         
         if(![[resObj objectForKey:@"status"] isEqualToString:@"1"]){
-            [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+            [ProgressHUD showError:[resObj objectForKey:@"msg"]];
         }else if([[resObj objectForKey:@"status"] isEqualToString:@"1"]){
             if([url isEqualToString:@"AddAttention"]){
                 isAttention=YES;
                 [attentionBt setBackgroundImage:[UIImage imageNamed:@"deleteAttentionBt"] forState:UIControlStateNormal];
-                [Utiles ToastNotification:@"已成功关注" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+                [ProgressHUD showSuccess:@"已成功关注"];
             }else if([url isEqualToString:@"DeleteAttention"]){
                 isAttention=NO;
                 [attentionBt setBackgroundImage:[UIImage imageNamed:@"addAttentionBt"] forState:UIControlStateNormal];
-                [Utiles ToastNotification:@"已取消关注" andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
-                
+                [ProgressHUD showSuccess:@"已取消关注"];
             }
         }
         
@@ -466,7 +465,7 @@
                 }
             }
         }else{
-            [Utiles ToastNotification:[resObj objectForKey:@"msg"] andView:self.view andLoading:NO andIsBottom:NO andIsHide:YES];
+            [ProgressHUD showError:[resObj objectForKey:@"msg"]];
             isAttention=NO;
             [self.attentionBt setBackgroundImage:[UIImage imageNamed:@"addAttentionBt"] forState:UIControlStateNormal];
         }

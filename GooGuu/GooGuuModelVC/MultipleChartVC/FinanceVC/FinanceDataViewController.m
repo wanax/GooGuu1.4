@@ -237,7 +237,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 #pragma mark Web Didfinished CallBack
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
-    [MBProgressHUD showHUDAddedTo:self.hostView animated:YES];
+    [ProgressHUD show:nil];
     NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:@"co",@"stockcode", nil];
     [Utiles getNetInfoWithPath:@"FinancialData" andParams:params besidesBlock:^(id resObj){
 
@@ -256,10 +256,10 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
         
         [self modelClassChanged:[[[transObj objectForKey:@"listRatio"] objectAtIndex:0] objectForKey:@"id"]];
         self.barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+        [ProgressHUD dismiss];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [MBProgressHUD hideHUDForView:self.hostView animated:YES];
+        [ProgressHUD dismiss];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
 }

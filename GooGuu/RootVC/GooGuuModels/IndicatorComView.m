@@ -14,15 +14,15 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame=CGRectMake(0,60,SCREEN_WIDTH,30);
-        [self setBackgroundColor:[Utiles colorWithHexString:@"#553D24"]];
+        self.frame=CGRectMake(0,0,SCREEN_WIDTH,30);
+        [self setBackgroundColor:[UIColor cloudsColor]];
         
         UILabel *companyNameLabel=[[UILabel alloc] initWithFrame:CGRectMake(29,3,55,21)];
         [companyNameLabel setFont:[UIFont fontWithName:@"Heiti SC" size:11.0]];
         [companyNameLabel setTextAlignment:NSTextAlignmentCenter];
         [companyNameLabel setText:@"公司名称"];
         [companyNameLabel setTextColor:[Utiles colorWithHexString:@"#B9B9B6"]];
-        [companyNameLabel setBackgroundColor:[Utiles colorWithHexString:@"#553D24"]];
+        [companyNameLabel setBackgroundColor:[UIColor cloudsColor]];
         [self addSubview:companyNameLabel];
         [companyNameLabel release];
         
@@ -31,7 +31,7 @@
         [marketPriceLabel setTextAlignment:NSTextAlignmentCenter];
         [marketPriceLabel setText:@"市场价"];
         [marketPriceLabel setTextColor:[Utiles colorWithHexString:@"#B9B9B6"]];
-        [marketPriceLabel setBackgroundColor:[Utiles colorWithHexString:@"#553D24"]];
+        [marketPriceLabel setBackgroundColor:[UIColor cloudsColor]];
         [self addSubview:marketPriceLabel];
         [marketPriceLabel release];
         
@@ -40,7 +40,7 @@
         [googuuPriceLabel setTextAlignment:NSTextAlignmentCenter];
         [googuuPriceLabel setText:@"估股价"];
         [googuuPriceLabel setTextColor:[Utiles colorWithHexString:@"#B9B9B6"]];
-        [googuuPriceLabel setBackgroundColor:[Utiles colorWithHexString:@"#553D24"]];
+        [googuuPriceLabel setBackgroundColor:[UIColor cloudsColor]];
         [self addSubview:googuuPriceLabel];
         [googuuPriceLabel release];
         
@@ -49,7 +49,7 @@
         [outLookingLabel setTextAlignment:NSTextAlignmentCenter];
         [outLookingLabel setText:@"潜在空间"];
         [outLookingLabel setTextColor:[Utiles colorWithHexString:@"#B9B9B6"]];
-        [outLookingLabel setBackgroundColor:[Utiles colorWithHexString:@"#553D24"]];
+        [outLookingLabel setBackgroundColor:[UIColor cloudsColor]];
         [self addSubview:outLookingLabel];
         [outLookingLabel release];
     }

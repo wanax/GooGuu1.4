@@ -185,7 +185,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
 
 -(void)initData{
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [ProgressHUD show:nil];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     if (delegate.comInfo) {
         self.comInfo = delegate.comInfo;
@@ -227,10 +227,10 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
             [Utiles showToastView:self.view withTitle:nil andContent:@"暂无数据" duration:1.0];
         }
 
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [ProgressHUD dismiss];
         
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        [ProgressHUD dismiss];
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         [self.oneMonth setEnabled:NO];
         [self.threeMonth setEnabled:NO];
