@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>ExpectedSpaceResulet</key>
+	<string>/m/updownresult</string>
+	<key>ExpectedSpaceVote</key>
+	<string>/m/updown</string>
+	<key>ExpectedSpaceHisData</key>
+	<string>/m/updownhistorical</string>
 	<key>GetRootBarIndicator</key>
 	<string>/m/updatestatus</string>
 	<key>ClientFans</key>

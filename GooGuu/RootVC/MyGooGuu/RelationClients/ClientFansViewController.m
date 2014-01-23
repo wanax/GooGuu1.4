@@ -8,7 +8,6 @@
 
 #import "ClientFansViewController.h"
 #import "SVPullToRefresh.h"
-#import "UserFriendCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ClientFansViewController ()
@@ -151,7 +150,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.postList[indexPath.row][@"headerpicurl"]]];
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

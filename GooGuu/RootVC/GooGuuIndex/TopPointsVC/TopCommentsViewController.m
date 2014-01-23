@@ -9,6 +9,7 @@
 #import "TopCommentsViewController.h"
 #import "TopCommentCell.h"
 #import "RegexKitLite.h"
+#import "GooGuuArticleViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TopCommentsViewController ()
@@ -144,6 +145,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    id model = self.commentList[indexPath.row];
+    
+    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
+    delegate.comInfo=model;
+    
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    
+    articleVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

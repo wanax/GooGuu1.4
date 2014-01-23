@@ -8,6 +8,7 @@
 
 #import "ClientPriMsgsViewController.h"
 #import "SVPullToRefresh.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ClientPriMsgsViewController ()
 
@@ -135,7 +136,7 @@
     id model = self.clientList[indexPath.row];
     
     cell.textLabel.text = model[@"realname"];
-    cell.detailTextLabel.text = model[@"uid"];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:model[@"userheaderimg"]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     
     return cell;
 }
@@ -148,7 +149,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.postList[indexPath.row][@"headerpicurl"]]];
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 

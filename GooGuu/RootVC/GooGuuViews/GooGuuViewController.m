@@ -161,7 +161,8 @@
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
-    SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
+    //SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");   
+    
 }
 
 -(BOOL)shouldAutorotate{

@@ -16,6 +16,7 @@
 #import "FinancalModelChartViewController.h"
 #import "FinanceDataViewController.h"
 #import "AnalysisReportViewController.h"
+#import "ExpectedSpaceViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
@@ -72,6 +73,16 @@
     //SEGMENT
     [self.comInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",self.companyInfo[@"attentioncount"]] forSegmentAtIndex:1];
     [self.comInfoSeg setTitle:[NSString stringWithFormat:@"模型(%@)",self.companyInfo[@"usersavecount"]] forSegmentAtIndex:2];
+    NSDictionary *params = @{
+                             @"stockcode":self.companyInfo[@"stockcode"]
+                             };
+    [Utiles getNetInfoWithPath:@"ExpectedSpaceResulet" andParams:params besidesBlock:^(id obj) {
+        [self.comExpectSeg setTitle:[NSString stringWithFormat:@"看多(%@)",obj[@"up"]] forSegmentAtIndex:0];
+        [self.comExpectSeg setTitle:[NSString stringWithFormat:@"看空(%@)",obj[@"down"]] forSegmentAtIndex:1];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
     //BUTTON
     self.ggReportButton.layer.cornerRadius = 4.0;
     self.ggValueModelButton.layer.cornerRadius = 4.0;
@@ -129,7 +140,32 @@
     }
 }
 
-- (IBAction)comExpectSegClicked:(id)sender {
+- (IBAction)comExpectSegClicked:(UISegmentedControl *)sender {
+    
+    NSDictionary *params = @{
+                             @"stockcode":self.companyInfo[@"stockcode"],
+                             @"flag":@(sender.selectedSegmentIndex+1),
+                             @"from":@"googuu",
+                             @"token":[Utiles getUserToken],
+                             @"state":@"1"
+                             };
+    [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+        
+        if ([obj[@"status"] isEqualToString:@"1"]) {
+            [ProgressHUD showSuccess:@"投票成功"];
+        } else {
+            [ProgressHUD showError:obj[@"msg"]];
+        }
+        [self performSelector:@selector(goIntoExpVC) withObject:nil afterDelay:2.0];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
+
+-(void)goIntoExpVC {
+    ExpectedSpaceViewController *expectVC = [[[ExpectedSpaceViewController alloc] init] autorelease];
+    expectVC.stockCode = self.companyInfo[@"stockcode"];
+    [self presentViewController:expectVC animated:YES completion:nil];
 }
 
 //业绩简报

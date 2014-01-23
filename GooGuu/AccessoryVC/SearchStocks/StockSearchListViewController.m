@@ -35,7 +35,7 @@
     [super viewDidLoad];
 	self.title=@"股票搜索";
     
-    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,70,SCREEN_WIDTH,SCREEN_HEIGHT-70)] autorelease];
+    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,40,SCREEN_WIDTH,SCREEN_HEIGHT-40)] autorelease];
     self.searchTable = tempTable;
     self.searchTable.dataSource=self;
     self.searchTable.delegate=self;
@@ -48,11 +48,6 @@
     self.searchBar.backgroundColor = [UIColor grayColor];
     self.searchBar.delegate=self;
     [self.view addSubview:self.searchBar];
-
-    IndicatorSearchView *indicator=[[IndicatorSearchView alloc] init];
-    indicator.frame = CGRectMake(0,80,SCREEN_WIDTH, 30);
-    [self.view insertSubview:indicator aboveSubview:self.searchTable];
-    [indicator release];
  
 }
 

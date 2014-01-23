@@ -14,7 +14,7 @@
 #import "MHTabBarController.h"
 #import "ComFieldViewController.h"
 #import "SVPullToRefresh.h"
-#import "IndicatorComView.h"
+//#import "IndicatorComView.h"
 #import "StockSearchListViewController.h"
 #import "CompanyCell.h"
 #import "GGModelIndexVC.h"
@@ -42,7 +42,7 @@
 }
 -(void)initViewComponents{
 
-    UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,30,SCREEN_WIDTH,SCREEN_HEIGHT-30)] autorelease];
+    UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)] autorelease];
     self.comsTable = temp;
     self.comsTable.dataSource=self;
     self.comsTable.delegate=self;
@@ -58,8 +58,8 @@
         [self addCompany];
     }];
     
-    IndicatorComView *indicator = [[[IndicatorComView alloc] init] autorelease];
-    [self.view addSubview:indicator];
+    //IndicatorComView *indicator = [[[IndicatorComView alloc] init] autorelease];
+    //[self.view addSubview:indicator];
 
 }
 

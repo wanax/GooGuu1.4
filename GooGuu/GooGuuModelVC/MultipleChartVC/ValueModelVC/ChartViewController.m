@@ -794,7 +794,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
         self.forecastLinePlot.dataLineStyle=lineStyle;
         self.forecastLinePlot.identifier=FORECAST_DATALINE_IDENTIFIER;
-        //forecastLinePlot.labelOffset=5;
+        self.forecastLinePlot.labelOffset=5;
         self.forecastLinePlot.dataSource=self;//需实现委托
         //forecastLinePlot.delegate=self;
         
@@ -814,6 +814,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         self.historyLinePlot.dataLineStyle = lineStyle;
         self.historyLinePlot.identifier = HISTORY_DATALINE_IDENTIFIER;
         self.historyLinePlot.dataSource = self;
+        self.historyLinePlot.labelOffset = 5;
         
         // Add plot symbols: 表示数值的符号的形状
         CPTMutableLineStyle * symbolLineStyle = [CPTMutableLineStyle lineStyle];

@@ -40,7 +40,11 @@
 {
     [super viewDidLoad];
     
-    self.title = self.articleInfo[@"companyname"];
+    if (self.articleInfo[@"companyname"]!=nil) {
+        self.title = self.articleInfo[@"companyname"];
+    }else if (self.articleInfo[@"title"]!=nil) {
+        self.title = self.articleInfo[@"title"];
+    }
     
     [[SDImageCache sharedImageCache] clearDisk];
     [[SDImageCache sharedImageCache] clearMemory];
@@ -106,7 +110,15 @@
 
 
 -(void)getArticleContent {
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:self.articleInfo[@"articleid"],@"articleid", nil];
+    NSString *articlestr=@"";
+    if (self.articleInfo[@"articleid"]!=nil) {
+        articlestr=self.articleInfo[@"articleid"];
+    }else if (self.articleInfo[@"ctxId"]!=nil){
+        articlestr=self.articleInfo[@"ctxId"];
+    }else if (self.articleInfo[@"ctxid"]!=nil){
+        articlestr=self.articleInfo[@"ctxid"];
+    }
+    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articlestr,@"articleid", nil];
     [Utiles getNetInfoWithPath:@"ArticleURL" andParams:params besidesBlock:^(id article){
 
         [self.articleWeb loadHTMLString:[article objectForKey:@"content"] baseURL:nil];

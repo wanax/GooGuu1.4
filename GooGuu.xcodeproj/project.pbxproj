@@ -134,6 +134,8 @@
 		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE244715188E0FF900C69752 /* IndicatorSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244712188E0FF900C69752 /* IndicatorSearchView.m */; };
 		AE244716188E0FF900C69752 /* StockSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244714188E0FF900C69752 /* StockSearchListViewController.m */; };
+		AE276B391890A50E00FA603F /* GooGuuArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE276B381890A50E00FA603F /* GooGuuArticleViewController.m */; };
+		AE276B3E1890B5EC00FA603F /* ExpectedSpaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE276B3D1890B5EC00FA603F /* ExpectedSpaceViewController.m */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
 		AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */; };
 		AE391478188F5BA400985CF0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE391475188F5BA400985CF0 /* ProgressHUD.bundle */; };
@@ -212,7 +214,6 @@
 		AE7EE30F1884CEC100A0E5BF /* GooGuuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */; };
 		AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */; };
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
-		AE7EE3211884DB3B00A0E5BF /* GooGuuArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */; };
 		AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */; };
 		AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */; };
 		AE8641A1188D1E6D00935E4E /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419F188D1E6D00935E4E /* MyCommentViewController.m */; };
@@ -583,6 +584,10 @@
 		AE244712188E0FF900C69752 /* IndicatorSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorSearchView.m; sourceTree = "<group>"; };
 		AE244713188E0FF900C69752 /* StockSearchListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StockSearchListViewController.h; sourceTree = "<group>"; };
 		AE244714188E0FF900C69752 /* StockSearchListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StockSearchListViewController.m; sourceTree = "<group>"; };
+		AE276B371890A50E00FA603F /* GooGuuArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuArticleViewController.h; sourceTree = "<group>"; };
+		AE276B381890A50E00FA603F /* GooGuuArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuArticleViewController.m; sourceTree = "<group>"; };
+		AE276B3C1890B5EC00FA603F /* ExpectedSpaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpectedSpaceViewController.h; sourceTree = "<group>"; };
+		AE276B3D1890B5EC00FA603F /* ExpectedSpaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpectedSpaceViewController.m; sourceTree = "<group>"; };
 		AE2B489B187D2AC2007ABEC8 /* CorePlot-CocoaTouch.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "CorePlot-CocoaTouch.xcodeproj"; path = "../../../download/code/CorePlot_1.4/Source/framework/CorePlot-CocoaTouch.xcodeproj"; sourceTree = "<group>"; };
 		AE2B48A6187D2BDD007ABEC8 /* CorePlot-CocoaTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CorePlot-CocoaTouch.h"; sourceTree = "<group>"; };
 		AE2B48A7187D2BDD007ABEC8 /* CPTAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTAnimation.h; sourceTree = "<group>"; };
@@ -791,8 +796,6 @@
 		AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCommentViewController.h; sourceTree = "<group>"; };
 		AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCommentViewController.m; sourceTree = "<group>"; };
-		AE7EE3181884DB3B00A0E5BF /* GooGuuArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuArticleViewController.h; sourceTree = "<group>"; };
-		AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuArticleViewController.m; sourceTree = "<group>"; };
 		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
 		AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGReportListVC.m; sourceTree = "<group>"; };
 		AE86419B188D1E6D00935E4E /* MyCollectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectsViewController.h; sourceTree = "<group>"; };
@@ -1081,8 +1084,11 @@
 		AE018865187CFC3F004C6A5D /* AccessoryVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE276B3B1890B5D200FA603F /* ExpectedSpace */,
 				AE244710188E0FF900C69752 /* SearchStocks */,
 				AE06B8D9187EAB6400DA93E2 /* FinanceTool */,
+				AE276B371890A50E00FA603F /* GooGuuArticleViewController.h */,
+				AE276B381890A50E00FA603F /* GooGuuArticleViewController.m */,
 				AE518738187E412B0055B9AE /* ComfieldTabelDataSource.h */,
 				AE518739187E412B0055B9AE /* ComfieldTabelDataSource.m */,
 			);
@@ -1402,8 +1408,6 @@
 				AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */,
 				AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */,
 				AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */,
-				AE7EE3181884DB3B00A0E5BF /* GooGuuArticleViewController.h */,
-				AE7EE3191884DB3B00A0E5BF /* GooGuuArticleViewController.m */,
 			);
 			path = GooGuuReports;
 			sourceTree = "<group>";
@@ -1529,6 +1533,15 @@
 				AE244714188E0FF900C69752 /* StockSearchListViewController.m */,
 			);
 			path = SearchStocks;
+			sourceTree = "<group>";
+		};
+		AE276B3B1890B5D200FA603F /* ExpectedSpace */ = {
+			isa = PBXGroup;
+			children = (
+				AE276B3C1890B5EC00FA603F /* ExpectedSpaceViewController.h */,
+				AE276B3D1890B5EC00FA603F /* ExpectedSpaceViewController.m */,
+			);
+			path = ExpectedSpace;
 			sourceTree = "<group>";
 		};
 		AE2B489C187D2AC2007ABEC8 /* Products */ = {
@@ -2685,6 +2698,7 @@
 				AE518744187E41BD0055B9AE /* ModelClassGrade2ViewController.m in Sources */,
 				AE0D3CEE187D3A9200E0E141 /* PrettyTabBar.m in Sources */,
 				AE06B8E9187EAB7900DA93E2 /* CounterBankViewController.m in Sources */,
+				AE276B391890A50E00FA603F /* GooGuuArticleViewController.m in Sources */,
 				AE0D3D14187D407700E0E141 /* CalendarViewController.m in Sources */,
 				AE0D3D45187D414400E0E141 /* UniverseViewController.m in Sources */,
 				AE0D3CB6187D36A000E0E141 /* UITabBarController+Autorotate.m in Sources */,
@@ -2701,13 +2715,13 @@
 				AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */,
 				AE74DFA0187E4509002AE169 /* HelpViewController.m in Sources */,
 				AE518737187E411A0055B9AE /* AnalyDetailContainerViewController.m in Sources */,
-				AE7EE3211884DB3B00A0E5BF /* GooGuuArticleViewController.m in Sources */,
 				AE74DFAF187E4595002AE169 /* IQSegmentedNextPrevious.m in Sources */,
 				AE0D3D22187D410800E0E141 /* CustomCellBackground.m in Sources */,
 				AE0D3D46187D414400E0E141 /* IndicatorComView.m in Sources */,
 				AE51871F187E40630055B9AE /* ChartViewController.m in Sources */,
 				AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */,
 				AE06B8EA187EAB7900DA93E2 /* BetaFactorCountViewController.m in Sources */,
+				AE276B3E1890B5EC00FA603F /* ExpectedSpaceViewController.m in Sources */,
 				AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */,
 				AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */,
 				AE0D3D43187D414400E0E141 /* CompanyListViewController.m in Sources */,

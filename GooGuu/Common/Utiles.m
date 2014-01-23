@@ -316,7 +316,7 @@ static NSDateFormatter *formatter;
     
     if(formatter==nil){
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-mm-dd"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
     }        
     NSTimeInterval inter = [[formatter dateFromString:date] timeIntervalSince1970];
     return inter;
@@ -326,7 +326,7 @@ static NSDateFormatter *formatter;
     
     if(formatter==nil){
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-mm-dd"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
     }
     NSDate *nd = [NSDate dateWithTimeIntervalSince1970:second];    
     return [formatter stringFromDate:nd];

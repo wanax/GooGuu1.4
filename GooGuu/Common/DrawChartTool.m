@@ -257,7 +257,7 @@ NSComparator cmptr = ^(id obj1, id obj2){
     
     CPTXYAxis *y=axisSet.yAxis;
 
-    if (type==DahonModel) {
+    if (type == DahonModel) {
        lineStyle.lineWidth=0.2;
        CPTLineCap *lineCap = [CPTLineCap sweptArrowPlotLineCap];
        lineCap.fill      = [CPTFill fillWithColor:lineCap.lineStyle.lineColor];

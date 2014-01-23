@@ -329,13 +329,13 @@ static const NSInteger TagOffset = 1000;
 - (void)selectTabButton:(UIButton *)button
 {
 	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor tangerineColor];
+    button.backgroundColor = [UIColor peterRiverColor];
 }
 
 - (void)deselectTabButton:(UIButton *)button
 {
 	[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor whiteColor];
+    button.backgroundColor = [UIColor silverColor];
 }
 
 - (CGFloat)tabBarHeight

@@ -355,14 +355,12 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     // 图形向右偏移： 0.25
     self.barPlot.barOffset = CPTDecimalFromFloat(0.0f) ;
     // 在 SDK 中， barCornerRadius 被 cornerRadius 替代
-    self.barPlot.barCornerRadius=3.0;
+    self.barPlot.barCornerRadius=0;
     self.barPlot.barWidth=CPTDecimalFromFloat(1.0f);
     self.barPlot.barWidthScale=0.5f;
     self.barPlot.labelOffset=0;
     self.barPlot.identifier = BAR_IDENTIFIER;
-    self.barPlot.opacity=0.0f;
-    
-    
+
     CABasicAnimation *fadeInAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     fadeInAnimation.duration            = 3.0f;
     fadeInAnimation.removedOnCompletion = NO;

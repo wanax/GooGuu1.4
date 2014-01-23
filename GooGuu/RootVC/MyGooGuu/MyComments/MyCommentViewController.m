@@ -129,7 +129,7 @@
                              ComPostCellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc]
-                 initWithStyle:UITableViewCellStyleValue1
+                 initWithStyle:UITableViewCellStyleSubtitle
                  reuseIdentifier:ComPostCellIdentifier] autorelease];
     }
     cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:14.0f];
@@ -137,7 +137,13 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
     
     id model = self.fansList[indexPath.row];
-    cell.textLabel.text = model[@"content"];
+    NSString *titlestr=@"";
+    if (model[@"companyname"]!=nil) {
+        titlestr=model[@"companyname"];
+    }else if (model[@"title"]!=nil) {
+        titlestr=model[@"title"];
+    }
+    cell.textLabel.text = titlestr;
     cell.detailTextLabel.text = model[@"content"];
     
     return cell;
@@ -151,7 +157,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.postList[indexPath.row][@"headerpicurl"]]];
-    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
