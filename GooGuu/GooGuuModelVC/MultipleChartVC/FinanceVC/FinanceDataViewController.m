@@ -45,7 +45,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#F2EFE1"]];
+    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#FFFFFF"]];
 
     self.colorArr=[NSArray arrayWithObjects:@"e92058",@"b700b7",@"216dcb",@"13bbca",@"65d223",@"f09c32",@"f15a38",nil];
     
@@ -85,13 +85,13 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     DrawChartTool *tool=[[[DrawChartTool alloc] init] autorelease];
     tool.standIn=self;
     int iOS7Height;
-    iOS7Height=25;
-    topBar.frame=CGRectMake(0,20,SCREEN_HEIGHT,40);
-    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(0,60,SCREEN_HEIGHT,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentLeft];
+    iOS7Height=5;
+    topBar.frame=CGRectMake(0,0,SCREEN_HEIGHT,0);
+    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(10,40,SCREEN_HEIGHT,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentLeft];
     
     
-    [tool addButtonToView:self.view withTitle:@"返回" Tag:FinancialBack frame:CGRectMake(10,iOS7Height,50,32) andFun:@selector(backTo:)];
-    [tool addButtonToView:self.view withTitle:@"原始财务数据" Tag:FinancialRatio frame:CGRectMake(SCREEN_HEIGHT-205,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:)];
+    [tool addButtonToView:self.view withTitle:@"返回" Tag:FinancialBack frame:CGRectMake(5,iOS7Height,50,32) andFun:@selector(backTo:)];
+    [tool addButtonToView:self.view withTitle:@"原始财务数据" Tag:FinancialRatio frame:CGRectMake(SCREEN_HEIGHT-210,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:)];
     [tool addButtonToView:self.view withTitle:@"财务分析" Tag:FinancialChart frame:CGRectMake(SCREEN_HEIGHT-105,iOS7Height,100,31) andFun:@selector(selectIndustry:forEvent:)];
 }
 
@@ -101,9 +101,10 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
         self.graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
         //CPTTheme *theme=[CPTTheme themeNamed:kCPTPlainWhiteTheme];
         //[graph applyTheme:theme];
-        self.graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
+        //self.graph.fill=[CPTFill fillWithImage:[CPTImage imageWithCGImage:[UIImage imageNamed:@"discountBack"].CGImage]];
+        self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
         //graph.cornerRadius  = 15.0f;
-        self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(10,70,SCREEN_HEIGHT-20,220)];
+        self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(5,60,SCREEN_HEIGHT-10,250)];
         [self.view addSubview:self.hostView];
         [self.hostView setHostedGraph : self.graph ];
         self.hostView.collapsesLayers = YES;
@@ -131,7 +132,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     sender.showsTouchWhenHighlighted=YES;
 	CQMFloatingController *floatingController = [CQMFloatingController sharedFloatingController];
  
-    floatingController.frameColor=[Utiles colorWithHexString:@"#e26b17"];
+    floatingController.frameColor=[Utiles colorWithHexString:@"#FFFFFF"];
     if(sender.tag==FinancialRatio){
         [self presentViewController:self.modelRatioViewController animated:YES completion:nil];
     }else if(sender.tag==FinancialChart){
@@ -194,7 +195,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     }
     for(id obj in temp){
         [tempGrade2Dic setObject:obj forKey:[obj objectForKey:@"name"]];
-        [self addGrade2Bt:[obj objectForKey:@"name"] frame:CGRectMake(SCREEN_HEIGHT-x,65,80,20)];
+        [self addGrade2Bt:[obj objectForKey:@"name"] frame:CGRectMake(SCREEN_HEIGHT-x,45,80,20)];
         x-=75;
     }
     self.grade2Dic=tempGrade2Dic;
@@ -445,7 +446,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
     if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        self.hostView.frame=CGRectMake(10,90,SCREEN_HEIGHT-20,220);
+        self.hostView.frame=CGRectMake(5,65,SCREEN_HEIGHT-10,245);
     }
 }
 

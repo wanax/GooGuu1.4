@@ -170,6 +170,12 @@ typedef enum {
 } UserCommentType;//某人的评论列表
 
 
+typedef enum {
+    CompanyComment,//公司
+    GgviewComment//观点
+} GooGuuCommentType;//评论种类
+
+
 
 
 @end

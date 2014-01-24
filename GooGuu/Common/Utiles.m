@@ -338,7 +338,7 @@ static NSDateFormatter *formatter;
     
     if(formatter==nil){
         formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"yyyy-mm-dd"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
     }
     NSDate *nd = [NSDate dateWithTimeIntervalSince1970:second/1000];
     return [formatter stringFromDate:nd];

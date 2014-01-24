@@ -126,10 +126,7 @@
     webView.delegate=self;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"c" ofType:@"html"];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath: path]]];
-    
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    comInfo=delegate.comInfo;
-    
+
     [marketBetaSlider setMinimumTrackTintColor:[Utiles colorWithHexString:@"#EA7A1F"]];
     [marketBetaSlider setMaximumTrackTintColor:[Utiles colorWithHexString:@"#0B0B0B"]];
     [unRiskRateSlider setMinimumTrackTintColor:[Utiles colorWithHexString:@"#EA7A1F"]];
@@ -301,7 +298,7 @@
     NSNumberFormatter *formatter=[[NSNumberFormatter alloc] init];
     [formatter setPositiveFormat:@"##0.##"];
     
-    [self.companyNameLabel setText:[NSString stringWithFormat:@"%@\n(%@.%@)",[comInfo objectForKey:@"companyname"],[comInfo objectForKey:@"stockcode"],[comInfo objectForKey:@"marketname"]]];
+    [self.companyNameLabel setText:[NSString stringWithFormat:@"%@\n(%@.%@)",[comInfo objectForKey:@"companyname"],[comInfo objectForKey:@"stockcode"],[comInfo objectForKey:@"market"]]];
     [self.marketPriceLabel setText:[[comInfo objectForKey:@"marketprice"] stringValue]];
     self.ggPriceLabel.text=[NSString stringWithFormat:@"%@",[formatter stringFromNumber:[NSNumber numberWithFloat:[[[self.transData objectAtIndex:6] objectForKey:@"ggPrice"] floatValue]]]];
     ggPrice=[[[self.transData objectAtIndex:6] objectForKey:@"ggPrice"] floatValue];
@@ -338,7 +335,7 @@
 
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
     } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        self.view.frame=CGRectMake(0,40,SCREEN_HEIGHT,SCREEN_WIDTH-40);
+        self.view.frame=CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_WIDTH);
     }
 }
 

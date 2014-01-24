@@ -40,12 +40,6 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
             self.isShowDiscountView=YES;
             [self.discountBt setEnabled:NO];
             [self.view addSubview:self.rateViewController.view];
-            CATransition *transition=[CATransition animation];
-            transition.duration=0.1f;
-            transition.fillMode=kCAFillRuleNonZero;
-            transition.type=kCATransitionFade;
-            transition.subtype=kCATransitionFromTop;
-            [self.rateViewController.view.layer addAnimation:transition forKey:@"animation"];
         }
     }else{
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
@@ -55,14 +49,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     if(self.isShowDiscountView){
         self.isShowDiscountView=NO;
         [self.discountBt setEnabled:YES];
-        CATransition *transition=[CATransition animation];
-        transition.duration=0.1f;
-        transition.delegate=self;
-        transition.fillMode=kCAFillRuleNonZero;
-        transition.type=kCATransitionFade;
-        transition.subtype=kCATransitionFromBottom;
         [self.rateViewController.view removeFromSuperview];
-        [self.view.layer addAnimation:transition forKey:@"animation"];
     }
 }
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
@@ -129,7 +116,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     //初始化图形视图
     CPTXYGraph *tempG = [[[CPTXYGraph alloc] initWithFrame:CGRectZero] autorelease];
     self.graph = tempG;
-    self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#EADBB9" andAlpha:1.0]];
+    self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
 
     CPTGraphHostingView *tempHost = [[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(0,40,SCREEN_WIDTH,270)] autorelease];
     self.hostView = tempHost;
@@ -184,17 +171,17 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     
     self.resetBt=[tool addButtonToView:self.view withTitle:@"复位" Tag:ResetChart frame:CGRectMake(SCREEN_HEIGHT-121,49,54,26) andFun:@selector(chartAction:)];
 
-    UILabel *comNameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",self.netComInfo[@"CompanyName"],self.netComInfo[@"StockCode"],self.netComInfo[@"Market"]] frame:CGRectMake(0,44,280,45) fontSize:15.0 textColor:@"#63573d" location:NSTextAlignmentCenter];
+    UILabel *comNameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",self.netComInfo[@"CompanyName"],self.netComInfo[@"StockCode"],self.netComInfo[@"Market"]] frame:CGRectMake(0,44,SCREEN_HEIGHT-300,45) fontSize:15.0 textColor:@"#63573d" location:NSTextAlignmentCenter];
     comNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
     comNameLabel.numberOfLines = 0;
     
     //市场价label
-    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"市场价:$:%.2f",[self.netComInfo[@"MarketPrice"] floatValue]] frame:CGRectMake(280,44,110,22) fontSize:12.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
+    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"市场价::%.2f",[self.netComInfo[@"MarketPrice"] floatValue]] frame:CGRectMake(SCREEN_HEIGHT-300,44,110,22) fontSize:12.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
     //估值数值label
-    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"估股估值:$:%.2f",[self.netComInfo[@"GooguuValuation"] floatValue]] frame:CGRectMake(280,67,100,22) fontSize:11.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
+    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"估股估值::%.2f",[self.netComInfo[@"GooguuValuation"] floatValue]] frame:CGRectMake(SCREEN_HEIGHT-300,67,100,22) fontSize:11.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
     
-    self.myGGpriceLabel=[tool addLabelToView:self.view withTitle:@"我的估值:$" frame:CGRectMake(80,0,80,44) fontSize:14.0 textColor:@"#817a6b" location:NSTextAlignmentCenter];
-    self.priceLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(165,0,100,44) fontSize:18.0 textColor:@"#e18e14" location:NSTextAlignmentCenter];
+    self.myGGpriceLabel=[tool addLabelToView:self.view withTitle:@"我的估值:" frame:CGRectMake(80,0,60,44) fontSize:14.0 textColor:@"#817a6b" location:NSTextAlignmentCenter];
+    self.priceLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(140,0,SCREEN_HEIGHT-400,44) fontSize:18.0 textColor:@"#e18e14" location:NSTextAlignmentCenter];
     if(self.sourceType!=MySavedType){
         [self.myGGpriceLabel setHidden:YES];
         [self.priceLabel setHidden:YES];
@@ -282,7 +269,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         } else {
             self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil];
             self.rateViewController.view.frame = CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
-        }   
+        }
+        self.rateViewController.comInfo = self.comInfo;
         self.rateViewController.jsonData = self.jsonForChart;
         self.rateViewController.valuesStr = values;
         self.rateViewController.dragChartChangedDriverIds = self.changedDriverIds;
@@ -754,21 +742,20 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
         lineStyle.miterLimit=0.0f;
         lineStyle.lineWidth=0.0f;
-        lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
+        lineStyle.lineColor=[Utiles cptcolorWithHexString:@"#1C6BA0" andAlpha:1.0];
         
-        self.barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor colorWithComponentRed:153/255.0 green:100/255.0 blue:49/255.0 alpha:0.3] horizontalBars:NO];
+        self.barPlot = [CPTBarPlot tubularBarPlotWithColor:[Utiles cptcolorWithHexString:@"#1C6BA0" andAlpha:1.0] horizontalBars:NO];
         self.barPlot.baseValue  = CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
         self.barPlot.dataSource = self;
         self.barPlot.barOffset  = CPTDecimalFromFloat(-0.5f);
         self.barPlot.lineStyle=lineStyle;
-        self.barPlot.fill=[CPTFill fillWithColor:[CPTColor colorWithComponentRed:174/255.0 green:10/255.0 blue:148/255.0 alpha:0.3]];
+        self.barPlot.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#1C6BA0" andAlpha:0.5]];
         self.barPlot.identifier = COLUMNAR_DATALINE_IDENTIFIER;
-        self.barPlot.barWidth=CPTDecimalFromFloat(0.5f);
+        self.barPlot.barWidth=CPTDecimalFromFloat(0.3f);
         [self.graph addPlot:self.barPlot];
         lineStyle.lineWidth=0.0f;
         self.forecastLinePlot.dataLineStyle=lineStyle;
         self.linkage=NO;
-        [self.barPlot release];
     }
     
 }
@@ -779,8 +766,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     if([self.graph plotWithIdentifier:COLUMNAR_DATALINE_IDENTIFIER]){
         [self.graph removePlot:self.barPlot];
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
-        lineStyle.lineWidth=1.0f;
-        lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
+        lineStyle.lineWidth=2.0f;
+        lineStyle.lineColor=[Utiles cptcolorWithHexString:@"#1C6BA0" andAlpha:1.0];
         self.forecastLinePlot.dataLineStyle=lineStyle;
     }
     
@@ -790,8 +777,8 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         CPTMutableLineStyle *lineStyle = [CPTMutableLineStyle lineStyle];
         //修改折线图线段样式,创建可调整数据线段
         self.forecastLinePlot=[[[CPTScatterPlot alloc] init] autorelease];
-        lineStyle.lineWidth=1.0f;
-        lineStyle.lineColor=[CPTColor colorWithComponentRed:87/255.0 green:168/255.0 blue:9/255.0 alpha:1.0];
+        lineStyle.lineWidth=2.0f;
+        lineStyle.lineColor=[Utiles cptcolorWithHexString:@"#1C6BA0" andAlpha:1.0];
         self.forecastLinePlot.dataLineStyle=lineStyle;
         self.forecastLinePlot.identifier=FORECAST_DATALINE_IDENTIFIER;
         self.forecastLinePlot.labelOffset=5;
@@ -818,11 +805,11 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         
         // Add plot symbols: 表示数值的符号的形状
         CPTMutableLineStyle * symbolLineStyle = [CPTMutableLineStyle lineStyle];
-        symbolLineStyle.lineColor = [Utiles cptcolorWithHexString:@"#3498DB" andAlpha:1.0];
-        symbolLineStyle.lineWidth = 1.5;
+        symbolLineStyle.lineColor = [Utiles cptcolorWithHexString:@"#1C6BA0" andAlpha:1.0];
+        symbolLineStyle.lineWidth = 2;
         CPTPlotSymbol * plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
         plotSymbol.lineStyle     = symbolLineStyle;
-        plotSymbol.fill = [CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#EADBB9" andAlpha:1.0]];
+        plotSymbol.fill = [CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
         plotSymbol.size          = CGSizeMake(13, 13);
         
         self.forecastLinePlot.plotSymbol = plotSymbol;

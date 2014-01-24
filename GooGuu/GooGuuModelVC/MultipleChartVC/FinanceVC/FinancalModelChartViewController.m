@@ -105,7 +105,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     
     DrawChartTool *tool=[[[DrawChartTool alloc] init] autorelease];
     tool.standIn=self;
-    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(0,44,SCREEN_HEIGHT,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentCenter];
+    self.financalTitleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(0,44,SCREEN_HEIGHT,30) fontSize:12.0 textColor:@"#111111" location:NSTextAlignmentCenter];
 
 }
 
@@ -114,9 +114,9 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     @try {
         self.graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
 
-        self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#EADBB9" andAlpha:1.0]];
+        self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
        
-        self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(10,70,SCREEN_HEIGHT-20,220)];
+        self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(5,70,SCREEN_HEIGHT-10,220)];
         [self.view addSubview:self.hostView];
         [self.hostView setHostedGraph : self.graph ];
         self.hostView.collapsesLayers = YES;
@@ -232,7 +232,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
     UILabel *nameLabel=nil;
-    nameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",[comDetailInfo objectForKey:@"CompanyName"],[comDetailInfo objectForKey:@"StockCode"],[comDetailInfo objectForKey:@"Market"]] frame:CGRectMake(65,0,220,44) fontSize:14.0 textColor:@"#3e2000" location:NSTextAlignmentCenter];
+    nameLabel=[tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"%@\n(%@.%@)",[comDetailInfo objectForKey:@"CompanyName"],[comDetailInfo objectForKey:@"StockCode"],[comDetailInfo objectForKey:@"Market"]] frame:CGRectMake(65,0,220,44) fontSize:14.0 textColor:@"#111111" location:NSTextAlignmentCenter];
     nameLabel.lineBreakMode = NSLineBreakByCharWrapping;
     nameLabel.numberOfLines = 0;
     SAFE_RELEASE(tool);

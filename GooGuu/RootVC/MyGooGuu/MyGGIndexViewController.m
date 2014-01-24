@@ -56,9 +56,16 @@
     
     self.title = @"我的估股";
     self.view.backgroundColor = [UIColor whiteColor];
-    
+
     UIBarButtonItem *settingButton = [[[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self  action:@selector(setttingBtClicked:)] autorelease];
     self.navigationItem.rightBarButtonItem = settingButton;
+    
+    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,158,SCREEN_WIDTH,SCREEN_HEIGHT-209)] autorelease];
+    tempTable.delegate = self;
+    tempTable.dataSource = self;
+    self.clientTable = tempTable;
+    [self.view addSubview:self.clientTable];
+    self.clientTable.showsVerticalScrollIndicator = NO;
 }
 
 

@@ -130,7 +130,7 @@
 		AE16E97A187D56A9003588FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E979187D56A9003588FA /* CoreLocation.framework */; };
 		AE16E97C187D56BF003588FA /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97B187D56BF003588FA /* libstdc++.dylib */; };
 		AE16E97E187D56CD003588FA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97D187D56CD003588FA /* CoreTelephony.framework */; };
-		AE1D13EA188F91A2007C9E51 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE1D13E9188F91A2007C9E51 /* libBaiduMobStat.a */; };
+		AE22252F18917A5F00C25CD3 /* GooGuuCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */; };
 		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE244715188E0FF900C69752 /* IndicatorSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244712188E0FF900C69752 /* IndicatorSearchView.m */; };
 		AE244716188E0FF900C69752 /* StockSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244714188E0FF900C69752 /* StockSearchListViewController.m */; };
@@ -211,6 +211,7 @@
 		AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */; };
 		AE7C1ACF18851FB5006D37B5 /* stockDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */; };
 		AE7C1AD218852FE1006D37B5 /* TopCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */; };
+		AE7EB4D918913FA100EB9EDE /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7EB4D818913FA100EB9EDE /* libBaiduMobStat.a */; };
 		AE7EE30F1884CEC100A0E5BF /* GooGuuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */; };
 		AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */; };
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
@@ -576,8 +577,8 @@
 		AE16E979187D56A9003588FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AE16E97B187D56BF003588FA /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		AE16E97D187D56CD003588FA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		AE1D13E8188F91A2007C9E51 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE1D13E9188F91A2007C9E51 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
+		AE22252D18917A5F00C25CD3 /* GooGuuCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuCommentViewController.h; sourceTree = "<group>"; };
+		AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuCommentViewController.m; sourceTree = "<group>"; };
 		AE23677F188B660500D74674 /* CompanyFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFansVC.h; sourceTree = "<group>"; };
 		AE236780188B660500D74674 /* CompanyFansVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyFansVC.m; sourceTree = "<group>"; };
 		AE244711188E0FF900C69752 /* IndicatorSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorSearchView.h; sourceTree = "<group>"; };
@@ -790,6 +791,8 @@
 		AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockDownArrow.png; sourceTree = "<group>"; };
 		AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentsViewController.h; sourceTree = "<group>"; };
 		AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentsViewController.m; sourceTree = "<group>"; };
+		AE7EB4D718913FA100EB9EDE /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE7EB4D818913FA100EB9EDE /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE7EE30D1884CEC100A0E5BF /* GooGuuIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuIndexViewController.h; sourceTree = "<group>"; };
 		AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuIndexViewController.m; sourceTree = "<group>"; };
 		AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
@@ -971,7 +974,7 @@
 				AE0D3CA7187D2DD600E0E141 /* libz.1.2.5.dylib in Frameworks */,
 				AE0D3CA5187D2DC100E0E141 /* ImageIO.framework in Frameworks */,
 				AE39147F188F735200985CF0 /* libBaiduMobStat.a in Frameworks */,
-				AE1D13EA188F91A2007C9E51 /* libBaiduMobStat.a in Frameworks */,
+				AE7EB4D918913FA100EB9EDE /* libBaiduMobStat.a in Frameworks */,
 				AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */,
 				AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */,
 				AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */,
@@ -1091,6 +1094,8 @@
 				AE276B381890A50E00FA603F /* GooGuuArticleViewController.m */,
 				AE518738187E412B0055B9AE /* ComfieldTabelDataSource.h */,
 				AE518739187E412B0055B9AE /* ComfieldTabelDataSource.m */,
+				AE22252D18917A5F00C25CD3 /* GooGuuCommentViewController.h */,
+				AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */,
 			);
 			path = AccessoryVC;
 			sourceTree = "<group>";
@@ -1165,7 +1170,7 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				AE1D13E7188F91A2007C9E51 /* Release-iphonesimulator */,
+				AE7EB4D618913FA100EB9EDE /* Release-iphonesimulator */,
 				AE39147C188F735200985CF0 /* Release-iphoneos */,
 				AE391474188F5BA400985CF0 /* ProgressHUD */,
 				AE7ABC88188E8CE900FB73F5 /* MHTabBarController */,
@@ -1512,15 +1517,6 @@
 				AE0D3DD3187D4A3200E0E141 /* DemoPhoto.m */,
 			);
 			path = CXPhotoBrowser;
-			sourceTree = "<group>";
-		};
-		AE1D13E7188F91A2007C9E51 /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				AE1D13E8188F91A2007C9E51 /* BaiduMobStat.h */,
-				AE1D13E9188F91A2007C9E51 /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		AE244710188E0FF900C69752 /* SearchStocks */ = {
@@ -1968,6 +1964,15 @@
 				AE7C1AC318851359006D37B5 /* CompanyCell.xib */,
 			);
 			path = CellNib;
+			sourceTree = "<group>";
+		};
+		AE7EB4D618913FA100EB9EDE /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AE7EB4D718913FA100EB9EDE /* BaiduMobStat.h */,
+				AE7EB4D818913FA100EB9EDE /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		AE7EE3251884DC0C00A0E5BF /* TopPointsVC */ = {
@@ -2677,6 +2682,7 @@
 				AE518728187E40EC0055B9AE /* IntroductionViewController.m in Sources */,
 				AE0D3D2A187D411800E0E141 /* GooGuuViewController.m in Sources */,
 				AE0D3D78187D469800E0E141 /* StockCell.m in Sources */,
+				AE22252F18917A5F00C25CD3 /* GooGuuCommentViewController.m in Sources */,
 				AE8641A1188D1E6D00935E4E /* MyCommentViewController.m in Sources */,
 				AE018876187D00A7004C6A5D /* main.m in Sources */,
 				AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */,

@@ -7,6 +7,8 @@
 //
 
 #import "CompanyFansVC.h"
+#import "SVPullToRefresh.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface CompanyFansVC ()
 
@@ -32,8 +34,10 @@
     } else if (self.type == ComSaveClients) {
         self.title = @"保存过模型的估友";
     }
+    self.pageOffset = 1;
     [self initComponents];
-    [self getFans];
+    NSString *stringInt = [NSString stringWithFormat:@"%d",self.pageOffset];
+    [self getFans:stringInt];
 }
 
 -(void)initComponents {
@@ -44,6 +48,11 @@
     temp.showsVerticalScrollIndicator = NO;
     self.fansTable = temp;
     [self.view addSubview:self.fansTable];
+    
+    [self.fansTable addInfiniteScrollingWithActionHandler:^{
+        NSString *stringInt = [NSString stringWithFormat:@"%d",self.pageOffset];
+        [self getFans:stringInt];
+    }];
     
     UIRefreshControl *tempRefresh = [[[UIRefreshControl alloc] init] autorelease];
     tempRefresh.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
@@ -56,6 +65,7 @@
 -(void)handleRefresh:(UIRefreshControl *)control {
     control.attributedTitle = [[[NSAttributedString alloc] initWithString:@"刷新中"] autorelease];
     [control endRefreshing];
+    self.pageOffset = 1;
     [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
 }
 
@@ -63,14 +73,15 @@
     
     [self.refreshControl endRefreshing];
     self.refreshControl.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
-    [self getFans];
+    NSString *stringInt = [NSString stringWithFormat:@"%d",self.pageOffset];
+    [self getFans:stringInt];
     
 }
 
 #pragma mark -
 #pragma NetConection
 
--(void)getFans {
+-(void)getFans:(NSString *)strOffset {
     
     NSString *url = @"";
     if (self.type == ComAttentionClients) {
@@ -80,18 +91,27 @@
     }
     
     NSDictionary *params = @{
-                             @"stockcode":self.stockCode
+                             @"stockcode":self.stockCode,
+                             @"offset":strOffset
                              };
-    
+        
     [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
 
         id clients = obj[@"data"];
         NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
+            
+        if (self.pageOffset > 1) {
+            for(id model in self.fansList){
+                [temps addObject:model];
+            }
+        }
         for (id model in clients) {
             [temps addObject:model];
         }
         self.fansList = temps;
+        self.pageOffset++;
         [self.fansTable reloadData];
+        [self.fansTable.infiniteScrollingView stopAnimating];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
@@ -118,7 +138,7 @@
                              ComPostCellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc]
-                 initWithStyle:UITableViewCellStyleValue1
+                 initWithStyle:UITableViewCellStyleDefault
                  reuseIdentifier:ComPostCellIdentifier] autorelease];
     }
     cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:14.0f];
@@ -127,7 +147,8 @@
     
     id model = self.fansList[indexPath.row];
     cell.textLabel.text = model[@"realname"];
-    cell.detailTextLabel.text = model[@"headerpicurl"];
+    //cell.detailTextLabel.text = model[@"headerpicurl"];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:model[@"headerpicurl"]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     
     return cell;
 }

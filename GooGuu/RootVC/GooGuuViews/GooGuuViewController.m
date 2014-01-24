@@ -136,7 +136,8 @@
 
     cell.conciseTextView.text = temp;
     
-    [cell.updateTimeLabel setText:model[@"updatetime"]];
+    //[cell.updateTimeLabel setText:model[@"updatetime"]];
+    cell.updateTimeLabel.text=[Utiles intervalSinceNow:[model objectForKey:@"updatetime"]];
 
     return cell;
     
@@ -157,6 +158,7 @@
     id model = self.viewDataArr[indexPath.row];
     
     GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    articleVC.articleId = model[@"articleid"];
     articleVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

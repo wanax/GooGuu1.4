@@ -11,6 +11,7 @@
 @interface CompanyFansVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property CompanyFans type;
+@property NSInteger pageOffset;
 @property (nonatomic,retain) NSString *stockCode;
 @property (nonatomic,retain) NSArray *fansList;
 

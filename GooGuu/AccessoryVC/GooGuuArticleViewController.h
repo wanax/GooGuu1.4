@@ -13,11 +13,12 @@
 
 #define FINGERCHANGEDISTANCE 100.0
 
-@interface GooGuuArticleViewController : UIViewController<UIWebViewDelegate,UIGestureRecognizerDelegate,CXPhotoBrowserDataSource, CXPhotoBrowserDelegate,UITextFieldDelegate>{
+@interface GooGuuArticleViewController : UIViewController<UIWebViewDelegate,UIGestureRecognizerDelegate,CXPhotoBrowserDataSource, CXPhotoBrowserDelegate,UITextFieldDelegate,UIActionSheetDelegate>{
     CXBrowserNavBarView *navBarView;
 }
 
 @property BrowseSourceType sourceType;
+@property (nonatomic,retain) NSString *articleId;
 @property (nonatomic,retain) NSArray *imageUrlList;
 @property (nonatomic,retain) id articleInfo;
 

@@ -68,7 +68,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self.view setBackgroundColor:[Utiles colorWithHexString:@"#F2EFE1"]];
+	[self.view setBackgroundColor:[Utiles colorWithHexString:@"#FEFEFE"]];
     [self initDahonViewComponents];
     [self initData];
     
@@ -78,12 +78,12 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
     DrawChartTool *tool=[[DrawChartTool alloc] init];
     tool.standIn=self;
     //title
-    self.titleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(10,5,450,30) fontSize:12.0 textColor:@"#63573d" location:NSTextAlignmentLeft];
+    self.titleLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(40,5,450,30) fontSize:12.0 textColor:@"#333333" location:NSTextAlignmentLeft];
     
     //提示信息
     //[tool addLabelToView:self.view withTitle:@"*点击图标查看大行估值" Tag:6 frame:CGRectMake(450,5,80,30) fontSize:10.0 color:nil textColor:@"#63573d" location:NSTextAlignmentCenter];
     
-    self.backBt=[tool addButtonToView:self.view withTitle:@"返回" Tag:OneMonth frame:CGRectMake(450,5,30,30) andFun:@selector(backToParent:)];
+    self.backBt=[tool addButtonToView:self.view withTitle:@"返回" Tag:OneMonth frame:CGRectMake(5,5,30,25) andFun:@selector(backToParent:)];
     [self.backBt.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:12.0]];
     
     self.oneMonth=[tool addButtonToView:self.view withTitle:@"一个月" Tag:OneMonth frame:CGRectMake(10,290,40,25) andFun:@selector(changeDateInter:)];
@@ -154,7 +154,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
     
     CPTXYGraph *tg=[[[CPTXYGraph alloc] initWithFrame:CGRectZero] autorelease];
     self.graph=tg;
-    CPTFill *tf=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#ffffff" andAlpha:0.9]];
+    CPTFill *tf=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
     self.graph.fill=tf;
     
     CPTGraphHostingView *tHostView=[[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(5,30,SCREEN_HEIGHT-10,HostViewHeight-15)] autorelease];
@@ -186,10 +186,7 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
 -(void)initData{
     
     [ProgressHUD show:nil];
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-    if (delegate.comInfo) {
-        self.comInfo = delegate.comInfo;
-    }
+
     NSDictionary *params=@{@"stockcode": self.comInfo[@"stockcode"]};
     [Utiles getNetInfoWithPath:@"GetStockHistoryData" andParams:params besidesBlock:^(id resObj){
         NSNumberFormatter * formatter   = [[NSNumberFormatter alloc] init];

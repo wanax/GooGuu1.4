@@ -10,7 +10,6 @@
                 <outlet property="clientAvatar" destination="A2o-06-XfE" id="6EB-xu-aHe"/>
                 <outlet property="clientInfoSeg" destination="FhX-yy-hJX" id="SKR-l1-3Qj"/>
                 <outlet property="clientNameLabel" destination="iHO-p7-ZxC" id="QHh-yN-6d5"/>
-                <outlet property="clientTable" destination="twJ-EV-Fhp" id="oca-b3-KgT"/>
                 <outlet property="part1View" destination="hFV-uP-LNZ" id="JUc-V4-neW"/>
                 <outlet property="view" destination="1" id="g0E-oQ-ZvP"/>
             </connections>
@@ -61,15 +60,6 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="twJ-EV-Fhp">
-                    <rect key="frame" x="0.0" y="158" width="320" height="307"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="aaX-Fl-d1C"/>
-                        <outlet property="delegate" destination="-1" id="sd6-GH-3fc"/>
-                    </connections>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

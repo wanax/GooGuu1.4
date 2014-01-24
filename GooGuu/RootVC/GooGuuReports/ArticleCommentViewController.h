@@ -29,6 +29,7 @@ typedef enum {
     __strong UIActivityIndicatorView *_activityIndicatorView;
 }
 
+@property (nonatomic,retain) id articleInfo;
 @property  AnalyArticleType type;
 @property (nonatomic,retain) UITableView *cusTable;
 @property (nonatomic,retain) NSString *articleId;

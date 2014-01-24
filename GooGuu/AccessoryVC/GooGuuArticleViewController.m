@@ -11,7 +11,11 @@
 #import "CXPhotoBrowser.h"
 #import "CXPhoto.h"
 #import "AddCommentViewController.h"
+#import "ArticleCommentViewController.h"
+#import "GooGuuCommentViewController.h"
+#import "GGModelIndexVC.h"
 #import "ComFieldViewController.h"
+#import "ExpectedSpaceViewController.h"
 
 @interface GooGuuArticleViewController ()
 
@@ -55,6 +59,36 @@
     [self getArticleContent];
 }
 
+-(void)favBtClicked:(UIBarButtonItem *)bt {
+    
+    NSString *url = @"";
+    if ([bt.title isEqualToString:@"收藏"]) {
+        url = @"AddFavArticle";
+    } else {
+        url = @"CancelFavArticle";
+    }
+    NSDictionary *params = @{
+                             @"articleid":self.articleId,
+                             @"token":[Utiles getUserToken],
+                             @"from":@"googuu",
+                             @"state":@"1"
+                             };
+    [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
+ 
+        if ([obj[@"status"] isEqualToString:@"1"]) {
+            if ([bt.title isEqualToString:@"收藏"]) {
+                bt.title = @"取消收藏";
+            } else {
+                bt.title = @"收藏";
+            }
+        } else {
+            [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.5];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+}
 
 -(void)initComponts {
     
@@ -62,10 +96,38 @@
     self.articleWeb = tempWeb;
     self.articleWeb.delegate=self;
 
-    [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,80,30) title:@"公司" image:@"icon_company_small"];
-    [self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
-    [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,80,30) title:@"评论" image:@"icon_msg_small"];
-    [self addButton:CGRectMake(240,SCREEN_HEIGHT-30,80,30) title:@"多空" image:@"icon_pie_small"];
+    UIBarButtonItem *favButton = [[[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self  action:@selector(favBtClicked:)] autorelease];
+    self.navigationItem.rightBarButtonItem = favButton;
+    
+    NSDictionary *params = @{
+                             @"token":[Utiles getUserToken],
+                             @"from":@"googuu",
+                             @"state":@"1"
+                             };
+    [Utiles getNetInfoWithPath:@"FavoriteArticles" andParams:params besidesBlock:^(id obj) {
+
+        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+        id data = obj[@"data"];
+        for (id model in data) {
+            [temp addObject:model[@"title"]];
+        }
+        if ([temp containsObject:self.articleInfo[@"title"]]) {
+            favButton.title = @"取消收藏";
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
+        [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,80,30) title:@"公司" image:@"icon_company_small"];
+        [self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
+        [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,80,30) title:@"评论" image:@"icon_msg_small"];
+        [self addButton:CGRectMake(240,SCREEN_HEIGHT-30,80,30) title:@"多空" image:@"icon_pie_small"];
+    }else{
+        [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,160,30) title:@"分享" image:@"icon_share_small"];
+        [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,160,30) title:@"评论" image:@"icon_msg_small"];
+    }
 }
 
 -(void)addButton:(CGRect)frame title:(NSString *)title image:(NSString *)url{
@@ -81,6 +143,7 @@
     [bt setTintColor:[UIColor peterRiverColor]];
     [bt addTarget:self action:@selector(actionBtClicked:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt];
+    
 }
 
 #pragma mark -
@@ -88,6 +151,114 @@
 
 -(void)actionBtClicked:(UIButton *)bt {
     
+    if ([bt.titleLabel.text isEqual:@"评论"]) {
+        if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
+            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:self.articleInfo[@"stockcode"] type:CompanyComment] autorelease];
+            comVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:comVC animated:YES];
+        } else {
+            NSString *articledid=self.articleInfo[@"articleid"];
+            if (articledid==nil) {
+                articledid=self.articleInfo[@"ctxid"];
+            }
+            if (articledid==nil) {
+                articledid=self.articleInfo[@"ctxId"];
+            }
+            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:articledid type:GgviewComment] autorelease];
+            comVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:comVC animated:YES];
+        }
+       
+        
+    }else if ([bt.titleLabel.text isEqual:@"公司"]) {
+        NSDictionary *params = @{
+                                 @"stockcode":self.articleInfo[@"stockcode"]
+                                 };
+        [Utiles getNetInfoWithPath:@"GetCompanyInfo" andParams:params besidesBlock:^(id obj) {
+            
+            GGModelIndexVC *modelIndexVC = [[[GGModelIndexVC alloc] initWithNibName:@"GGModelIndexView" bundle:nil] autorelease];
+            modelIndexVC.companyInfo = obj;
+            UINavigationController *navModel = [[[UINavigationController alloc] initWithRootViewController:modelIndexVC] autorelease];
+            [self presentViewController:navModel animated:YES completion:nil];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }else if ([bt.titleLabel.text isEqual:@"多空"]) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:@""
+                                      delegate:self
+                                      cancelButtonTitle:@"取消"
+                                      destructiveButtonTitle:@"历史多空统计"
+                                      otherButtonTitles:@"看多", @"看空", nil];
+        
+        [actionSheet showInView:self.view];
+        [actionSheet release];
+    }
+    
+}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    //NSLog(@"%i", buttonIndex);
+    if (buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    switch (buttonIndex) {
+        case 0: {
+            //多空统计
+            ExpectedSpaceViewController *expectVC = [[[ExpectedSpaceViewController alloc] init] autorelease];
+            expectVC.stockCode = self.articleInfo[@"stockcode"];
+            [self presentViewController:expectVC animated:YES completion:nil];
+            break;
+        }
+        case 1: {
+            //看多
+            NSDictionary *params = @{
+                                     @"stockcode":self.articleInfo[@"stockcode"],
+                                     @"flag":@"1",
+                                     @"from":@"googuu",
+                                     @"token":[Utiles getUserToken],
+                                     @"state":@"1"
+                                     };
+            [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+                
+                if ([obj[@"status"] isEqualToString:@"1"]) {
+                    [ProgressHUD showSuccess:@"投票成功"];
+                } else {
+                    [ProgressHUD showError:obj[@"msg"]];
+                }
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"%@",error);
+            }];
+
+            break;
+        }
+        case 2: {
+            //看空
+            [self voteForCompany:@"2"];
+            break;
+        }
+    }
+}
+
+-(void)voteForCompany:(NSString *) updown{
+    NSDictionary *params = @{
+                             @"stockcode":self.articleInfo[@"stockcode"],
+                             @"flag":updown,
+                             @"from":@"googuu",
+                             @"token":[Utiles getUserToken],
+                             @"state":@"1"
+                             };
+    [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+        
+        if ([obj[@"status"] isEqualToString:@"1"]) {
+            [ProgressHUD showSuccess:@"投票成功"];
+        } else {
+            [ProgressHUD showError:obj[@"msg"]];
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+
 }
 
 -(void)addCommentBtClicked{

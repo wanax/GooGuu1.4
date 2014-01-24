@@ -124,12 +124,8 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     id model = self.articleList[indexPath.row];
-    
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    delegate.comInfo=model;
-    
     GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
-    
+    articleVC.articleId = model[@"ctxId"];
     articleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

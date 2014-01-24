@@ -17,6 +17,7 @@
 #import "FinanceDataViewController.h"
 #import "AnalysisReportViewController.h"
 #import "ExpectedSpaceViewController.h"
+#import "GooGuuCommentViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
@@ -40,10 +41,69 @@
     [self initComponents];
 }
 
+-(void)favBtClicked:(UIBarButtonItem *)bt {
+    
+    if ([Utiles isLogin]) {
+        NSString *url = @"";
+        if ([bt.title isEqualToString:@"关注"]) {
+            url = @"AddAttention";
+        } else {
+            url = @"DeleteAttention";
+        }
+        NSDictionary *params = @{
+                                 @"stockcode":self.companyInfo[@"stockcode"],
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu",
+                                 @"state":@"1"
+                                 };
+        [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
+            
+            if ([obj[@"status"] isEqualToString:@"1"]) {
+                if ([bt.title isEqualToString:@"关注"]) {
+                    bt.title = @"取消关注";
+                } else {
+                    bt.title = @"关注";
+                }
+            } else {
+                [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.5];
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
+    
+}
+
 -(void)initComponents {
     
     UIBarButtonItem *back = [[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self  action:@selector(backUp:)] autorelease];
     self.navigationItem.leftBarButtonItem = back;
+    
+    UIBarButtonItem *favButton = [[[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStylePlain target:self  action:@selector(favBtClicked:)] autorelease];
+    self.navigationItem.rightBarButtonItem = favButton;
+    
+    NSDictionary *params2 = @{
+                             @"token":[Utiles getUserToken],
+                             @"from":@"googuu",
+                             @"state":@"1"
+                             };
+    [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
+        
+        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+        id data = obj[@"data"];
+        for (id model in data) {
+            [temp addObject:model[@"stockcode"]];
+        }
+        if ([temp containsObject:self.companyInfo[@"stockcode"]]) {
+            favButton.title = @"取消关注";
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:18.0]};
     self.title = self.companyInfo[@"companyname"];
@@ -283,7 +343,9 @@
         dahonVC.comInfo = self.companyInfo;
         [self presentViewController:dahonVC animated:YES completion:nil];
     } else if (row == 2) {//估右评论
-        
+        GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:self.companyInfo[@"stockcode"] type:CompanyComment] autorelease];
+        comVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:comVC animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

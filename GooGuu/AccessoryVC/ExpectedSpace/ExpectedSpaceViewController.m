@@ -34,6 +34,13 @@ static NSString * DOWNBAR_IDENTIFIER =@"看空";
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    [self initComponents];
+    [self getExceptData];
+}
+
+-(void)initComponents {
+    
     UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
     bt.frame = CGRectMake(0,0,55,44);
     [bt setTitle:@"返回" forState:UIControlStateNormal];
@@ -52,8 +59,7 @@ static NSString * DOWNBAR_IDENTIFIER =@"看空";
     [toolBar setItems:@[barBt]];
     [toolBar addSubview:titleLabel];
     [self.view addSubview:toolBar];
-
-    [self getExceptData];
+    
 }
 
 -(void)getExceptData {
@@ -254,7 +260,7 @@ static NSString * DOWNBAR_IDENTIFIER =@"看空";
         for (NSDecimalNumber * tickLocation in locations) {
             
             NSString * labelString = @"";
-            if ([tickLocation integerValue] > [self.expects count] -1) {
+            if ([tickLocation integerValue] > [self.expects count] -1 || [self.expects count] == 0) {
                labelString = @" ";
             } else {
                 NSString *start = [Utiles secondToDate:[self.expects[[tickLocation integerValue]][@"start"] longLongValue]/1000];

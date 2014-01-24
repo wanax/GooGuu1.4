@@ -97,8 +97,9 @@
     }
     
     [cell.titleLabel setText:model[@"title"]];
-    cell.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    cell.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    cell.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    cell.titleLabel.numberOfLines = 2;
+    cell.titleLabel.adjustsFontSizeToFitWidth = YES;
 
     NSString *temp = model[@"concise"];
     if([temp length] > 95){
@@ -125,13 +126,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     id model = self.viewDataArr[indexPath.row];
-    
     GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    articleVC.articleId = model[@"articleid"];
     articleVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
+    
 }
 
 - (BOOL)shouldAutorotate{

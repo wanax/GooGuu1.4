@@ -10,6 +10,7 @@
 
 #import "AnalysisReportViewController.h"
 #import "CompanyReportCell.h"
+#import "GooGuuArticleViewController.h"
 #import "AnalyDetailViewController.h"
 
 @interface AnalysisReportViewController ()
@@ -97,6 +98,8 @@
     id model=[self.analyReports objectAtIndex:row];
 
     cell.titleLabel.text = model[@"title"];
+    cell.titleLabel.numberOfLines = 2;
+    cell.titleLabel.adjustsFontSizeToFitWidth = YES;
     NSString *temp=[model objectForKey:@"brief"];
     if([temp length]>70){
         temp = [NSString stringWithFormat:@"%@.....",[temp substringToIndex:70]];
@@ -119,14 +122,23 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *artId=[NSString stringWithFormat:@"%@",[[self.analyReports objectAtIndex:indexPath.row] objectForKey:@"articleid"]];
-    AnalyDetailViewController *detail=[[AnalyDetailViewController alloc] init];
-    detail.articleId=artId;
-
-    [self presentViewController:detail animated:YES completion:nil];
+//    NSString *artId=[NSString stringWithFormat:@"%@",[[self.analyReports objectAtIndex:indexPath.row] objectForKey:@"articleid"]];
+//    AnalyDetailViewController *detail=[[AnalyDetailViewController alloc] init];
+//    detail.articleId=artId;
+//
+//    [self presentViewController:detail animated:YES completion:nil];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//    
+//    [Utiles setConfigureInfoTo:@"readingmarks" forKey:[[self.analyReports objectAtIndex:indexPath.row] objectForKey:@"title"] andContent:@"1"];
+    
+    id model = self.analyReports[indexPath.row];
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    articleVC.articleId = model[@"articleid"];
+    articleVC.hidesBottomBarWhenPushed=YES;
+    [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    [Utiles setConfigureInfoTo:@"readingmarks" forKey:[[self.analyReports objectAtIndex:indexPath.row] objectForKey:@"title"] andContent:@"1"];
+    //SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
 }
 
 - (BOOL)shouldAutorotate{

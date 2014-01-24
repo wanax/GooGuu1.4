@@ -147,13 +147,10 @@
 #pragma Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     id model = self.collectList[indexPath.row];
-    
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    delegate.comInfo=model;
-    
     GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
-    
+    articleVC.articleId = model[@"ctxId"];
     articleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
