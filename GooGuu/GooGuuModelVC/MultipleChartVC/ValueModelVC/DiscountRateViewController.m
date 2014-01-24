@@ -335,7 +335,7 @@
 
     if (UIInterfaceOrientationIsPortrait(toInterfaceOrientation)) {
     } else if(UIInterfaceOrientationIsLandscape(toInterfaceOrientation)){
-        self.view.frame=CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_WIDTH);
+        self.view.frame=CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_WIDTH-44);
     }
 }
 

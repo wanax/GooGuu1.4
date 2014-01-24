@@ -12,12 +12,12 @@
 
 @interface AddCommentViewController : UIViewController<UITextViewDelegate>
 
-
-@property (nonatomic,retain) IBOutlet UITextField *commentField;
-@property (nonatomic,retain) IBOutlet UITextView *commentText;
-@property (nonatomic,retain) IBOutlet UILabel *titleLabel;
+@property GooGuuCommentType type;
+@property (nonatomic,retain) NSString *topical;
 @property (nonatomic,retain) NSString *articleId;
-@property CommentType type;
+
+@property (nonatomic,retain) IBOutlet UITextView *commentText;
+@property (nonatomic,retain) IBOutlet UIToolbar *topBar;
 
 - (IBAction)backgroundTap:(id)sender;
 

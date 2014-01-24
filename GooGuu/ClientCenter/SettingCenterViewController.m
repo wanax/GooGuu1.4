@@ -106,7 +106,7 @@
     if(section==0){
         return 4;
     }else if(section==1){
-        return 2;
+        return 1;
     }else if(section==2){
         return 1;
     }else if(section==3){
@@ -178,20 +178,20 @@
         } else if(row==1){
             cell.textLabel.textAlignment=NSTextAlignmentCenter;
             if ([Utiles isLogin]) {
-                cell.textLabel.text=@"                               注销";
+                cell.textLabel.text=@"注销";
             } else {
-                cell.textLabel.text=@"                               登录";
+                cell.textLabel.text=@"登录";
             }
             cell.detailTextLabel.text=@"";
         } else if(row==2){
             cell.textLabel.textAlignment=NSTextAlignmentCenter;
-            cell.textLabel.text=@"                           找回密码";
+            cell.textLabel.text=@"找回密码";
             
             cell.detailTextLabel.text=@"";
         }
         else if(row==3){
             cell.textLabel.textAlignment=NSTextAlignmentCenter;
-            cell.textLabel.text=@"                           修改密码";
+            cell.textLabel.text=@"修改密码";
             
             cell.detailTextLabel.text=@"";
         }
@@ -200,7 +200,7 @@
         
     }else if(section==1){
        
-        if(row==0){
+        if(row==1){
             
             static NSString *TableSampleIdentifier = @"TableSampleIdentifier";
             
@@ -226,7 +226,7 @@
             
             return cell;
             
-        }else if(row==1){
+        }else if(row==0){
             
             static NSString *LabelSwitchCellIdentifier = @"LabelSwitchCellIdentifier";
             

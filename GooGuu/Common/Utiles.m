@@ -442,10 +442,14 @@ static NSDateFormatter *formatter;
     }
 }
 +(NSString *)getUserToken{
-    NSString *token=[[NSUserDefaults standardUserDefaults] objectForKey:@"UserToken"];
-    if(![Utiles isBlankString:token]){
-        return token;
-    }else
+    
+    if (GetUserDefaults(@"UserToken")) {
+        NSString *token = GetUserDefaults(@"UserToken");
+        if(![Utiles isBlankString:token]){
+            return token;
+        }else
+            return nil;
+    } else
         return nil;
 }
 

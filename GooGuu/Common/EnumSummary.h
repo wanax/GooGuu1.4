@@ -172,7 +172,7 @@ typedef enum {
 
 typedef enum {
     CompanyComment,//公司
-    GgviewComment//观点
+    GGviewComment//观点
 } GooGuuCommentType;//评论种类
 
 

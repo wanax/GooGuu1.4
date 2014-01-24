@@ -27,7 +27,7 @@
 {
     [super viewDidLoad];
     self.title=@"帮助文档";
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#EFDCC9"]];
+    self.view.backgroundColor = [UIColor whiteColor];
 	if (self.type==UserHelp) {
         self.imageView=[[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,1900)];
         [self.imageView setImage:[UIImage imageNamed:@"help"]];

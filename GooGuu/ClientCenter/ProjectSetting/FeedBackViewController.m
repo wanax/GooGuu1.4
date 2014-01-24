@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
 	self.title=@"意见反馈";
     self.feedBackField.returnKeyType=UIReturnKeySend;
     self.feedBackField.delegate=self;

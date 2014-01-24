@@ -234,7 +234,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     DrawChartTool *tool=[[[DrawChartTool alloc] init] autorelease];
     CGSize size =[tool getLabelSizeFromString:[[self.commentArr objectAtIndex:indexPath.row] objectForKey:@"content"] font:@"Heiti SC" fontSize:12.0];
-    return size.height+80;
+    return size.height+85;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

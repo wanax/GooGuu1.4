@@ -95,9 +95,9 @@
     CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
     
     if ([arr count] > 1) {
-        return size.height + 95;
+        return size.height + 100;
     } else {
-       return size.height + 45;
+       return size.height + 50;
     }
     
 }

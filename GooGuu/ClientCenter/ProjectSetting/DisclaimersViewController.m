@@ -28,28 +28,19 @@
 {
     [super viewDidLoad];
     self.title=@"免责声明";
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#EAE6D0"]];
-    UIScrollView *scrollView=nil;
-    scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(15, -80, SCREEN_WIDTH, SCREEN_HEIGHT+100)];
-    UILabel *label = [[UILabel alloc] init];
-    label.frame = CGRectMake(0,0,300,960);
+    self.view.backgroundColor = [UIColor whiteColor];
+
     NSString *path = [[NSBundle mainBundle] pathForResource:@"announce" ofType:@"txt"];
     NSString *textFile = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-    label.lineBreakMode = NSLineBreakByCharWrapping;
-    label.numberOfLines = 0;
-    [label setFont:[UIFont fontWithName:@"Heiti SC" size:17.0]];
-    label.layer.borderWidth  = 0.0f;
-    label.layer.cornerRadius = 2.0f;
-    [label setText:textFile];
-    [label setBackgroundColor:[Utiles colorWithHexString:@"#EAE6D0"]];
-    scrollView.contentSize = CGSizeMake(300,1000);
-    [scrollView addSubview:label];
-    [self.view addSubview:scrollView];
+    
+    UITextView *contentView = [[[UITextView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)] autorelease];
+    contentView.showsVerticalScrollIndicator = NO;
+    contentView.text = textFile;
+    contentView.editable = NO;
+    contentView.font = [UIFont fontWithName:@"Heiti SC" size:14.0];
+    [self.view addSubview:contentView];
 
 }
-
-
-
 
 
 - (BOOL)shouldAutorotate{

@@ -16,24 +16,12 @@
 
 @implementation AddCommentViewController
 
-@synthesize commentField;
-@synthesize titleLabel;
-@synthesize articleId;
-@synthesize type;
-
-- (void)dealloc
+- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type
 {
-    [articleId release];
-    [commentField release];
-    [titleLabel release];
-    [super dealloc];
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super init];
     if (self) {
-        // Custom initialization
+        self.topical = topical;
+        self.type = type;
     }
     return self;
 }
@@ -42,36 +30,31 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.commentField.returnKeyType=UIReturnKeySend;
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#EFEBD9"]];
-    if(self.type==CompanyType||self.type==ArticleType){
-        UIButton *back=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [back setFrame:CGRectMake(30,150,50,30)];
-        [back setTitle:@"返回" forState:UIControlStateNormal];
-        [back setBackgroundColor:[UIColor clearColor]];
-        [back.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:13.0]];
-        [back setBackgroundImage:[UIImage imageNamed:@"resetBt"] forState:UIControlStateNormal];
-        [back setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [back addTarget:self action:@selector(btClick:) forControlEvents:UIControlEventTouchDown];
-        [self.view addSubview:back];
-    }
+    self.commentText.returnKeyType = UIReturnKeyNext;
+    self.commentText.layer.borderWidth = 1.0;
+    self.commentText.layer.borderColor = [UIColor blackColor].CGColor;
+    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#FFFFFF"]];
+    
+    UIBarButtonItem *backBarItem = self.topBar.items[0];
+    backBarItem.action = @selector(backBtClick:);
+    UIBarButtonItem *sendBarItem = self.topBar.items[2];
+    sendBarItem.action = @selector(sendComment);
 }
 
--(void)btClick:(id)sender{
+-(void)backBtClick:(id)sender{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)backgroundTap:(id)sender {
-    [commentField resignFirstResponder];
+    [self.commentText resignFirstResponder];
 }
 
 #pragma mark -
 #pragma mark TextField Methods Delegate
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
-
+-(void)sendComment {
     if(self.type==CompanyType){
-         NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articleId,@"stockcode",textField.text,@"msg",[Utiles getUserToken],@"token",@"googuu",@"from",nil];
+        NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:self.topical,@"stockcode",self.commentText.text,@"msg",[Utiles getUserToken],@"token",@"googuu",@"from",nil];
         [Utiles postNetInfoWithPath:@"CompanyReview" andParams:params besidesBlock:^(id obj){
             if([[obj objectForKey:@"status"] isEqualToString:@"1"]){
                 [self dismissViewControllerAnimated:YES completion:nil];
@@ -82,15 +65,10 @@
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         }];
     }else{
-        NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articleId,@"articleid",textField.text,@"msg",[Utiles getUserToken],@"token",@"googuu",@"from",nil];
+        NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:self.topical,@"articleid",self.commentText.text,@"msg",[Utiles getUserToken],@"token",@"googuu",@"from",nil];
         [Utiles postNetInfoWithPath:@"ContentrReply" andParams:params besidesBlock:^(id resObj){
             if([[resObj objectForKey:@"status"] isEqualToString:@"1"]){
-                if(self.type==NewsType){
-                   [(UINavigationController *)self.parentViewController popViewControllerAnimated:YES]; 
-                }else if(self.type==ArticleType){
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                }
-                
+                [self dismissViewControllerAnimated:YES completion:nil];
             }else{
                 [ProgressHUD showError:@"发布失败"];
             }
@@ -98,7 +76,6 @@
             [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
         }];
     }
-    return YES;
 }
 
 

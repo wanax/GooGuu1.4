@@ -120,10 +120,10 @@
     }];
     
     if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
-        [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,80,30) title:@"公司" image:@"icon_company_small"];
-        [self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
-        [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,80,30) title:@"评论" image:@"icon_msg_small"];
-        [self addButton:CGRectMake(240,SCREEN_HEIGHT-30,80,30) title:@"多空" image:@"icon_pie_small"];
+        [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,106,30) title:@"公司" image:@"icon_company_small"];
+        //[self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
+        [self addButton:CGRectMake(107,SCREEN_HEIGHT-30,106,30) title:@"评论" image:@"icon_msg_small"];
+        [self addButton:CGRectMake(214,SCREEN_HEIGHT-30,106,30) title:@"多空" image:@"icon_pie_small"];
     }else{
         [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,160,30) title:@"分享" image:@"icon_share_small"];
         [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,160,30) title:@"评论" image:@"icon_msg_small"];
@@ -164,7 +164,7 @@
             if (articledid==nil) {
                 articledid=self.articleInfo[@"ctxId"];
             }
-            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:articledid type:GgviewComment] autorelease];
+            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:articledid type:GGviewComment] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         }

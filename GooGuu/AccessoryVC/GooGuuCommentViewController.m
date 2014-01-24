@@ -10,6 +10,7 @@
 #import "TopCommentCell.h"
 #import "RegexKitLite.h"
 #import "SVPullToRefresh.h"
+#import "AddCommentViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuCommentViewController ()
@@ -55,7 +56,7 @@
     self.refreshControl = tempRefresh;
     [self.commentTable addSubview:self.refreshControl];
     
-    UIBarButtonItem *sendButton = [[[UIBarButtonItem alloc] initWithTitle:@"发表" style:UIBarButtonItemStylePlain target:self  action:@selector(sendgBtClicked:)] autorelease];
+    UIBarButtonItem *sendButton = [[[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self  action:@selector(sendBtClicked:)] autorelease];
     self.navigationItem.rightBarButtonItem = sendButton;
 }
 
@@ -78,7 +79,7 @@
 
 -(void)addComments {
     NSString *url = @"";
-    NSDictionary *params;
+    NSDictionary *params = nil;
     NSString *arId=[[self.commentList lastObject] objectForKey:@"cid"];
     if (arId==nil) {
         [self.commentTable.infiniteScrollingView stopAnimating];
@@ -91,7 +92,7 @@
                    @"cid":arId,
                    @"stockcode":self.topical
                    };
-    } else if (self.type == GgviewComment) {
+    } else if (self.type == GGviewComment) {
         url = @"Commentary";
         params = @{
                    @"cid":arId,
@@ -122,13 +123,13 @@
 
 -(void)getComments{
     NSString *url = @"";
-    NSDictionary *params;
+    NSDictionary *params = nil;
     if (self.type == CompanyComment) {
         url = @"CompanyCommentURL";
         params = @{
                    @"stockcode":self.topical
                    };
-    } else if (self.type == GgviewComment) {
+    } else if (self.type == GGviewComment) {
         url = @"Commentary";
         params = @{
                    @"articleid":self.topical
@@ -162,9 +163,9 @@
     CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
     
     if ([arr count] > 1) {
-        return size.height + 95;
+        return size.height + 120;
     } else {
-        return size.height + 45;
+        return size.height + 55;
     }
     
 }
@@ -230,7 +231,8 @@
 -(void)sendBtClicked:(UIBarButtonItem *)bt {
     
     if ([Utiles isLogin]) {
-        
+        AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] initWithTopical:self.topical type:self.type] autorelease];
+        [self presentViewController:addCommentViewController animated:YES completion:nil];
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"请先登录" duration:1.5];
     }

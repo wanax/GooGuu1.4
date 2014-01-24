@@ -85,25 +85,27 @@
     UIBarButtonItem *favButton = [[[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStylePlain target:self  action:@selector(favBtClicked:)] autorelease];
     self.navigationItem.rightBarButtonItem = favButton;
     
-    NSDictionary *params2 = @{
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu",
-                             @"state":@"1"
-                             };
-    [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
-        
-        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
-        id data = obj[@"data"];
-        for (id model in data) {
-            [temp addObject:model[@"stockcode"]];
-        }
-        if ([temp containsObject:self.companyInfo[@"stockcode"]]) {
-            favButton.title = @"取消关注";
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    if ([Utiles isLogin]) {
+        NSDictionary *params2 = @{
+                                  @"token":[Utiles getUserToken],
+                                  @"from":@"googuu",
+                                  @"state":@"1"
+                                  };
+        [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
+            
+            NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+            id data = obj[@"data"];
+            for (id model in data) {
+                [temp addObject:model[@"stockcode"]];
+            }
+            if ([temp containsObject:self.companyInfo[@"stockcode"]]) {
+                favButton.title = @"取消关注";
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:18.0]};
     self.title = self.companyInfo[@"companyname"];

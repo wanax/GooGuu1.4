@@ -18,6 +18,7 @@
 #import "ClientRelationComListVC.h"
 #import "SettingCenterViewController.h"
 #import "ClientLoginViewController.h"
+#import "ClientCenterViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyGGIndexViewController ()
@@ -116,6 +117,13 @@
     //用户信息
     if (index == 0) {
         
+        if ([Utiles isLogin]) {
+            ClientCenterViewController *clientInfoVC = [[[ClientCenterViewController alloc] init] autorelease];
+            clientInfoVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:clientInfoVC animated:YES];
+        } else {
+            [ProgressHUD showError:@"请先登录"];
+        }
     } else {
         
         RelationClientsViewController *clientsVC = nil;

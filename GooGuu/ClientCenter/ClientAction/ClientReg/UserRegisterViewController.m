@@ -43,7 +43,7 @@ typedef enum{
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[Utiles colorWithHexString:@"#FDFBE4"]];
+    self.view.backgroundColor = [UIColor whiteColor];
     [IQKeyBoardManager installKeyboardManager];
     [IQKeyBoardManager enableKeyboardManger];
     [self initComponents];

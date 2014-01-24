@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     self.title=@"关于我们";
-	[self.checkUpdateBt setBackgroundColorString:@"#BB4C1C" forState:UIControlStateNormal];
+	[self.checkUpdateBt setBackgroundColorString:@"#1C6BA0" forState:UIControlStateNormal];
 }
 
 - (BOOL)shouldAutorotate{

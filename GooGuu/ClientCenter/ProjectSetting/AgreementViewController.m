@@ -37,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	[self.view setBackgroundColor:[Utiles colorWithHexString:@"#EAE6D0"]];
+	self.view.backgroundColor = [UIColor whiteColor];
     UIScrollView *scrollView = [[[UIScrollView alloc] initWithFrame:CGRectMake(10, 45, 300, 360)] autorelease];
     UILabel *label = [[[UILabel alloc] init] autorelease];
     label.frame = CGRectMake(0,0,300,960);

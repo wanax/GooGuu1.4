@@ -107,10 +107,8 @@
 		AE0D3D9A187D46EB00E0E141 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D89187D46EB00E0E141 /* CustomCell.xib */; };
 		AE0D3D9B187D46EB00E0E141 /* GooReportCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */; };
 		AE0D3D9C187D46EB00E0E141 /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8B187D46EB00E0E141 /* StockCell.xib */; };
-		AE0D3D9D187D46EB00E0E141 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8C187D46EB00E0E141 /* AddCommentView.xib */; };
 		AE0D3D9E187D46EB00E0E141 /* DailyStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8D187D46EB00E0E141 /* DailyStockCell.xib */; };
 		AE0D3D9F187D46EB00E0E141 /* DailyStock2Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8E187D46EB00E0E141 /* DailyStock2Cell.xib */; };
-		AE0D3DA0187D46EB00E0E141 /* ClientCenterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D8F187D46EB00E0E141 /* ClientCenterView.xib */; };
 		AE0D3DA1187D46EB00E0E141 /* AboutUsAndCopyrightView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D90187D46EB00E0E141 /* AboutUsAndCopyrightView.xib */; };
 		AE0D3DA2187D46EB00E0E141 /* DiscountRateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */; };
 		AE0D3DA3187D46EB00E0E141 /* DiscountRateView5.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */; };
@@ -130,6 +128,11 @@
 		AE16E97A187D56A9003588FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E979187D56A9003588FA /* CoreLocation.framework */; };
 		AE16E97C187D56BF003588FA /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97B187D56BF003588FA /* libstdc++.dylib */; };
 		AE16E97E187D56CD003588FA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE16E97D187D56CD003588FA /* CoreTelephony.framework */; };
+		AE1C72921892085D00831EDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1C72901892085D00831EDF /* Default-568h@2x.png */; };
+		AE1C7294189208B500831EDF /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1C7293189208B500831EDF /* appIcon.png */; };
+		AE1C729C18920E5200831EDF /* ClientCenterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1C729B18920E5200831EDF /* ClientCenterView.xib */; };
+		AE1C729E1892151C00831EDF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1C729D1892151C00831EDF /* AddCommentViewController.m */; };
+		AE1C72A018921E3400831EDF /* logoBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1C729F18921E3400831EDF /* logoBlue.png */; };
 		AE22252F18917A5F00C25CD3 /* GooGuuCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */; };
 		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE244715188E0FF900C69752 /* IndicatorSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244712188E0FF900C69752 /* IndicatorSearchView.m */; };
@@ -211,9 +214,7 @@
 		AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */; };
 		AE7C1ACF18851FB5006D37B5 /* stockDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */; };
 		AE7C1AD218852FE1006D37B5 /* TopCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */; };
-		AE7EB4D918913FA100EB9EDE /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE7EB4D818913FA100EB9EDE /* libBaiduMobStat.a */; };
 		AE7EE30F1884CEC100A0E5BF /* GooGuuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */; };
-		AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */; };
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
 		AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */; };
 		AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */; };
@@ -352,6 +353,15 @@
 		AE9B2C941886965E0077B56D /* GGVIEW.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C901886965E0077B56D /* GGVIEW.png */; };
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
+		AE9E53BC18923C950097EC57 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53BB18923C950097EC57 /* AddCommentView.xib */; };
+		AE9E53C11892464D0097EC57 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53BE1892464D0097EC57 /* Default.png */; };
+		AE9E53C21892464D0097EC57 /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53BF1892464D0097EC57 /* appIcon@2x.png */; };
+		AE9E53C31892464D0097EC57 /* appIcon~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53C01892464D0097EC57 /* appIcon~iphone.png */; };
+		AE9E53C5189247B00097EC57 /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9E53C4189247B00097EC57 /* libBPush.a */; };
+		AE9E53D3189247CB0097EC57 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53C9189247CB0097EC57 /* Base64.m */; };
+		AE9E53D4189247CB0097EC57 /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53CC189247CB0097EC57 /* GzipCompressor.m */; };
+		AE9E53D6189247CB0097EC57 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53D0189247CB0097EC57 /* OpenUDID.m */; };
+		AE9E53DB189254900097EC57 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9E53DA189254900097EC57 /* libBaiduMobStat.a */; };
 		AEA9E764188FB01E0002532F /* ClientLogin2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA9E763188FB01E0002532F /* ClientLogin2View.xib */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
 		AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */; };
@@ -551,13 +561,11 @@
 		AE0D3D89187D46EB00E0E141 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GooReportCell.xib; path = ../../NibFile/Common/GooReportCell.xib; sourceTree = "<group>"; };
 		AE0D3D8B187D46EB00E0E141 /* StockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StockCell.xib; sourceTree = "<group>"; };
-		AE0D3D8C187D46EB00E0E141 /* AddCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCommentView.xib; sourceTree = "<group>"; };
 		AE0D3D8D187D46EB00E0E141 /* DailyStockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyStockCell.xib; sourceTree = "<group>"; };
 		AE0D3D8E187D46EB00E0E141 /* DailyStock2Cell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DailyStock2Cell.xib; sourceTree = "<group>"; };
-		AE0D3D8F187D46EB00E0E141 /* ClientCenterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientCenterView.xib; sourceTree = "<group>"; };
 		AE0D3D90187D46EB00E0E141 /* AboutUsAndCopyrightView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutUsAndCopyrightView.xib; sourceTree = "<group>"; };
-		AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountRateView.xib; sourceTree = "<group>"; };
-		AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscountRateView5.xib; sourceTree = "<group>"; };
+		AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscountRateView.xib; path = ../../../NibFile/Common/DiscountRateView.xib; sourceTree = "<group>"; };
+		AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DiscountRateView5.xib; path = ../../../NibFile/Common/DiscountRateView5.xib; sourceTree = "<group>"; };
 		AE0D3D93187D46EB00E0E141 /* SearchStockCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchStockCell.xib; path = ../../NibFile/Common/SearchStockCell.xib; sourceTree = "<group>"; };
 		AE0D3D94187D46EB00E0E141 /* ClientLoginView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientLoginView.xib; path = ../../../NibFile/Common/ClientLoginView.xib; sourceTree = "<group>"; };
 		AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ValueViewCell.xib; path = ../../NibFile/Common/ValueViewCell.xib; sourceTree = "<group>"; };
@@ -577,6 +585,11 @@
 		AE16E979187D56A9003588FA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AE16E97B187D56BF003588FA /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		AE16E97D187D56CD003588FA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		AE1C72901892085D00831EDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AE1C7293189208B500831EDF /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
+		AE1C729B18920E5200831EDF /* ClientCenterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCenterView.xib; path = ../NibFile/Common/ClientCenterView.xib; sourceTree = "<group>"; };
+		AE1C729D1892151C00831EDF /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
+		AE1C729F18921E3400831EDF /* logoBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBlue.png; sourceTree = "<group>"; };
 		AE22252D18917A5F00C25CD3 /* GooGuuCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuCommentViewController.h; sourceTree = "<group>"; };
 		AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuCommentViewController.m; sourceTree = "<group>"; };
 		AE23677F188B660500D74674 /* CompanyFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFansVC.h; sourceTree = "<group>"; };
@@ -791,12 +804,9 @@
 		AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockDownArrow.png; sourceTree = "<group>"; };
 		AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentsViewController.h; sourceTree = "<group>"; };
 		AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentsViewController.m; sourceTree = "<group>"; };
-		AE7EB4D718913FA100EB9EDE /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE7EB4D818913FA100EB9EDE /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE7EE30D1884CEC100A0E5BF /* GooGuuIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuIndexViewController.h; sourceTree = "<group>"; };
 		AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuIndexViewController.m; sourceTree = "<group>"; };
 		AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
-		AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCommentViewController.h; sourceTree = "<group>"; };
 		AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCommentViewController.m; sourceTree = "<group>"; };
 		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
@@ -944,6 +954,21 @@
 		AE9B2C901886965E0077B56D /* GGVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GGVIEW.png; sourceTree = "<group>"; };
 		AE9B2C911886965E0077B56D /* VALUEMODEL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VALUEMODEL.png; sourceTree = "<group>"; };
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
+		AE9E53BB18923C950097EC57 /* AddCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCommentView.xib; path = ../../NibFile/Common/AddCommentView.xib; sourceTree = "<group>"; };
+		AE9E53BE1892464D0097EC57 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		AE9E53BF1892464D0097EC57 /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@2x.png"; sourceTree = "<group>"; };
+		AE9E53C01892464D0097EC57 /* appIcon~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon~iphone.png"; sourceTree = "<group>"; };
+		AE9E53C4189247B00097EC57 /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		AE9E53C6189247CB0097EC57 /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		AE9E53C8189247CB0097EC57 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		AE9E53C9189247CB0097EC57 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		AE9E53CA189247CB0097EC57 /* Base64Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Defines.h; sourceTree = "<group>"; };
+		AE9E53CB189247CB0097EC57 /* GzipCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzipCompressor.h; sourceTree = "<group>"; };
+		AE9E53CC189247CB0097EC57 /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
+		AE9E53CF189247CB0097EC57 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		AE9E53D0189247CB0097EC57 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		AE9E53D9189254900097EC57 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE9E53DA189254900097EC57 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AEA9E763188FB01E0002532F /* ClientLogin2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLogin2View.xib; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
@@ -974,7 +999,6 @@
 				AE0D3CA7187D2DD600E0E141 /* libz.1.2.5.dylib in Frameworks */,
 				AE0D3CA5187D2DC100E0E141 /* ImageIO.framework in Frameworks */,
 				AE39147F188F735200985CF0 /* libBaiduMobStat.a in Frameworks */,
-				AE7EB4D918913FA100EB9EDE /* libBaiduMobStat.a in Frameworks */,
 				AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */,
 				AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */,
 				AE2B48F7187D2C5E007ABEC8 /* QuartzCore.framework in Frameworks */,
@@ -983,6 +1007,8 @@
 				AE01883B187CF635004C6A5D /* UIKit.framework in Frameworks */,
 				AE018837187CF635004C6A5D /* Foundation.framework in Frameworks */,
 				6BF9BBFCE75F4CA4931ED533 /* libPods.a in Frameworks */,
+				AE9E53C5189247B00097EC57 /* libBPush.a in Frameworks */,
+				AE9E53DB189254900097EC57 /* libBaiduMobStat.a in Frameworks */,
 				AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1023,6 +1049,7 @@
 		AE018835187CF635004C6A5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE9E53C4189247B00097EC57 /* libBPush.a */,
 				AE3E6316187F8B9F005A71AD /* Crashlytics.framework */,
 				AE16E97D187D56CD003588FA /* CoreTelephony.framework */,
 				AE16E97B187D56BF003588FA /* libstdc++.dylib */,
@@ -1170,7 +1197,9 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				AE7EB4D618913FA100EB9EDE /* Release-iphonesimulator */,
+				AE9E53D8189254900097EC57 /* Release-iphonesimulator */,
+				AE9E53C6189247CB0097EC57 /* BPush.h */,
+				AE9E53C7189247CB0097EC57 /* opensource */,
 				AE39147C188F735200985CF0 /* Release-iphoneos */,
 				AE391474188F5BA400985CF0 /* ProgressHUD */,
 				AE7ABC88188E8CE900FB73F5 /* MHTabBarController */,
@@ -1406,11 +1435,12 @@
 		AE0D3D02187D405B00E0E141 /* GooGuuReports */ = {
 			isa = PBXGroup;
 			children = (
+				AE9E53BB18923C950097EC57 /* AddCommentView.xib */,
 				AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */,
 				AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */,
 				AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */,
 				AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */,
-				AE7EE3141884DB3B00A0E5BF /* AddCommentViewController.m */,
+				AE1C729D1892151C00831EDF /* AddCommentViewController.m */,
 				AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */,
 				AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */,
 			);
@@ -1488,13 +1518,9 @@
 				AE0D3D88187D46EB00E0E141 /* MainWindow.xib */,
 				AE0D3D89187D46EB00E0E141 /* CustomCell.xib */,
 				AE0D3D8B187D46EB00E0E141 /* StockCell.xib */,
-				AE0D3D8C187D46EB00E0E141 /* AddCommentView.xib */,
 				AE0D3D8D187D46EB00E0E141 /* DailyStockCell.xib */,
 				AE0D3D8E187D46EB00E0E141 /* DailyStock2Cell.xib */,
-				AE0D3D8F187D46EB00E0E141 /* ClientCenterView.xib */,
 				AE0D3D90187D46EB00E0E141 /* AboutUsAndCopyrightView.xib */,
-				AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */,
-				AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1735,6 +1761,8 @@
 		AE518710187E34C00055B9AE /* ValueModelVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE0D3D91187D46EB00E0E141 /* DiscountRateView.xib */,
+				AE0D3D92187D46EB00E0E141 /* DiscountRateView5.xib */,
 				AE51871D187E40630055B9AE /* ChartViewController.h */,
 				AE51871E187E40630055B9AE /* ChartViewController.m */,
 				AE51871A187E40550055B9AE /* DiscountRateViewController.h */,
@@ -1880,6 +1908,7 @@
 		AE74DF83187E4480002AE169 /* ClientCenter */ = {
 			isa = PBXGroup;
 			children = (
+				AE1C729B18920E5200831EDF /* ClientCenterView.xib */,
 				AE74DFA3187E4518002AE169 /* ClientCenterViewController.h */,
 				AE74DFA4187E4518002AE169 /* ClientCenterViewController.m */,
 				AE74DFA5187E4518002AE169 /* SettingCenterViewController.h */,
@@ -1964,15 +1993,6 @@
 				AE7C1AC318851359006D37B5 /* CompanyCell.xib */,
 			);
 			path = CellNib;
-			sourceTree = "<group>";
-		};
-		AE7EB4D618913FA100EB9EDE /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				AE7EB4D718913FA100EB9EDE /* BaiduMobStat.h */,
-				AE7EB4D818913FA100EB9EDE /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		AE7EE3251884DC0C00A0E5BF /* TopPointsVC */ = {
@@ -2092,6 +2112,9 @@
 		AE949CE1187E7B39004FC1AB /* CommonImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE9E53BD189245F30097EC57 /* LaunchAndAppIcon */,
+				AE1C729F18921E3400831EDF /* logoBlue.png */,
+				AE1C72901892085D00831EDF /* Default-568h@2x.png */,
 				AE9028EF188BD4E6006BE518 /* searchBt.png */,
 				AE949D65187E81D3004FC1AB /* FirstLanuchImg */,
 				AE949D70187E81E4004FC1AB /* defaultDiagram.png */,
@@ -2273,6 +2296,40 @@
 			path = BarIcon;
 			sourceTree = "<group>";
 		};
+		AE9E53BD189245F30097EC57 /* LaunchAndAppIcon */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E53BE1892464D0097EC57 /* Default.png */,
+				AE9E53BF1892464D0097EC57 /* appIcon@2x.png */,
+				AE9E53C01892464D0097EC57 /* appIcon~iphone.png */,
+				AE1C7293189208B500831EDF /* appIcon.png */,
+			);
+			name = LaunchAndAppIcon;
+			sourceTree = "<group>";
+		};
+		AE9E53C7189247CB0097EC57 /* opensource */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E53C8189247CB0097EC57 /* Base64.h */,
+				AE9E53C9189247CB0097EC57 /* Base64.m */,
+				AE9E53CA189247CB0097EC57 /* Base64Defines.h */,
+				AE9E53CB189247CB0097EC57 /* GzipCompressor.h */,
+				AE9E53CC189247CB0097EC57 /* GzipCompressor.m */,
+				AE9E53CF189247CB0097EC57 /* OpenUDID.h */,
+				AE9E53D0189247CB0097EC57 /* OpenUDID.m */,
+			);
+			path = opensource;
+			sourceTree = "<group>";
+		};
+		AE9E53D8189254900097EC57 /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E53D9189254900097EC57 /* BaiduMobStat.h */,
+				AE9E53DA189254900097EC57 /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
 		AEE0FDC0188CC0B300C70120 /* RelationClients */ = {
 			isa = PBXGroup;
 			children = (
@@ -2413,6 +2470,7 @@
 				AE9028F4188BD53E006BE518 /* googuuLogoBar@2x.png in Resources */,
 				AE0D3D9B187D46EB00E0E141 /* GooReportCell.xib in Resources */,
 				AE517A9318877DB3004B6D5C /* msg_small_icon.png in Resources */,
+				AE1C72921892085D00831EDF /* Default-568h@2x.png in Resources */,
 				AE01887F187D02B0004C6A5D /* c.html in Resources */,
 				AE0D3D26187D410800E0E141 /* PicCollectionCell.xib in Resources */,
 				AE949D15187E8122004FC1AB /* ratioBt.png in Resources */,
@@ -2429,8 +2487,10 @@
 				AE949D98187E81E5004FC1AB /* defaultIcon.png in Resources */,
 				AE949D60187E81A2004FC1AB /* loginBack.png in Resources */,
 				AE949DE4187E8298004FC1AB /* myGooGuuBar.png in Resources */,
+				AE9E53BC18923C950097EC57 /* AddCommentView.xib in Resources */,
 				AE949D85187E81E5004FC1AB /* defaultDiagram.png in Resources */,
 				AE949D64187E81A2004FC1AB /* userNameImg.png in Resources */,
+				AE9E53C21892464D0097EC57 /* appIcon@2x.png in Resources */,
 				AE949D86187E81E5004FC1AB /* defaultCompanyLogo.png in Resources */,
 				AE949DA5187E820D004FC1AB /* myGGCellBack.png in Resources */,
 				AE949DCA187E8262004FC1AB /* EXCEL.png in Resources */,
@@ -2450,6 +2510,8 @@
 				AE018896187D02D0004C6A5D /* agreement.txt in Resources */,
 				AE018875187D00A7004C6A5D /* Images.xcassets in Resources */,
 				AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */,
+				AE1C729C18920E5200831EDF /* ClientCenterView.xib in Resources */,
+				AE1C72A018921E3400831EDF /* logoBlue.png in Resources */,
 				AE949D39187E8169004FC1AB /* savedBt.png in Resources */,
 				AE517AA41887813C004B6D5C /* wishes_small_icon.png in Resources */,
 				AE949CF7187E8085004FC1AB /* addComment.png in Resources */,
@@ -2458,7 +2520,6 @@
 				AE949DAC187E8218004FC1AB /* excelShortcuts.png in Resources */,
 				AE0D3DA4187D46EB00E0E141 /* SearchStockCell.xib in Resources */,
 				AE949DC9187E8262004FC1AB /* COMVALU.png in Resources */,
-				AE0D3DA0187D46EB00E0E141 /* ClientCenterView.xib in Resources */,
 				AE0D3DA3187D46EB00E0E141 /* DiscountRateView5.xib in Resources */,
 				AE949DAD187E8218004FC1AB /* checkUpdateBt.png in Resources */,
 				AE0D3DB1187D471F00E0E141 /* DoubleLabelCell.xib in Resources */,
@@ -2498,9 +2559,9 @@
 				AE01888C187D02BC004C6A5D /* OccupationalList.plist in Resources */,
 				AE0D3DB4187D471F00E0E141 /* AgreementView.xib in Resources */,
 				AE949D6B187E81D8004FC1AB /* goinBt.png in Resources */,
+				AE9E53C11892464D0097EC57 /* Default.png in Resources */,
 				AE949DCB187E8262004FC1AB /* FREECRASH.png in Resources */,
 				AE949D8C187E81E5004FC1AB /* grayArrow.png in Resources */,
-				AE0D3D9D187D46EB00E0E141 /* AddCommentView.xib in Resources */,
 				AE949CE7187E7B73004FC1AB /* icon.png in Resources */,
 				AE68DEDD188A609F000C7D8C /* icon_company_small.png in Resources */,
 				AE9B2C97188699CD0077B56D /* MSG.png in Resources */,
@@ -2557,6 +2618,7 @@
 				AE0D3D9E187D46EB00E0E141 /* DailyStockCell.xib in Resources */,
 				AE68DEDA188A609F000C7D8C /* icon_share_small.png in Resources */,
 				AE949D62187E81A2004FC1AB /* pwdImg.png in Resources */,
+				AE9E53C31892464D0097EC57 /* appIcon~iphone.png in Resources */,
 				AE9028EE188BBD0B006BE518 /* user_stock_small_icon.png in Resources */,
 				AE517A9218877DB3004B6D5C /* post_small_icon.png in Resources */,
 				AE949D49187E817C004FC1AB /* backButtonSelected.png in Resources */,
@@ -2587,6 +2649,7 @@
 				AE949D4C187E817C004FC1AB /* defaultPic.png in Resources */,
 				AE949DA2187E8204004FC1AB /* addConcernBtt.png in Resources */,
 				AE018891187D02BC004C6A5D /* BPushConfig.plist in Resources */,
+				AE1C7294189208B500831EDF /* appIcon.png in Resources */,
 				AE949DDD187E8298004FC1AB /* companyListBar@2x.png in Resources */,
 				AE949CEF187E8050004FC1AB /* defaultAvatar.png in Resources */,
 				AE0D3D98187D46EB00E0E141 /* UserCell.xib in Resources */,
@@ -2716,9 +2779,11 @@
 				AE0D3D44187D414400E0E141 /* StockContainerViewController.m in Sources */,
 				AE0D3D7B187D469800E0E141 /* AddCell.m in Sources */,
 				AE74DFA7187E4518002AE169 /* ClientCenterViewController.m in Sources */,
+				AE9E53D4189247CB0097EC57 /* GzipCompressor.m in Sources */,
 				AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */,
 				AE0D3CFD187D3B7F00E0E141 /* GCDiscreetNotificationView.m in Sources */,
 				AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */,
+				AE9E53D3189247CB0097EC57 /* Base64.m in Sources */,
 				AE74DFA0187E4509002AE169 /* HelpViewController.m in Sources */,
 				AE518737187E411A0055B9AE /* AnalyDetailContainerViewController.m in Sources */,
 				AE74DFAF187E4595002AE169 /* IQSegmentedNextPrevious.m in Sources */,
@@ -2731,6 +2796,7 @@
 				AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */,
 				AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */,
 				AE0D3D43187D414400E0E141 /* CompanyListViewController.m in Sources */,
+				AE9E53D6189247CB0097EC57 /* OpenUDID.m in Sources */,
 				AE0D3CB8187D36A000E0E141 /* UIButton+BGColor.m in Sources */,
 				AE3E631A187F9374005A71AD /* TipViewController.m in Sources */,
 				AE0D3CEB187D3A9200E0E141 /* PrettyDrawing.m in Sources */,
@@ -2767,10 +2833,10 @@
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
 				AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */,
 				AE0D3D83187D469800E0E141 /* CompanyReportCell.m in Sources */,
-				AE7EE31E1884DB3B00A0E5BF /* AddCommentViewController.m in Sources */,
 				AE0D3CC1187D36B200E0E141 /* EnumSummary.m in Sources */,
 				AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */,
 				AE9028E2188BAAF4006BE518 /* CommonFunction.m in Sources */,
+				AE1C729E1892151C00831EDF /* AddCommentViewController.m in Sources */,
 				AE0D3D5E187D467300E0E141 /* UIView+convenience.m in Sources */,
 				AE018847187CF636004C6A5D /* AppDelegate.m in Sources */,
 				AE0D3CB5187D36A000E0E141 /* UINavigationController+Autorotate.m in Sources */,
@@ -2915,23 +2981,22 @@
 			baseConfigurationReference = F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/xcode/wanax/oc/GooGuu,
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GooGuu/Supporting Files/GooGuu-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/GooGuu/Supporting Files/GooGuu-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/xcode/wanax/oc/GooGuu,
+					"$(SRCROOT)",
+					"$(SRCROOT)/GooGuu/Plugins/Release-iphonesimulator",
+					"$(SRCROOT)/GooGuu/Plugins/Release-iphoneos",
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
-					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";
@@ -2946,22 +3011,21 @@
 			baseConfigurationReference = F8E99020FDC74B56A887A0F9 /* Pods.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/xcode/wanax/oc/GooGuu,
+					"$(SRCROOT)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GooGuu/Supporting Files/GooGuu-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/GooGuu/Supporting Files/GooGuu-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/xcode/wanax/oc/GooGuu,
+					"$(SRCROOT)",
+					"$(SRCROOT)/GooGuu/Plugins/Release-iphonesimulator",
+					"$(SRCROOT)/GooGuu/Plugins/Release-iphoneos",
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
-					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";

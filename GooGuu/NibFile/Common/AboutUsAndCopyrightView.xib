@@ -16,44 +16,42 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="companyLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="7">
-                    <rect key="frame" x="135" y="121" width="50" height="74"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logoBlue.png" translatesAutoresizingMaskIntoConstraints="NO" id="7">
+                    <rect key="frame" x="81" y="107" width="158" height="74"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="112"/>
-                        <constraint firstAttribute="height" constant="74" id="114"/>
+                        <constraint firstAttribute="height" constant="74" id="54j-hr-cF6"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Googuu.NET for IOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                    <rect key="frame" x="35" y="300" width="250" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Googuu.NET for iOS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                    <rect key="frame" x="35" y="295" width="250" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="28"/>
-                        <constraint firstAttribute="width" constant="250" id="29"/>
+                        <constraint firstAttribute="height" constant="21" id="4Yv-hx-wFU"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="版本：1.0.1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37">
-                    <rect key="frame" x="100" y="329" width="120" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="版本：1.0.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37">
+                    <rect key="frame" x="100" y="324" width="120" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="41"/>
-                        <constraint firstAttribute="width" constant="120" id="48"/>
+                        <constraint firstAttribute="width" constant="120" id="Mfh-KY-i0x"/>
+                        <constraint firstAttribute="height" constant="21" id="zya-i5-kkl"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="11"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55">
-                    <rect key="frame" x="117" y="358" width="86" height="27"/>
+                    <rect key="frame" x="105" y="353" width="110" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="86" id="102"/>
-                        <constraint firstAttribute="height" constant="27" id="103"/>
+                        <constraint firstAttribute="width" constant="110" id="ILc-xF-Vjd"/>
+                        <constraint firstAttribute="height" constant="32" id="swh-xO-E6I"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="10"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="14"/>
                     <state key="normal" title="检查新版本" backgroundImage="checkUpdateBt.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,26 +61,28 @@
                     <rect key="frame" x="10" y="439" width="300" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="68"/>
-                        <constraint firstAttribute="height" constant="21" id="71"/>
+                        <constraint firstAttribute="height" constant="21" id="xxR-Pg-t22"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="9"/>
+                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="23" firstAttribute="centerX" secondItem="7" secondAttribute="centerX" id="35"/>
-                <constraint firstItem="37" firstAttribute="centerX" secondItem="23" secondAttribute="centerX" id="51"/>
-                <constraint firstItem="55" firstAttribute="centerX" secondItem="37" secondAttribute="centerX" id="58"/>
-                <constraint firstAttribute="bottom" secondItem="61" secondAttribute="bottom" constant="20" symbolic="YES" id="62"/>
-                <constraint firstItem="61" firstAttribute="centerX" secondItem="55" secondAttribute="centerX" id="69"/>
-                <constraint firstItem="37" firstAttribute="top" secondItem="23" secondAttribute="bottom" constant="8" symbolic="YES" id="105"/>
-                <constraint firstItem="55" firstAttribute="top" secondItem="37" secondAttribute="bottom" constant="8" symbolic="YES" id="107"/>
-                <constraint firstAttribute="bottom" secondItem="55" secondAttribute="bottom" constant="95" id="108"/>
-                <constraint firstItem="7" firstAttribute="top" secondItem="1" secondAttribute="top" constant="121" id="110"/>
-                <constraint firstItem="37" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="111"/>
+                <constraint firstItem="7" firstAttribute="top" secondItem="1" secondAttribute="top" constant="107" id="8mq-hw-yEE"/>
+                <constraint firstItem="61" firstAttribute="centerX" secondItem="55" secondAttribute="centerX" id="9WI-9e-spV"/>
+                <constraint firstItem="23" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="35" id="Ekl-sX-qVH"/>
+                <constraint firstAttribute="bottom" secondItem="61" secondAttribute="bottom" constant="20" symbolic="YES" id="NBk-cb-cJG"/>
+                <constraint firstItem="7" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="81" id="Ppr-Df-c2N"/>
+                <constraint firstItem="55" firstAttribute="centerX" secondItem="37" secondAttribute="centerX" id="QjF-hD-Xiy"/>
+                <constraint firstItem="37" firstAttribute="top" secondItem="23" secondAttribute="bottom" constant="8" symbolic="YES" id="WoX-bO-iAg"/>
+                <constraint firstItem="61" firstAttribute="top" secondItem="55" secondAttribute="bottom" constant="54" id="cqy-Fa-zcj"/>
+                <constraint firstItem="55" firstAttribute="top" secondItem="37" secondAttribute="bottom" constant="8" symbolic="YES" id="f9h-1x-NJQ"/>
+                <constraint firstItem="61" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="rsh-O3-zvq"/>
+                <constraint firstItem="23" firstAttribute="centerX" secondItem="7" secondAttribute="centerX" id="tIa-u0-mk1"/>
+                <constraint firstItem="37" firstAttribute="centerX" secondItem="1" secondAttribute="centerX" id="tPc-4w-rvn"/>
+                <constraint firstItem="37" firstAttribute="centerX" secondItem="23" secondAttribute="centerX" id="zBZ-vG-NaT"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -90,6 +90,6 @@
     </objects>
     <resources>
         <image name="checkUpdateBt.png" width="113" height="53"/>
-        <image name="companyLogo.png" width="74" height="116"/>
+        <image name="logoBlue.png" width="299" height="112"/>
     </resources>
 </document>

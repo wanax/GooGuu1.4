@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "BPush.h"
 #import "FinPicKeyWordListViewController.h"
 #import "GooGuuViewController.h"
 #import "GGReportListVC.h"
@@ -17,6 +18,7 @@
 #import "PonyDebugger.h"
 #import "tipViewController.h"
 #import "AgreementViewController.h"
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -29,10 +31,12 @@
     [self addLoginEventListen];
     [self startCrashlytics];
     [self shouldKeepLogin];
+    [self startCrashlytics];
+    [self beginBaiDuPush:application];
     //[self setPonyDebugger];
     
     SetConfigure(@"userconfigure",@"stockColorSetting",([NSString stringWithFormat:@"%d",0]));
-    SetUserDefaults(@"1.0.3", @"version");
+    SetUserDefaults(@"1.1.0", @"version");
     
     [self startProcess];
     
@@ -173,6 +177,34 @@
 #pragma mark Start Crashlytics
 -(void)startCrashlytics{
     //[Crashlytics startWithAPIKey:GetConfigure(@"FrameParamConfig", @"CrashlyticsAPIKey", NO)];
+}
+
+#pragma mark -
+#pragma mark BaiDu Push
+-(void)beginBaiDuPush:(UIApplication *)application{
+    [BPush setupChannel:[Utiles getConfigureInfoFrom:@"BPushConfig" andKey:nil inUserDomain:NO]]; // 必须
+    [BPush setDelegate:self];
+    [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    [BPush registerDeviceToken:deviceToken];
+    [BPush bindChannel];
+}
+- (void) onMethod:(NSString*)method response:(NSDictionary*)data {
+    NSLog(@"On method:%@", method);
+    NSLog(@"data:%@", [data description]);
+}
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"Receive Notify: %@", [userInfo JSONString]);
+    NSString *alert = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    if (application.applicationState == UIApplicationStateActive) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Did receive a Remote Notification" message:[NSString stringWithFormat:@"The application received this remote notification while it was running:\n%@", alert] delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+    [application setApplicationIconBadgeNumber:0];
+    [BPush handleNotification:userInfo];
 }
 
 #pragma mark -

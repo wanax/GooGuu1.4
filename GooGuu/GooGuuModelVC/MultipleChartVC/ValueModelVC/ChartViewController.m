@@ -265,10 +265,10 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         NSString *values = [Utiles getObjectDataFromJsFun:self.webView funName:@"getValues" byData:nil shouldTrans:NO];
         if (SCREEN_HEIGHT > 500) {
             self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView5" bundle:nil];
-            self.rateViewController.view.frame = CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
+            self.rateViewController.view.frame = CGRectMake(0,44,SCREEN_HEIGHT,SCREEN_WIDTH-44);
         } else {
             self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil];
-            self.rateViewController.view.frame = CGRectMake(0,60,SCREEN_HEIGHT,SCREEN_WIDTH-60);
+            self.rateViewController.view.frame = CGRectMake(0,44,SCREEN_HEIGHT,SCREEN_WIDTH-44);
         }
         self.rateViewController.comInfo = self.comInfo;
         self.rateViewController.jsonData = self.jsonForChart;
