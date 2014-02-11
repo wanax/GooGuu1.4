@@ -99,29 +99,31 @@
     UIBarButtonItem *favButton = [[[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self  action:@selector(favBtClicked:)] autorelease];
     self.navigationItem.rightBarButtonItem = favButton;
     
-    NSDictionary *params = @{
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu",
-                             @"state":@"1"
-                             };
-    [Utiles getNetInfoWithPath:@"FavoriteArticles" andParams:params besidesBlock:^(id obj) {
-
-        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
-        id data = obj[@"data"];
-        for (id model in data) {
-            [temp addObject:model[@"title"]];
-        }
-        if ([temp containsObject:self.articleInfo[@"title"]]) {
-            favButton.title = @"取消收藏";
-        }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu",
+                                 @"state":@"1"
+                                 };
+        [Utiles getNetInfoWithPath:@"FavoriteArticles" andParams:params besidesBlock:^(id obj) {
+            
+            NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+            id data = obj[@"data"];
+            for (id model in data) {
+                [temp addObject:model[@"title"]];
+            }
+            if ([temp containsObject:self.articleInfo[@"title"]]) {
+                favButton.title = @"取消收藏";
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }
     
     if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
         [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,106,30) title:@"公司" image:@"icon_company_small"];
-        //[self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
+        [self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
         [self addButton:CGRectMake(107,SCREEN_HEIGHT-30,106,30) title:@"评论" image:@"icon_msg_small"];
         [self addButton:CGRectMake(214,SCREEN_HEIGHT-30,106,30) title:@"多空" image:@"icon_pie_small"];
     }else{

@@ -1448,11 +1448,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/GooGuuArticleViewController.m"
-            timestampString = "412190939.890236"
+            timestampString = "413692160.376079"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "-actionBtClicked:"
             landmarkType = "5">
          </BreakpointContent>
