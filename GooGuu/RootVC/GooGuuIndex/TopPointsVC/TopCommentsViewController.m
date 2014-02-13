@@ -144,15 +144,16 @@
 #pragma Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
     id model = self.commentList[indexPath.row];
-    
-    AppDelegate *delegate=[[UIApplication sharedApplication] delegate];
-    delegate.comInfo=model;
-    
-    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
-    
+
+    GooGuuArticleViewController *articleVC = nil;
+    if ([model[@"classify"] isEqualToString:@"研究报告"]) {
+        articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:CommentReport] autorelease];
+    } else {
+        articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:CommentView] autorelease];
+    }
+    articleVC.articleId = model[@"ctxid"];
     articleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

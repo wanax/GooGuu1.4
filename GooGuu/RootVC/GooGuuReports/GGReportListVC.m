@@ -186,14 +186,11 @@
     
     id model = self.arrList[indexPath.row];
 
-    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuReport] autorelease];
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:ReportArticle] autorelease];
     articleVC.articleId = model[@"articleid"];
     articleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [Utiles setConfigureInfoTo:@"readingmarks" forKey:model[@"title"] andContent:@"1"];
-    SetConfigure(@"readingmarks", model[@"title"], @"1");
 }
 
 

@@ -175,7 +175,14 @@ typedef enum {
     GGviewComment//观点
 } GooGuuCommentType;//评论种类
 
-
+typedef enum {
+    HotView,//热门估值观点
+    HotReport,//热门研究报告
+    CommentView,//精彩评论估值观点
+    CommentReport,//精彩评论研究报告
+    ViewArticle,//原始估值观点
+    ReportArticle//原始研究报告
+} GooGuuArticleType;
 
 
 @end

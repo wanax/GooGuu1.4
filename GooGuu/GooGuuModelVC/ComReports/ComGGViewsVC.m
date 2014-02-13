@@ -126,14 +126,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     id model = self.viewDataArr[indexPath.row];
-    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:ViewArticle] autorelease];
     articleVC.articleId = model[@"articleid"];
     articleVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
-    
+
 }
 
 - (BOOL)shouldAutorotate{

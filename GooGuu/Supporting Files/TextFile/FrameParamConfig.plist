@@ -9,7 +9,7 @@
 	<key>iTunesURL</key>
 	<string>http://itunes.apple.com</string>
 	<key>ShareSDKSinaWeiboRedirectUri</key>
-	<string>http://appgo.cn</string>
+	<string>http://www.sharesdk.cn</string>
 	<key>ShareSDKSinaWeiboAppSecret</key>
 	<string>9991fbc725c5f5cf6b565b9a00a5584a</string>
 	<key>ShareSDKSinaWeiboAppKey</key>

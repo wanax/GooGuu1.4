@@ -6,6 +6,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UILabel+VerticalAlign.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/GooGuuIndexViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/DemoPhoto.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UIView+Common.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyTableViewCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CQMPathUtilities.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/RelationClientsViewController.o
@@ -56,9 +57,11 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/StockContainerViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AddCell.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/ClientCenterViewController.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/GzipCompressor.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/FinancalModelChartViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/GCDiscreetNotificationView.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/TopComsViewController.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/Base64.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/HelpViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/AnalyDetailContainerViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/IQSegmentedNextPrevious.o
@@ -71,6 +74,7 @@
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/MHTabBarController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/ComGGViewsVC.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/CompanyListViewController.o
+/Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/OpenUDID.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/UIButton+BGColor.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/TipViewController.o
 /Users/xcode/wanax/oc/GooGuu/build/GooGuu.build/Debug-iphonesimulator/GooGuu.build/Objects-normal/i386/PrettyDrawing.o

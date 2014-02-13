@@ -149,7 +149,12 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     id model = self.collectList[indexPath.row];
-    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    GooGuuArticleViewController *articleVC = nil;
+    if ([model[@"classify"] isEqualToString:@"研究报告"]) {
+        articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:HotReport] autorelease];
+    } else {
+        articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:HotView] autorelease];
+    }
     articleVC.articleId = model[@"ctxId"];
     articleVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:articleVC animated:YES];

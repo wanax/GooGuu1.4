@@ -2,6 +2,38 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>cn.appgo.sharebyone</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>cn.appgo.sharebyone</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb107704292745179</string>
+				<string>wb1486252908</string>
+				<string>wx68cacf0b8972c879</string>
+				<string>QQ05FB8B52</string>
+				<string>QQ075BCD15</string>
+				<string>tencent100371282</string>
+				<string>wb1486252908</string>
+				<string>rm226427cn.appgo.sharebyone</string>
+				<string>pin1432928</string>
+				<string>yx0d9a9f9088ea44d78680f3274da1765f</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>

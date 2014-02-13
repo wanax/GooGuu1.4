@@ -21,5 +21,7 @@
 
 - (IBAction)backgroundTap:(id)sender;
 
+- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type;
+
 
 @end

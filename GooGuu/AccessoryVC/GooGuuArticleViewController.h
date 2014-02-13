@@ -17,16 +17,17 @@
     CXBrowserNavBarView *navBarView;
 }
 
-@property BrowseSourceType sourceType;
+@property GooGuuArticleType sourceType;
 @property (nonatomic,retain) NSString *articleId;
 @property (nonatomic,retain) NSArray *imageUrlList;
 @property (nonatomic,retain) id articleInfo;
+@property (nonatomic,retain) NSString *articleContent;
 
 @property (nonatomic,retain) UIWebView *articleWeb;
 @property (nonatomic,retain) UILabel *imageTitleLabel;
 @property (nonatomic, strong) CXPhotoBrowser *browser;
 @property (nonatomic, strong) NSMutableArray *photoDataSource;
 
-- (id)initWithModel:(id)model andType:(BrowseSourceType)type;
+- (id)initWithModel:(id)model andType:(GooGuuArticleType)type;
 
 @end

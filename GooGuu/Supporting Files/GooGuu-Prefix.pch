@@ -25,6 +25,7 @@
     #import "FlatUIKit.h"
     #import "NSStringWrapper.h"
     #import "ProgressHUD.h"
+    #import "UIView+Common.h"
 #endif
 
 // From here to end of file added by Injection Plugin //

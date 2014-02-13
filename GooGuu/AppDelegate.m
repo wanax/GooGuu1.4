@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
 #import "BPush.h"
 #import "FinPicKeyWordListViewController.h"
 #import "GooGuuViewController.h"
@@ -33,6 +35,7 @@
     [self shouldKeepLogin];
     [self startCrashlytics];
     [self beginBaiDuPush:application];
+    [self configureShareSDK];
     //[self setPonyDebugger];
     
     SetConfigure(@"userconfigure",@"stockColorSetting",([NSString stringWithFormat:@"%d",0]));
@@ -78,6 +81,31 @@
         }
     }failure:^(AFHTTPRequestOperation *operation,NSError *error){
     }];
+}
+
+#pragma mark -
+#pragma ShareSDK
+
+-(void)configureShareSDK {
+    
+    [ShareSDK registerApp:GetConfigure(@"FrameParamConfig", @"ShareSDKRegisterApp", NO)];
+    
+    [ShareSDK connectSinaWeiboWithAppKey:GetConfigure(@"FrameParamConfig", @"ShareSDKSinaWeiboAppKey", NO)
+                               appSecret:GetConfigure(@"FrameParamConfig", @"ShareSDKSinaWeiboAppSecret", NO)
+                             redirectUri:GetConfigure(@"FrameParamConfig", @"ShareSDKSinaWeiboRedirectUri", NO)];
+    
+    [ShareSDK connectWeChatWithAppId:GetConfigure(@"FrameParamConfig", @"ShareSDKWeChatAppId", NO) wechatCls:[WXApi class]];
+    
+}
+
+#pragma WeiChatHandler
+
+- (BOOL)application:(UIApplication *)application  handleOpenURL:(NSURL *)url {
+    return [ShareSDK handleOpenURL:url wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    return [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self];
 }
 
 

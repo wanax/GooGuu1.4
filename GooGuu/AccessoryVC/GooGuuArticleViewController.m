@@ -16,6 +16,8 @@
 #import "GGModelIndexVC.h"
 #import "ComFieldViewController.h"
 #import "ExpectedSpaceViewController.h"
+#import <ShareSDK/ShareSDK.h>
+#import "ShareSDK/SSInheritValue.h"
 
 @interface GooGuuArticleViewController ()
 
@@ -28,7 +30,7 @@
 @implementation GooGuuArticleViewController
 
 
-- (id)initWithModel:(id)model andType:(BrowseSourceType)type
+- (id)initWithModel:(id)model andType:(GooGuuArticleType)type
 {
     self = [super init];
     if (self) {
@@ -49,7 +51,7 @@
     }else if (self.articleInfo[@"title"]!=nil) {
         self.title = self.articleInfo[@"title"];
     }
-    
+
     [[SDImageCache sharedImageCache] clearDisk];
     [[SDImageCache sharedImageCache] clearMemory];
     CXPhotoBrowser *tempBrowser = [[[CXPhotoBrowser alloc] initWithDataSource:self delegate:self] autorelease];
@@ -122,10 +124,10 @@
     }
     
     if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
-        [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,106,30) title:@"公司" image:@"icon_company_small"];
+        [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,80,30) title:@"公司" image:@"icon_company_small"];
         [self addButton:CGRectMake(80,SCREEN_HEIGHT-30,80,30) title:@"分享" image:@"icon_share_small"];
-        [self addButton:CGRectMake(107,SCREEN_HEIGHT-30,106,30) title:@"评论" image:@"icon_msg_small"];
-        [self addButton:CGRectMake(214,SCREEN_HEIGHT-30,106,30) title:@"多空" image:@"icon_pie_small"];
+        [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,80,30) title:@"评论" image:@"icon_msg_small"];
+        [self addButton:CGRectMake(240,SCREEN_HEIGHT-30,80,30) title:@"多空" image:@"icon_pie_small"];
     }else{
         [self addButton:CGRectMake(0,SCREEN_HEIGHT-30,160,30) title:@"分享" image:@"icon_share_small"];
         [self addButton:CGRectMake(160,SCREEN_HEIGHT-30,160,30) title:@"评论" image:@"icon_msg_small"];
@@ -159,20 +161,14 @@
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         } else {
-            NSString *articledid=self.articleInfo[@"articleid"];
-            if (articledid==nil) {
-                articledid=self.articleInfo[@"ctxid"];
-            }
-            if (articledid==nil) {
-                articledid=self.articleInfo[@"ctxId"];
-            }
-            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:articledid type:GGviewComment] autorelease];
+
+            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:self.articleId type:GGviewComment] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         }
        
         
-    }else if ([bt.titleLabel.text isEqual:@"公司"]) {
+    } else if ([bt.titleLabel.text isEqual:@"公司"]) {
         NSDictionary *params = @{
                                  @"stockcode":self.articleInfo[@"stockcode"]
                                  };
@@ -186,7 +182,7 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);
         }];
-    }else if ([bt.titleLabel.text isEqual:@"多空"]) {
+    } else if ([bt.titleLabel.text isEqual:@"多空"]) {
         UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                       initWithTitle:@""
                                       delegate:self
@@ -196,6 +192,112 @@
         
         [actionSheet showInView:self.view];
         [actionSheet release];
+    } else if ([bt.titleLabel.text isEqual:@"分享"]) {
+
+        NSString *content = @"";
+        NSString *imgURL = nil;
+        NSString *webURL = [NSString stringWithFormat:@"http://www.googuu.net/pages/content/view/%@.htm",self.articleId];;
+        if ([self.articleInfo[@"concise"] length] > 90) {
+            content = [NSString stringWithFormat:@"%@...",[self.articleInfo[@"concise"] substringToIndex:86]];
+        } else {
+            content = self.articleInfo[@"concise"];
+        }
+        if (self.sourceType == HotReport || self.sourceType == HotView) {
+            content = [NSString stringWithFormat:@"%@%@",content,webURL];
+        } else if (self.sourceType == CommentReport || self.sourceType == CommentView) {
+            NSArray *arr = [self.articleInfo[@"replycontent"] split:@"<br/>"];
+            content = [NSString stringWithFormat:@"%@%@",arr[0],webURL];
+        } else if (self.sourceType == ReportArticle) {
+            content = [NSString stringWithFormat:@"%@%@",content,webURL];
+        } else if (self.sourceType == ViewArticle) {
+            imgURL = self.articleInfo[@"titleimgurl"];
+            content = [NSString stringWithFormat:@"%@%@",content,webURL];
+        }
+
+        id<ISSContent> publishContent = [ShareSDK content:content
+                                           defaultContent:@""
+                                                    image:(imgURL == nil?nil:[ShareSDK imageWithUrl:imgURL])
+                                                    title:@"估股分享"
+                                                      url:nil
+                                              description:@""
+                                                mediaType:SSPublishContentMediaTypeNews];
+        
+        //定制微信好友信息
+        [publishContent addWeixinSessionUnitWithType:INHERIT_VALUE
+                                             content:content
+                                               title:@"估股分享"
+                                                 url:webURL
+                                          thumbImage:(imgURL == nil?nil:[ShareSDK imageWithUrl:imgURL])
+                                               image:INHERIT_VALUE
+                                        musicFileUrl:nil
+                                             extInfo:nil
+                                            fileData:nil
+                                        emoticonData:nil];
+        //微信朋友圈
+        NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"icon" ofType:@"png"];
+        [publishContent addWeixinTimelineUnitWithType:[NSNumber numberWithInteger:SSPublishContentMediaTypeNews]
+                                              content:nil
+                                                title:self.articleInfo[@"title"]
+                                                  url:webURL
+                                           thumbImage:(imgURL == nil?[ShareSDK imageWithPath:imagePath]:[ShareSDK imageWithUrl:imgURL])
+                                                image:INHERIT_VALUE
+                                         musicFileUrl:nil
+                                              extInfo:nil
+                                             fileData:nil
+                                         emoticonData:nil];
+
+        id<ISSContainer> container = [ShareSDK container];
+        [container setIPhoneContainerWithViewController:self];
+        
+        id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                             allowCallback:NO
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                              viewDelegate:nil
+                                                   authManagerViewDelegate:nil];
+        //在授权页面中添加关注官方微博
+        [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                                        [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"ShareSDK"],
+                                        SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
+                                        nil]];
+        
+        //创建自定义分享列表
+        NSArray *shareList = [ShareSDK customShareListWithType:
+                              SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
+                              SHARE_TYPE_NUMBER(ShareTypeWeixiSession),
+                              SHARE_TYPE_NUMBER(ShareTypeWeixiTimeline),
+                              nil];
+        
+        id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"
+                                                                  oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                                   qqButtonHidden:YES
+                                                            wxSessionButtonHidden:YES
+                                                           wxTimelineButtonHidden:YES
+                                                             showKeyboardOnAppear:NO
+                                                                shareViewDelegate:nil
+                                                              friendsViewDelegate:nil
+                                                            picViewerViewDelegate:nil];
+        
+        //弹出分享菜单
+        [ShareSDK showShareActionSheet:container
+                             shareList:shareList
+                               content:publishContent
+                         statusBarTips:YES
+                           authOptions:authOptions
+                          shareOptions:shareOptions
+                                result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                    
+                                    if (state == SSResponseStateSuccess)
+                                    {
+                                        [ProgressHUD showSuccess:@"分享成功"];
+                                    }
+                                    else if (state == SSResponseStateFail)
+                                    {
+                                        NSLog(@"分享失败,错误码:%d,错误描述:%@", [error errorCode], [error errorDescription]);
+                                    }
+                                }];
+        
     }
     
 }
@@ -267,7 +369,7 @@
     if ([Utiles isLogin]) {
         AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] init] autorelease];
         addCommentViewController.type=ArticleType;
-        addCommentViewController.articleId = self.articleInfo[@"articleid"];
+        addCommentViewController.articleId = self.articleId;
         [self presentViewController:addCommentViewController animated:YES completion:nil];
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"请先登录" duration:1.5];
@@ -283,19 +385,15 @@
 
 
 -(void)getArticleContent {
-    NSString *articlestr=@"";
-    if (self.articleInfo[@"articleid"]!=nil) {
-        articlestr=self.articleInfo[@"articleid"];
-    }else if (self.articleInfo[@"ctxId"]!=nil){
-        articlestr=self.articleInfo[@"ctxId"];
-    }else if (self.articleInfo[@"ctxid"]!=nil){
-        articlestr=self.articleInfo[@"ctxid"];
-    }
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:articlestr,@"articleid", nil];
+
+    NSDictionary *params = @{
+                             @"articleid":self.articleId
+                             };
+    
     [Utiles getNetInfoWithPath:@"ArticleURL" andParams:params besidesBlock:^(id article){
 
-        [self.articleWeb loadHTMLString:[article objectForKey:@"content"] baseURL:nil];
-        
+        [self.articleWeb loadHTMLString:article[@"content"] baseURL:nil];
+        self.articleContent = article[@"content"];
         [self addTapOnWebView];
         [self.view addSubview:self.articleWeb];
         

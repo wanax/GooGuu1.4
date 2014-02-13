@@ -121,24 +121,13 @@
 #pragma mark Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-//    NSString *artId=[NSString stringWithFormat:@"%@",[[self.analyReports objectAtIndex:indexPath.row] objectForKey:@"articleid"]];
-//    AnalyDetailViewController *detail=[[AnalyDetailViewController alloc] init];
-//    detail.articleId=artId;
-//
-//    [self presentViewController:detail animated:YES completion:nil];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    
-//    [Utiles setConfigureInfoTo:@"readingmarks" forKey:[[self.analyReports objectAtIndex:indexPath.row] objectForKey:@"title"] andContent:@"1"];
-    
+  
     id model = self.analyReports[indexPath.row];
-    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:GooGuuView] autorelease];
+    GooGuuArticleViewController *articleVC = [[[GooGuuArticleViewController alloc] initWithModel:model andType:ReportArticle] autorelease];
     articleVC.articleId = model[@"articleid"];
     articleVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:articleVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    //SetConfigure(@"googuuviewreadingmarks", model[@"title"], @"1");
 }
 
 - (BOOL)shouldAutorotate{
