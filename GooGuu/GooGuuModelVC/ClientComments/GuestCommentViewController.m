@@ -101,7 +101,7 @@ static NSString * const UserCellIdentifier = @"UserCellIdentifier";
         
         AddCommentViewController *addCommentViewController=[[AddCommentViewController alloc] initWithNibName:@"AddCommentView" bundle:nil];
         addCommentViewController.articleId=code;
-        addCommentViewController.type=CompanyType;
+        addCommentViewController.type = CompanyReview;
         
         [self presentViewController:addCommentViewController animated:YES completion:nil];
         [addCommentViewController release];

@@ -96,11 +96,11 @@
     addCommentViewController.articleId=self.articleId;
     
     if(self.type==News){
-        addCommentViewController.type=NewsType;
+        addCommentViewController.type = ArticleReview;
         [(UINavigationController *)self.parentViewController.parentViewController.parentViewController.parentViewController pushViewController:addCommentViewController animated:YES];
     }else{
         NSAssert(self.type==StockCompany,@"Should be articel");
-        addCommentViewController.type=ArticleType;
+        addCommentViewController.type = ArticleReview;
         [self presentViewController:addCommentViewController animated:YES completion:nil];
     }
     

@@ -12,7 +12,7 @@
 #import "CXPhoto.h"
 #import "AddCommentViewController.h"
 #import "ArticleCommentViewController.h"
-#import "GooGuuCommentViewController.h"
+#import "GooGuuCommentListVC.h"
 #import "GGModelIndexVC.h"
 #import "ComFieldViewController.h"
 #import "ExpectedSpaceViewController.h"
@@ -157,12 +157,12 @@
     
     if ([bt.titleLabel.text isEqual:@"评论"]) {
         if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
-            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:self.articleInfo[@"stockcode"] type:CompanyComment] autorelease];
+            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:self.articleInfo[@"stockcode"] type:CompanyComment] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         } else {
 
-            GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:self.articleId type:GGviewComment] autorelease];
+            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:self.articleId type:GGViewComment] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         }
@@ -368,7 +368,7 @@
 -(void)addCommentBtClicked{
     if ([Utiles isLogin]) {
         AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] init] autorelease];
-        addCommentViewController.type=ArticleType;
+        addCommentViewController.type = ArticleReview;
         addCommentViewController.articleId = self.articleId;
         [self presentViewController:addCommentViewController animated:YES completion:nil];
     } else {

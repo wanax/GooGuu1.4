@@ -9,6 +9,7 @@
 #import "ClientPriMsgsViewController.h"
 #import "SVPullToRefresh.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "ChatListViewController.h"
 
 @interface ClientPriMsgsViewController ()
 
@@ -147,8 +148,10 @@
 #pragma Table Delegate Methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.postList[indexPath.row][@"headerpicurl"]]];
+
+    ChatListViewController *chatTableVC = [[[ChatListViewController alloc] init] autorelease];
+    chatTableVC.toUser = self.clientList[indexPath.row][@"username"];
+    [self.navigationController pushViewController:chatTableVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

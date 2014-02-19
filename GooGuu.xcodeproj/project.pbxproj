@@ -131,9 +131,7 @@
 		AE1C72921892085D00831EDF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1C72901892085D00831EDF /* Default-568h@2x.png */; };
 		AE1C7294189208B500831EDF /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1C7293189208B500831EDF /* appIcon.png */; };
 		AE1C729C18920E5200831EDF /* ClientCenterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE1C729B18920E5200831EDF /* ClientCenterView.xib */; };
-		AE1C729E1892151C00831EDF /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1C729D1892151C00831EDF /* AddCommentViewController.m */; };
 		AE1C72A018921E3400831EDF /* logoBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = AE1C729F18921E3400831EDF /* logoBlue.png */; };
-		AE22252F18917A5F00C25CD3 /* GooGuuCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */; };
 		AE236781188B660500D74674 /* CompanyFansVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE236780188B660500D74674 /* CompanyFansVC.m */; };
 		AE244715188E0FF900C69752 /* IndicatorSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244712188E0FF900C69752 /* IndicatorSearchView.m */; };
 		AE244716188E0FF900C69752 /* StockSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE244714188E0FF900C69752 /* StockSearchListViewController.m */; };
@@ -170,9 +168,9 @@
 		AE2AD43418AB4B5600D8CC6C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2AD42918AB47EC00D8CC6C /* libsqlite3.dylib */; };
 		AE2AD44818AB61E400D8CC6C /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AD44718AB61E400D8CC6C /* UIView+Common.m */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
+		AE34C4B818B43D4E006EBE9F /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE34C4B718B43D4E006EBE9F /* libBaiduMobStat.a */; };
 		AE391478188F5BA400985CF0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE391475188F5BA400985CF0 /* ProgressHUD.bundle */; };
 		AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE391477188F5BA400985CF0 /* ProgressHUD.m */; };
-		AE39147F188F735200985CF0 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE39147E188F735200985CF0 /* libBaiduMobStat.a */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
 		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
 		AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */; };
@@ -224,7 +222,6 @@
 		AE6B68C2188A2B8700C3ADBF /* unread2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BA188A2B8700C3ADBF /* unread2.png */; };
 		AE6B68C3188A2B8700C3ADBF /* valueModelBt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */; };
 		AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */; };
-		AE722CAF18ACA5EE003417CD /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE722CAE18ACA5EE003417CD /* libBaiduMobStat.a */; };
 		AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */; };
 		AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */; };
 		AE74DF9D187E4509002AE169 /* StockRiseDownColorSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF92187E4509002AE169 /* StockRiseDownColorSettingViewController.m */; };
@@ -392,7 +389,14 @@
 		AE9E53D3189247CB0097EC57 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53C9189247CB0097EC57 /* Base64.m */; };
 		AE9E53D4189247CB0097EC57 /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53CC189247CB0097EC57 /* GzipCompressor.m */; };
 		AE9E53D6189247CB0097EC57 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53D0189247CB0097EC57 /* OpenUDID.m */; };
+		AE9F3B1118ADEA5800DE61E5 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9F3B1018ADEA5800DE61E5 /* ChatListViewController.m */; };
+		AE9F3B1418ADF55300DE61E5 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9F3B1318ADF55300DE61E5 /* ChatCell.m */; };
+		AE9F3B1718ADFB1100DE61E5 /* myMsgBack.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9F3B1518ADFB1100DE61E5 /* myMsgBack.png */; };
+		AE9F3B1818ADFB1100DE61E5 /* targetMsgBack.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9F3B1618ADFB1100DE61E5 /* targetMsgBack.png */; };
+		AE9F3B1C18AE09CE00DE61E5 /* YFInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9F3B1B18AE09CE00DE61E5 /* YFInputBar.m */; };
 		AEA9E764188FB01E0002532F /* ClientLogin2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA9E763188FB01E0002532F /* ClientLogin2View.xib */; };
+		AEACB1BC18B2F6DA00F610EC /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */; };
+		AEACB1BD18B2F6DA00F610EC /* GooGuuCommentListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEACB1BB18B2F6DA00F610EC /* GooGuuCommentListVC.m */; };
 		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
 		AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */; };
 		AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */; };
@@ -618,10 +622,7 @@
 		AE1C72901892085D00831EDF /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AE1C7293189208B500831EDF /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appIcon.png; sourceTree = "<group>"; };
 		AE1C729B18920E5200831EDF /* ClientCenterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ClientCenterView.xib; path = ../NibFile/Common/ClientCenterView.xib; sourceTree = "<group>"; };
-		AE1C729D1892151C00831EDF /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		AE1C729F18921E3400831EDF /* logoBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoBlue.png; sourceTree = "<group>"; };
-		AE22252D18917A5F00C25CD3 /* GooGuuCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuCommentViewController.h; sourceTree = "<group>"; };
-		AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuCommentViewController.m; sourceTree = "<group>"; };
 		AE23677F188B660500D74674 /* CompanyFansVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyFansVC.h; sourceTree = "<group>"; };
 		AE236780188B660500D74674 /* CompanyFansVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyFansVC.m; sourceTree = "<group>"; };
 		AE244711188E0FF900C69752 /* IndicatorSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorSearchView.h; sourceTree = "<group>"; };
@@ -786,11 +787,11 @@
 		AE2B48F3187D2BDD007ABEC8 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		AE34C4B618B43D4E006EBE9F /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE34C4B718B43D4E006EBE9F /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE391475188F5BA400985CF0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		AE391476188F5BA400985CF0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		AE391477188F5BA400985CF0 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
-		AE39147D188F735200985CF0 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE39147E188F735200985CF0 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE3E6316187F8B9F005A71AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AE3E6318187F9374005A71AD /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		AE3E6319187F9374005A71AD /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
@@ -871,8 +872,6 @@
 		AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valueModelBt.png; sourceTree = "<group>"; };
 		AE71CACC1887DD10005B3A2D /* CompanyPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyPostListViewController.h; sourceTree = "<group>"; };
 		AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyPostListViewController.m; sourceTree = "<group>"; };
-		AE722CAD18ACA5EE003417CD /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE722CAE18ACA5EE003417CD /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE74DF87187E44D3002AE169 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
 		AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserRegisterViewController.m; sourceTree = "<group>"; };
 		AE74DF8C187E44DE002AE169 /* ClientLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientLoginViewController.h; sourceTree = "<group>"; };
@@ -912,7 +911,6 @@
 		AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentsViewController.m; sourceTree = "<group>"; };
 		AE7EE30D1884CEC100A0E5BF /* GooGuuIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuIndexViewController.h; sourceTree = "<group>"; };
 		AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuIndexViewController.m; sourceTree = "<group>"; };
-		AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
 		AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCommentViewController.h; sourceTree = "<group>"; };
 		AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCommentViewController.m; sourceTree = "<group>"; };
 		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
@@ -1073,7 +1071,19 @@
 		AE9E53CC189247CB0097EC57 /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
 		AE9E53CF189247CB0097EC57 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		AE9E53D0189247CB0097EC57 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		AE9F3B0F18ADEA5800DE61E5 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		AE9F3B1018ADEA5800DE61E5 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
+		AE9F3B1218ADF55300DE61E5 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		AE9F3B1318ADF55300DE61E5 /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		AE9F3B1518ADFB1100DE61E5 /* myMsgBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myMsgBack.png; sourceTree = "<group>"; };
+		AE9F3B1618ADFB1100DE61E5 /* targetMsgBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = targetMsgBack.png; sourceTree = "<group>"; };
+		AE9F3B1A18AE09CE00DE61E5 /* YFInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFInputBar.h; sourceTree = "<group>"; };
+		AE9F3B1B18AE09CE00DE61E5 /* YFInputBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YFInputBar.m; sourceTree = "<group>"; };
 		AEA9E763188FB01E0002532F /* ClientLogin2View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClientLogin2View.xib; sourceTree = "<group>"; };
+		AEACB1B818B2F6DA00F610EC /* AddCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCommentViewController.h; sourceTree = "<group>"; };
+		AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
+		AEACB1BA18B2F6DA00F610EC /* GooGuuCommentListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuCommentListVC.h; sourceTree = "<group>"; };
+		AEACB1BB18B2F6DA00F610EC /* GooGuuCommentListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuCommentListVC.m; sourceTree = "<group>"; };
 		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
 		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
 		AEE0FDC4188CCB4600C70120 /* ClientFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientFansViewController.h; sourceTree = "<group>"; };
@@ -1109,7 +1119,6 @@
 				AE0D3DD7187D564300E0E141 /* AdSupport.framework in Frameworks */,
 				AE0D3CA7187D2DD600E0E141 /* libz.1.2.5.dylib in Frameworks */,
 				AE0D3CA5187D2DC100E0E141 /* ImageIO.framework in Frameworks */,
-				AE39147F188F735200985CF0 /* libBaiduMobStat.a in Frameworks */,
 				AE2AD40218AB47B100D8CC6C /* SMSConnection.framework in Frameworks */,
 				AE0D3CA3187D2DBB00E0E141 /* CoreText.framework in Frameworks */,
 				AE0D3C9F187D2D7100E0E141 /* MobileCoreServices.framework in Frameworks */,
@@ -1121,6 +1130,7 @@
 				AE2AD40D18AB47B200D8CC6C /* AGCommon.framework in Frameworks */,
 				AE018839187CF635004C6A5D /* CoreGraphics.framework in Frameworks */,
 				AE01883B187CF635004C6A5D /* UIKit.framework in Frameworks */,
+				AE34C4B818B43D4E006EBE9F /* libBaiduMobStat.a in Frameworks */,
 				AE2AD40A18AB47B200D8CC6C /* WeChatConnection.framework in Frameworks */,
 				AE018837187CF635004C6A5D /* Foundation.framework in Frameworks */,
 				AE2AD41018AB47B200D8CC6C /* ShareSDKCoreService.framework in Frameworks */,
@@ -1129,7 +1139,6 @@
 				AE2AD42818AB47B200D8CC6C /* ShareSDKiPhoneSimpleShareViewUI.framework in Frameworks */,
 				AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				AE2AD41F18AB47B200D8CC6C /* ShareSDK.framework in Frameworks */,
-				AE722CAF18ACA5EE003417CD /* libBaiduMobStat.a in Frameworks */,
 				AE2AD3EE18AB47B100D8CC6C /* CopyConnection.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1241,8 +1250,8 @@
 		AE018865187CFC3F004C6A5D /* AccessoryVC */ = {
 			isa = PBXGroup;
 			children = (
+				AEACB1B718B2F6DA00F610EC /* CommentView */,
 				AE6A84D018AC5DA600FF5AFE /* TableTest */,
-				AE6A84CF18AC5D9800FF5AFE /* CommentView */,
 				AE6A84CC18AC5D8300FF5AFE /* ArticleView */,
 				AE2AD43618AB5E2C00D8CC6C /* ShareView */,
 				AE276B3B1890B5D200FA603F /* ExpectedSpace */,
@@ -1322,11 +1331,11 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				AE722CAC18ACA5EE003417CD /* Release-iphoneos */,
+				AE34C4B518B43D4E006EBE9F /* Release-iphonesimulator */,
+				AE9F3B1918AE09B900DE61E5 /* YFInputBar */,
 				AE2AD39D18AB47B100D8CC6C /* ShareSDK */,
 				AE9E53C6189247CB0097EC57 /* BPush.h */,
 				AE9E53C7189247CB0097EC57 /* opensource */,
-				AE39147C188F735200985CF0 /* Release-iphoneos */,
 				AE391474188F5BA400985CF0 /* ProgressHUD */,
 				AE7ABC88188E8CE900FB73F5 /* MHTabBarController */,
 				AE58A7211883898B00E044BD /* XYPieChart */,
@@ -1563,12 +1572,9 @@
 		AE0D3D02187D405B00E0E141 /* GooGuuReports */ = {
 			isa = PBXGroup;
 			children = (
-				AE9E53BB18923C950097EC57 /* AddCommentView.xib */,
 				AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */,
 				AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */,
 				AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */,
-				AE7EE3131884DB3B00A0E5BF /* AddCommentViewController.h */,
-				AE1C729D1892151C00831EDF /* AddCommentViewController.m */,
 				AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */,
 				AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */,
 			);
@@ -1588,6 +1594,7 @@
 		AE0D3D04187D405B00E0E141 /* MyGooGuu */ = {
 			isa = PBXGroup;
 			children = (
+				AE9F3B0E18ADEA5800DE61E5 /* ChatList */,
 				AE86419A188D1E6D00935E4E /* MyCollects */,
 				AE86419D188D1E6D00935E4E /* MyComments */,
 				AEE0FDC0188CC0B300C70120 /* RelationClients */,
@@ -1970,6 +1977,15 @@
 			path = CorePlotHeaders;
 			sourceTree = "<group>";
 		};
+		AE34C4B518B43D4E006EBE9F /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AE34C4B618B43D4E006EBE9F /* BaiduMobStat.h */,
+				AE34C4B718B43D4E006EBE9F /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
 		AE391474188F5BA400985CF0 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -1978,15 +1994,6 @@
 				AE391477188F5BA400985CF0 /* ProgressHUD.m */,
 			);
 			path = ProgressHUD;
-			sourceTree = "<group>";
-		};
-		AE39147C188F735200985CF0 /* Release-iphoneos */ = {
-			isa = PBXGroup;
-			children = (
-				AE39147D188F735200985CF0 /* BaiduMobStat.h */,
-				AE39147E188F735200985CF0 /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphoneos";
 			sourceTree = "<group>";
 		};
 		AE3E630F187F8964005A71AD /* Welcome */ = {
@@ -2167,6 +2174,18 @@
 			path = ClientWishes;
 			sourceTree = "<group>";
 		};
+		AE60C94718ADC2C4001B4C8A /* ClientCenterSetting */ = {
+			isa = PBXGroup;
+			children = (
+				AE1C729B18920E5200831EDF /* ClientCenterView.xib */,
+				AE74DFA3187E4518002AE169 /* ClientCenterViewController.h */,
+				AE74DFA4187E4518002AE169 /* ClientCenterViewController.m */,
+				AE74DFA5187E4518002AE169 /* SettingCenterViewController.h */,
+				AE74DFA6187E4518002AE169 /* SettingCenterViewController.m */,
+			);
+			name = ClientCenterSetting;
+			sourceTree = "<group>";
+		};
 		AE6A84CC18AC5D8300FF5AFE /* ArticleView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2174,15 +2193,6 @@
 				AE276B381890A50E00FA603F /* GooGuuArticleViewController.m */,
 			);
 			name = ArticleView;
-			sourceTree = "<group>";
-		};
-		AE6A84CF18AC5D9800FF5AFE /* CommentView */ = {
-			isa = PBXGroup;
-			children = (
-				AE22252D18917A5F00C25CD3 /* GooGuuCommentViewController.h */,
-				AE22252E18917A5F00C25CD3 /* GooGuuCommentViewController.m */,
-			);
-			name = CommentView;
 			sourceTree = "<group>";
 		};
 		AE6A84D018AC5DA600FF5AFE /* TableTest */ = {
@@ -2243,23 +2253,10 @@
 			path = Accessory;
 			sourceTree = "<group>";
 		};
-		AE722CAC18ACA5EE003417CD /* Release-iphoneos */ = {
-			isa = PBXGroup;
-			children = (
-				AE722CAD18ACA5EE003417CD /* BaiduMobStat.h */,
-				AE722CAE18ACA5EE003417CD /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphoneos";
-			sourceTree = "<group>";
-		};
 		AE74DF83187E4480002AE169 /* ClientCenter */ = {
 			isa = PBXGroup;
 			children = (
-				AE1C729B18920E5200831EDF /* ClientCenterView.xib */,
-				AE74DFA3187E4518002AE169 /* ClientCenterViewController.h */,
-				AE74DFA4187E4518002AE169 /* ClientCenterViewController.m */,
-				AE74DFA5187E4518002AE169 /* SettingCenterViewController.h */,
-				AE74DFA6187E4518002AE169 /* SettingCenterViewController.m */,
+				AE60C94718ADC2C4001B4C8A /* ClientCenterSetting */,
 				AE74DF90187E4501002AE169 /* ProjectSetting */,
 				AE74DF84187E44A1002AE169 /* ClientAction */,
 			);
@@ -2438,6 +2435,8 @@
 		AE949CDD187E7A69004FC1AB /* MyGooGuuImg */ = {
 			isa = PBXGroup;
 			children = (
+				AE9F3B1518ADFB1100DE61E5 /* myMsgBack.png */,
+				AE9F3B1618ADFB1100DE61E5 /* targetMsgBack.png */,
 				AE9028E3188BBD0B006BE518 /* user_blacklist_small_icon.png */,
 				AE9028E4188BBD0B006BE518 /* user_calender_small_icon.png */,
 				AE9028E5188BBD0B006BE518 /* user_collect_small_icon.png */,
@@ -2666,6 +2665,38 @@
 				AE9E53D0189247CB0097EC57 /* OpenUDID.m */,
 			);
 			path = opensource;
+			sourceTree = "<group>";
+		};
+		AE9F3B0E18ADEA5800DE61E5 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				AE9F3B1218ADF55300DE61E5 /* ChatCell.h */,
+				AE9F3B1318ADF55300DE61E5 /* ChatCell.m */,
+				AE9F3B0F18ADEA5800DE61E5 /* ChatListViewController.h */,
+				AE9F3B1018ADEA5800DE61E5 /* ChatListViewController.m */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		AE9F3B1918AE09B900DE61E5 /* YFInputBar */ = {
+			isa = PBXGroup;
+			children = (
+				AE9F3B1A18AE09CE00DE61E5 /* YFInputBar.h */,
+				AE9F3B1B18AE09CE00DE61E5 /* YFInputBar.m */,
+			);
+			name = YFInputBar;
+			sourceTree = "<group>";
+		};
+		AEACB1B718B2F6DA00F610EC /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				AE9E53BB18923C950097EC57 /* AddCommentView.xib */,
+				AEACB1B818B2F6DA00F610EC /* AddCommentViewController.h */,
+				AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */,
+				AEACB1BA18B2F6DA00F610EC /* GooGuuCommentListVC.h */,
+				AEACB1BB18B2F6DA00F610EC /* GooGuuCommentListVC.m */,
+			);
+			path = CommentView;
 			sourceTree = "<group>";
 		};
 		AEE0FDC0188CC0B300C70120 /* RelationClients */ = {
@@ -2898,6 +2929,7 @@
 				AE9028D9188B9D9F006BE518 /* MyGGIndexView.xib in Resources */,
 				AE949D4F187E817C004FC1AB /* topDone@2x.png in Resources */,
 				AE949DE0187E8298004FC1AB /* googuuViewBar.png in Resources */,
+				AE9F3B1718ADFB1100DE61E5 /* myMsgBack.png in Resources */,
 				AE949CF5187E8074004FC1AB /* dailyStockLittleIcon.png in Resources */,
 				AE2AD41B18AB47B200D8CC6C /* WeiboSDK.bundle in Resources */,
 				AE01888C187D02BC004C6A5D /* OccupationalList.plist in Resources */,
@@ -2923,6 +2955,7 @@
 				AE949D99187E81E5004FC1AB /* helpBt.PNG in Resources */,
 				AE949D0B187E8118004FC1AB /* discountLabelBack.png in Resources */,
 				AE949DAE187E8218004FC1AB /* companyLogo.png in Resources */,
+				AE9F3B1818ADFB1100DE61E5 /* targetMsgBack.png in Resources */,
 				AE949DAF187E8218004FC1AB /* userAtten.png in Resources */,
 				AE949D5C187E81A2004FC1AB /* checkBox.png in Resources */,
 				AE949D6E187E81D8004FC1AB /* guide3.png in Resources */,
@@ -3088,6 +3121,7 @@
 				AE0D3D27187D410800E0E141 /* FinPic2ViewController.m in Sources */,
 				AE518747187E41FF0055B9AE /* ComFieldViewController.m in Sources */,
 				AE8641A7188D246300935E4E /* ClientRelationComListVC.m in Sources */,
+				AEACB1BC18B2F6DA00F610EC /* AddCommentViewController.m in Sources */,
 				AE0D3D4C187D45E400E0E141 /* AOTag.m in Sources */,
 				AE06B8E6187EAB7900DA93E2 /* FinanceToolsViewController.m in Sources */,
 				AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */,
@@ -3097,7 +3131,6 @@
 				AE518728187E40EC0055B9AE /* IntroductionViewController.m in Sources */,
 				AE0D3D2A187D411800E0E141 /* GooGuuViewController.m in Sources */,
 				AE0D3D78187D469800E0E141 /* StockCell.m in Sources */,
-				AE22252F18917A5F00C25CD3 /* GooGuuCommentViewController.m in Sources */,
 				AE8641A1188D1E6D00935E4E /* MyCommentViewController.m in Sources */,
 				AE018876187D00A7004C6A5D /* main.m in Sources */,
 				AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */,
@@ -3131,6 +3164,7 @@
 				AE0D3D44187D414400E0E141 /* StockContainerViewController.m in Sources */,
 				AE0D3D7B187D469800E0E141 /* AddCell.m in Sources */,
 				AE74DFA7187E4518002AE169 /* ClientCenterViewController.m in Sources */,
+				AEACB1BD18B2F6DA00F610EC /* GooGuuCommentListVC.m in Sources */,
 				AE9E53D4189247CB0097EC57 /* GzipCompressor.m in Sources */,
 				AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */,
 				AE0D3CFD187D3B7F00E0E141 /* GCDiscreetNotificationView.m in Sources */,
@@ -3162,6 +3196,7 @@
 				AE0D3CCB187D3A2900E0E141 /* MBProgressHUD.m in Sources */,
 				AE0D3D24187D410800E0E141 /* FinancePicViewController.m in Sources */,
 				AE74DF9F187E4509002AE169 /* FeedBackViewController.m in Sources */,
+				AE9F3B1118ADEA5800DE61E5 /* ChatListViewController.m in Sources */,
 				AE236781188B660500D74674 /* CompanyFansVC.m in Sources */,
 				AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */,
 				AE74DF9D187E4509002AE169 /* StockRiseDownColorSettingViewController.m in Sources */,
@@ -3184,11 +3219,12 @@
 				AE58A7261883899600E044BD /* XYPieChart.m in Sources */,
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
 				AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */,
+				AE9F3B1418ADF55300DE61E5 /* ChatCell.m in Sources */,
 				AE0D3D83187D469800E0E141 /* CompanyReportCell.m in Sources */,
 				AE0D3CC1187D36B200E0E141 /* EnumSummary.m in Sources */,
 				AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */,
+				AE9F3B1C18AE09CE00DE61E5 /* YFInputBar.m in Sources */,
 				AE9028E2188BAAF4006BE518 /* CommonFunction.m in Sources */,
-				AE1C729E1892151C00831EDF /* AddCommentViewController.m in Sources */,
 				AE0D3D5E187D467300E0E141 /* UIView+convenience.m in Sources */,
 				AE018847187CF636004C6A5D /* AppDelegate.m in Sources */,
 				AE0D3CB5187D36A000E0E141 /* UINavigationController+Autorotate.m in Sources */,

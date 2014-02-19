@@ -60,9 +60,8 @@ typedef enum{
 //评论类型，此页面三种评论公用
 typedef enum {
     
-    CompanyType,//关于股票公司的评论
-    NewsType,//估股新闻中分析报告的评论
-    ArticleType//股票公司中分析报告的评论
+    CompanyReview,//关于股票公司的评论
+    ArticleReview//股票公司中分析报告的评论
     
 } CommentType;
 
@@ -172,7 +171,7 @@ typedef enum {
 
 typedef enum {
     CompanyComment,//公司
-    GGviewComment//观点
+    GGViewComment//观点
 } GooGuuCommentType;//评论种类
 
 typedef enum {

@@ -1,5 +1,5 @@
 //
-//  GooGuuCommentViewController.h
+//  GooGuuCommentList.h
 //  GooGuu
 //
 //  Created by Xcode on 14-1-24.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GooGuuCommentViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface GooGuuCommentListVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property GooGuuCommentType type;
 @property (nonatomic,retain) NSString *topical;

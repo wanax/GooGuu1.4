@@ -95,7 +95,7 @@
     CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
     
     if ([arr count] > 1) {
-        return size.height + 100;
+        return size.height + 110;
     } else {
        return size.height + 50;
     }
@@ -130,8 +130,8 @@
     
     //添加评论缩略图
     if ([arr count] > 1) {
-        NSString *regexString  = @"http.*((.gif)|(.jpg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))";
-        NSArray  *matchArray  = [[arr JSONString] componentsMatchedByRegex:regexString];
+        NSString *regexString  = @"\\bhttp.{60,75}((.gif)|(.jpg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))\\b";
+        NSArray  *matchArray  = [[arr lastObject] componentsMatchedByRegex:regexString];
         cell.thumbnailsURL = matchArray;
     }
 

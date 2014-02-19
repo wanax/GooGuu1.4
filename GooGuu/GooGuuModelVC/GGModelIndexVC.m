@@ -17,7 +17,7 @@
 #import "FinanceDataViewController.h"
 #import "AnalysisReportViewController.h"
 #import "ExpectedSpaceViewController.h"
-#import "GooGuuCommentViewController.h"
+#import "GooGuuCommentListVC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
@@ -345,7 +345,7 @@
         dahonVC.comInfo = self.companyInfo;
         [self presentViewController:dahonVC animated:YES completion:nil];
     } else if (row == 2) {//估右评论
-        GooGuuCommentViewController *comVC = [[[GooGuuCommentViewController alloc] initWithTopical:self.companyInfo[@"stockcode"] type:CompanyComment] autorelease];
+        GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:self.companyInfo[@"stockcode"] type:CompanyComment] autorelease];
         comVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comVC animated:YES];
     }

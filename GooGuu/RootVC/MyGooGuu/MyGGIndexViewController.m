@@ -83,7 +83,11 @@
     [Utiles getNetInfoWithPath:@"UserInfo" andParams:params besidesBlock:^(id obj) {
         if ([obj[@"status"] equals:@"1"]) {
             id clientInfo = obj[@"data"];
-            [self.clientAvatar setImageWithURL:[NSURL URLWithString:clientInfo[@"headerpicurl"]] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+            if (![Utiles isBlankString:clientInfo[@"headerpicurl"]]) {
+                [self.clientAvatar setImageWithURL:[NSURL URLWithString:clientInfo[@"headerpicurl"]] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+            } else {
+                self.clientAvatar.image = [UIImage imageNamed:@"defaultAvatar"];
+            }
             self.clientNameLabel.text = clientInfo[@"nickname"];
             [self.clientActionButton setTitle:@"注销" forState:UIControlStateNormal];
             [self.clientInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",clientInfo[@"myattentioncount"]] forSegmentAtIndex:2];

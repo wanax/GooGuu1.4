@@ -322,6 +322,16 @@ static NSDateFormatter *formatter;
     return inter;
     
 }
++(double)dateToSecond:(NSString *)date format:(NSString *)format{
+    
+    if(formatter==nil){
+        formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:format];
+    }
+    NSTimeInterval inter = [[formatter dateFromString:date] timeIntervalSince1970];
+    return inter;
+    
+}
 +(NSString *)secondToDate:(double)second{
     
     if(formatter==nil){

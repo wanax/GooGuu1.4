@@ -62,7 +62,7 @@
     for (int n = 0;n < [self.thumbnailsURL count];n ++) {
 
         UIImageView *temp = self.thumbnails[n];
-        temp.frame = CGRectMake(55,50+size.height,50,50);
+        temp.frame = CGRectMake(48+60*n,50+size.height,50,50);
         [self addSubview:temp];
         [temp setImageWithURL:[NSURL URLWithString:self.thumbnailsURL[n]] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
     }

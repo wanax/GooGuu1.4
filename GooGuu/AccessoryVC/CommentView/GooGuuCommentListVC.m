@@ -1,23 +1,23 @@
 //
-//  GooGuuCommentViewController.m
+//  GooGuuCommentList.m
 //  GooGuu
 //
 //  Created by Xcode on 14-1-14.
 //  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "GooGuuCommentViewController.h"
+#import "GooGuuCommentListVC.h"
 #import "TopCommentCell.h"
 #import "RegexKitLite.h"
 #import "SVPullToRefresh.h"
 #import "AddCommentViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@interface GooGuuCommentViewController ()
+@interface GooGuuCommentListVC ()
 
 @end
 
-@implementation GooGuuCommentViewController
+@implementation GooGuuCommentListVC
 
 - (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type
 {
@@ -92,7 +92,7 @@
                    @"cid":arId,
                    @"stockcode":self.topical
                    };
-    } else if (self.type == GGviewComment) {
+    } else if (self.type == GGViewComment) {
         url = @"Commentary";
         params = @{
                    @"cid":arId,
@@ -129,7 +129,7 @@
         params = @{
                    @"stockcode":self.topical
                    };
-    } else if (self.type == GGviewComment) {
+    } else if (self.type == GGViewComment) {
         url = @"Commentary";
         params = @{
                    @"articleid":self.topical
@@ -163,7 +163,7 @@
     CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
     
     if ([arr count] > 1) {
-        return size.height + 120;
+        return size.height + 110;
     } else {
         return size.height + 55;
     }
@@ -192,14 +192,14 @@
     
     cell.content = arr[0];
     cell.userName = model[@"author"];
-    //cell.artTitle = [NSString stringWithFormat:@"[%@]%@",model[@"classify"],model[@"title"]];
-    cell.updateTime = [Utiles intervalSinceNow:model[@"replytime"]];
+    cell.artTitle = model[@"username"];
+    cell.updateTime = [Utiles intervalSinceNow:model[@"updatetime"]];
     cell.avaURL = model[@"headerpicurl"];
     
     //添加评论缩略图
     if ([arr count] > 1) {
-        NSString *regexString  = @"http.*((.gif)|(.jpg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))";
-        NSArray  *matchArray  = [[arr JSONString] componentsMatchedByRegex:regexString];
+        NSString *regexString  = @"\\bhttp.{60,75}((.gif)|(.jpg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))\\b";
+        NSArray  *matchArray  = [[arr lastObject] componentsMatchedByRegex:regexString];
         cell.thumbnailsURL = matchArray;
     }
     
