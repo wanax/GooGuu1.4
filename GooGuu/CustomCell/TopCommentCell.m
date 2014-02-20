@@ -64,7 +64,7 @@
         UIImageView *temp = self.thumbnails[n];
         temp.frame = CGRectMake(48+60*n,50+size.height,50,50);
         [self addSubview:temp];
-        [temp setImageWithURL:[NSURL URLWithString:self.thumbnailsURL[n]] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+        [temp setImageWithURL:[NSURL URLWithString:self.thumbnailsURL[n]] placeholderImage:[UIImage imageNamed:@"defaultPic"]];
     }
     
 }

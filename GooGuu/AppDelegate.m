@@ -55,33 +55,6 @@
     [self initComponents];
 }
 
-#pragma mark -
-#pragma mark Update Checked
-- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1){
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:GetConfigure(@"FrameParamConfig", @"AppDownLoadURL", NO)]];
-    }
-}
--(void)checkUpdate{
-    AFHTTPClient *getAction=[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:GetConfigure(@"FrameParamConfig", @"iTunesURL", NO)]];
-    NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:GetConfigure(@"FrameParamConfig", @"GooguuAPPID", NO),@"id",nil];
-    
-    [getAction getPath:@"/lookup" parameters:params success:^(AFHTTPRequestOperation *operation,id responseObject){
-        
-        NSString *version = @"";
-        NSArray *configData = [[operation.responseString objectFromJSONString] valueForKey:@"results"];
-        
-        for (id config in configData){
-            version = [config valueForKey:@"version"];
-        }
-        if (![version isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]]){
-            UIAlertView *createUserResponseAlert = [[UIAlertView alloc] initWithTitle:@"新版本" message: @"下载新的版本" delegate:self cancelButtonTitle:@"取消" otherButtonTitles: @"下载", nil];
-            [createUserResponseAlert show];
-            [createUserResponseAlert release];
-        }
-    }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-    }];
-}
 
 #pragma mark -
 #pragma ShareSDK

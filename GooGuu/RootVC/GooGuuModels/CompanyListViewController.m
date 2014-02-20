@@ -14,7 +14,6 @@
 #import "MHTabBarController.h"
 #import "ComFieldViewController.h"
 #import "SVPullToRefresh.h"
-//#import "IndicatorComView.h"
 #import "StockSearchListViewController.h"
 #import "CompanyCell.h"
 #import "GGModelIndexVC.h"
@@ -57,10 +56,6 @@
     [self.comsTable addInfiniteScrollingWithActionHandler:^{
         [self addCompany];
     }];
-    
-    //IndicatorComView *indicator = [[[IndicatorComView alloc] init] autorelease];
-    //[self.view addSubview:indicator];
-
 }
 
 -(void)handleRefresh:(UIRefreshControl *)control {
@@ -126,13 +121,15 @@
         
         [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
             
-            NSMutableArray *codes = [[[NSMutableArray alloc] init] autorelease];
-            id data = obj[@"data"];
-            for (id model in data) {
-                [codes addObject:model[@"stockcode"]];
+            if ([obj[@"status"] isEqualToString:@"1"]) {
+                NSMutableArray *codes = [[[NSMutableArray alloc] init] autorelease];
+                id data = obj[@"data"];
+                for (id model in data) {
+                    [codes addObject:model[@"stockcode"]];
+                }
+                self.attentionCodes = codes;
+                [self.comsTable reloadData];
             }
-            self.attentionCodes = codes;
-            [self.comsTable reloadData];
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);
         }];

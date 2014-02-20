@@ -28,11 +28,41 @@
     }
     return self;
 }
+//公司评论列表初始化
+- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type stockCode:(NSString *)stockCode {
+    self = [super init];
+    if (self) {
+        self.topical = topical;
+        self.type = type;
+        self.stockCode = stockCode;
+    }
+    return self;
+}
+//文章评论列表初始化
+- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type articleId:(NSString *)articleId {
+    self = [super init];
+    if (self) {
+        self.topical = topical;
+        self.type = type;
+        self.articleId = articleId;
+    }
+    return self;
+}
+//个人评论列表初始化
+- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type userName:(NSString *)userName {
+    self = [super init];
+    if (self) {
+        self.topical = topical;
+        self.type = type;
+        self.userName = userName;
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"估友评论";
+    self.title = self.topical;
 	[self initComponents];
     [self getComments];
 }
@@ -45,11 +75,7 @@
     temp.showsVerticalScrollIndicator = NO;
     self.commentTable = temp;
     [self.view addSubview:self.commentTable];
-    
-    [self.commentTable addInfiniteScrollingWithActionHandler:^{
-        [self addComments];
-    }];
-    
+
     UIRefreshControl *tempRefresh = [[[UIRefreshControl alloc] init] autorelease];
     tempRefresh.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
     [tempRefresh addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
@@ -77,66 +103,28 @@
 #pragma mark -
 #pragma NetConection
 
--(void)addComments {
-    NSString *url = @"";
-    NSDictionary *params = nil;
-    NSString *arId=[[self.commentList lastObject] objectForKey:@"cid"];
-    if (arId==nil) {
-        [self.commentTable.infiniteScrollingView stopAnimating];
-        return;
-    }
-    if (self.type == CompanyComment) {
-        url = @"CompanyCommentURL";
-        
-        params = @{
-                   @"cid":arId,
-                   @"stockcode":self.topical
-                   };
-    } else if (self.type == GGViewComment) {
-        url = @"Commentary";
-        params = @{
-                   @"cid":arId,
-                   @"articleid":self.topical
-                   };
-    }
-    
-
-    [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
-        
-        NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
-
-            for(id model in self.commentList){
-                [temps addObject:model];
-            }
-        for (id model in obj) {
-            [temps addObject:model];
-        }
-        self.commentList = temps;
-        [self.commentTable reloadData];
-        [self.commentTable.infiniteScrollingView stopAnimating];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-    
-}
-
 -(void)getComments{
+    
     NSString *url = @"";
     NSDictionary *params = nil;
+    
     if (self.type == CompanyComment) {
         url = @"CompanyCommentURL";
         params = @{
-                   @"stockcode":self.topical
+                   @"stockcode":self.stockCode
                    };
-    } else if (self.type == GGViewComment) {
+    } else if (self.type == GGViewComment || self.type == ArticleComment) {
         url = @"Commentary";
         params = @{
-                   @"articleid":self.topical
+                   @"articleid":self.articleId
+                   };
+    } else if (self.type == TargetUserComment) {
+        url = @"TargetUserComment";
+        params = @{
+                   @"username":self.userName
                    };
     }
-    
-    
+
     [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
         
         NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
@@ -190,15 +178,22 @@
     
     NSArray *arr = [model[@"content"] split:@"<br/>"];
     
-    cell.content = arr[0];
-    cell.userName = model[@"author"];
-    cell.artTitle = model[@"username"];
-    cell.updateTime = [Utiles intervalSinceNow:model[@"updatetime"]];
-    cell.avaURL = model[@"headerpicurl"];
-    
+    if (self.type == TargetUserComment) {
+        cell.content = arr[0];
+        cell.userName = [Utiles isBlankString:model[@"companyname"]]?@"":model[@"companyname"];
+        cell.artTitle = [Utiles isBlankString:model[@"title"]]?@"":model[@"title"];
+        cell.avaURL = model[@"headerpicurl"];
+    } else {
+        cell.content = arr[0];
+        cell.userName = model[@"author"];
+        cell.artTitle = model[@"username"];
+        cell.updateTime = [Utiles intervalSinceNow:model[@"updatetime"]];
+        cell.avaURL = model[@"headerpicurl"];
+    }
+ 
     //添加评论缩略图
     if ([arr count] > 1) {
-        NSString *regexString  = @"\\bhttp.{60,75}((.gif)|(.jpg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))\\b";
+        NSString *regexString  = @"\\bhttp.{60,75}((.gif)|(.jpg)|(.jpeg)|(.bmp)|(.png)|(.GIF)|(.JPG)|(.PNG)|(.BMP))\\b";
         NSArray  *matchArray  = [[arr lastObject] componentsMatchedByRegex:regexString];
         cell.thumbnailsURL = matchArray;
     }
@@ -222,7 +217,12 @@
 -(void)sendBtClicked:(UIBarButtonItem *)bt {
     
     if ([Utiles isLogin]) {
-        AddCommentViewController *addCommentViewController=[[[AddCommentViewController alloc] initWithTopical:self.topical type:self.type] autorelease];
+        AddCommentViewController *addCommentViewController = nil;
+        if (self.type == CompanyComment) {
+            addCommentViewController = [[[AddCommentViewController alloc] initWithArg:self.stockCode type:CompanyComment] autorelease];
+        } else {
+            addCommentViewController = [[[AddCommentViewController alloc] initWithArg:self.articleId type:CompanyComment] autorelease];
+        }
         [self presentViewController:addCommentViewController animated:YES completion:nil];
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"请先登录" duration:1.5];

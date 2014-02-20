@@ -1,27 +1,37 @@
 //
-//  TopComsViewController.m
+//  CommonComListVC.m
 //  GooGuu
 //
 //  Created by Xcode on 14-1-14.
 //  Copyright (c) 2014年 Xcode. All rights reserved.
 //
 
-#import "TopComsViewController.h"
+#import "CommonComListVC.h"
 #import "CompanyCell.h"
 #import "GGModelIndexVC.h"
 
-@interface TopComsViewController ()
+@interface CommonComListVC ()
 
 @end
 
-@implementation TopComsViewController
+@implementation CommonComListVC
 
-- (id)initWithTopical:(NSString *)topical type:(TopPoints)type
+- (id)initWithTopical:(NSString *)topical type:(CompanyListType)type
 {
     self = [super init];
     if (self) {
         self.topical = topical;
         self.type = type;
+    }
+    return self;
+}
+
+- (id)initWithTopical:(NSString *)topical type:(CompanyListType)type userName:(NSString *)userName {
+    self = [super init];
+    if (self) {
+        self.topical = topical;
+        self.type = type;
+        self.userName = userName;
     }
     return self;
 }
@@ -70,6 +80,7 @@
 
 -(void)getComsInfo {
     
+    NSDictionary *params = nil;
     NSString *url = @"";
     if (self.type == TopCompany) {
         url = @"GetTopCompanys";
@@ -77,9 +88,14 @@
         url = @"RiseSpace";
     } else if (self.type == FallSpace) {
         url = @"FallSpace";
+    } else if (self.type == FriendAttentionCom) {
+        url = @"FriendInterestCompanys";
+        params = @{
+                   @"username":self.userName
+                   };
     }
     
-    [Utiles getNetInfoWithPath:url andParams:nil besidesBlock:^(id obj) {
+    [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
         
         NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
         for (id model in obj) {
@@ -92,20 +108,22 @@
         
     }];
     
-    NSDictionary *params = @{
+    NSDictionary *params2 = @{
                              @"token":[Utiles getUserToken],
                              @"from":@"googuu",
                              @"state":@"1"
                              };
     
-    [Utiles getNetInfoWithPath:@"AttentionData" andParams:params besidesBlock:^(id obj) {
+    [Utiles getNetInfoWithPath:@"AttentionData" andParams:params2 besidesBlock:^(id obj) {
         
-        NSMutableArray *codes = [[[NSMutableArray alloc] init] autorelease];
-        id data = obj[@"data"];
-        for (id model in data) {
-            [codes addObject:model[@"stockcode"]];
+        if ([obj[@"status"] isEqualToString:@"1"]) {
+            NSMutableArray *codes = [[[NSMutableArray alloc] init] autorelease];
+            id data = obj[@"data"];
+            for (id model in data) {
+                [codes addObject:model[@"stockcode"]];
+            }
+            self.attentionCodes = codes;
         }
-        self.attentionCodes = codes;
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@",error);
@@ -200,7 +218,7 @@
         [cell.attentionBt setTitle:@"添加关注" forState:UIControlStateNormal];
     }
     
-    if (self.type == TopCompany) {
+    if (self.type == TopCompany || self.type == FriendAttentionCom) {
         
         float ggPrice = [model[@"googuuprice"] floatValue];
 

@@ -8,6 +8,7 @@
 
 #import "ClientFansViewController.h"
 #import "SVPullToRefresh.h"
+#import "TaIndexViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ClientFansViewController ()
@@ -22,6 +23,18 @@
     if (self) {
         self.pageOffset = 1;
         self.type = type;
+        NSArray *arr = [[[NSArray alloc] init] autorelease];
+        self.clientList = arr;
+    }
+    return self;
+}
+
+-(id)initWithType:(NSString *)type andUserName:(NSString *)username {
+    self = [super init];
+    if (self) {
+        self.pageOffset = 1;
+        self.forWho = type;
+        self.userName = username;
         NSArray *arr = [[[NSArray alloc] init] autorelease];
         self.clientList = arr;
     }
@@ -77,16 +90,36 @@
 #pragma NetConection
 
 -(void)getClients:(NSString *)strOffset {
-
-    NSDictionary *params = @{
-                             @"token":[Utiles getUserToken],
-                             @"offset":strOffset,
-                             @"from":@"googuu"
-                             };
     
-    [Utiles getNetInfoWithPath:@"ClientFans" andParams:params besidesBlock:^(id obj) {
+    [ProgressHUD show:nil];
+    NSString *url = @"";
+    NSDictionary *params = nil;
+    
+    if ([self.forWho isEqualToString:@"FriendList"]) {
+        params = @{
+                   @"username":self.userName,
+                   @"offset":strOffset,
+                   @"from":@"googuu"
+                   };
+        url = @"FriendFans";
+    } else {
+        params = @{
+                   @"token":[Utiles getUserToken],
+                   @"offset":strOffset,
+                   @"from":@"googuu"
+                   };
+        url = @"ClientFans";
+    }
+    
+    [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
         
-        id clients = obj[@"data"];
+        [ProgressHUD dismiss];
+        id clients;
+        if ([self.forWho isEqual:@"FriendList"]) {
+            clients = obj;
+        } else {
+            clients = obj[@"data"];
+        }
         NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
         if (self.pageOffset > 1) {
             for(id model in self.clientList){
@@ -149,7 +182,9 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.postList[indexPath.row][@"headerpicurl"]]];
+    TaIndexViewController *taIndexVC = [[[TaIndexViewController alloc] init] autorelease];
+    taIndexVC.userName = self.clientList[indexPath.row][@"username"];
+    [self.navigationController pushViewController:taIndexVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

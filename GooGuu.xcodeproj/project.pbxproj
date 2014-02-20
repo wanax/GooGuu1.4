@@ -168,7 +168,6 @@
 		AE2AD43418AB4B5600D8CC6C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2AD42918AB47EC00D8CC6C /* libsqlite3.dylib */; };
 		AE2AD44818AB61E400D8CC6C /* UIView+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = AE2AD44718AB61E400D8CC6C /* UIView+Common.m */; };
 		AE2B48F5187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */; };
-		AE34C4B818B43D4E006EBE9F /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE34C4B718B43D4E006EBE9F /* libBaiduMobStat.a */; };
 		AE391478188F5BA400985CF0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AE391475188F5BA400985CF0 /* ProgressHUD.bundle */; };
 		AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE391477188F5BA400985CF0 /* ProgressHUD.m */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
@@ -221,6 +220,8 @@
 		AE6B68C1188A2B8700C3ADBF /* unread.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68B9188A2B8700C3ADBF /* unread.png */; };
 		AE6B68C2188A2B8700C3ADBF /* unread2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BA188A2B8700C3ADBF /* unread2.png */; };
 		AE6B68C3188A2B8700C3ADBF /* valueModelBt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */; };
+		AE6D233C18B4979D00C7EB30 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6D233B18B4979D00C7EB30 /* Queue.m */; };
+		AE6D234018B4B61D00C7EB30 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6D233F18B4B61D00C7EB30 /* libBaiduMobStat.a */; };
 		AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */; };
 		AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */; };
 		AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */; };
@@ -236,15 +237,21 @@
 		AE74DFAF187E4595002AE169 /* IQSegmentedNextPrevious.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DFAD187E4595002AE169 /* IQSegmentedNextPrevious.m */; };
 		AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC83188E6DFE00FB73F5 /* ComGGViewsVC.m */; };
 		AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */; };
 		AE7C1AC418851359006D37B5 /* CompanyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1AC318851359006D37B5 /* CompanyCell.xib */; };
 		AE7C1AC7188515D6006D37B5 /* CompanyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AC6188515D6006D37B5 /* CompanyCell.m */; };
 		AE7C1ACD18851F6A006D37B5 /* stockUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACC18851F6A006D37B5 /* stockUpArrow.png */; };
 		AE7C1ACF18851FB5006D37B5 /* stockDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */; };
 		AE7C1AD218852FE1006D37B5 /* TopCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */; };
+		AE7D2AFF18B5DC1B00485C59 /* CommonComListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7D2AFE18B5DC1B00485C59 /* CommonComListVC.m */; };
 		AE7EE30F1884CEC100A0E5BF /* GooGuuIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */; };
 		AE7EE31F1884DB3B00A0E5BF /* ArticleCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */; };
 		AE7EE3231884DB3B00A0E5BF /* GGReportListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */; };
+		AE7F4D3E18B5950200C6538D /* TaIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7F4D3D18B5950200C6538D /* TaIndexViewController.m */; };
+		AE7F4D4218B5951900C6538D /* TaIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7F4D4118B5951900C6538D /* TaIndexView.xib */; };
+		AE7F4D4A18B5B16500C6538D /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7F4D4518B5B16500C6538D /* ChatCell.m */; };
+		AE7F4D4B18B5B16500C6538D /* ChatCell.m.tmp in Resources */ = {isa = PBXBuildFile; fileRef = AE7F4D4618B5B16500C6538D /* ChatCell.m.tmp */; };
+		AE7F4D4C18B5B16500C6538D /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7F4D4818B5B16500C6538D /* ChatListViewController.m */; };
+		AE7F4D4D18B5B16500C6538D /* ChatListViewController.m.tmp in Resources */ = {isa = PBXBuildFile; fileRef = AE7F4D4918B5B16500C6538D /* ChatListViewController.m.tmp */; };
 		AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */; };
 		AE8641A1188D1E6D00935E4E /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419F188D1E6D00935E4E /* MyCommentViewController.m */; };
 		AE8641A7188D246300935E4E /* ClientRelationComListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8641A6188D246300935E4E /* ClientRelationComListVC.m */; };
@@ -389,8 +396,6 @@
 		AE9E53D3189247CB0097EC57 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53C9189247CB0097EC57 /* Base64.m */; };
 		AE9E53D4189247CB0097EC57 /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53CC189247CB0097EC57 /* GzipCompressor.m */; };
 		AE9E53D6189247CB0097EC57 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E53D0189247CB0097EC57 /* OpenUDID.m */; };
-		AE9F3B1118ADEA5800DE61E5 /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9F3B1018ADEA5800DE61E5 /* ChatListViewController.m */; };
-		AE9F3B1418ADF55300DE61E5 /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9F3B1318ADF55300DE61E5 /* ChatCell.m */; };
 		AE9F3B1718ADFB1100DE61E5 /* myMsgBack.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9F3B1518ADFB1100DE61E5 /* myMsgBack.png */; };
 		AE9F3B1818ADFB1100DE61E5 /* targetMsgBack.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9F3B1618ADFB1100DE61E5 /* targetMsgBack.png */; };
 		AE9F3B1C18AE09CE00DE61E5 /* YFInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9F3B1B18AE09CE00DE61E5 /* YFInputBar.m */; };
@@ -787,8 +792,6 @@
 		AE2B48F3187D2BDD007ABEC8 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		AE2B48F4187D2C1F007ABEC8 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		AE2B48F6187D2C5E007ABEC8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		AE34C4B618B43D4E006EBE9F /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE34C4B718B43D4E006EBE9F /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE391475188F5BA400985CF0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		AE391476188F5BA400985CF0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		AE391477188F5BA400985CF0 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -870,6 +873,10 @@
 		AE6B68B9188A2B8700C3ADBF /* unread.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread.png; sourceTree = "<group>"; };
 		AE6B68BA188A2B8700C3ADBF /* unread2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unread2.png; sourceTree = "<group>"; };
 		AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valueModelBt.png; sourceTree = "<group>"; };
+		AE6D233A18B4979D00C7EB30 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
+		AE6D233B18B4979D00C7EB30 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
+		AE6D233E18B4B61D00C7EB30 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE6D233F18B4B61D00C7EB30 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE71CACC1887DD10005B3A2D /* CompanyPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyPostListViewController.h; sourceTree = "<group>"; };
 		AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyPostListViewController.m; sourceTree = "<group>"; };
 		AE74DF87187E44D3002AE169 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
@@ -900,8 +907,6 @@
 		AE7ABC83188E6DFE00FB73F5 /* ComGGViewsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComGGViewsVC.m; sourceTree = "<group>"; };
 		AE7ABC8B188E8CE900FB73F5 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarController.h; sourceTree = "<group>"; };
 		AE7ABC8C188E8CE900FB73F5 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
-		AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopComsViewController.h; sourceTree = "<group>"; };
-		AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopComsViewController.m; sourceTree = "<group>"; };
 		AE7C1AC318851359006D37B5 /* CompanyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompanyCell.xib; sourceTree = "<group>"; };
 		AE7C1AC5188515D6006D37B5 /* CompanyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyCell.h; sourceTree = "<group>"; };
 		AE7C1AC6188515D6006D37B5 /* CompanyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyCell.m; sourceTree = "<group>"; };
@@ -909,12 +914,23 @@
 		AE7C1ACE18851FB5006D37B5 /* stockDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stockDownArrow.png; sourceTree = "<group>"; };
 		AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentsViewController.h; sourceTree = "<group>"; };
 		AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentsViewController.m; sourceTree = "<group>"; };
+		AE7D2AFD18B5DC1B00485C59 /* CommonComListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonComListVC.h; sourceTree = "<group>"; };
+		AE7D2AFE18B5DC1B00485C59 /* CommonComListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonComListVC.m; sourceTree = "<group>"; };
 		AE7EE30D1884CEC100A0E5BF /* GooGuuIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuIndexViewController.h; sourceTree = "<group>"; };
 		AE7EE30E1884CEC100A0E5BF /* GooGuuIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuIndexViewController.m; sourceTree = "<group>"; };
 		AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleCommentViewController.h; sourceTree = "<group>"; };
 		AE7EE3161884DB3B00A0E5BF /* ArticleCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleCommentViewController.m; sourceTree = "<group>"; };
 		AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGReportListVC.h; sourceTree = "<group>"; };
 		AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGReportListVC.m; sourceTree = "<group>"; };
+		AE7F4D3C18B5950200C6538D /* TaIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaIndexViewController.h; sourceTree = "<group>"; };
+		AE7F4D3D18B5950200C6538D /* TaIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaIndexViewController.m; sourceTree = "<group>"; };
+		AE7F4D4118B5951900C6538D /* TaIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaIndexView.xib; sourceTree = "<group>"; };
+		AE7F4D4418B5B16500C6538D /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
+		AE7F4D4518B5B16500C6538D /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
+		AE7F4D4618B5B16500C6538D /* ChatCell.m.tmp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChatCell.m.tmp; sourceTree = "<group>"; };
+		AE7F4D4718B5B16500C6538D /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
+		AE7F4D4818B5B16500C6538D /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
+		AE7F4D4918B5B16500C6538D /* ChatListViewController.m.tmp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChatListViewController.m.tmp; sourceTree = "<group>"; };
 		AE86419B188D1E6D00935E4E /* MyCollectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectsViewController.h; sourceTree = "<group>"; };
 		AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectsViewController.m; sourceTree = "<group>"; };
 		AE86419E188D1E6D00935E4E /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
@@ -1071,10 +1087,6 @@
 		AE9E53CC189247CB0097EC57 /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
 		AE9E53CF189247CB0097EC57 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
 		AE9E53D0189247CB0097EC57 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
-		AE9F3B0F18ADEA5800DE61E5 /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
-		AE9F3B1018ADEA5800DE61E5 /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
-		AE9F3B1218ADF55300DE61E5 /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
-		AE9F3B1318ADF55300DE61E5 /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
 		AE9F3B1518ADFB1100DE61E5 /* myMsgBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myMsgBack.png; sourceTree = "<group>"; };
 		AE9F3B1618ADFB1100DE61E5 /* targetMsgBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = targetMsgBack.png; sourceTree = "<group>"; };
 		AE9F3B1A18AE09CE00DE61E5 /* YFInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YFInputBar.h; sourceTree = "<group>"; };
@@ -1130,7 +1142,7 @@
 				AE2AD40D18AB47B200D8CC6C /* AGCommon.framework in Frameworks */,
 				AE018839187CF635004C6A5D /* CoreGraphics.framework in Frameworks */,
 				AE01883B187CF635004C6A5D /* UIKit.framework in Frameworks */,
-				AE34C4B818B43D4E006EBE9F /* libBaiduMobStat.a in Frameworks */,
+				AE6D234018B4B61D00C7EB30 /* libBaiduMobStat.a in Frameworks */,
 				AE2AD40A18AB47B200D8CC6C /* WeChatConnection.framework in Frameworks */,
 				AE018837187CF635004C6A5D /* Foundation.framework in Frameworks */,
 				AE2AD41018AB47B200D8CC6C /* ShareSDKCoreService.framework in Frameworks */,
@@ -1250,6 +1262,8 @@
 		AE018865187CFC3F004C6A5D /* AccessoryVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE7D2AFA18B5DBEF00485C59 /* CommonComList */,
+				AE7F4D4318B5B16500C6538D /* ChatList */,
 				AEACB1B718B2F6DA00F610EC /* CommentView */,
 				AE6A84D018AC5DA600FF5AFE /* TableTest */,
 				AE6A84CC18AC5D8300FF5AFE /* ArticleView */,
@@ -1276,6 +1290,8 @@
 				AE0D3CBC187D36B200E0E141 /* CommonlyMacros.m */,
 				AE0D3CBD187D36B200E0E141 /* EnumSummary.h */,
 				AE0D3CBE187D36B200E0E141 /* EnumSummary.m */,
+				AE6D233A18B4979D00C7EB30 /* Queue.h */,
+				AE6D233B18B4979D00C7EB30 /* Queue.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1331,7 +1347,7 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				AE34C4B518B43D4E006EBE9F /* Release-iphonesimulator */,
+				AE6D233D18B4B61D00C7EB30 /* Release-iphonesimulator */,
 				AE9F3B1918AE09B900DE61E5 /* YFInputBar */,
 				AE2AD39D18AB47B100D8CC6C /* ShareSDK */,
 				AE9E53C6189247CB0097EC57 /* BPush.h */,
@@ -1594,7 +1610,6 @@
 		AE0D3D04187D405B00E0E141 /* MyGooGuu */ = {
 			isa = PBXGroup;
 			children = (
-				AE9F3B0E18ADEA5800DE61E5 /* ChatList */,
 				AE86419A188D1E6D00935E4E /* MyCollects */,
 				AE86419D188D1E6D00935E4E /* MyComments */,
 				AEE0FDC0188CC0B300C70120 /* RelationClients */,
@@ -1977,15 +1992,6 @@
 			path = CorePlotHeaders;
 			sourceTree = "<group>";
 		};
-		AE34C4B518B43D4E006EBE9F /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				AE34C4B618B43D4E006EBE9F /* BaiduMobStat.h */,
-				AE34C4B718B43D4E006EBE9F /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphonesimulator";
-			sourceTree = "<group>";
-		};
 		AE391474188F5BA400985CF0 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -2231,6 +2237,25 @@
 			name = ButtonIcon;
 			sourceTree = "<group>";
 		};
+		AE6D233D18B4B61D00C7EB30 /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AE6D233E18B4B61D00C7EB30 /* BaiduMobStat.h */,
+				AE6D233F18B4B61D00C7EB30 /* libBaiduMobStat.a */,
+			);
+			path = "Release-iphonesimulator";
+			sourceTree = "<group>";
+		};
+		AE6D234118B4B8A400C7EB30 /* Ta'sCenter */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F4D4118B5951900C6538D /* TaIndexView.xib */,
+				AE7F4D3C18B5950200C6538D /* TaIndexViewController.h */,
+				AE7F4D3D18B5950200C6538D /* TaIndexViewController.m */,
+			);
+			path = "Ta'sCenter";
+			sourceTree = "<group>";
+		};
 		AE71CAC81887DCC2005B3A2D /* OldVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -2256,6 +2281,7 @@
 		AE74DF83187E4480002AE169 /* ClientCenter */ = {
 			isa = PBXGroup;
 			children = (
+				AE6D234118B4B8A400C7EB30 /* Ta'sCenter */,
 				AE60C94718ADC2C4001B4C8A /* ClientCenterSetting */,
 				AE74DF90187E4501002AE169 /* ProjectSetting */,
 				AE74DF84187E44A1002AE169 /* ClientAction */,
@@ -2339,17 +2365,37 @@
 			path = CellNib;
 			sourceTree = "<group>";
 		};
+		AE7D2AFA18B5DBEF00485C59 /* CommonComList */ = {
+			isa = PBXGroup;
+			children = (
+				AE7D2AFD18B5DC1B00485C59 /* CommonComListVC.h */,
+				AE7D2AFE18B5DC1B00485C59 /* CommonComListVC.m */,
+			);
+			path = CommonComList;
+			sourceTree = "<group>";
+		};
 		AE7EE3251884DC0C00A0E5BF /* TopPointsVC */ = {
 			isa = PBXGroup;
 			children = (
 				AEF0AEBD188AAB3C008A499A /* TopArticlesViewController.h */,
 				AEF0AEBE188AAB3C008A499A /* TopArticlesViewController.m */,
-				AE7C1ABC18850D19006D37B5 /* TopComsViewController.h */,
-				AE7C1ABD18850D19006D37B5 /* TopComsViewController.m */,
 				AE7C1AD018852FE1006D37B5 /* TopCommentsViewController.h */,
 				AE7C1AD118852FE1006D37B5 /* TopCommentsViewController.m */,
 			);
 			path = TopPointsVC;
+			sourceTree = "<group>";
+		};
+		AE7F4D4318B5B16500C6538D /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				AE7F4D4418B5B16500C6538D /* ChatCell.h */,
+				AE7F4D4518B5B16500C6538D /* ChatCell.m */,
+				AE7F4D4618B5B16500C6538D /* ChatCell.m.tmp */,
+				AE7F4D4718B5B16500C6538D /* ChatListViewController.h */,
+				AE7F4D4818B5B16500C6538D /* ChatListViewController.m */,
+				AE7F4D4918B5B16500C6538D /* ChatListViewController.m.tmp */,
+			);
+			path = ChatList;
 			sourceTree = "<group>";
 		};
 		AE86419A188D1E6D00935E4E /* MyCollects */ = {
@@ -2667,17 +2713,6 @@
 			path = opensource;
 			sourceTree = "<group>";
 		};
-		AE9F3B0E18ADEA5800DE61E5 /* ChatList */ = {
-			isa = PBXGroup;
-			children = (
-				AE9F3B1218ADF55300DE61E5 /* ChatCell.h */,
-				AE9F3B1318ADF55300DE61E5 /* ChatCell.m */,
-				AE9F3B0F18ADEA5800DE61E5 /* ChatListViewController.h */,
-				AE9F3B1018ADEA5800DE61E5 /* ChatListViewController.m */,
-			);
-			path = ChatList;
-			sourceTree = "<group>";
-		};
 		AE9F3B1918AE09B900DE61E5 /* YFInputBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2828,6 +2863,7 @@
 				AE949D28187E8154004FC1AB /* searchBarBack.png in Resources */,
 				AE68DEDC188A609F000C7D8C /* icon_pie_small.png in Resources */,
 				AE0D3D99187D46EB00E0E141 /* MainWindow.xib in Resources */,
+				AE7F4D4B18B5B16500C6538D /* ChatCell.m.tmp in Resources */,
 				AE9B2C921886965E0077B56D /* REPORT.png in Resources */,
 				AE949D90187E81E5004FC1AB /* shadowUp.png in Resources */,
 				AE9B2C931886965E0077B56D /* FINDATA.png in Resources */,
@@ -2946,6 +2982,7 @@
 				AE949DE5187E8298004FC1AB /* myGooGuuBar@2x.png in Resources */,
 				AE949D94187E81E5004FC1AB /* tabSelected.png in Resources */,
 				AE949D6C187E81D8004FC1AB /* guide1.png in Resources */,
+				AE7F4D4218B5951900C6538D /* TaIndexView.xib in Resources */,
 				AE949D6F187E81D8004FC1AB /* guide4.png in Resources */,
 				AE949DB0187E8218004FC1AB /* userInfoBack.png in Resources */,
 				AE9B2C8D188682190077B56D /* GGModelIndexView.xib in Resources */,
@@ -2991,6 +3028,7 @@
 				AE949D3E187E8169004FC1AB /* discountBt.png in Resources */,
 				AE949D4D187E817C004FC1AB /* topBack.png in Resources */,
 				AE949D26187E8154004FC1AB /* hasnoModelSymbol.png in Resources */,
+				AE7F4D4D18B5B16500C6538D /* ChatListViewController.m.tmp in Resources */,
 				AE949D95187E81E5004FC1AB /* fallArrow.png in Resources */,
 				AE949D87187E81E5004FC1AB /* whiteDotLine.png in Resources */,
 				AE949DE2187E8298004FC1AB /* graphExchangeBar.png in Resources */,
@@ -3151,6 +3189,7 @@
 				AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */,
 				AE518744187E41BD0055B9AE /* ModelClassGrade2ViewController.m in Sources */,
 				AE0D3CEE187D3A9200E0E141 /* PrettyTabBar.m in Sources */,
+				AE7D2AFF18B5DC1B00485C59 /* CommonComListVC.m in Sources */,
 				AE06B8E9187EAB7900DA93E2 /* CounterBankViewController.m in Sources */,
 				AE276B391890A50E00FA603F /* GooGuuArticleViewController.m in Sources */,
 				AE0D3D14187D407700E0E141 /* CalendarViewController.m in Sources */,
@@ -3168,7 +3207,6 @@
 				AE9E53D4189247CB0097EC57 /* GzipCompressor.m in Sources */,
 				AE518715187E40370055B9AE /* FinancalModelChartViewController.m in Sources */,
 				AE0D3CFD187D3B7F00E0E141 /* GCDiscreetNotificationView.m in Sources */,
-				AE7C1ABE18850D19006D37B5 /* TopComsViewController.m in Sources */,
 				AE9E53D3189247CB0097EC57 /* Base64.m in Sources */,
 				AE74DFA0187E4509002AE169 /* HelpViewController.m in Sources */,
 				AE518737187E411A0055B9AE /* AnalyDetailContainerViewController.m in Sources */,
@@ -3176,12 +3214,14 @@
 				AE0D3D22187D410800E0E141 /* CustomCellBackground.m in Sources */,
 				AE0D3D46187D414400E0E141 /* IndicatorComView.m in Sources */,
 				AE51871F187E40630055B9AE /* ChartViewController.m in Sources */,
+				AE7F4D4A18B5B16500C6538D /* ChatCell.m in Sources */,
 				AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */,
 				AE06B8EA187EAB7900DA93E2 /* BetaFactorCountViewController.m in Sources */,
 				AE276B3E1890B5EC00FA603F /* ExpectedSpaceViewController.m in Sources */,
 				AE7ABC93188E8CE900FB73F5 /* MHTabBarController.m in Sources */,
 				AE7ABC84188E6DFE00FB73F5 /* ComGGViewsVC.m in Sources */,
 				AE0D3D43187D414400E0E141 /* CompanyListViewController.m in Sources */,
+				AE6D233C18B4979D00C7EB30 /* Queue.m in Sources */,
 				AE9E53D6189247CB0097EC57 /* OpenUDID.m in Sources */,
 				AE0D3CB8187D36A000E0E141 /* UIButton+BGColor.m in Sources */,
 				AE3E631A187F9374005A71AD /* TipViewController.m in Sources */,
@@ -3196,7 +3236,6 @@
 				AE0D3CCB187D3A2900E0E141 /* MBProgressHUD.m in Sources */,
 				AE0D3D24187D410800E0E141 /* FinancePicViewController.m in Sources */,
 				AE74DF9F187E4509002AE169 /* FeedBackViewController.m in Sources */,
-				AE9F3B1118ADEA5800DE61E5 /* ChatListViewController.m in Sources */,
 				AE236781188B660500D74674 /* CompanyFansVC.m in Sources */,
 				AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */,
 				AE74DF9D187E4509002AE169 /* StockRiseDownColorSettingViewController.m in Sources */,
@@ -3219,7 +3258,6 @@
 				AE58A7261883899600E044BD /* XYPieChart.m in Sources */,
 				AE0D3CEC187D3A9200E0E141 /* PrettyNavigationBar.m in Sources */,
 				AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */,
-				AE9F3B1418ADF55300DE61E5 /* ChatCell.m in Sources */,
 				AE0D3D83187D469800E0E141 /* CompanyReportCell.m in Sources */,
 				AE0D3CC1187D36B200E0E141 /* EnumSummary.m in Sources */,
 				AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */,
@@ -3229,10 +3267,12 @@
 				AE018847187CF636004C6A5D /* AppDelegate.m in Sources */,
 				AE0D3CB5187D36A000E0E141 /* UINavigationController+Autorotate.m in Sources */,
 				AE9B2C86188669190077B56D /* NSStringWrapper.m in Sources */,
+				AE7F4D3E18B5950200C6538D /* TaIndexViewController.m in Sources */,
 				AE0D3CF4187D3A9B00E0E141 /* PrettyNavigationController.m in Sources */,
 				AE0D3D5F187D467300E0E141 /* VRGCalendarView.m in Sources */,
 				AE0D3CED187D3A9200E0E141 /* PrettyShadowPlainTableview.m in Sources */,
 				AE0D3CE7187D3A9200E0E141 /* PrettyCustomViewTableViewCell.m in Sources */,
+				AE7F4D4C18B5B16500C6538D /* ChatListViewController.m in Sources */,
 				AE06B8EB187EAB7900DA93E2 /* ChoseBetaFactorViewController.m in Sources */,
 				AE0A5666188D59CA00EC0DB0 /* UserFriendCell.m in Sources */,
 				AE0D3DD4187D4A3200E0E141 /* DemoPhotoLoadingView.m in Sources */,
@@ -3399,14 +3439,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(SRCROOT)/GooGuu/Plugins/Release-iphonesimulator",
 					"$(SRCROOT)/GooGuu/Plugins/Release-iphoneos",
-					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/SinaWeiboSDK,
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/TencentWeiboSDK,
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/WeChatSDK,
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/YiXinSDK,
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
+					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";
@@ -3441,14 +3480,13 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					"$(SRCROOT)/GooGuu/Plugins/Release-iphonesimulator",
 					"$(SRCROOT)/GooGuu/Plugins/Release-iphoneos",
-					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/SinaWeiboSDK,
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/TencentWeiboSDK,
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/WeChatSDK,
 					/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/ShareSDK/Extend/YiXinSDK,
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphoneos",
+					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";

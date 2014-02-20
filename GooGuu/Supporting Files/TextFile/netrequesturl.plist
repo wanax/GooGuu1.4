@@ -2,6 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>TargetUserComment</key>
+	<string>/m/comment</string>
+	<key>FriendInterestCompanys</key>
+	<string>/m/friendinterestcompanys</string>
+	<key>FriendAttUsers</key>
+	<string>/m/friendattentionusers</string>
+	<key>FriendFans</key>
+	<string>/m/friendsfans</string>
+	<key>TargetUserInfo</key>
+	<string>/m/friendsinfo</string>
+	<key>RemoveFromBlackList</key>
+	<string>/m/delfromblacklist</string>
+	<key>AddToBlackList</key>
+	<string>/m/addtoblacklist</string>
+	<key>BlackList</key>
+	<string>/m/blacklist</string>
 	<key>SendPriMsg</key>
 	<string>/m/sendprivatemsg</string>
 	<key>ChatList</key>

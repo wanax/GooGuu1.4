@@ -11,7 +11,6 @@
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import "CPTColor.h"
-#import "AFHTTPClient.h"
 #import "AFHTTPRequestOperation.h"
 
 @interface Utiles : NSObject

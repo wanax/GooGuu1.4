@@ -9,7 +9,7 @@
 #import "GooGuuIndexViewController.h"
 #import "DailyStock2Cell.h"
 #import "TopArticlesViewController.h"
-#import "TopComsViewController.h"
+#import "CommonComListVC.h"
 #import "TopCommentsViewController.h"
 #import "WishesComListViewController.h"
 #import "GGModelIndexVC.h"
@@ -284,19 +284,19 @@
             
         } else if (row == 1) {//topCompany
             
-            TopComsViewController *comVC = [[[TopComsViewController alloc] initWithTopical:@"热门公司" type:TopCompany] autorelease];
+            CommonComListVC *comVC = [[[CommonComListVC alloc] initWithTopical:@"热门公司" type:TopCompany] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
             
         } else if (row == 2) {//risespace
             
-            TopComsViewController *comVC = [[[TopComsViewController alloc] initWithTopical:@"上涨潜力" type:RiseSpace] autorelease];
+            CommonComListVC *comVC = [[[CommonComListVC alloc] initWithTopical:@"上涨潜力" type:RiseSpace] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
             
         } else if (row == 3) {//fallspace
             
-            TopComsViewController *comVC = [[[TopComsViewController alloc] initWithTopical:@"下跌空间" type:FallSpace] autorelease];
+            CommonComListVC *comVC = [[[CommonComListVC alloc] initWithTopical:@"下跌空间" type:FallSpace] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
             

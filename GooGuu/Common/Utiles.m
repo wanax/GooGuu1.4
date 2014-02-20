@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import "Toast+UIView.h"
 #import "GCDiscreetNotificationView.h"
+#import "AFNetWorking.h"
 
 
 @implementation Utiles
@@ -151,52 +152,42 @@ static NSDateFormatter *formatter;
 
 
 +(void)getNetInfoWithPath:(NSString *)url andParams:(NSDictionary *)params besidesBlock:(void (^)(id))block failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
-    @try {
-        AFHTTPClient *getAction=[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[Utiles getConfigureInfoFrom:@"netrequesturl" andKey:@"GooGuuBaseURL" inUserDomain:NO]]];
-        [getAction getPath:[Utiles getConfigureInfoFrom:@"netrequesturl" andKey:url inUserDomain:NO] parameters:params success:^(AFHTTPRequestOperation *operation,id responseObject){
-            
-            id resObj=[operation.responseString objectFromJSONString];
-            if(block){
-                block(resObj);
-            }
-            
-        }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            failure(operation,error);
-        }];
-        [getAction release];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
-    @finally {
-        //NSLog(@"get net failed");
-    }
+
+    NSString *baseURL = GetConfigure(@"netrequesturl",@"GooGuuBaseURL",NO);
+    NSString *requestURL = GetConfigure(@"netrequesturl",url,NO);
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+
+    [manager GET:[NSString stringWithFormat:@"%@%@",baseURL,requestURL] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        id resObj=[operation.responseString objectFromJSONString];
+        if(block){
+            block(resObj);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
     
 }
 
 +(void)postNetInfoWithPath:(NSString *)url andParams:(NSDictionary *)params besidesBlock:(void (^)(id))block failure:(void (^)(AFHTTPRequestOperation *, NSError *))failure{
     
-    @try {
-        AFHTTPClient *postAction=[[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:[Utiles getConfigureInfoFrom:@"netrequesturl" andKey:@"GooGuuBaseURL" inUserDomain:NO]]];
-        [postAction postPath:[Utiles getConfigureInfoFrom:@"netrequesturl" andKey:url inUserDomain:NO]parameters:params success:^(AFHTTPRequestOperation *operation,id responseObject){
-            NSString *tempRes=[operation.responseString stringByReplacingOccurrencesOfString:@",]" withString:@"]"];
-            id resObj=[tempRes objectFromJSONString];
-            if(block){
-                block(resObj);
-            }
-            
-        }failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            failure(operation,error);
-        }];
-        [postAction release];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
-    @finally {
-        //NSLog(@"post net failed");
-    }
+    NSString *baseURL = GetConfigure(@"netrequesturl",@"GooGuuBaseURL",NO);
+    NSString *requestURL = GetConfigure(@"netrequesturl",url,NO);
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    [manager POST:[NSString stringWithFormat:@"%@%@",baseURL,requestURL] parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        //NSString *tempRes=[operation.responseString stringByReplacingOccurrencesOfString:@",]" withString:@"]"];
+        id resObj=[operation.responseString objectFromJSONString];
+        if(block){
+            block(resObj);
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 
 + (BOOL) isBlankString:(NSString *)string {

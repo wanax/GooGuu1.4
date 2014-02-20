@@ -10,19 +10,26 @@
 
 #import <UIKit/UIKit.h>
 
+@class Queue;
+
 @interface AddCommentViewController : UIViewController<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 //记录已上传的图片数量，用户添加当前上传图片框中的进度条
 @property NSInteger imgNum;
 //记录正在上传的图片数量，用于发表时判断所有图片是否已上传完毕
 @property NSInteger sendingNum;
+//判定是否正在上传图片，以开启下一张图片的传送
+@property BOOL isSending;
 
 @property GooGuuCommentType type;
-@property (nonatomic,retain) NSString *topical;
+
 @property (nonatomic,retain) NSString *articleId;
+@property (nonatomic,retain) NSString *stockCode;
+
 @property (nonatomic,retain) NSMutableArray *smallImgs;
 @property (nonatomic,retain) NSMutableArray *upImgURLs;
 @property (nonatomic,retain) NSArray *smallImgViews;
+@property (nonatomic,retain) Queue *queue;
 
 @property (nonatomic,retain) UIImagePickerController *imagePickerController;
 @property (nonatomic,retain) IBOutlet UITextView *commentText;
@@ -38,7 +45,7 @@
 - (IBAction)pickFromCamera:(id)sender;
 - (IBAction)pickFromPhotoPickera:(id)sender;
 
-- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type;
+- (id)initWithArg:(NSString *)arg type:(GooGuuCommentType)type;
 
 
 @end

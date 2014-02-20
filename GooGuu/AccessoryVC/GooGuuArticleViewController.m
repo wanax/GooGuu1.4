@@ -156,13 +156,13 @@
 -(void)actionBtClicked:(UIButton *)bt {
     
     if ([bt.titleLabel.text isEqual:@"评论"]) {
-        if (self.articleInfo[@"stockcode"]!=nil&&self.articleInfo[@"stockcode"]!= [NSNull null]) {
-            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:self.articleInfo[@"stockcode"] type:CompanyComment] autorelease];
+        if (![Utiles isBlankString:self.articleInfo[@"stockcode"]]) {
+            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:CompanyComment stockCode:self.articleInfo[@"stockcode"]] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         } else {
 
-            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:self.articleId type:GGViewComment] autorelease];
+            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:ArticleComment articleId:self.articleId] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         }

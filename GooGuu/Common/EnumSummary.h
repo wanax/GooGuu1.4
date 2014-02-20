@@ -144,10 +144,11 @@ typedef enum {
 } ChartType;
 
 typedef enum {
-    TopCompany,
-    RiseSpace,
-    FallSpace
-} TopPoints;//首页热点
+    TopCompany,//热门公司
+    RiseSpace,//上涨空间
+    FallSpace,//下跌空间
+    FriendAttentionCom//好友关注组合
+} CompanyListType;//公司列表类型
 
 
 typedef enum {
@@ -156,8 +157,8 @@ typedef enum {
 } CompanyFans;//公司关注
 
 typedef enum {
-    ClientFans,//我的粉丝
-    ClientAttentions,//我的关注
+    ClientFans,//粉丝
+    ClientAttentions,//关注用户
     ClientPriMsgs,//私信列表
     ClientBlackList//黑名单列表
 } RelationClientType;//用户关系类型
@@ -171,7 +172,9 @@ typedef enum {
 
 typedef enum {
     CompanyComment,//公司
-    GGViewComment//观点
+    GGViewComment,//观点
+    ArticleComment,//文章评论
+    TargetUserComment//目标用户
 } GooGuuCommentType;//评论种类
 
 typedef enum {

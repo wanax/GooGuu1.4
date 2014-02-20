@@ -18,4 +18,8 @@
     return [self init];
 }
 
+-(id)initWithType:(NSString *)type andUserName:(NSString *)username {
+    return [self init];
+}
+
 @end

@@ -345,7 +345,7 @@
         dahonVC.comInfo = self.companyInfo;
         [self presentViewController:dahonVC animated:YES completion:nil];
     } else if (row == 2) {//估右评论
-        GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:self.companyInfo[@"stockcode"] type:CompanyComment] autorelease];
+        GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:CompanyComment stockCode:self.companyInfo[@"stockcode"]] autorelease];
         comVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comVC animated:YES];
     }

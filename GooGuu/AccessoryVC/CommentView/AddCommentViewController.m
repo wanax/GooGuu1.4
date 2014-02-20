@@ -7,8 +7,8 @@
 //
 
 #import "AddCommentViewController.h"
-#import "AFImageRequestOperation.h"
-#import "AFNetworking.h"
+#import "AFNetWorking.h"
+#import "Queue.h"
 
 @interface AddCommentViewController ()
 
@@ -20,11 +20,15 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
 
 @implementation AddCommentViewController
 
-- (id)initWithTopical:(NSString *)topical type:(GooGuuCommentType)type
+- (id)initWithArg:(NSString *)arg type:(GooGuuCommentType)type
 {
     self = [super init];
     if (self) {
-        self.topical = topical;
+        if (type == CompanyComment) {
+            self.stockCode = arg;
+        } else {
+            self.articleId = arg;
+        }
         self.type = type;
         NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
         self.smallImgs = temp;
@@ -32,6 +36,9 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
         self.upImgURLs = temp2;
         self.imgNum = 0;
         self.sendingNum = 0;
+        Queue *temp3 = [[[Queue alloc] initAQueue] autorelease];
+        self.queue = temp3;
+        self.isSending = NO;
     }
     return self;
 }
@@ -103,50 +110,38 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    self.sendingNum ++;
+    self.sendingNum++;
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
-    UIProgressView *uploadFileProgressView = [[[UIProgressView alloc] initWithFrame:CGRectMake(0,0,55,2)] autorelease];
-    uploadFileProgressView.center = CGPointMake(30, 30);
-    uploadFileProgressView.progress = 0;
-    uploadFileProgressView.progressTintColor = [UIColor blueColor];
-    uploadFileProgressView.trackTintColor = [UIColor grayColor];
-    [self.smallImgViews[self.imgNum] addSubview:uploadFileProgressView];
-    [uploadFileProgressView sizeThatFits:CGSizeMake(60,5)];
+    UIActivityIndicatorView *loadingView = [[[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0,0,10,10)] autorelease];
+    loadingView.center = CGPointMake(30, 30);
+    [self.smallImgViews[self.imgNum] addSubview:loadingView];
+    [loadingView startAnimating];
     
-    AFHTTPClient *upImgClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://www.googuu.net/m/imageup"]];
-    NSMutableURLRequest *fileUpRequest = [upImgClient multipartFormRequestWithMethod:@"POST" path:@"" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    [manager POST:@"http://www.googuu.net/m/imageup" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        NSString *uuid = [NSString stringWithFormat:@"%@",[NSUUID UUID]];
+        NSString *name = [NSString stringWithFormat:@"%@.jpeg",[uuid substringToIndex:6]];
+        [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.3) name:@"file" fileName:name mimeType:@"image/png"];
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Success: %@", [responseObject JSONString]);
         
-        [formData appendPartWithFileData:UIImageJPEGRepresentation(image, 0.5) name:@"file" fileName:@"thumb.png" mimeType:@"image/png"];
-    }];
-    
-    AFHTTPRequestOperation *fileUploadOp = [[AFHTTPRequestOperation alloc]initWithRequest:fileUpRequest];
-    
-    [fileUploadOp setUploadProgressBlock:^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        
-        CGFloat progress = ((float)totalBytesWritten) / totalBytesExpectedToWrite;
-        [uploadFileProgressView setProgress:progress animated:YES];
-
-    }];
-    
-    [fileUploadOp setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        
-        [uploadFileProgressView removeFromSuperview];
         self.sendingNum--;
         id info = [operation.responseString objectFromJSONString];
         if ([info[@"status"] isEqualToString:@"1"]) {
             [self.upImgURLs addObject:info[@"data"]];
-            NSLog(@"yes:%@",info[@"data"]);
         }
-        
+        [loadingView stopAnimating];
+        [loadingView removeFromSuperview];
+
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"error %@",error);
+        NSLog(@"Error: %@", error);
     }];
-    [fileUploadOp start];
     
     [self.smallImgs addObject:image];
-    [self finishAndUpdate];
     self.imgNum ++;
+    [self finishAndUpdate];
 }
 
 
@@ -176,12 +171,24 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
                 }
             }
             
-            if(self.type == CompanyReview){
+            if (self.type == CompanyReview) {
                 url = @"CompanyReview";
-                params = [NSDictionary dictionaryWithObjectsAndKeys:self.topical,@"stockcode",msg,@"msg",[Utiles getUserToken],@"token",@"googuu",@"from",nil];
-            }else{
+
+                params = @{
+                           @"stockcode":self.stockCode,
+                           @"msg":msg,
+                           @"token":[Utiles getUserToken],
+                           @"from":@"googuu"
+                           };
+            } else {
                 url = @"ArticleReview";
-                params = [NSDictionary dictionaryWithObjectsAndKeys:self.topical,@"articleid",msg,@"msg",[Utiles getUserToken],@"token",@"googuu",@"from",nil];
+
+                params = @{
+                           @"articleid":self.articleId,
+                           @"msg":msg,
+                           @"token":[Utiles getUserToken],
+                           @"from":@"googuu"
+                           };
             }
             
             [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id obj){

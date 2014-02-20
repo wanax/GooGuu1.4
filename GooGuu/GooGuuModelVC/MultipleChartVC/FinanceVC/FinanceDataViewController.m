@@ -7,8 +7,6 @@
 //
 
 #import "FinanceDataViewController.h"
-#import "AFHTTPClient.h"
-#import "AFHTTPRequestOperation.h"
 #import "math.h"
 #import <AddressBook/AddressBook.h>
 #import "PrettyNavigationController.h"
