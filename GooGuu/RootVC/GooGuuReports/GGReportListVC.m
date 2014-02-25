@@ -137,7 +137,6 @@
     if (cell == nil) {
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"GooReportCell" owner:self options:nil];//加载自定义cell的xib文件
         cell = [array objectAtIndex:0];
-        cell.contentTextView.layoutManager.delegate = self;
     }
     
     int row=[indexPath row];
@@ -152,7 +151,7 @@
     if([temp length]>95){
         temp = [NSString stringWithFormat:@"%@.....",[temp substringToIndex:95]];
     }
-    cell.contentTextView.text = temp;
+    cell.content = temp;
     
     cell.timeDiferLabel.text=[Utiles intervalSinceNow:[model objectForKey:@"updatetime"]];
     
@@ -163,14 +162,6 @@
     return cell;
 
 }
-
-
-#pragma mark - Layout
-
-- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
-	return 8;
-}
-
 
 #pragma mark -
 #pragma mark General Methods

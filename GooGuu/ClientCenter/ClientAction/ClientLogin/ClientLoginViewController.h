@@ -24,6 +24,7 @@
 @property (nonatomic,retain) IBOutlet UIButton *findPwdBt;
 @property (nonatomic,retain) IBOutlet UIButton *autoLoginBt;
 @property (nonatomic,retain) IBOutlet UIImageView *autoCheckImg;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *backButton;
 
 -(IBAction)cancelBtClicked:(UIButton *)bt;
 -(IBAction)loginBtClicked:(id)sender;

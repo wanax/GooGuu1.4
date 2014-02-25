@@ -34,7 +34,8 @@
     [self startCrashlytics];
     [self shouldKeepLogin];
     [self startCrashlytics];
-    [self beginBaiDuPush:application];
+    [self beginBaiDuPush:application lanuchOpions:launchOptions];
+    [self beginBaiDuStatistics];
     [self configureShareSDK];
     //[self setPonyDebugger];
     
@@ -182,9 +183,10 @@
 
 #pragma mark -
 #pragma mark BaiDu Push
--(void)beginBaiDuPush:(UIApplication *)application{
-    [BPush setupChannel:[Utiles getConfigureInfoFrom:@"BPushConfig" andKey:nil inUserDomain:NO]]; // 必须
+-(void)beginBaiDuPush:(UIApplication *)application lanuchOpions:(NSDictionary *)launchOptions{
+    [BPush setupChannel:launchOptions]; // 必须
     [BPush setDelegate:self];
+    [application setApplicationIconBadgeNumber:0];
     [application registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
 }
 

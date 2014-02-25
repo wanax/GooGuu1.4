@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ValueViewCell : UITableViewCell
+@interface ValueViewCell : UITableViewCell<NSLayoutManagerDelegate>
 
 @property (nonatomic,retain) IBOutlet UIImageView *titleImgView;
 @property (nonatomic,retain) IBOutlet UILabel *titleLabel;
@@ -16,5 +16,7 @@
 @property (nonatomic,retain) IBOutlet UIWebView *conciseWebView;
 @property (nonatomic,retain) IBOutlet UITextView *conciseTextView;
 @property (nonatomic,retain) IBOutlet UIImageView *readMarkImg;
+
+@property (retain, nonatomic) NSString *content;
 
 @end

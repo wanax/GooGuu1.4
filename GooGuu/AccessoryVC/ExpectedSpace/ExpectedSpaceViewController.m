@@ -68,7 +68,7 @@ static NSString * DOWNBAR_IDENTIFIER =@"看空";
                              @"stockcode":self.stockCode
                              };
     [Utiles getNetInfoWithPath:@"ExpectedSpaceHisData" andParams:params besidesBlock:^(id obj) {
-        
+
         NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
         for (id model in obj){
             [temp addObject:model];
@@ -264,8 +264,8 @@ static NSString * DOWNBAR_IDENTIFIER =@"看空";
                labelString = @" ";
             } else {
                 NSString *start = [Utiles secondToDate:[self.expects[[tickLocation integerValue]][@"start"] longLongValue]/1000];
-                NSString *end = [Utiles secondToDate:[self.expects[[tickLocation integerValue]][@"end"] longLongValue]/1000];
-                labelString = [NSString stringWithFormat:@"%@~%@",start,end];
+                //NSString *end = [Utiles secondToDate:[self.expects[[tickLocation integerValue]][@"end"] longLongValue]/1000];
+                labelString = [NSString stringWithFormat:@"%@",start];
             }
             
             CPTTextStyle *theLabelTextStyle;

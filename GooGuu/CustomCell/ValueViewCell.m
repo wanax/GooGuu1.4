@@ -19,6 +19,17 @@
     return self;
 }
 
+-(void)drawRect:(CGRect)rect {
+    self.conciseTextView.layoutManager.delegate = self;
+    self.conciseTextView.text = self.content;
+}
+
+#pragma mark - Layout
+
+- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
+	return 8;
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

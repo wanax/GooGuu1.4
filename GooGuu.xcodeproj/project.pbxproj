@@ -172,6 +172,7 @@
 		AE391479188F5BA400985CF0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AE391477188F5BA400985CF0 /* ProgressHUD.m */; };
 		AE3E6317187F8B9F005A71AD /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE3E6316187F8B9F005A71AD /* Crashlytics.framework */; };
 		AE3E631A187F9374005A71AD /* TipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE3E6319187F9374005A71AD /* TipViewController.m */; };
+		AE427A6118B7490000723060 /* ImageLongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = AE427A6018B7490000723060 /* ImageLongPressGestureRecognizer.m */; };
 		AE49AB3F1880E3D600386C49 /* DahonValuationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */; };
 		AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */ = {isa = PBXBuildFile; fileRef = AE49AB411880E41900386C49 /* DrawChartTool.m */; };
 		AE517A82188773D9004B6D5C /* report_small_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AE517A81188773D9004B6D5C /* report_small_icon.png */; };
@@ -221,7 +222,6 @@
 		AE6B68C2188A2B8700C3ADBF /* unread2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BA188A2B8700C3ADBF /* unread2.png */; };
 		AE6B68C3188A2B8700C3ADBF /* valueModelBt.png in Resources */ = {isa = PBXBuildFile; fileRef = AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */; };
 		AE6D233C18B4979D00C7EB30 /* Queue.m in Sources */ = {isa = PBXBuildFile; fileRef = AE6D233B18B4979D00C7EB30 /* Queue.m */; };
-		AE6D234018B4B61D00C7EB30 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE6D233F18B4B61D00C7EB30 /* libBaiduMobStat.a */; };
 		AE71CACE1887DD10005B3A2D /* CompanyPostListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */; };
 		AE74DF89187E44D3002AE169 /* UserRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF88187E44D3002AE169 /* UserRegisterViewController.m */; };
 		AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE74DF8D187E44DE002AE169 /* ClientLoginViewController.m */; };
@@ -249,11 +249,9 @@
 		AE7F4D3E18B5950200C6538D /* TaIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7F4D3D18B5950200C6538D /* TaIndexViewController.m */; };
 		AE7F4D4218B5951900C6538D /* TaIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE7F4D4118B5951900C6538D /* TaIndexView.xib */; };
 		AE7F4D4A18B5B16500C6538D /* ChatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7F4D4518B5B16500C6538D /* ChatCell.m */; };
-		AE7F4D4B18B5B16500C6538D /* ChatCell.m.tmp in Resources */ = {isa = PBXBuildFile; fileRef = AE7F4D4618B5B16500C6538D /* ChatCell.m.tmp */; };
 		AE7F4D4C18B5B16500C6538D /* ChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE7F4D4818B5B16500C6538D /* ChatListViewController.m */; };
-		AE7F4D4D18B5B16500C6538D /* ChatListViewController.m.tmp in Resources */ = {isa = PBXBuildFile; fileRef = AE7F4D4918B5B16500C6538D /* ChatListViewController.m.tmp */; };
+		AE8338CB18BC6352004316A0 /* libBaiduMobStat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE8338CA18BC6352004316A0 /* libBaiduMobStat.a */; };
 		AE8641A0188D1E6D00935E4E /* MyCollectsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */; };
-		AE8641A1188D1E6D00935E4E /* MyCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE86419F188D1E6D00935E4E /* MyCommentViewController.m */; };
 		AE8641A7188D246300935E4E /* ClientRelationComListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AE8641A6188D246300935E4E /* ClientRelationComListVC.m */; };
 		AE9028D9188B9D9F006BE518 /* MyGGIndexView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */; };
 		AE9028DE188B9DBC006BE518 /* MyGGIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9028DD188B9DBC006BE518 /* MyGGIndexViewController.m */; };
@@ -402,7 +400,7 @@
 		AEA9E764188FB01E0002532F /* ClientLogin2View.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEA9E763188FB01E0002532F /* ClientLogin2View.xib */; };
 		AEACB1BC18B2F6DA00F610EC /* AddCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */; };
 		AEACB1BD18B2F6DA00F610EC /* GooGuuCommentListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = AEACB1BB18B2F6DA00F610EC /* GooGuuCommentListVC.m */; };
-		AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* TopCommentCell.m */; };
+		AEAD1F1018862220004C4D38 /* ClientCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEAD1F0F18862220004C4D38 /* ClientCommentCell.m */; };
 		AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */; };
 		AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCB188CCFB600C70120 /* RelationClientsViewController.m */; };
 		AEE0FDCF188CD28C00C70120 /* ClientAttentonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE0FDCE188CD28C00C70120 /* ClientAttentonsViewController.m */; };
@@ -579,8 +577,8 @@
 		AE0D3D65187D469800E0E141 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		AE0D3D66187D469800E0E141 /* AddCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCell.h; sourceTree = "<group>"; };
 		AE0D3D67187D469800E0E141 /* AddCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCell.m; sourceTree = "<group>"; };
-		AE0D3D68187D469800E0E141 /* GooReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooReportCell.h; sourceTree = "<group>"; };
-		AE0D3D69187D469800E0E141 /* GooReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooReportCell.m; sourceTree = "<group>"; };
+		AE0D3D68187D469800E0E141 /* GooReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GooReportCell.h; path = ../../CustomCell/GooReportCell.h; sourceTree = "<group>"; };
+		AE0D3D69187D469800E0E141 /* GooReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GooReportCell.m; path = ../../CustomCell/GooReportCell.m; sourceTree = "<group>"; };
 		AE0D3D6A187D469800E0E141 /* DailyStockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyStockCell.h; sourceTree = "<group>"; };
 		AE0D3D6B187D469800E0E141 /* DailyStockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DailyStockCell.m; sourceTree = "<group>"; };
 		AE0D3D6C187D469800E0E141 /* DailyStock2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DailyStock2Cell.h; sourceTree = "<group>"; };
@@ -591,8 +589,8 @@
 		AE0D3D71187D469800E0E141 /* LabelSwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelSwitchCell.m; sourceTree = "<group>"; };
 		AE0D3D72187D469800E0E141 /* SearchStockCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchStockCell.h; sourceTree = "<group>"; };
 		AE0D3D73187D469800E0E141 /* SearchStockCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchStockCell.m; sourceTree = "<group>"; };
-		AE0D3D74187D469800E0E141 /* ValueViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValueViewCell.h; sourceTree = "<group>"; };
-		AE0D3D75187D469800E0E141 /* ValueViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValueViewCell.m; sourceTree = "<group>"; };
+		AE0D3D74187D469800E0E141 /* ValueViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ValueViewCell.h; path = ../../CustomCell/ValueViewCell.h; sourceTree = "<group>"; };
+		AE0D3D75187D469800E0E141 /* ValueViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ValueViewCell.m; path = ../../CustomCell/ValueViewCell.m; sourceTree = "<group>"; };
 		AE0D3D76187D469800E0E141 /* CompanyReportCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyReportCell.h; sourceTree = "<group>"; };
 		AE0D3D77187D469800E0E141 /* CompanyReportCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyReportCell.m; sourceTree = "<group>"; };
 		AE0D3D87187D46EB00E0E141 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -798,6 +796,8 @@
 		AE3E6316187F8B9F005A71AD /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		AE3E6318187F9374005A71AD /* TipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TipViewController.h; sourceTree = "<group>"; };
 		AE3E6319187F9374005A71AD /* TipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TipViewController.m; sourceTree = "<group>"; };
+		AE427A5F18B7490000723060 /* ImageLongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		AE427A6018B7490000723060 /* ImageLongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLongPressGestureRecognizer.m; sourceTree = "<group>"; };
 		AE49AB3D1880E3D600386C49 /* DahonValuationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DahonValuationViewController.h; sourceTree = "<group>"; };
 		AE49AB3E1880E3D600386C49 /* DahonValuationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DahonValuationViewController.m; sourceTree = "<group>"; };
 		AE49AB401880E41900386C49 /* DrawChartTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawChartTool.h; sourceTree = "<group>"; };
@@ -875,8 +875,6 @@
 		AE6B68BB188A2B8700C3ADBF /* valueModelBt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valueModelBt.png; sourceTree = "<group>"; };
 		AE6D233A18B4979D00C7EB30 /* Queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Queue.h; sourceTree = "<group>"; };
 		AE6D233B18B4979D00C7EB30 /* Queue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Queue.m; sourceTree = "<group>"; };
-		AE6D233E18B4B61D00C7EB30 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
-		AE6D233F18B4B61D00C7EB30 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE71CACC1887DD10005B3A2D /* CompanyPostListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompanyPostListViewController.h; sourceTree = "<group>"; };
 		AE71CACD1887DD10005B3A2D /* CompanyPostListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompanyPostListViewController.m; sourceTree = "<group>"; };
 		AE74DF87187E44D3002AE169 /* UserRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserRegisterViewController.h; sourceTree = "<group>"; };
@@ -927,14 +925,12 @@
 		AE7F4D4118B5951900C6538D /* TaIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaIndexView.xib; sourceTree = "<group>"; };
 		AE7F4D4418B5B16500C6538D /* ChatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatCell.h; sourceTree = "<group>"; };
 		AE7F4D4518B5B16500C6538D /* ChatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatCell.m; sourceTree = "<group>"; };
-		AE7F4D4618B5B16500C6538D /* ChatCell.m.tmp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChatCell.m.tmp; sourceTree = "<group>"; };
 		AE7F4D4718B5B16500C6538D /* ChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListViewController.h; sourceTree = "<group>"; };
 		AE7F4D4818B5B16500C6538D /* ChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListViewController.m; sourceTree = "<group>"; };
-		AE7F4D4918B5B16500C6538D /* ChatListViewController.m.tmp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChatListViewController.m.tmp; sourceTree = "<group>"; };
+		AE8338C718BC6343004316A0 /* BaiduMobStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMobStat.h; sourceTree = "<group>"; };
+		AE8338CA18BC6352004316A0 /* libBaiduMobStat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBaiduMobStat.a; sourceTree = "<group>"; };
 		AE86419B188D1E6D00935E4E /* MyCollectsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCollectsViewController.h; sourceTree = "<group>"; };
 		AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCollectsViewController.m; sourceTree = "<group>"; };
-		AE86419E188D1E6D00935E4E /* MyCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCommentViewController.h; sourceTree = "<group>"; };
-		AE86419F188D1E6D00935E4E /* MyCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCommentViewController.m; sourceTree = "<group>"; };
 		AE8641A5188D246300935E4E /* ClientRelationComListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientRelationComListVC.h; sourceTree = "<group>"; };
 		AE8641A6188D246300935E4E /* ClientRelationComListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientRelationComListVC.m; sourceTree = "<group>"; };
 		AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyGGIndexView.xib; sourceTree = "<group>"; };
@@ -1096,8 +1092,8 @@
 		AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCommentViewController.m; sourceTree = "<group>"; };
 		AEACB1BA18B2F6DA00F610EC /* GooGuuCommentListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GooGuuCommentListVC.h; sourceTree = "<group>"; };
 		AEACB1BB18B2F6DA00F610EC /* GooGuuCommentListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GooGuuCommentListVC.m; sourceTree = "<group>"; };
-		AEAD1F0E18862220004C4D38 /* TopCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopCommentCell.h; sourceTree = "<group>"; };
-		AEAD1F0F18862220004C4D38 /* TopCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopCommentCell.m; sourceTree = "<group>"; };
+		AEAD1F0E18862220004C4D38 /* ClientCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClientCommentCell.h; path = ../../CustomCell/ClientCommentCell.h; sourceTree = "<group>"; };
+		AEAD1F0F18862220004C4D38 /* ClientCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClientCommentCell.m; path = ../../CustomCell/ClientCommentCell.m; sourceTree = "<group>"; };
 		AEE0FDC4188CCB4600C70120 /* ClientFansViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientFansViewController.h; sourceTree = "<group>"; };
 		AEE0FDC5188CCB4600C70120 /* ClientFansViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientFansViewController.m; sourceTree = "<group>"; };
 		AEE0FDCA188CCFB600C70120 /* RelationClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelationClientsViewController.h; sourceTree = "<group>"; };
@@ -1142,7 +1138,7 @@
 				AE2AD40D18AB47B200D8CC6C /* AGCommon.framework in Frameworks */,
 				AE018839187CF635004C6A5D /* CoreGraphics.framework in Frameworks */,
 				AE01883B187CF635004C6A5D /* UIKit.framework in Frameworks */,
-				AE6D234018B4B61D00C7EB30 /* libBaiduMobStat.a in Frameworks */,
+				AE8338CB18BC6352004316A0 /* libBaiduMobStat.a in Frameworks */,
 				AE2AD40A18AB47B200D8CC6C /* WeChatConnection.framework in Frameworks */,
 				AE018837187CF635004C6A5D /* Foundation.framework in Frameworks */,
 				AE2AD41018AB47B200D8CC6C /* ShareSDKCoreService.framework in Frameworks */,
@@ -1307,8 +1303,6 @@
 				AE0D3D65187D469800E0E141 /* CustomCell.m */,
 				AE0D3D66187D469800E0E141 /* AddCell.h */,
 				AE0D3D67187D469800E0E141 /* AddCell.m */,
-				AE0D3D68187D469800E0E141 /* GooReportCell.h */,
-				AE0D3D69187D469800E0E141 /* GooReportCell.m */,
 				AE0D3D6A187D469800E0E141 /* DailyStockCell.h */,
 				AE0D3D6B187D469800E0E141 /* DailyStockCell.m */,
 				AE0D3D6C187D469800E0E141 /* DailyStock2Cell.h */,
@@ -1319,14 +1313,10 @@
 				AE0D3D71187D469800E0E141 /* LabelSwitchCell.m */,
 				AE0D3D72187D469800E0E141 /* SearchStockCell.h */,
 				AE0D3D73187D469800E0E141 /* SearchStockCell.m */,
-				AE0D3D74187D469800E0E141 /* ValueViewCell.h */,
-				AE0D3D75187D469800E0E141 /* ValueViewCell.m */,
 				AE0D3D76187D469800E0E141 /* CompanyReportCell.h */,
 				AE0D3D77187D469800E0E141 /* CompanyReportCell.m */,
 				AE7C1AC5188515D6006D37B5 /* CompanyCell.h */,
 				AE7C1AC6188515D6006D37B5 /* CompanyCell.m */,
-				AEAD1F0E18862220004C4D38 /* TopCommentCell.h */,
-				AEAD1F0F18862220004C4D38 /* TopCommentCell.m */,
 				AE0A5664188D59CA00EC0DB0 /* UserFriendCell.h */,
 				AE0A5665188D59CA00EC0DB0 /* UserFriendCell.m */,
 			);
@@ -1347,7 +1337,7 @@
 		AE01886A187CFC3F004C6A5D /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				AE6D233D18B4B61D00C7EB30 /* Release-iphonesimulator */,
+				AE8338C618BC6343004316A0 /* Release-iphonesimulator */,
 				AE9F3B1918AE09B900DE61E5 /* YFInputBar */,
 				AE2AD39D18AB47B100D8CC6C /* ShareSDK */,
 				AE9E53C6189247CB0097EC57 /* BPush.h */,
@@ -1463,6 +1453,8 @@
 				AE0D3CB1187D36A000E0E141 /* UILabel+VerticalAlign.m */,
 				AE0D3CB2187D36A000E0E141 /* UIButton+BGColor.h */,
 				AE0D3CB3187D36A000E0E141 /* UIButton+BGColor.m */,
+				AE427A5F18B7490000723060 /* ImageLongPressGestureRecognizer.h */,
+				AE427A6018B7490000723060 /* ImageLongPressGestureRecognizer.m */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -1589,6 +1581,8 @@
 			isa = PBXGroup;
 			children = (
 				AE0D3D8A187D46EB00E0E141 /* GooReportCell.xib */,
+				AE0D3D68187D469800E0E141 /* GooReportCell.h */,
+				AE0D3D69187D469800E0E141 /* GooReportCell.m */,
 				AE7EE31B1884DB3B00A0E5BF /* GGReportListVC.h */,
 				AE7EE31C1884DB3B00A0E5BF /* GGReportListVC.m */,
 				AE7EE3151884DB3B00A0E5BF /* ArticleCommentViewController.h */,
@@ -1601,6 +1595,8 @@
 			isa = PBXGroup;
 			children = (
 				AE0D3D96187D46EB00E0E141 /* ValueViewCell.xib */,
+				AE0D3D74187D469800E0E141 /* ValueViewCell.h */,
+				AE0D3D75187D469800E0E141 /* ValueViewCell.m */,
 				AE0D3D28187D411800E0E141 /* GooGuuViewController.h */,
 				AE0D3D29187D411800E0E141 /* GooGuuViewController.m */,
 			);
@@ -1611,7 +1607,6 @@
 			isa = PBXGroup;
 			children = (
 				AE86419A188D1E6D00935E4E /* MyCollects */,
-				AE86419D188D1E6D00935E4E /* MyComments */,
 				AEE0FDC0188CC0B300C70120 /* RelationClients */,
 				AE9028D8188B9D9F006BE518 /* MyGGIndexView.xib */,
 				AE9028DC188B9DBC006BE518 /* MyGGIndexViewController.h */,
@@ -2237,15 +2232,6 @@
 			name = ButtonIcon;
 			sourceTree = "<group>";
 		};
-		AE6D233D18B4B61D00C7EB30 /* Release-iphonesimulator */ = {
-			isa = PBXGroup;
-			children = (
-				AE6D233E18B4B61D00C7EB30 /* BaiduMobStat.h */,
-				AE6D233F18B4B61D00C7EB30 /* libBaiduMobStat.a */,
-			);
-			path = "Release-iphonesimulator";
-			sourceTree = "<group>";
-		};
 		AE6D234118B4B8A400C7EB30 /* Ta'sCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2390,12 +2376,19 @@
 			children = (
 				AE7F4D4418B5B16500C6538D /* ChatCell.h */,
 				AE7F4D4518B5B16500C6538D /* ChatCell.m */,
-				AE7F4D4618B5B16500C6538D /* ChatCell.m.tmp */,
 				AE7F4D4718B5B16500C6538D /* ChatListViewController.h */,
 				AE7F4D4818B5B16500C6538D /* ChatListViewController.m */,
-				AE7F4D4918B5B16500C6538D /* ChatListViewController.m.tmp */,
 			);
 			path = ChatList;
+			sourceTree = "<group>";
+		};
+		AE8338C618BC6343004316A0 /* Release-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				AE8338CA18BC6352004316A0 /* libBaiduMobStat.a */,
+				AE8338C718BC6343004316A0 /* BaiduMobStat.h */,
+			);
+			path = "Release-iphonesimulator";
 			sourceTree = "<group>";
 		};
 		AE86419A188D1E6D00935E4E /* MyCollects */ = {
@@ -2405,15 +2398,6 @@
 				AE86419C188D1E6D00935E4E /* MyCollectsViewController.m */,
 			);
 			path = MyCollects;
-			sourceTree = "<group>";
-		};
-		AE86419D188D1E6D00935E4E /* MyComments */ = {
-			isa = PBXGroup;
-			children = (
-				AE86419E188D1E6D00935E4E /* MyCommentViewController.h */,
-				AE86419F188D1E6D00935E4E /* MyCommentViewController.m */,
-			);
-			path = MyComments;
 			sourceTree = "<group>";
 		};
 		AE949CD7187E7690004FC1AB /* Images */ = {
@@ -2725,6 +2709,8 @@
 		AEACB1B718B2F6DA00F610EC /* CommentView */ = {
 			isa = PBXGroup;
 			children = (
+				AEAD1F0E18862220004C4D38 /* ClientCommentCell.h */,
+				AEAD1F0F18862220004C4D38 /* ClientCommentCell.m */,
 				AE9E53BB18923C950097EC57 /* AddCommentView.xib */,
 				AEACB1B818B2F6DA00F610EC /* AddCommentViewController.h */,
 				AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */,
@@ -2863,7 +2849,6 @@
 				AE949D28187E8154004FC1AB /* searchBarBack.png in Resources */,
 				AE68DEDC188A609F000C7D8C /* icon_pie_small.png in Resources */,
 				AE0D3D99187D46EB00E0E141 /* MainWindow.xib in Resources */,
-				AE7F4D4B18B5B16500C6538D /* ChatCell.m.tmp in Resources */,
 				AE9B2C921886965E0077B56D /* REPORT.png in Resources */,
 				AE949D90187E81E5004FC1AB /* shadowUp.png in Resources */,
 				AE9B2C931886965E0077B56D /* FINDATA.png in Resources */,
@@ -3028,7 +3013,6 @@
 				AE949D3E187E8169004FC1AB /* discountBt.png in Resources */,
 				AE949D4D187E817C004FC1AB /* topBack.png in Resources */,
 				AE949D26187E8154004FC1AB /* hasnoModelSymbol.png in Resources */,
-				AE7F4D4D18B5B16500C6538D /* ChatListViewController.m.tmp in Resources */,
 				AE949D95187E81E5004FC1AB /* fallArrow.png in Resources */,
 				AE949D87187E81E5004FC1AB /* whiteDotLine.png in Resources */,
 				AE949DE2187E8298004FC1AB /* graphExchangeBar.png in Resources */,
@@ -3169,7 +3153,6 @@
 				AE518728187E40EC0055B9AE /* IntroductionViewController.m in Sources */,
 				AE0D3D2A187D411800E0E141 /* GooGuuViewController.m in Sources */,
 				AE0D3D78187D469800E0E141 /* StockCell.m in Sources */,
-				AE8641A1188D1E6D00935E4E /* MyCommentViewController.m in Sources */,
 				AE018876187D00A7004C6A5D /* main.m in Sources */,
 				AE74DF8F187E44DE002AE169 /* ClientLoginViewController.m in Sources */,
 				AE74DFA8187E4518002AE169 /* SettingCenterViewController.m in Sources */,
@@ -3198,7 +3181,8 @@
 				AE49AB421880E41900386C49 /* DrawChartTool.m in Sources */,
 				AEE0FDC6188CCB4600C70120 /* ClientFansViewController.m in Sources */,
 				AE51872B187E40FB0055B9AE /* ModelViewController.m in Sources */,
-				AEAD1F1018862220004C4D38 /* TopCommentCell.m in Sources */,
+				AE427A6118B7490000723060 /* ImageLongPressGestureRecognizer.m in Sources */,
+				AEAD1F1018862220004C4D38 /* ClientCommentCell.m in Sources */,
 				AE0D3CE8187D3A9200E0E141 /* PrettyGridTableViewCell.m in Sources */,
 				AE0D3D44187D414400E0E141 /* StockContainerViewController.m in Sources */,
 				AE0D3D7B187D469800E0E141 /* AddCell.m in Sources */,
@@ -3358,7 +3342,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3376,6 +3361,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "10C92D52-F14D-434F-B7C7-47E7131B79CE";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3397,7 +3383,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3408,6 +3395,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "10C92D52-F14D-434F-B7C7-47E7131B79CE";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3448,7 +3436,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";
+				PROVISIONING_PROFILE = "75A78196-EE86-4D71-902F-B5156208DA61";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -3489,7 +3477,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9BF7EA54-46E2-4809-B598-5A21477B41F7";
+				PROVISIONING_PROFILE = "75A78196-EE86-4D71-902F-B5156208DA61";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

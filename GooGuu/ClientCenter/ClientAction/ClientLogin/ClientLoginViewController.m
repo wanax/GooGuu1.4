@@ -69,7 +69,8 @@
     [self.autoCheckImg addGestureRecognizer:rememberTap];
     SAFE_RELEASE(rememberTap);
     
-
+    self.backButton.style = UIBarButtonSystemItemCancel;
+    self.backButton.action = @selector(cancelBtClicked:);
 }
 
 

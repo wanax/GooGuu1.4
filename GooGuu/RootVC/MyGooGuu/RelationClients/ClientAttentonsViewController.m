@@ -102,12 +102,16 @@
                    };
         url = @"FriendAttUsers";
     } else {
-        params = @{
-                   @"token":[Utiles getUserToken],
-                   @"offset":strOffset,
-                   @"from":@"googuu"
-                   };
-        url = @"ClientAttentions";
+        if ([Utiles isLogin]) {
+            params = @{
+                       @"token":[Utiles getUserToken],
+                       @"offset":strOffset,
+                       @"from":@"googuu"
+                       };
+            url = @"ClientAttentions";
+        } else {
+            [ProgressHUD showError:@"请先登录"];
+        }
     }
     
     [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
@@ -165,8 +169,16 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
     
     id model = self.clientList[indexPath.row];
-    
-    cell.textLabel.text = model[@"realname"];
+
+    NSString *reg = @"(\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b)|(\\d{8,13})";
+    if ([model[@"realname"] isMatchedByRegex:reg]) {
+        NSString *temp = model[@"realname"];
+        NSString *temp1 = [temp substringToIndex:3];
+        NSString *temp2 = [temp substringFromIndex:[temp length]-3];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@***%@",temp1,temp2];
+    } else {
+        cell.textLabel.text = model[@"realname"];
+    }
     
     [cell.imageView setImageWithURL:[NSURL URLWithString:model[@"userheaderimg"]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     

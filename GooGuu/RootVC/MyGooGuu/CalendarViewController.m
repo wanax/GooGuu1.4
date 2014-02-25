@@ -76,33 +76,37 @@
 -(void)calendarView:(VRGCalendarView *)calendarView switchedToMonth:(int)month targetHeight:(float)targetHeight animated:(BOOL)animated {
     id dateNow=[NSDate date];
     
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            [Utiles getUserToken], @"token",
-                            [NSString stringWithFormat:@"%d",[dateNow year]],@"year",[NSString stringWithFormat:@"%d",month],@"month",@"googuu",@"from",
-                            nil];
-    [Utiles postNetInfoWithPath:@"UserStockCalendar" andParams:params besidesBlock:^(id resObj){
-        if(![[resObj objectForKey:@"status"] isEqualToString:@"0"]){
-            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-            NSMutableArray *dates=[[NSMutableArray alloc] init];
-            self.eventArr=[resObj objectForKey:@"data"];
-            for(id obj in self.eventArr){
-                [dates addObject:[f numberFromString:[obj objectForKey:@"day"]]];
+    if ([Utiles isLogin]) {
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [Utiles getUserToken], @"token",
+                                [NSString stringWithFormat:@"%d",[dateNow year]],@"year",[NSString stringWithFormat:@"%d",month],@"month",@"googuu",@"from",
+                                nil];
+        [Utiles postNetInfoWithPath:@"UserStockCalendar" andParams:params besidesBlock:^(id resObj){
+            if(![[resObj objectForKey:@"status"] isEqualToString:@"0"]){
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                NSMutableArray *dates=[[NSMutableArray alloc] init];
+                self.eventArr=[resObj objectForKey:@"data"];
+                for(id obj in self.eventArr){
+                    [dates addObject:[f numberFromString:[obj objectForKey:@"day"]]];
+                }
+                [calendarView markDates:dates];
+                NSMutableDictionary *tempDic = [[[NSMutableDictionary alloc] init] autorelease];
+                self.dateDic = tempDic;
+                for(id key in self.eventArr){
+                    [self.dateDic setObject:[key objectForKey:@"data"] forKey:[self dateFormatter:[key objectForKey:@"day"]]];
+                }
+                SAFE_RELEASE(dates);
+                SAFE_RELEASE(f);
+            }else{
+                [ProgressHUD showError:[resObj objectForKey:@"msg"]];
             }
-            [calendarView markDates:dates];
-            NSMutableDictionary *tempDic = [[[NSMutableDictionary alloc] init] autorelease];
-            self.dateDic = tempDic;
-            for(id key in self.eventArr){
-                [self.dateDic setObject:[key objectForKey:@"data"] forKey:[self dateFormatter:[key objectForKey:@"day"]]];
-            }
-            SAFE_RELEASE(dates);
-            SAFE_RELEASE(f);
-        }else{
-            [ProgressHUD showError:[resObj objectForKey:@"msg"]];
-        }
-      
-    } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-    }];
+            
+        } failure:^(AFHTTPRequestOperation *operation,NSError *error){
+            [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 -(void)calendarView:(VRGCalendarView *)calendarView dateSelected:(NSDate *)date {

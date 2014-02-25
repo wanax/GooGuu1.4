@@ -200,26 +200,29 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 -(void)chartAction:(UIButton *)bt{
 
     if(bt.tag==SaveData){
-        
-        id combinedData=[DrawChartTool changedDataCombinedWebView:self.webView comInfo:self.comInfo ggPrice:self.priceLabel.text dragChartChangedDriverIds:self.changedDriverIds disCountIsChanged:self.disCountIsChanged];
-        
-        NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[Utiles getUserToken],@"token",@"googuu",@"from",[combinedData JSONString],@"data", nil];
-
-        [Utiles postNetInfoWithPath:@"AddModelData" andParams:params besidesBlock:^(id resObj){
-            if([resObj[@"status"] isEqual:@"1"]){
-                [bt setBackgroundColor:[UIColor grayColor]];
-                [bt setEnabled:NO];
-                self.isSaved=YES;
-                [Utiles showToastView:self.view withTitle:nil andContent:resObj[@"msg"] duration:1.5];
-            }else if([resObj[@"status"] isEqual:@"2"]){
-                [Utiles showToastView:self.view withTitle:nil andContent:resObj[@"msg"] duration:1.5];
-            }else{
-                [Utiles showToastView:self.view withTitle:nil andContent:@"保存失败" duration:1.5];
-            }
-        } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-            [Utiles showToastView:self.view withTitle:nil andContent:@"用户未登录" duration:1.5];
-        }];
-        [self.changedDriverIds removeAllObjects];
+        if ([Utiles isLogin]) {
+            id combinedData=[DrawChartTool changedDataCombinedWebView:self.webView comInfo:self.comInfo ggPrice:self.priceLabel.text dragChartChangedDriverIds:self.changedDriverIds disCountIsChanged:self.disCountIsChanged];
+            
+            NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[Utiles getUserToken],@"token",@"googuu",@"from",[combinedData JSONString],@"data", nil];
+            
+            [Utiles postNetInfoWithPath:@"AddModelData" andParams:params besidesBlock:^(id resObj){
+                if([resObj[@"status"] isEqual:@"1"]){
+                    [bt setBackgroundColor:[UIColor grayColor]];
+                    [bt setEnabled:NO];
+                    self.isSaved=YES;
+                    [Utiles showToastView:self.view withTitle:nil andContent:resObj[@"msg"] duration:1.5];
+                }else if([resObj[@"status"] isEqual:@"2"]){
+                    [Utiles showToastView:self.view withTitle:nil andContent:resObj[@"msg"] duration:1.5];
+                }else{
+                    [Utiles showToastView:self.view withTitle:nil andContent:@"保存失败" duration:1.5];
+                }
+            } failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                [Utiles showToastView:self.view withTitle:nil andContent:@"用户未登录" duration:1.5];
+            }];
+            [self.changedDriverIds removeAllObjects];
+        } else {
+            [ProgressHUD showError:@"请先登录"];
+        }
         
     }else if(bt.tag==DragChartType){
         if(self.linkage){

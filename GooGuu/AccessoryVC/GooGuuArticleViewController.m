@@ -62,34 +62,37 @@
 }
 
 -(void)favBtClicked:(UIBarButtonItem *)bt {
-    
-    NSString *url = @"";
-    if ([bt.title isEqualToString:@"收藏"]) {
-        url = @"AddFavArticle";
-    } else {
-        url = @"CancelFavArticle";
-    }
-    NSDictionary *params = @{
-                             @"articleid":self.articleId,
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu",
-                             @"state":@"1"
-                             };
-    [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
- 
-        if ([obj[@"status"] isEqualToString:@"1"]) {
-            if ([bt.title isEqualToString:@"收藏"]) {
-                bt.title = @"取消收藏";
-            } else {
-                bt.title = @"收藏";
-            }
+    if ([Utiles isLogin]) {
+        NSString *url = @"";
+        if ([bt.title isEqualToString:@"收藏"]) {
+            url = @"AddFavArticle";
         } else {
-            [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.5];
+            url = @"CancelFavArticle";
         }
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+        NSDictionary *params = @{
+                                 @"articleid":self.articleId,
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu",
+                                 @"state":@"1"
+                                 };
+        [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
+            
+            if ([obj[@"status"] isEqualToString:@"1"]) {
+                if ([bt.title isEqualToString:@"收藏"]) {
+                    bt.title = @"取消收藏";
+                } else {
+                    bt.title = @"收藏";
+                }
+            } else {
+                [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.5];
+            }
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 -(void)initComponts {
@@ -302,67 +305,73 @@
     
 }
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    //NSLog(@"%i", buttonIndex);
     if (buttonIndex == actionSheet.cancelButtonIndex) {
         return;
     }
-    switch (buttonIndex) {
-        case 0: {
-            //多空统计
-            ExpectedSpaceViewController *expectVC = [[[ExpectedSpaceViewController alloc] init] autorelease];
-            expectVC.stockCode = self.articleInfo[@"stockcode"];
-            [self presentViewController:expectVC animated:YES completion:nil];
-            break;
-        }
-        case 1: {
-            //看多
-            NSDictionary *params = @{
-                                     @"stockcode":self.articleInfo[@"stockcode"],
-                                     @"flag":@"1",
-                                     @"from":@"googuu",
-                                     @"token":[Utiles getUserToken],
-                                     @"state":@"1"
-                                     };
-            [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+    if ([Utiles isLogin]) {
+        switch (buttonIndex) {
+            case 0: {
+                //多空统计
+                ExpectedSpaceViewController *expectVC = [[[ExpectedSpaceViewController alloc] init] autorelease];
+                expectVC.stockCode = self.articleInfo[@"stockcode"];
+                [self presentViewController:expectVC animated:YES completion:nil];
+                break;
+            }
+            case 1: {
+                //看多
+                NSDictionary *params = @{
+                                         @"stockcode":self.articleInfo[@"stockcode"],
+                                         @"flag":@"1",
+                                         @"from":@"googuu",
+                                         @"token":[Utiles getUserToken],
+                                         @"state":@"1"
+                                         };
+                [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+                    
+                    if ([obj[@"status"] isEqualToString:@"1"]) {
+                        [ProgressHUD showSuccess:@"投票成功"];
+                    } else {
+                        [ProgressHUD showError:obj[@"msg"]];
+                    }
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    NSLog(@"%@",error);
+                }];
                 
-                if ([obj[@"status"] isEqualToString:@"1"]) {
-                    [ProgressHUD showSuccess:@"投票成功"];
-                } else {
-                    [ProgressHUD showError:obj[@"msg"]];
-                }
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                NSLog(@"%@",error);
-            }];
-
-            break;
+                break;
+            }
+            case 2: {
+                //看空
+                [self voteForCompany:@"2"];
+                break;
+            }
         }
-        case 2: {
-            //看空
-            [self voteForCompany:@"2"];
-            break;
-        }
+    } else {
+        [ProgressHUD showError:@"请先登录"];
     }
 }
 
 -(void)voteForCompany:(NSString *) updown{
-    NSDictionary *params = @{
-                             @"stockcode":self.articleInfo[@"stockcode"],
-                             @"flag":updown,
-                             @"from":@"googuu",
-                             @"token":[Utiles getUserToken],
-                             @"state":@"1"
-                             };
-    [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
-        
-        if ([obj[@"status"] isEqualToString:@"1"]) {
-            [ProgressHUD showSuccess:@"投票成功"];
-        } else {
-            [ProgressHUD showError:obj[@"msg"]];
-        }
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
-
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"stockcode":self.articleInfo[@"stockcode"],
+                                 @"flag":updown,
+                                 @"from":@"googuu",
+                                 @"token":[Utiles getUserToken],
+                                 @"state":@"1"
+                                 };
+        [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+            
+            if ([obj[@"status"] isEqualToString:@"1"]) {
+                [ProgressHUD showSuccess:@"投票成功"];
+            } else {
+                [ProgressHUD showError:obj[@"msg"]];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 -(void)addCommentBtClicked{

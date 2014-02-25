@@ -12,7 +12,7 @@
 
 @class Queue;
 
-@interface AddCommentViewController : UIViewController<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface AddCommentViewController : UIViewController<UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate>
 
 //记录已上传的图片数量，用户添加当前上传图片框中的进度条
 @property NSInteger imgNum;
@@ -20,6 +20,8 @@
 @property NSInteger sendingNum;
 //判定是否正在上传图片，以开启下一张图片的传送
 @property BOOL isSending;
+
+@property NSInteger delImgTag;
 
 @property GooGuuCommentType type;
 

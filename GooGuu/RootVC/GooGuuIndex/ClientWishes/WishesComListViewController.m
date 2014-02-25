@@ -105,6 +105,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([Utiles isLogin]) {
+        [self pushVC];
         id model = self.comList[indexPath.row];
         NSDictionary *params = @{
                                  @"itemid":model[@"id"],
@@ -113,25 +114,14 @@
                                  @"state":@"1"
                                  };
         [Utiles postNetInfoWithPath:@"Votes" andParams:params besidesBlock:^(id obj) {
-            
-            if ([obj[@"status"] isEqualToString:@"1"]) {
-                [self pushVC];
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            } else {
-                
-                [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.0];
-                [self performSelector:@selector(pushVC) withObject:nil afterDelay:1.0];
-                [tableView deselectRowAtIndexPath:indexPath animated:YES];
-            }
-            
+
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             
         }];
-        
     } else {
         [Utiles showToastView:self.view withTitle:nil andContent:@"请先登录" duration:1.0];
     }
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 

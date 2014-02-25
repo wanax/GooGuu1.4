@@ -13,6 +13,8 @@
 #import "ClientFansViewController.h"
 #import "CommonComListVC.h"
 #import "GooGuuCommentListVC.h"
+#import "ChatListViewController.h"
+#import "RegexKitLite.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface TaIndexViewController ()
@@ -45,6 +47,7 @@
     [ProgressHUD show:nil];
     NSDictionary *params = @{
                              @"username":self.userName,
+                             @"token":[Utiles getUserToken],
                              @"from":@"googuu",
                              @"state":@"1"
                              };
@@ -53,15 +56,28 @@
         [ProgressHUD dismiss];
         if ([obj[@"status"] isEqualToString:@"1"]) {
             id info = obj[@"data"];
+
             if (![Utiles isBlankString:info[@"userheaderimg"]]) {
                 [self.avatarImg setImageWithURL:info[@"userheaderimg"] placeholderImage:[UIImage imageNamed:@"defaultAvatar"]];
+            } else {
+                [self.avatarImg setImage:[UIImage imageNamed:@"defaultAvatar"]];
             }
-            self.userNameLabel.text = info[@"username"];
+            NSString *reg = @"(\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b)|(\\d{8,13})";
+            if ([info[@"realname"] isMatchedByRegex:reg]) {
+                NSString *temp = info[@"realname"];
+                NSString *temp1 = [temp substringToIndex:3];
+                NSString *temp2 = [temp substringFromIndex:[temp length]-3];
+                self.userNameLabel.text = [NSString stringWithFormat:@"%@***%@",temp1,temp2];
+            } else {
+                self.userNameLabel.text = info[@"realname"];
+            }
             //用户seg信息设置
             if (![info[@"whetherToBlacklist"] boolValue]) {
-                if ([info[@"whetherToAttens"] boolValue]) {
-                    [self.taInfoSegment setTitle:@"取消关注" forSegmentAtIndex:0];
-                } else {
+                if ([info[@"whetherToAttens"] boolValue] && [info[@"whetherAttenMe"] boolValue]) {
+                    [self.taInfoSegment setTitle:@"相互关注" forSegmentAtIndex:0];
+                } else if ([info[@"whetherToAttens"] boolValue]) {
+                    [self.taInfoSegment setTitle:@"已关注" forSegmentAtIndex:0];
+                } else if (![info[@"whetherToAttens"] boolValue]) {
                     [self.taInfoSegment setTitle:@"关注" forSegmentAtIndex:0];
                 }
             } else {
@@ -102,15 +118,46 @@
 
 - (IBAction)chatButtonClicked:(id)sender {
     
+    ChatListViewController *chatListVC = [[[ChatListViewController alloc] init] autorelease];
+    chatListVC.toUser = self.userName;
+    [self.navigationController pushViewController:chatListVC animated:YES];
 }
 
 - (IBAction)userInfoSegChanged:(id)sender {
     
-    int index = ((UISegmentedControl *)sender).selectedSegmentIndex;
+    UISegmentedControl *seg = (UISegmentedControl *)sender;
+    int index = seg.selectedSegmentIndex;
     //用户关系
     if (index == 0) {
         
         if ([Utiles isLogin]) {
+            
+            NSString *title = [seg titleForSegmentAtIndex:0];
+            if ([title isEqualToString:@"相互关注"]) {
+                [self attentionAction:@"DelAttentionUser" block:^(id obj) {
+                    if ([obj[@"status"] isEqualToString:@"1"]) {
+                        [seg setTitle:@"关注" forSegmentAtIndex:0];
+                    } else {
+                        [ProgressHUD showError:obj[@"msg"]];
+                    }
+                }];
+            } else if ([title isEqualToString:@"已关注"]) {
+                [self attentionAction:@"DelAttentionUser" block:^(id obj) {
+                    if ([obj[@"status"] isEqualToString:@"1"]) {
+                        [seg setTitle:@"关注" forSegmentAtIndex:0];
+                    } else {
+                        [ProgressHUD showError:obj[@"msg"]];
+                    }
+                }];
+            } else if ([title isEqualToString:@"关注"]) {
+                [self attentionAction:@"AddAttentionUser" block:^(id obj) {
+                    if ([obj[@"status"] isEqualToString:@"1"]) {
+                        [seg setTitle:@"已关注" forSegmentAtIndex:0];
+                    } else {
+                        [ProgressHUD showError:obj[@"msg"]];
+                    }
+                }];
+            }
             
         } else {
             [ProgressHUD showError:@"请先登录"];
@@ -128,6 +175,20 @@
         [self.navigationController pushViewController:clientsVC animated:YES];
     }
     
+}
+
+-(void)attentionAction:(NSString *)url block:(void(^)(id obj))block {
+
+    NSDictionary *params = @{
+                             @"username":self.userName,
+                             @"token":[Utiles getUserToken],
+                             @"from":@"googuu"
+                             };
+    [Utiles getNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
+        block(obj);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 #pragma mark -

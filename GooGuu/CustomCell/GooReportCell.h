@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GooReportCell : UITableViewCell
+@interface GooReportCell : UITableViewCell<NSLayoutManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *contentLabel;

@@ -38,6 +38,11 @@ typedef enum{
     for(int i=0;i<4;i++){
         [(UITextField*)[self.view viewWithTag:100+i] resignFirstResponder];
     }
+    for (UIView *view in self.view.subviews) {
+        if ([view isKindOfClass:NSClassFromString(@"UIToolbar")]) {
+            [self dismissView];
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -54,6 +59,19 @@ typedef enum{
 }
 
 -(void)initComponents{
+    
+    UIToolbar *bar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,44)] autorelease];
+    /*UIButton *wanSay= [[UIButton alloc] initWithFrame:CGRectMake(0, 10.0, 40, 30.0)];
+     [wanSay setTitle:@"返回" forState:UIControlStateNormal];
+     [wanSay addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
+     [wanSay setTitleColor:[Utiles colorWithHexString:@"#307DF9"] forState:UIControlStateNormal];
+     UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
+     [bar setItems:[NSArray arrayWithObject:nextStepBarBtn] animated:YES];*/
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissView)];
+    back.action = @selector(dismissView);
+    back.target = self;
+    [bar setItems:@[back]];
+    [self.view addSubview:bar];
 
     if (self.actionType!=UserResetPwd) {
         [self addSingleLabel:@"手机号码" frame:CGRectMake(10,50,80,25)];
@@ -89,7 +107,8 @@ typedef enum{
         } else if(self.actionType==UserFindPwd){
             [self addTextField:@"输入验证码" frame:CGRectMake(100,170,130,30) tag:CheckCode-1 type:UIKeyboardTypeDecimalPad isSecure:NO];
         }
-        self.timer = [[KKProgressTimer alloc] initWithFrame:CGRectMake(240,167,35,35)];
+        KKProgressTimer *tempTimer = [[[KKProgressTimer alloc] initWithFrame:CGRectMake(240,167,35,35)] autorelease];
+        self.timer = tempTimer;
         self.timer.delegate=self;
         self.timer.tag=500;
         [self.view addSubview:self.timer];
@@ -110,18 +129,12 @@ typedef enum{
     }
     [self.view addSubview:regBt];
 
-    UIButton *backBt=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [backBt setTitle:@"返回" forState:UIControlStateNormal];
-    [backBt setBackgroundColor:[UIColor orangeColor]];
-    [backBt setFrame:CGRectMake(10,260,SCREEN_WIDTH-30,30)];
-    [backBt addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:backBt];
 }
 
 #pragma mark -
 #pragma mark Bt Action
 
--(void)back:(UIButton *)bt{
+-(void)dismissView {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GGReportListVC : UIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,NSLayoutManagerDelegate>
+@interface GGReportListVC : UIViewController<UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate>
 
 @property (nonatomic,retain) NSMutableArray *arrList;
 @property (nonatomic,retain) NSString *imageUrl;

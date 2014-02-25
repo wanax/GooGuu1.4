@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GooGuuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,NSLayoutManagerDelegate>
+@interface GooGuuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,retain) NSString *articleId;
 @property (nonatomic,retain) NSArray *viewDataArr;

@@ -35,11 +35,20 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
-        
         self.backgroundColor=[UIColor grayColor];
     }
     return self;
+}
+
+-(void)drawRect:(CGRect)rect {
+    self.contentTextView.layoutManager.delegate = self;
+    self.contentTextView.text = self.content;
+}
+
+#pragma mark - Layout
+
+- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
+	return 8;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

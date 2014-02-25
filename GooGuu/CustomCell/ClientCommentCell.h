@@ -1,5 +1,5 @@
 //
-//  TopCommentCell
+//  ClientCommentCell
 //  GooGuu
 //
 //  Created by Xcode on 14-1-15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopCommentCell : UITableViewCell
+@interface ClientCommentCell : UITableViewCell<NSLayoutManagerDelegate>
 
 @property (nonatomic,retain) NSString *content;
 @property (nonatomic,retain) NSString *userName;
@@ -28,5 +28,6 @@
 @property (nonatomic,retain) UILabel *artTitleLabel;
 @property (nonatomic,retain) UILabel *updateTimeLabel;
 @property (nonatomic,retain) UILabel *contentLabel;
+@property (retain, nonatomic) UITextView *contentTextView;
 
 @end

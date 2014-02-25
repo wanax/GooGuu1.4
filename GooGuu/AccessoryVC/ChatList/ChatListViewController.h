@@ -12,11 +12,12 @@
 
 @interface ChatListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,retain) UITableView *chatTable;
-@property (nonatomic,retain) YFInputBar *inputBar;
-
-@property (nonatomic,retain) NSArray *chats;
+@property  NSInteger pageNum;
+@property (nonatomic,retain) NSMutableArray *chats;
 @property (nonatomic,retain) NSString *toUser;
-@property (nonatomic,retain) NSString *offset;
+
+@property (nonatomic,retain) UITableView *chatTable;
+@property (nonatomic,retain) UIRefreshControl *refreshControl;
+@property (nonatomic,retain) YFInputBar *inputBar;
 
 @end

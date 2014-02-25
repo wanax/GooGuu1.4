@@ -8,7 +8,7 @@
 
 #import "AddCommentViewController.h"
 #import "AFNetWorking.h"
-#import "Queue.h"
+#import "ImageLongPressGestureRecognizer.h"
 
 @interface AddCommentViewController ()
 
@@ -58,7 +58,18 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
     backBarItem.action = @selector(backBtClick:);
     UIBarButtonItem *sendBarItem = self.topBar.items[2];
     sendBarItem.action = @selector(sendComment);
+    
+    ImageLongPressGestureRecognizer *longPress = [[[ImageLongPressGestureRecognizer alloc] initWithTarget:self action:@selector(delImgAction:)] autorelease];
+    [self.view addGestureRecognizer:longPress];
+}
 
+-(void)delImgAction:(ImageLongPressGestureRecognizer *)longPress{
+    
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        UIActionSheet *confirmSheet = [[[UIActionSheet alloc] initWithTitle:@"是否删除此图片" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"确定" otherButtonTitles:nil] autorelease];
+        self.delImgTag = longPress.imageview.tag;
+        [confirmSheet showInView:self.view];
+    }
 }
 
 -(void)backBtClick:(id)sender{
@@ -74,6 +85,18 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
 }
 - (IBAction)pickFromPhotoPickera:(id)sender {
     [self showImagePickerForSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+}
+
+#pragma mark -
+#pragma Sheet Method Delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        [self.smallImgs removeObjectAtIndex:self.delImgTag];
+        [self.upImgURLs removeObjectAtIndex:self.delImgTag];
+        self.imgNum--;
+        [self reDrawImgView];
+    }
 }
 
 #pragma mark -
@@ -94,18 +117,16 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
     
 }
 
-- (void)finishAndUpdate
-{
-    [self dismissViewControllerAnimated:YES completion:NULL];
-    
+- (void)reDrawImgView {
+    int n = 0;
     if ([self.smallImgs count] > 0) {
-        int n = 0;
         for (id img in self.smallImgs) {
             [self.smallImgViews[n++] setImage:img];
         }
     }
-    
-    self.imagePickerController = nil;
+    for (;n < 4;n ++) {
+        [(UIImageView *)self.smallImgViews[n] setImage:nil];
+    }
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -141,7 +162,9 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
     
     [self.smallImgs addObject:image];
     self.imgNum ++;
-    [self finishAndUpdate];
+    [self reDrawImgView];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+    self.imagePickerController = nil;
 }
 
 
@@ -170,7 +193,7 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
                     msg = [msg stringByAppendingString:[NSString stringWithFormat:@"%@%@%@%@%@",herf_1,url,herf_2,url,herf_3]];
                 }
             }
-            
+
             if (self.type == CompanyReview) {
                 url = @"CompanyReview";
 

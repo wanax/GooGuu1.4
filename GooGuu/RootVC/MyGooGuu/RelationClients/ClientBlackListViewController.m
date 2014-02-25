@@ -78,37 +78,80 @@
 
 -(void)getClients:(NSString *)strOffset {
     
-    NSDictionary *params = @{
-                             @"token":[Utiles getUserToken],
-                             @"offset":strOffset,
-                             @"from":@"googuu"
-                             };
-    
-    [Utiles getNetInfoWithPath:@"ClientBlackList" andParams:params besidesBlock:^(id obj) {
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"token":[Utiles getUserToken],
+                                 @"offset":strOffset,
+                                 @"from":@"googuu"
+                                 };
         
-        id clients = obj[@"data"];
-        NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
-        if (self.pageOffset > 1) {
-            for(id model in self.clientList){
+        [Utiles getNetInfoWithPath:@"ClientBlackList" andParams:params besidesBlock:^(id obj) {
+            
+            id clients = obj[@"data"];
+            NSMutableArray *temps = [[[NSMutableArray alloc] init] autorelease];
+            if (self.pageOffset > 1) {
+                for(id model in self.clientList){
+                    [temps addObject:model];
+                }
+            }
+            for (id model in clients) {
                 [temps addObject:model];
             }
-        }
-        for (id model in clients) {
-            [temps addObject:model];
-        }
-        self.clientList = temps;
-        self.pageOffset++;
-        [self.clientTable reloadData];
-        [self.clientTable.infiniteScrollingView stopAnimating];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-    
+            self.clientList = temps;
+            self.pageOffset++;
+            [self.clientTable reloadData];
+            [self.clientTable.infiniteScrollingView stopAnimating];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
+}
+
+-(void)removeFromBlackList:(NSString *)target {
+
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"username":target,
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu"
+                                 };
+        [Utiles postNetInfoWithPath:@"RemoveFromBlackList" andParams:params besidesBlock:^(id obj) {
+            if (![obj[@"status"] isEqualToString:@"1"]) {
+                [ProgressHUD showError:obj[@"msg"]];
+            }
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+            [ProgressHUD showError:@"删除失败"];
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 #pragma mark -
 #pragma Table DataSource
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSInteger row = [indexPath row];
+        id user = [self.clientList[row] retain];
+        [self removeFromBlackList:user[@"username"]];
+        NSMutableArray *temp = [NSMutableArray arrayWithArray:self.clientList];
+        [temp removeObjectAtIndex:row];
+        self.clientList = temp;
+        [user autorelease];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+}
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50.0;
@@ -134,8 +177,17 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
     
     id model = self.clientList[indexPath.row];
+
+    NSString *reg = @"(\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b)|(\\d{8,13})";
+    if ([model[@"realname"] isMatchedByRegex:reg]) {
+        NSString *temp = model[@"realname"];
+        NSString *temp1 = [temp substringToIndex:3];
+        NSString *temp2 = [temp substringFromIndex:[temp length]-3];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@***%@",temp1,temp2];
+    } else {
+        cell.textLabel.text = model[@"realname"];
+    }
     
-    cell.textLabel.text = model[@"realname"];
     [cell.imageView setImageWithURL:[NSURL URLWithString:model[@"userheaderimg"]] placeholderImage:[UIImage imageNamed:@"defaultIcon"]];
     
     return cell;

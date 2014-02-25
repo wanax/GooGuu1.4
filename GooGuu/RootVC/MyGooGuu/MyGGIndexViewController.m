@@ -8,7 +8,6 @@
 
 #import "MyGGIndexViewController.h"
 #import "MyCollectsViewController.h"
-#import "MyCommentViewController.h"
 #import "RelationClientsViewController.h"
 #import "ClientFansViewController.h"
 #import "ClientAttentonsViewController.h"
@@ -19,6 +18,7 @@
 #import "SettingCenterViewController.h"
 #import "ClientLoginViewController.h"
 #import "ClientCenterViewController.h"
+#import "GooGuuCommentListVC.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface MyGGIndexViewController ()
@@ -253,7 +253,7 @@
             myCollectVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myCollectVC animated:YES];
         }else if (row == 1){
-            MyCommentViewController *myCommentVC = [[[MyCommentViewController alloc] initWithAccount:self.userid type:MyComment] autorelease];
+            GooGuuCommentListVC *myCommentVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"我的评论" type:TargetUserComment userName:self.userid] autorelease];
             myCommentVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:myCommentVC animated:YES];
         }else if (row == 2){

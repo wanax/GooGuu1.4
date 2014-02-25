@@ -20,7 +20,9 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+        self.chats = temp;
+        self.pageNum = 1;
     }
     return self;
 }
@@ -29,7 +31,7 @@
 {
     [super viewDidLoad];
 	[self initCommponents];
-    [self getChatsInfo:self.offset];
+    [self getChatsInfo:self.pageNum isRefresh:YES];
 }
 
 -(void)initCommponents {
@@ -55,50 +57,71 @@
     
     [self.view addSubview:inputBar];
     
+    UIRefreshControl *tempRefresh = [[[UIRefreshControl alloc] init] autorelease];
+    tempRefresh.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
+    [tempRefresh addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = tempRefresh;
+    [self.chatTable addSubview:self.refreshControl];
+    
 }
 
--(void)getChatsInfo:(NSString *)pageNum {
+-(void)handleRefresh:(UIRefreshControl *)control {
+    [ProgressHUD show:nil];
+    control.attributedTitle = [[[NSAttributedString alloc] initWithString:@"刷新中"] autorelease];
+    [control endRefreshing];
+    [self performSelector:@selector(loadData) withObject:nil afterDelay:2.0f];
+}
+
+-(void)loadData{
     
-    if([Utiles isBlankString:self.offset]) {
-        pageNum = @"";
+    [self.refreshControl endRefreshing];
+    self.refreshControl.attributedTitle = [[[NSAttributedString alloc] initWithString:@"下拉刷新"] autorelease];
+    [self getChatsInfo:++self.pageNum isRefresh:NO];
+    
+}
+
+-(void)getChatsInfo:(int)pn isRefresh:(BOOL)isRefresh{
+    
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"touser":self.toUser,
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu",
+                                 @"offset":@(pn)
+                                 };
+        [Utiles getNetInfoWithPath:@"ChatList" andParams:params besidesBlock:^(id obj) {
+            
+            if (isRefresh) {
+                [self.chats removeAllObjects];
+            }
+            id data = obj[@"data"];
+            for (id obj in data) {
+                [self.chats addObject:obj];
+            }
+            
+            NSComparator cmptr = ^(id obj1, id obj2){
+                if ([Utiles dateToSecond:obj1[@"sendTime"] format:@"yyyy-MM-dd HH:mm:ss"] > [Utiles dateToSecond:obj2[@"sendTime"] format:@"yyyy-MM-dd HH:mm:ss"]) {
+                    return (NSComparisonResult)NSOrderedDescending;
+                } else {
+                    return (NSComparisonResult)NSOrderedAscending;
+                }
+                return (NSComparisonResult)NSOrderedSame;
+            };
+            
+            [self.chats sortUsingComparator:cmptr];
+            
+            [self.chatTable reloadData];
+            if ([self.chats count] > 0 && isRefresh) {
+                NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.chats count]-1 inSection:0];
+                [self.chatTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            }
+            [ProgressHUD dismiss];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
     }
-    NSDictionary *params = @{
-                             @"touser":self.toUser,
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu",
-                             @"offset":pageNum
-                             };
-    [Utiles getNetInfoWithPath:@"ChatList" andParams:params besidesBlock:^(id obj) {
-        
-        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
-        if (self.chats) {
-            for (id obj in self.chats) {
-                [temp addObject:obj];
-            }
-        }
-        id data = obj[@"data"];
-        for (id obj in data) {
-            [temp addObject:obj];
-        }
-        
-        NSComparator cmptr = ^(id obj1, id obj2){
-            if ([Utiles dateToSecond:obj1[@"sendTime"] format:@"yyyy-MM-dd HH:mm:ss"] > [Utiles dateToSecond:obj2[@"sendTime"] format:@"yyyy-MM-dd HH:mm:ss"]) {
-                return (NSComparisonResult)NSOrderedDescending;
-            } else {
-                return (NSComparisonResult)NSOrderedAscending;
-            }
-            return (NSComparisonResult)NSOrderedSame;
-        };
-        
-        self.chats = [temp sortedArrayUsingComparator:cmptr];
-        [self.chatTable reloadData];
-        NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.chats count]-1 inSection:0];
-        [self.chatTable scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
-    
-    
 }
 
 #pragma mark -
@@ -106,17 +129,22 @@
 
 -(void)inputBar:(YFInputBar *)inputBar sendBtnPress:(UIButton *)sendBtn withInputString:(NSString *)str
 {
-    NSDictionary *params = @{
-                             @"touser":self.toUser,
-                             @"msg":str,
-                             @"token":[Utiles getUserToken],
-                             @"from":@"googuu"
-                             };
-    [Utiles postNetInfoWithPath:@"SendPriMsg" andParams:params besidesBlock:^(id obj) {
-        [self getChatsInfo:self.offset];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"touser":self.toUser,
+                                 @"msg":str,
+                                 @"token":[Utiles getUserToken],
+                                 @"from":@"googuu"
+                                 };
+        [Utiles postNetInfoWithPath:@"SendPriMsg" andParams:params besidesBlock:^(id obj) {
+            self.pageNum = 1;
+            [self getChatsInfo:self.pageNum isRefresh:YES];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 -(void)inputBack {

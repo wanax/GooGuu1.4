@@ -7,7 +7,7 @@
 //
 
 #import "TopCommentsViewController.h"
-#import "TopCommentCell.h"
+#import "ClientCommentCell.h"
 #import "RegexKitLite.h"
 #import "GooGuuArticleViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -92,12 +92,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSArray *arr = [self.commentList[indexPath.row][@"replycontent"] split:@"<br/>"];
-    CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
+    CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:14.0] width:310];
+    float height = [arr[0] sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:14.0]}].height;
+    int lines = size.height/height + 3;
+    size.height = size.height + 8*lines;
     
     if ([arr count] > 1) {
-        return size.height + 110;
+        return size.height + 95;
     } else {
-       return size.height + 50;
+        return size.height + 52;
     }
     
 }
@@ -108,22 +111,31 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *TopCommentCellIdentifier = @"TopCommentCellIdentifier";
+    static NSString *ClientCommentCellIdentifier = @"ClientCommentCellIdentifier";
     
-    TopCommentCell *cell = (TopCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
+    ClientCommentCell *cell = (ClientCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
                          
     id model = self.commentList[indexPath.row];
     
     if (cell == nil) {
-        cell = [[[TopCommentCell alloc]
+        cell = [[[ClientCommentCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle
-                 reuseIdentifier:TopCommentCellIdentifier] autorelease];
+                 reuseIdentifier:ClientCommentCellIdentifier] autorelease];
     }
     
     NSArray *arr = [model[@"replycontent"] split:@"<br/>"];
     
     cell.content = arr[0];
-    cell.userName = model[@"realname"];
+    NSString *reg = @"(\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b)|(\\d{8,13})";
+    if ([model[@"realname"] isMatchedByRegex:reg]) {
+        NSString *temp = model[@"realname"];
+        NSString *temp1 = [temp substringToIndex:3];
+        NSString *temp2 = [temp substringFromIndex:[temp length]-3];
+        cell.userName = [NSString stringWithFormat:@"%@***%@",temp1,temp2];
+    } else {
+        cell.userName = model[@"realname"];
+    }
+    
     cell.artTitle = [NSString stringWithFormat:@"[%@]%@",model[@"classify"],model[@"title"]];
     cell.updateTime = [Utiles intervalSinceNow:model[@"replytime"]];
     cell.avaURL = model[@"headerpicurl"];

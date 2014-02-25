@@ -3,7 +3,7 @@
 */
 
 #define INJECTION_NOIMPL
-#define INJECTION_BUNDLE InjectionBundle3
+#define INJECTION_BUNDLE InjectionBundle11
 
 #import "/Applications/Injection Plugin.app/Contents/Resources/BundleInjection.h"
 
@@ -18,9 +18,9 @@
 
 
 
-@interface InjectionBundle3 : NSObject
+@interface InjectionBundle11 : NSObject
 @end
-@implementation InjectionBundle3
+@implementation InjectionBundle11
 
 + (void)load {
     Class bundleInjection = NSClassFromString(@"BundleInjection");
@@ -35,11 +35,11 @@ extern int injectionHook(void);
 
 int injectionHook() {
     NSLog( @"injectionHook():" );
-    [InjectionBundle3 load];
+    [InjectionBundle11 load];
     return YES;
 }
 
-#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/MyGooGuu/ChatList/ChatListViewController.m"
+#import "/Users/xcode/wanax/oc/GooGuu/GooGuu/AccessoryVC/ChatList/ChatListViewController.m"
 
 
 

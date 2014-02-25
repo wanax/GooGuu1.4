@@ -133,8 +133,7 @@
     if([temp length] > 95){
         temp = [NSString stringWithFormat:@"%@......",[temp substringToIndex:80]];
     }
-
-    cell.conciseTextView.text = temp;
+    cell.content = temp;
     
     //[cell.updateTimeLabel setText:model[@"updatetime"]];
     cell.updateTimeLabel.text=[Utiles intervalSinceNow:[model objectForKey:@"updatetime"]];
@@ -142,13 +141,6 @@
     return cell;
     
 }
-
-#pragma mark - Layout
-
-- (CGFloat)layoutManager:(NSLayoutManager *)layoutManager lineSpacingAfterGlyphAtIndex:(NSUInteger)glyphIndex withProposedLineFragmentRect:(CGRect)rect{
-	return 8;
-}
-
 
 #pragma mark -
 #pragma mark Table Delegate Methods

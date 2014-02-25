@@ -8,7 +8,7 @@
             <connections>
                 <outlet property="autoCheckImg" destination="nSv-dp-NBA" id="2pg-r9-Ysj"/>
                 <outlet property="autoLoginBt" destination="WCv-AC-Pmc" id="FgW-xA-sLj"/>
-                <outlet property="cancelBt" destination="Xcc-NW-N6h" id="X8m-z3-1qy"/>
+                <outlet property="backButton" destination="Bc7-br-4Th" id="tPu-X2-d8h"/>
                 <outlet property="findPwdBt" destination="4rf-kN-Udy" id="Hsk-g1-xnD"/>
                 <outlet property="loginBt" destination="qPv-M6-hDK" id="PHQ-mj-eiF"/>
                 <outlet property="regBt" destination="u1S-XP-cCg" id="YnT-3f-zs0"/>
@@ -23,19 +23,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="用户名/手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d7A-YH-3YU">
-                    <rect key="frame" x="24" y="41" width="272" height="44"/>
+                    <rect key="frame" x="24" y="63" width="272" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edC-vp-POE">
-                    <rect key="frame" x="24" y="84" width="272" height="44"/>
+                    <rect key="frame" x="24" y="106" width="272" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qPv-M6-hDK">
-                    <rect key="frame" x="48" y="136" width="224" height="44"/>
+                    <rect key="frame" x="48" y="158" width="224" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="21"/>
@@ -48,7 +48,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u1S-XP-cCg">
-                    <rect key="frame" x="84" y="219" width="152" height="38"/>
+                    <rect key="frame" x="84" y="241" width="152" height="38"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="18"/>
@@ -61,15 +61,15 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checkBox.png" translatesAutoresizingMaskIntoConstraints="NO" id="yFc-0W-jja">
-                    <rect key="frame" x="84" y="194" width="10" height="10"/>
+                    <rect key="frame" x="84" y="216" width="10" height="10"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nSv-dp-NBA">
-                    <rect key="frame" x="80" y="189" width="19" height="19"/>
+                    <rect key="frame" x="80" y="211" width="19" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WCv-AC-Pmc">
-                    <rect key="frame" x="97" y="186" width="60" height="25"/>
+                    <rect key="frame" x="97" y="208" width="60" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
                     <state key="normal" title="记住密码">
@@ -79,19 +79,8 @@
                         <action selector="autoBtClicked:" destination="-1" eventType="touchUpInside" id="1J4-r2-GGE"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xcc-NW-N6h">
-                    <rect key="frame" x="0.0" y="0.0" width="23" height="25"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                    <state key="normal" backgroundImage="cancelLoginBt.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="cancelBtClicked:" destination="-1" eventType="touchUpInside" id="A1G-yW-SXE"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4rf-kN-Udy">
-                    <rect key="frame" x="176" y="186" width="60" height="25"/>
+                    <rect key="frame" x="176" y="208" width="60" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
                     <state key="normal" title="忘记密码">
@@ -101,6 +90,13 @@
                         <action selector="findPwdBtClicked:" destination="-1" eventType="touchUpInside" id="clY-TE-uD2"/>
                     </connections>
                 </button>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LRr-5u-Vg1">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="返回" id="Bc7-br-4Th"/>
+                    </items>
+                </toolbar>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -110,7 +106,6 @@
         </view>
     </objects>
     <resources>
-        <image name="cancelLoginBt.png" width="38" height="45"/>
         <image name="checkBox.png" width="22" height="22"/>
     </resources>
 </document>

@@ -35,6 +35,10 @@
     return self;
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [self expectStock];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -135,15 +139,8 @@
     //SEGMENT
     [self.comInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",self.companyInfo[@"attentioncount"]] forSegmentAtIndex:1];
     [self.comInfoSeg setTitle:[NSString stringWithFormat:@"模型(%@)",self.companyInfo[@"usersavecount"]] forSegmentAtIndex:2];
-    NSDictionary *params = @{
-                             @"stockcode":self.companyInfo[@"stockcode"]
-                             };
-    [Utiles getNetInfoWithPath:@"ExpectedSpaceResulet" andParams:params besidesBlock:^(id obj) {
-        [self.comExpectSeg setTitle:[NSString stringWithFormat:@"看多(%@)",obj[@"up"]] forSegmentAtIndex:0];
-        [self.comExpectSeg setTitle:[NSString stringWithFormat:@"看空(%@)",obj[@"down"]] forSegmentAtIndex:1];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    
+    [self expectStock];
     
     //BUTTON
     self.ggReportButton.layer.cornerRadius = 4.0;
@@ -153,6 +150,21 @@
     if (![self.companyInfo[@"hasmodel"] boolValue]) {
         [self.ggValueModelButton setTitle:@"请求估值" forState:UIControlStateNormal];
     }
+}
+
+#pragma mark Expect
+
+-(void)expectStock {
+    
+    NSDictionary *params = @{
+                             @"stockcode":self.companyInfo[@"stockcode"]
+                             };
+    [Utiles getNetInfoWithPath:@"ExpectedSpaceResulet" andParams:params besidesBlock:^(id obj) {
+        [self.comExpectSeg setTitle:[NSString stringWithFormat:@"看多(%@)",obj[@"up"]] forSegmentAtIndex:0];
+        [self.comExpectSeg setTitle:[NSString stringWithFormat:@"看空(%@)",obj[@"down"]] forSegmentAtIndex:1];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 #pragma mark -
@@ -204,24 +216,28 @@
 
 - (IBAction)comExpectSegClicked:(UISegmentedControl *)sender {
     
-    NSDictionary *params = @{
-                             @"stockcode":self.companyInfo[@"stockcode"],
-                             @"flag":@(sender.selectedSegmentIndex+1),
-                             @"from":@"googuu",
-                             @"token":[Utiles getUserToken],
-                             @"state":@"1"
-                             };
-    [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
-        
-        if ([obj[@"status"] isEqualToString:@"1"]) {
-            [ProgressHUD showSuccess:@"投票成功"];
-        } else {
-            [ProgressHUD showError:obj[@"msg"]];
-        }
-        [self performSelector:@selector(goIntoExpVC) withObject:nil afterDelay:2.0];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    if ([Utiles isLogin]) {
+        NSDictionary *params = @{
+                                 @"stockcode":self.companyInfo[@"stockcode"],
+                                 @"flag":@(sender.selectedSegmentIndex+1),
+                                 @"from":@"googuu",
+                                 @"token":[Utiles getUserToken],
+                                 @"state":@"1"
+                                 };
+        [Utiles postNetInfoWithPath:@"ExpectedSpaceVote" andParams:params besidesBlock:^(id obj) {
+            
+            if ([obj[@"status"] isEqualToString:@"1"]) {
+                [ProgressHUD showSuccess:@"投票成功"];
+            } else {
+                [ProgressHUD showError:obj[@"msg"]];
+            }
+            [self performSelector:@selector(goIntoExpVC) withObject:nil afterDelay:2.0];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 -(void)goIntoExpVC {
@@ -344,7 +360,7 @@
         DahonValuationViewController *dahonVC = [[[DahonValuationViewController alloc] init] autorelease];
         dahonVC.comInfo = self.companyInfo;
         [self presentViewController:dahonVC animated:YES completion:nil];
-    } else if (row == 2) {//估右评论
+    } else if (row == 2) {//估友评论
         GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:CompanyComment stockCode:self.companyInfo[@"stockcode"]] autorelease];
         comVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comVC animated:YES];

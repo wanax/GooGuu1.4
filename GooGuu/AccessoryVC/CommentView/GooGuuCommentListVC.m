@@ -7,7 +7,7 @@
 //
 
 #import "GooGuuCommentListVC.h"
-#import "TopCommentCell.h"
+#import "ClientCommentCell.h"
 #import "RegexKitLite.h"
 #import "SVPullToRefresh.h"
 #import "AddCommentViewController.h"
@@ -82,8 +82,10 @@
     self.refreshControl = tempRefresh;
     [self.commentTable addSubview:self.refreshControl];
     
-    UIBarButtonItem *sendButton = [[[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self  action:@selector(sendBtClicked:)] autorelease];
-    self.navigationItem.rightBarButtonItem = sendButton;
+    if (self.type != TargetUserComment) {
+        UIBarButtonItem *sendButton = [[[UIBarButtonItem alloc] initWithTitle:@"评论" style:UIBarButtonItemStylePlain target:self  action:@selector(sendBtClicked:)] autorelease];
+        self.navigationItem.rightBarButtonItem = sendButton;
+    }
 }
 
 -(void)handleRefresh:(UIRefreshControl *)control {
@@ -146,14 +148,17 @@
 #pragma Table DataSource
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+        
     NSArray *arr = [self.commentList[indexPath.row][@"content"] split:@"<br/>"];
-    CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:12.0] width:275];
+    CGSize size = [Utiles getLabelSizeFromString:arr[0] font:[UIFont fontWithName:@"Heiti SC" size:14.0] width:310];
+    float height = [arr[0] sizeWithAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Heiti SC" size:14.0]}].height;
+    int lines = size.height/height + 3;
+    size.height = size.height + 8*lines;
     
     if ([arr count] > 1) {
-        return size.height + 110;
+        return size.height + 95;
     } else {
-        return size.height + 55;
+        return size.height + 52;
     }
     
 }
@@ -164,24 +169,24 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *TopCommentCellIdentifier = @"TopCommentCellIdentifier";
+    static NSString *ClientCommentCellIdentifier = @"ClientCommentCellIdentifier";
     
-    TopCommentCell *cell = (TopCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
+    ClientCommentCell *cell = (ClientCommentCell *)[tableView cellForRowAtIndexPath:indexPath];
     
     id model = self.commentList[indexPath.row];
     
     if (cell == nil) {
-        cell = [[[TopCommentCell alloc]
+        cell = [[[ClientCommentCell alloc]
                  initWithStyle:UITableViewCellStyleSubtitle
-                 reuseIdentifier:TopCommentCellIdentifier] autorelease];
+                 reuseIdentifier:ClientCommentCellIdentifier] autorelease];
     }
     
     NSArray *arr = [model[@"content"] split:@"<br/>"];
     
     if (self.type == TargetUserComment) {
         cell.content = arr[0];
-        cell.userName = [Utiles isBlankString:model[@"companyname"]]?@"":model[@"companyname"];
-        cell.artTitle = [Utiles isBlankString:model[@"title"]]?@"":model[@"title"];
+        cell.userName = [Utiles isBlankString:model[@"companyname"]]?@"暂无":model[@"companyname"];
+        cell.artTitle = [Utiles isBlankString:model[@"title"]]?@"暂无":model[@"title"];
         cell.avaURL = model[@"headerpicurl"];
     } else {
         cell.content = arr[0];
