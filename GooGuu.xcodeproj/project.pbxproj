@@ -205,6 +205,7 @@
 		AE518759187E42F10055B9AE /* CQMFloatingMaskControl.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518750187E42F10055B9AE /* CQMFloatingMaskControl.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE51875A187E42F10055B9AE /* CQMFloatingNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518753187E42F10055B9AE /* CQMFloatingNavigationBar.m */; };
 		AE51875B187E42F10055B9AE /* CQMPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AE518755187E42F10055B9AE /* CQMPathUtilities.m */; };
+		AE52374618BD81DA0008000A /* WebChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE52374518BD81DA0008000A /* WebChartViewController.m */; };
 		AE583D3B18A9D40E0077E877 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE583D3A18A9D40E0077E877 /* libicucore.dylib */; };
 		AE58A7261883899600E044BD /* XYPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = AE58A7251883899600E044BD /* XYPieChart.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		AE58A72E18838A3200E044BD /* WishesPieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE58A72D18838A3200E044BD /* WishesPieViewController.m */; };
@@ -386,6 +387,7 @@
 		AE9B2C941886965E0077B56D /* GGVIEW.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C901886965E0077B56D /* GGVIEW.png */; };
 		AE9B2C951886965E0077B56D /* VALUEMODEL.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C911886965E0077B56D /* VALUEMODEL.png */; };
 		AE9B2C97188699CD0077B56D /* MSG.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9B2C96188699CD0077B56D /* MSG.png */; };
+		AE9C792F18BC9F55007958FB /* CommentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9C792E18BC9F55007958FB /* CommentDetailViewController.m */; };
 		AE9E53BC18923C950097EC57 /* AddCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53BB18923C950097EC57 /* AddCommentView.xib */; };
 		AE9E53C11892464D0097EC57 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53BE1892464D0097EC57 /* Default.png */; };
 		AE9E53C21892464D0097EC57 /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE9E53BF1892464D0097EC57 /* appIcon@2x.png */; };
@@ -854,6 +856,8 @@
 		AE518753187E42F10055B9AE /* CQMFloatingNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMFloatingNavigationBar.m; sourceTree = "<group>"; };
 		AE518754187E42F10055B9AE /* CQMPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CQMPathUtilities.h; sourceTree = "<group>"; };
 		AE518755187E42F10055B9AE /* CQMPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CQMPathUtilities.m; sourceTree = "<group>"; };
+		AE52374418BD81DA0008000A /* WebChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebChartViewController.h; sourceTree = "<group>"; };
+		AE52374518BD81DA0008000A /* WebChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebChartViewController.m; sourceTree = "<group>"; };
 		AE583D3A18A9D40E0077E877 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		AE58A7241883899600E044BD /* XYPieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPieChart.h; sourceTree = "<group>"; };
 		AE58A7251883899600E044BD /* XYPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYPieChart.m; sourceTree = "<group>"; };
@@ -1070,6 +1074,8 @@
 		AE9B2C901886965E0077B56D /* GGVIEW.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GGVIEW.png; sourceTree = "<group>"; };
 		AE9B2C911886965E0077B56D /* VALUEMODEL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VALUEMODEL.png; sourceTree = "<group>"; };
 		AE9B2C96188699CD0077B56D /* MSG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MSG.png; sourceTree = "<group>"; };
+		AE9C792D18BC9F55007958FB /* CommentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailViewController.h; sourceTree = "<group>"; };
+		AE9C792E18BC9F55007958FB /* CommentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailViewController.m; sourceTree = "<group>"; };
 		AE9E53BB18923C950097EC57 /* AddCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddCommentView.xib; path = ../../NibFile/Common/AddCommentView.xib; sourceTree = "<group>"; };
 		AE9E53BE1892464D0097EC57 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		AE9E53BF1892464D0097EC57 /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@2x.png"; sourceTree = "<group>"; };
@@ -2041,6 +2047,7 @@
 		AE518709187E327E0055B9AE /* GooGuuModelVC */ = {
 			isa = PBXGroup;
 			children = (
+				AE52374318BD81BC0008000A /* WebChartVC */,
 				AEF0AEBC188AA8E4008A499A /* ComFans */,
 				AE71CACB1887DCFD005B3A2D /* Accessory */,
 				AE71CAC81887DCC2005B3A2D /* OldVC */,
@@ -2153,6 +2160,15 @@
 				AE518755187E42F10055B9AE /* CQMPathUtilities.m */,
 			);
 			path = CQMFloating;
+			sourceTree = "<group>";
+		};
+		AE52374318BD81BC0008000A /* WebChartVC */ = {
+			isa = PBXGroup;
+			children = (
+				AE52374418BD81DA0008000A /* WebChartViewController.h */,
+				AE52374518BD81DA0008000A /* WebChartViewController.m */,
+			);
+			path = WebChartVC;
 			sourceTree = "<group>";
 		};
 		AE58A7211883898B00E044BD /* XYPieChart */ = {
@@ -2716,6 +2732,8 @@
 				AEACB1B918B2F6DA00F610EC /* AddCommentViewController.m */,
 				AEACB1BA18B2F6DA00F610EC /* GooGuuCommentListVC.h */,
 				AEACB1BB18B2F6DA00F610EC /* GooGuuCommentListVC.m */,
+				AE9C792D18BC9F55007958FB /* CommentDetailViewController.h */,
+				AE9C792E18BC9F55007958FB /* CommentDetailViewController.m */,
 			);
 			path = CommentView;
 			sourceTree = "<group>";
@@ -3140,6 +3158,7 @@
 				AE51875B187E42F10055B9AE /* CQMPathUtilities.m in Sources */,
 				AEE0FDCC188CCFB600C70120 /* RelationClientsViewController.m in Sources */,
 				AE518725187E40E60055B9AE /* GuestCommentViewController.m in Sources */,
+				AE9C792F18BC9F55007958FB /* CommentDetailViewController.m in Sources */,
 				AE0D3D27187D410800E0E141 /* FinPic2ViewController.m in Sources */,
 				AE518747187E41FF0055B9AE /* ComFieldViewController.m in Sources */,
 				AE8641A7188D246300935E4E /* ClientRelationComListVC.m in Sources */,
@@ -3210,6 +3229,7 @@
 				AE0D3CB8187D36A000E0E141 /* UIButton+BGColor.m in Sources */,
 				AE3E631A187F9374005A71AD /* TipViewController.m in Sources */,
 				AE0D3CEB187D3A9200E0E141 /* PrettyDrawing.m in Sources */,
+				AE52374618BD81DA0008000A /* WebChartViewController.m in Sources */,
 				AE0D3CF9187D3B2500E0E141 /* Toast+UIView.m in Sources */,
 				AE518743187E41BD0055B9AE /* ModelClassViewController.m in Sources */,
 				AE518759187E42F10055B9AE /* CQMFloatingMaskControl.m in Sources */,
@@ -3361,7 +3381,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "10C92D52-F14D-434F-B7C7-47E7131B79CE";
+				PROVISIONING_PROFILE = "673FCC35-E69B-4CF0-B741-3576E3160659";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3395,7 +3415,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PROVISIONING_PROFILE = "10C92D52-F14D-434F-B7C7-47E7131B79CE";
+				PROVISIONING_PROFILE = "673FCC35-E69B-4CF0-B741-3576E3160659";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3407,8 +3427,8 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -3436,7 +3456,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "75A78196-EE86-4D71-902F-B5156208DA61";
+				PROVISIONING_PROFILE = "206E4C97-F265-4566-80BA-E0B0AE4CBCF2";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -3449,7 +3469,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: XIAOJU WANG (49TDX2PQGF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: XIAOJU WANG (S245TY654T)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -3477,7 +3497,7 @@
 					"/Users/xcode/wanax/oc/GooGuu/GooGuu/Plugins/Release-iphonesimulator",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "75A78196-EE86-4D71-902F-B5156208DA61";
+				PROVISIONING_PROFILE = "206E4C97-F265-4566-80BA-E0B0AE4CBCF2";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

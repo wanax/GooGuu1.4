@@ -26,6 +26,22 @@
     return self;
 }
 
+-(void)searchAction:(id)sender{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"请输入关键字" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert setAlertViewStyle:UIAlertViewStylePlainTextInput];
+    [[alert textFieldAtIndex:0] setDelegate:self];
+    self.searchAlert = alert;
+    [self.searchAlert show];
+    
+}
+
+-(void)addSearchBt{
+    UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(searchAction:)] autorelease];
+    self.navigationItem.rightBarButtonItem = nextStepBarBtn;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -37,7 +53,7 @@
                                                                        320.0f,
                                                                        300.0f)] autorelease];
     self.tag = tempList;
-    
+    [self addSearchBt];
     [self.tag setDelegate:self];
     [self.view addSubview:self.tag];
     [self getKeyWordList];
@@ -88,6 +104,26 @@
     picVC.hidesBottomBarWhenPushed=YES;
     [self.navigationController pushViewController:picVC animated:YES];
     
+}
+
+#pragma UITextView And UIAlert Delegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        FinancePicViewController *picVC=[[[FinancePicViewController alloc] init] autorelease];
+        picVC.keyWord = [alertView textFieldAtIndex:0].text;
+        picVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:picVC animated:YES];
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)shouldAutorotate

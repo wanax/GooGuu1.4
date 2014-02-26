@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CommentDetail</key>
+	<string>/m/commentdetail</string>
 	<key>DelAttentionUser</key>
 	<string>/m/delattentionuser</string>
 	<key>AddAttentionUser</key>
@@ -80,6 +82,8 @@
 	<string>/m/financialdata</string>
 	<key>GooGuuView</key>
 	<string>/m/googuuview</string>
+	<key>SearchGooGuuView</key>
+	<string>/m/searchgooguuview</string>
 	<key>UserFindPwd</key>
 	<string>/m/findpassword</string>
 	<key>UserResetPwd</key>

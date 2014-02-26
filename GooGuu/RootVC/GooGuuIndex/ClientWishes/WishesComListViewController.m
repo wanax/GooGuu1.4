@@ -137,6 +137,9 @@
 
 
 
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 
 - (void)didReceiveMemoryWarning

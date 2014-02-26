@@ -11,6 +11,7 @@
 #import "RegexKitLite.h"
 #import "SVPullToRefresh.h"
 #import "AddCommentViewController.h"
+#import "CommentDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GooGuuCommentListVC ()
@@ -213,6 +214,14 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NSString *commentId = nil;
+    if (self.type == TargetUserComment) {
+        commentId = self.commentList[indexPath.row][@"id"];
+    } else {
+        commentId = self.commentList[indexPath.row][@"rid"];
+    }
+    CommentDetailViewController *detailVC = [[[CommentDetailViewController alloc] initWithCommentId:commentId] autorelease];
+    [self.navigationController pushViewController:detailVC animated:YES];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
@@ -235,6 +244,9 @@
     
 }
 
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 -(BOOL)shouldAutorotate{
     return NO;

@@ -129,10 +129,8 @@
     
 }
 
--(NSUInteger)supportedInterfaceOrientations{
-    
-    //NSLog(@"concern supportedInterfaceOrientations");
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)shouldAutorotate{

@@ -29,18 +29,8 @@
                 [dic setObject:pwd forKey:@"password"];
                 [dic setObject:userName forKey:@"username"];
                 SetUserDefaults([dic JSONString],@"UserInfo");
-                block(info);
-               
-            }/*else {
-                NSString *msg=@"";
-                if ([info[@"status"] isEqual:@"0"]) {
-                    msg=@"用户不存在";
-                } else if ([info[@"status"] isEqual:@"2"]){
-                    msg=@"邮箱未激活";
-                } else if ([info[@"status"] isEqual:@"3"]){
-                    msg=@"密码错误";
-                }
-            }*/
+            }
+            block(info);
             
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
             NSLog(@"from user login %@",error);

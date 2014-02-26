@@ -391,6 +391,9 @@
 
 
 
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 
 - (BOOL)shouldAutorotate{

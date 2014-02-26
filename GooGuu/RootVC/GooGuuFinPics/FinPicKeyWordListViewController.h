@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "AOTag.h"
 
-@interface FinPicKeyWordListViewController : UIViewController<AOTagDelegate>
+@interface FinPicKeyWordListViewController : UIViewController<AOTagDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 
 @property (nonatomic,retain) AOTagList *tag;
 @property (nonatomic,retain) NSArray *colorArr;
 @property (nonatomic,retain) id keyWordData;
 @property (nonatomic,retain) NSArray *keyWordList;
+
+@property (retain, nonatomic) UIAlertView *searchAlert;
 
 @end

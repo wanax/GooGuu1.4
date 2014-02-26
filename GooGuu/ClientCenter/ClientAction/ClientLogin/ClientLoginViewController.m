@@ -123,10 +123,19 @@
 -(IBAction)loginBtClicked:(id)sender{
     [ProgressHUD show:nil];
     [CommonFunction userLoginUserName:self.userNameField.text pwd:self.userPwdField.text callBack:^(id obj) {
+
+        NSString *msg=@"";
+        if ([obj[@"status"] isEqual:@"0"]) {
+            msg=@"用户不存在";
+        } else if ([obj[@"status"] isEqual:@"1"]){
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } else if ([obj[@"status"] isEqual:@"2"]){
+            msg=@"邮箱未激活";
+        } else if ([obj[@"status"] isEqual:@"3"]){
+            msg=@"密码错误";
+        }
         [ProgressHUD dismiss];
-        [self dismissViewControllerAnimated:YES completion:nil];
-        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-        delegate.tabBarController.selectedIndex = 0;
+        [Utiles showToastView:self.view withTitle:nil andContent:msg duration:1.5];
     }];
 }
 
@@ -147,9 +156,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
--(BOOL)shouldAutorotate{
+- (BOOL)shouldAutorotate{
     return NO;
+}
+
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 @end

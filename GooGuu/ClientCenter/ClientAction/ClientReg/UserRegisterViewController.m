@@ -335,6 +335,7 @@ typedef enum{
                 } else if ([info[@"status"] isEqual:@"3"]){
                     msg=@"密码错误";
                 }
+                [Utiles showToastView:self.view withTitle:nil andContent:msg duration:1.0];
             }
         } failure:^(AFHTTPRequestOperation *operation,NSError *error){
 
@@ -346,9 +347,12 @@ typedef enum{
     
     
 }
-
--(BOOL)shouldAutorotate{
+- (BOOL)shouldAutorotate{
     return NO;
+}
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning

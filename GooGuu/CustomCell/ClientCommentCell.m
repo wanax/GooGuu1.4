@@ -28,7 +28,6 @@
         self.thumbnail5 = temp5;
         
         self.thumbnails = [NSMutableArray arrayWithObjects:self.thumbnail1,self.thumbnail2,self.thumbnail3,self.thumbnail4,self.thumbnail5, nil];
-        self.contentTextView.userInteractionEnabled = NO;
     }
     return self;
 }
@@ -89,6 +88,7 @@
     view.layoutManager.delegate = self;
     view.editable = NO;
     view.scrollEnabled = NO;
+    view.userInteractionEnabled = NO;
     view.font = font;
     view.textColor = color;
     view.text = str;

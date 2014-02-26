@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GooGuuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface GooGuuViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UIAlertViewDelegate>
 
 @property (nonatomic,retain) NSString *articleId;
 @property (nonatomic,retain) NSArray *viewDataArr;
+@property (retain, nonatomic) NSString *from;
+@property (retain, nonatomic) NSString *key;
 
 @property (nonatomic,retain) UITableView *cusTable;
 @property (nonatomic,retain) UIRefreshControl *refreshControl;
+@property (retain, nonatomic) UIAlertView *searchAlert;
 
 @end

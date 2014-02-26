@@ -173,6 +173,11 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+}
+
 
 #pragma mark -
 #pragma mark TextField Methods Delegate
@@ -240,6 +245,7 @@ static NSString *herf_3 = @"\" broder=\"0\" /></a>";
 - (BOOL)shouldAutorotate{
     return NO;
 }
+
 
 - (NSUInteger)supportedInterfaceOrientations{
     return UIInterfaceOrientationMaskPortrait;

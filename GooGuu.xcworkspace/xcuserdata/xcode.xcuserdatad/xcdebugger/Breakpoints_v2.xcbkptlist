@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "415013728.180699"
+            timestampString = "415073848.605789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "-initComponents"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,7 +292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "415013728.180699"
+            timestampString = "415074131.213553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "197"
@@ -516,12 +516,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
-            timestampString = "412073954.735134"
+            timestampString = "415093708.099184"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "-getValueViewData:code:"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
+            landmarkName = "-getValueViewData:from:key:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -770,7 +770,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/ClientCenter/ClientAction/ClientLogin/ClientLoginViewController.m"
-            timestampString = "415006736.739691"
+            timestampString = "415087755.859925"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
@@ -896,11 +896,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "415013728.180699"
+            timestampString = "415073848.605789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -912,11 +912,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "415013728.180699"
+            timestampString = "415073848.605789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
             landmarkName = "-initComponents"
             landmarkType = "5">
          </BreakpointContent>
@@ -1762,11 +1762,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/CommentView/AddCommentViewController.m"
-            timestampString = "414666897.082956"
+            timestampString = "415089249.272614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-sendComment"
             landmarkType = "5">
          </BreakpointContent>
@@ -1778,11 +1778,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/CommentView/GooGuuCommentListVC.m"
-            timestampString = "415005895.242326"
+            timestampString = "415015307.221246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1794,11 +1794,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/CommentView/GooGuuCommentListVC.m"
-            timestampString = "415005895.242326"
+            timestampString = "415015307.221246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "203"
-            endingLineNumber = "203"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2318,11 +2318,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/CommentView/GooGuuCommentListVC.m"
-            timestampString = "415005895.242326"
+            timestampString = "415015307.221246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2334,11 +2334,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/CommentView/GooGuuCommentListVC.m"
-            timestampString = "414663148.839487"
+            timestampString = "415015307.221246"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "-initComponents"
             landmarkType = "5">
          </BreakpointContent>
@@ -2366,11 +2366,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/AccessoryVC/CommentView/AddCommentViewController.m"
-            timestampString = "414666897.082956"
+            timestampString = "415089249.272614"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "-sendComment"
             landmarkType = "5">
          </BreakpointContent>
@@ -2524,7 +2524,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "415012129.331068"
+            timestampString = "415074131.213553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -2540,12 +2540,210 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GooGuu/GooGuuModelVC/GGModelIndexVC.m"
-            timestampString = "415012130.659213"
+            timestampString = "415074131.213553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
             landmarkName = "-expectStock"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/AccessoryVC/CommentView/GooGuuCommentListVC.m"
+            timestampString = "415015886.745223"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/AccessoryVC/CommentView/CommentDetailViewController.m"
+            timestampString = "415087755.859925"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-handleSingleTap:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/AccessoryVC/CommentView/CommentDetailViewController.m"
+            timestampString = "415087755.859925"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "-numberOfPhotosInPhotoBrowser:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/AccessoryVC/CommentView/CommentDetailViewController.m"
+            timestampString = "415087755.859925"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-photoBrowser:photoAtIndex:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/AccessoryVC/CommentView/CommentDetailViewController.m"
+            timestampString = "415087755.859925"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-webViewDidFinishLoad:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+            timestampString = "415093708.099184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "-getValueViewData:from:key:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+            timestampString = "415093708.099184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "-getValueViewData:from:key:"
+            landmarkType = "5">
+            <Actions>
+               <BreakpointActionProxy
+                  ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
+                  <ActionContent
+                     consoleCommand = "po params">
+                  </ActionContent>
+               </BreakpointActionProxy>
+            </Actions>
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GooGuuViewController getValueViewData:code:from:key:]"
+                  moduleName = "GooGuu"
+                  urlString = "file:///Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+                  timestampString = "415092623.863549"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "399">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__55-[GooGuuViewController getValueViewData:code:from:key:]_block_invoke"
+                  moduleName = "GooGuu"
+                  urlString = "file:///Users/xcode/wanax/oc/GooGuu/GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+                  timestampString = "415092623.863775"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "107"
+                  endingLineNumber = "107"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+            timestampString = "415093708.099184"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "207"
+            endingLineNumber = "207"
+            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+            timestampString = "415093597.084857"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "-loadData"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GooGuu/RootVC/GooGuuViews/GooGuuViewController.m"
+            timestampString = "415093829.33321"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-alertView:clickedButtonAtIndex:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

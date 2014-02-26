@@ -414,9 +414,8 @@
 
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
-    
+
     //文章文字大小
-    NSString *botySise=[[NSString alloc] initWithFormat:@"document.getElementsByTagName('body')[0].style.fontSize='%dpx'",12];
     NSString *imgSize=[[NSString alloc] initWithFormat:@"var temp = document.getElementsByTagName(\"img\");\
                        for (var i = 0; i < temp.length; i ++) {\
                        temp[i].style.width = '300px';\
@@ -439,9 +438,7 @@
         photo = [[[CXPhoto alloc] initWithURL:[NSURL URLWithString:obj]] autorelease];
         [self.photoDataSource addObject:photo];
     }
-    [self.articleWeb stringByEvaluatingJavaScriptFromString:botySise];
     [self.articleWeb stringByEvaluatingJavaScriptFromString:imgSize];
-    SAFE_RELEASE(botySise);
     SAFE_RELEASE(imgSize);
     SAFE_RELEASE(tempArr);
 }
@@ -552,6 +549,9 @@
 }
 
 
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
 
 
 

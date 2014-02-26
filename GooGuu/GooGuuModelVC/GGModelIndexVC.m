@@ -18,6 +18,7 @@
 #import "AnalysisReportViewController.h"
 #import "ExpectedSpaceViewController.h"
 #import "GooGuuCommentListVC.h"
+#import "WebChartViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GGModelIndexVC ()
@@ -115,7 +116,6 @@
     self.title = self.companyInfo[@"companyname"];
     
     self.view.backgroundColor = [UIColor cloudsColor];
-    self.comAboutTable.scrollEnabled = NO;
     
     //IMG
     if (![Utiles isBlankString:self.companyInfo[@"comanylogourl"]]) {
@@ -311,7 +311,7 @@
 #pragma Table DataSource
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 6;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -340,6 +340,15 @@
     } else if (row ==2) {
         cell.textLabel.text = @"估友评论";
         cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+    } else if (row ==3) {
+        cell.textLabel.text = @"估值空间";
+        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+    } else if (row ==4) {
+        cell.textLabel.text = @"分析师目标价";
+        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+    } else if (row ==5) {
+        cell.textLabel.text = @"可比公司分析";
+        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
     }
     return cell;
     
@@ -364,6 +373,16 @@
         GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:CompanyComment stockCode:self.companyInfo[@"stockcode"]] autorelease];
         comVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comVC animated:YES];
+    } else {
+        WebChartViewController *chartVC = nil;
+        if (row == 3) {
+            chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"valuationspace"] autorelease];
+        } else if (row == 4) {
+            chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"analyseviewspace"] autorelease];
+        } else if (row == 5) {
+            chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"comparecompany"] autorelease];
+        }
+        [self.navigationController pushViewController:chartVC animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -372,6 +391,11 @@
 - (BOOL)shouldAutorotate{
     
     return NO;
+}
+
+
+- (NSUInteger)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning
