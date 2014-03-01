@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>RMB</key>
+	<string>人民币</string>
+	<key>HKD</key>
+	<string>港元</string>
+	<key>USD</key>
+	<string>美元</string>
+	<key>EUR</key>
+	<string>欧元</string>
+	<key>JPY</key>
+	<string>日元</string>
+</dict>
+</plist>

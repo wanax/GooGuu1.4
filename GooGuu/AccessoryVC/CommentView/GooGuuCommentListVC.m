@@ -186,13 +186,21 @@
     
     if (self.type == TargetUserComment) {
         cell.content = arr[0];
-        cell.userName = [Utiles isBlankString:model[@"companyname"]]?@"暂无":model[@"companyname"];
-        cell.artTitle = [Utiles isBlankString:model[@"title"]]?@"暂无":model[@"title"];
+        cell.userName = [Utiles isBlankString:model[@"companyname"]]?@"":model[@"companyname"];
+        cell.artTitle = [Utiles isBlankString:model[@"title"]]?@"":model[@"title"];
         cell.avaURL = model[@"headerpicurl"];
     } else {
         cell.content = arr[0];
         cell.userName = model[@"author"];
-        cell.artTitle = model[@"username"];
+        NSString *reg = @"(\\b([a-zA-Z0-9%_.+\\-]+)@([a-zA-Z0-9.\\-]+?\\.[a-zA-Z]{2,6})\\b)|(\\d{8,13})";
+        if ([model[@"username"] isMatchedByRegex:reg]) {
+            NSString *temp = model[@"username"];
+            NSString *temp1 = [temp substringToIndex:3];
+            NSString *temp2 = [temp substringFromIndex:[temp length]-3];
+            cell.artTitle = [NSString stringWithFormat:@"%@***%@",temp1,temp2];
+        } else {
+            cell.artTitle = model[@"username"];
+        }
         cell.updateTime = [Utiles intervalSinceNow:model[@"updatetime"]];
         cell.avaURL = model[@"headerpicurl"];
     }

@@ -62,7 +62,7 @@
     [bt addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt];
     
-    XYPieChart *chartPie = [[[XYPieChart alloc] initWithFrame:CGRectMake(8,60,300,300)] autorelease];
+    XYPieChart *chartPie = [[[XYPieChart alloc] initWithFrame:CGRectMake(32,60,250,250)] autorelease];
     self.pieChart = chartPie;
     
     [self.pieChart setDelegate:self];
@@ -74,19 +74,17 @@
     self.pieChart.labelRadius = 80.0;
     self.pieChart.selectedSliceOffsetRadius = 10.0;
     self.pieChart.selectedSliceStroke = 8.0;
-    //[self.pieChart setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:1]];
-    //[self.pieChart setLabelShadowColor:[UIColor blackColor]];
     
     self.pieChart = chartPie;
     [self.view addSubview:self.pieChart];
     
     for (int i = 0;i < [self.comList count];i ++) {
         NSString *comName = self.comList[i][@"companyname"];
-        UILabel *indicator = [[[UILabel alloc] initWithFrame:CGRectMake(60,380+35*i,250,20)] autorelease];
+        UILabel *indicator = [[[UILabel alloc] initWithFrame:CGRectMake(60,300+35*i,250,20)] autorelease];
         indicator.font = [UIFont fontWithName:@"Heiti SC" size:12.0];
         indicator.text = comName;
         
-        UILabel *colorBlock = [[[UILabel alloc] initWithFrame:CGRectMake(20,380+35*i,15,15)] autorelease];
+        UILabel *colorBlock = [[[UILabel alloc] initWithFrame:CGRectMake(20,300+35*i,15,15)] autorelease];
         colorBlock.backgroundColor = self.sliceColors[i];
     
         [self.view addSubview:colorBlock];

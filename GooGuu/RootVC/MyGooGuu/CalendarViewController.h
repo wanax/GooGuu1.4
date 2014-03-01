@@ -24,5 +24,7 @@
 @property (nonatomic,retain) NSMutableArray *eventArr;
 @property (nonatomic,retain) NSMutableDictionary *dateDic;
 
+@property (retain, nonatomic) VRGCalendarView *calendar;
+
 
 @end

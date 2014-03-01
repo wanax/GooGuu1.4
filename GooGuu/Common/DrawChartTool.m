@@ -86,9 +86,9 @@
     [button setFrame:rect];
     [button setTitle:title forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont fontWithName:@"Heiti SC" size:15.0f]];
+    [button setTitleColor:[UIColor peterRiverColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [button setTag:tag];
-    [button setBackgroundColor:[UIColor tangerineColor] forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor grayColor] forState:UIControlStateDisabled];
 
     [button addTarget:standIn action:fun forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:button];

@@ -25,6 +25,27 @@ static NSString * FORECAST_DEFAULT_DATALINE_IDENTIFIER =@"forecast_default_datal
 static NSString * HISTORY_DATALINE_IDENTIFIER =@"history_dataline_identifier";
 static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 
+-(id)init {
+    self = [super init];
+    if (self) {
+        NSMutableArray *temp = [[[NSMutableArray alloc] init] autorelease];
+        self.changedDriverIds = temp;
+        self.linkage = YES;
+        self.isSaved = YES;
+        self.webIsLoaded = NO;
+        self.modelMainViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
+        self.modelFeeViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
+        self.modelCapViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
+        self.modelMainViewController.delegate=self;
+        self.modelFeeViewController.delegate=self;
+        self.modelCapViewController.delegate=self;
+        self.modelMainViewController.classTitle=@"主营收入";
+        self.modelFeeViewController.classTitle=@"运营费用";
+        self.modelCapViewController.classTitle=@"运营资本";
+    }
+    return self;
+}
+
 
 #pragma mark -
 #pragma mark General Methods
@@ -74,8 +95,6 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self.discountBt setEnabled:NO];
- 
-    [self initVariable];
     
     UIWebView *tempWeb = [[[UIWebView alloc] init] autorelease];
     self.webView = tempWeb;
@@ -85,22 +104,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     
     [self initPlotSpace];
 }
--(void)initVariable{
 
-    self.changedDriverIds=[[NSMutableArray alloc] init];
-    self.linkage=YES;
-    self.isSaved=YES;
-    self.webIsLoaded=NO;
-    self.modelMainViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
-    self.modelFeeViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
-    self.modelCapViewController=[[[ModelClassGrade2ViewController alloc] init] autorelease];
-    self.modelMainViewController.delegate=self;
-    self.modelFeeViewController.delegate=self;
-    self.modelCapViewController.delegate=self;
-    self.modelMainViewController.classTitle=@"主营收入";
-    self.modelFeeViewController.classTitle=@"运营费用";
-    self.modelCapViewController.classTitle=@"运营资本";
-}
 
 -(void)initPlotSpace{
     
@@ -155,10 +159,10 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     UIBarButtonItem *operaFeeButton = [self addBarButton:@"运营费用" tag:OperaFee];
     UIBarButtonItem *operaCapButton = [self addBarButton:@"运营资本" tag:OperaCap];
     UIBarButtonItem *discountRateButton = [self addBarButton:@"折现率" tag:DiscountRate];
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+    UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                       target:nil
-                                      action:nil];
+                                      action:nil] autorelease];
     [toolBar setItems:@[backButton,flexibleSpace,mainIncomeButton,operaFeeButton,operaCapButton,discountRateButton]];
     [self.view addSubview:toolBar];
     
@@ -176,9 +180,9 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     comNameLabel.numberOfLines = 0;
     
     //市场价label
-    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"市场价::%.2f",[self.netComInfo[@"MarketPrice"] floatValue]] frame:CGRectMake(SCREEN_HEIGHT-300,44,110,22) fontSize:12.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
+    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"市场价:%.2f",[self.netComInfo[@"MarketPrice"] floatValue]] frame:CGRectMake(SCREEN_HEIGHT-300,44,110,22) fontSize:12.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
     //估值数值label
-    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"估股估值::%.2f",[self.netComInfo[@"GooguuValuation"] floatValue]] frame:CGRectMake(SCREEN_HEIGHT-300,67,100,22) fontSize:11.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
+    [tool addLabelToView:self.view withTitle:[NSString stringWithFormat:@"估股估值:%.2f",[self.netComInfo[@"GooguuValuation"] floatValue]] frame:CGRectMake(SCREEN_HEIGHT-300,67,100,22) fontSize:11.0 textColor:@"#817a6b" location:NSTextAlignmentLeft];
     
     self.myGGpriceLabel=[tool addLabelToView:self.view withTitle:@"我的估值:" frame:CGRectMake(80,0,60,44) fontSize:14.0 textColor:@"#817a6b" location:NSTextAlignmentCenter];
     self.priceLabel=[tool addLabelToView:self.view withTitle:@"" frame:CGRectMake(140,0,SCREEN_HEIGHT-400,44) fontSize:18.0 textColor:@"#e18e14" location:NSTextAlignmentCenter];
@@ -255,22 +259,30 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         
         self.modelMainViewController.isShowDiscountView=self.isShowDiscountView;
         [self presentViewController:self.modelMainViewController animated:YES completion:nil];
+        self.limitType = NOLimit;
+        
     } else if(bt.tag == OperaFee) {
         
         self.modelFeeViewController.isShowDiscountView=self.isShowDiscountView;
         [self presentViewController:self.modelFeeViewController animated:YES completion:nil];
+        self.limitType = BigerThan0;
+        
     } else if(bt.tag == OperaCap) {
         
         self.modelCapViewController.isShowDiscountView=self.isShowDiscountView;
         [self presentViewController:self.modelCapViewController animated:YES completion:nil];
+        self.limitType = BigerThan0;
+        
     } else if(bt.tag == DiscountRate) {
         
         NSString *values = [Utiles getObjectDataFromJsFun:self.webView funName:@"getValues" byData:nil shouldTrans:NO];
         if (SCREEN_HEIGHT > 500) {
-            self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView5" bundle:nil];
+            DiscountRateViewController *tempVC = [[[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView5" bundle:nil] autorelease];
+            self.rateViewController = tempVC;
             self.rateViewController.view.frame = CGRectMake(0,44,SCREEN_HEIGHT,SCREEN_WIDTH-44);
         } else {
-            self.rateViewController = [[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil];
+            DiscountRateViewController *tempVC = [[[DiscountRateViewController alloc] initWithNibName:@"DiscountRateView" bundle:nil] autorelease];
+            self.rateViewController = tempVC;
             self.rateViewController.view.frame = CGRectMake(0,44,SCREEN_HEIGHT,SCREEN_WIDTH-44);
         }
         self.rateViewController.comInfo = self.comInfo;
@@ -295,6 +307,14 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         
         self.netComInfo=resObj[@"info"];
         [self initChartViewComponents];
+        
+        NSDictionary *currencyDic = GetConfigure(@"CurrencyMap", nil, NO);
+        
+        if (resObj[@"info"][@"Currency"]) {
+            self.currency = currencyDic[resObj[@"info"][@"Currency"]];
+        } else {
+            self.currency = resObj[@"info"][@"Currency"];
+        }
         
         self.jsonForChart=[resObj JSONString];
         self.jsonForChart=[self.jsonForChart stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\\\\\""];
@@ -344,7 +364,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 #pragma mark -
 #pragma mark ModelClass Methods Delegate
 -(void)modelClassChanged:(NSString *)driverId isShowDisView:(BOOL)isShow{
-    self.isShowDiscountView=isShow;
+    self.isShowDiscountView = isShow;
     [self modelClassChanged:driverId];
 }
 -(void)modelClassChanged:(NSString *)driverId{
@@ -358,7 +378,17 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     NSArray *sort=[Utiles arrSort:self.forecastPoints];
     self.yAxisUnit=[Utiles getUnitFromData:[[[sort lastObject] objectForKey:@"v"] stringValue] andUnit:self.trueUnit];
     
-    self.graph.title=[NSString stringWithFormat:@"%@(单位:%@)",chartData[@"title"],self.yAxisUnit];
+    if ([self.trueUnit isEqualToString:@"%"] || [self.trueUnit isEqualToString:@"day"]) {
+        self.graph.title = [NSString stringWithFormat:@"%@(单位:%@)",chartData[@"title"],self.yAxisUnit];
+    } else {
+        self.graph.title = [NSString stringWithFormat:@"%@(单位:%@|币种:%@)",chartData[@"title"],self.yAxisUnit,self.currency];
+    }
+    if ([chartData[@"title"] stringByMatching:@"毛利率"]) {
+        self.limitType = BET0To1;
+    } else if ([chartData[@"title"] stringByMatching:@"增长率"]) {
+        self.limitType = BET1To1;
+    }
+
     [self setXYAxis];
     [self setStockPrice];
     [self removeDiscountView];
@@ -432,18 +462,15 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     NSString *jsonPrice=[self.forecastPoints JSONString];
     jsonPrice=[jsonPrice stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     NSString *backInfo=[Utiles getObjectDataFromJsFun:self.webView funName:@"chartCalu" byData:jsonPrice shouldTrans:NO];
-    if(self.sourceType==MySavedType){
-        //[self.myGGpriceLabel setText:@"我的估值"];
-    }
-    @try {
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setPositiveFormat:@"###0.##"];
-        NSString *ggPrice = [numberFormatter stringFromNumber:[numberFormatter numberFromString:backInfo]];
+
+    if ([backInfo floatValue] > 0) {
+        NSString *ggPrice = [NSString stringWithFormat:@"%.2f",[backInfo floatValue]];
         [self.priceLabel setText:ggPrice];
+    } else {
+        [self calGooGuuPriceX:self.resetPoint.x Change:self.resetPoint.y];
+        [ProgressHUD showError:@"不可以小于0"];
     }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
+    
 }
 
 -(void)viewPan:(UIPanGestureRecognizer *)tapGr
@@ -454,10 +481,12 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     CGPoint coordinate=[self CoordinateTransformRealToAbstract:now];
     
     if(tapGr.state==UIGestureRecognizerStateBegan){
+        
         [self.standard removeAllObjects];
         for(id obj in self.forecastPoints){
             [self.standard addObject:obj[@"v"]];
         }
+        self.resetPoint = CGPointMake(coordinate.x,change.y);
         
     }else if(tapGr.state==UIGestureRecognizerStateEnded){
         [self.standard removeAllObjects];
@@ -471,45 +500,9 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     }
     //手势变化并且接近折点旁边
     if([tapGr state]==UIGestureRecognizerStateChanged){
+
+        [self calGooGuuPriceX:coordinate.x Change:change.y];
         
-        coordinate.x=(int)(coordinate.x+0.5);
-        
-        int subscript=coordinate.x-[[self.hisPoints lastObject][@"y"] integerValue];
-        
-        subscript=subscript<0?0:subscript;
-        subscript=subscript>=[self.forecastPoints count]-1?[self.forecastPoints count]-1:subscript;
-        NSAssert(subscript<=[self.forecastPoints count]-1&&coordinate.x>=0,@"over bounds");
-        
-        if(self.linkage){
-            double l4 = YRANGELENGTH*change.y/self.hostView.frame.size.height/ (1 - exp(-2));
-            
-            double l7 = 2 / ([(self.forecastPoints)[subscript][@"y"] doubleValue]);
-            int i=0;
-            for(id obj in self.forecastPoints){
-                double v = [obj[@"v"] doubleValue];
-                v =[(self.standard)[i] doubleValue]- l4 * (1 - exp(-l7 * (i+1)));
-                obj[@"v"] = @(v);
-                if(i==0){
-                    [self.hisPoints lastObject][@"v"] = @(v);
-                }
-                i++;
-            }
-            
-            [self setStockPrice];
-            [self.graph reloadData];
-            
-        }else{
-            
-            double changeD=-YRANGELENGTH*change.y/self.hostView.frame.size.height;
-            double v=[(self.standard)[subscript] doubleValue]+changeD;
-            (self.forecastPoints)[subscript][@"v"] = @(v);
-            if(subscript==0){
-                [self.hisPoints lastObject][@"v"] = @(v);
-            }
-            [self setStockPrice];
-            [self.graph reloadData];
-            
-        }
         [self.myGGpriceLabel setHidden:NO];
         [self.priceLabel setHidden:NO];
         if(self.isSaved){
@@ -520,6 +513,71 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         [self addToDriverIds:self.globalDriverId];
     }
     
+}
+
+-(void)calGooGuuPriceX:(float)x Change:(float)y {
+    
+    x = (int)(x+0.5);
+    
+    int subscript = x-[[self.hisPoints lastObject][@"y"] integerValue];
+    
+    subscript=subscript < 0?0:subscript;
+    subscript=subscript >= [self.forecastPoints count]-1?[self.forecastPoints count]-1:subscript;
+    NSAssert(subscript <= [self.forecastPoints count]-1&&x >= 0,@"over bounds");
+    if(self.linkage){
+        double l4 = YRANGELENGTH*y/self.hostView.frame.size.height/ (1 - exp(-2));
+        
+        double l7 = 2 / ([(self.forecastPoints)[subscript][@"y"] doubleValue]);
+        int i=0;
+        for(id obj in self.forecastPoints){
+            double v = [obj[@"v"] doubleValue];
+            v =[(self.standard)[i] doubleValue]- l4 * (1 - exp(-l7 * (i+1)));
+            v = [self limitComfiguer:v];
+            obj[@"v"] = @(v);
+            if(i == 0){
+                [self.hisPoints lastObject][@"v"] = @(v);
+            }
+            i++;
+        }
+        
+        [self setStockPrice];
+        [self.graph reloadData];
+        
+    }else{
+        
+        double changeD =- YRANGELENGTH*y/self.hostView.frame.size.height;
+        double v=[(self.standard)[subscript] doubleValue]+changeD;
+        
+        v = [self limitComfiguer:v];
+        
+        (self.forecastPoints)[subscript][@"v"] = @(v);
+        if(subscript==0){
+            [self.hisPoints lastObject][@"v"] = @(v);
+        }
+        [self setStockPrice];
+        [self.graph reloadData];
+    }
+}
+
+-(double)limitComfiguer:(double)v {
+    if (self.limitType == BigerThan0) {
+        if (v < 0) {
+            v = 0;
+        }
+    } else if (self.limitType == BET0To1) {
+        if (v > 1) {
+            v = 1;
+        } else if (v < 0) {
+            v = 0;
+        }
+    } else if (self.limitType == BET1To1) {
+        if (v > 1) {
+            v = 1;
+        } else if (v < -1) {
+            v = -1;
+        }
+    }
+    return v;
 }
 
 #pragma mark -
@@ -550,21 +608,29 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 
 -(NSString *)formatTrans:(NSUInteger)index from:(NSMutableArray *)arr{
     NSString *numberString =nil;
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-    [formatter setNumberStyle:NSNumberFormatterPercentStyle];
-    
+
     if([self.trueUnit isEqualToString:@"%"]){
-        [formatter setPositiveFormat:@"0.00%;0.00%;-0.00%"];
-        numberString = [formatter stringFromNumber:@([arr[index][@"v"] floatValue])];
-        SAFE_RELEASE(formatter);
+        numberString = [self decplaceChoose:[arr[index][@"v"] floatValue]*100];
     }else{
-        numberString=[arr[index][@"v"] stringValue];
-        numberString=[Utiles unitConversionData:numberString andUnit:self.yAxisUnit trueUnit:self.trueUnit];
+        numberString = [arr[index][@"v"] stringValue];
+        NSString *tempStr = [Utiles unitConversionData:numberString andUnit:self.yAxisUnit trueUnit:self.trueUnit];
+        numberString = [self decplaceChoose:[tempStr floatValue]];
     }
     return numberString;
 }
 
-
+-(NSString *)decplaceChoose:(float)value {
+    
+    NSString *returnStr = nil;
+    if (fabsf(value) > 100) {
+        returnStr = [NSString stringWithFormat:@"%.0f",value];
+    } else if (value > 10 && value < 100) {
+        returnStr = [NSString stringWithFormat:@"%.1f",value];
+    } else {
+        returnStr = [NSString stringWithFormat:@"%.2f",value];
+    }
+    return returnStr;
+}
 
 //散点数据源委托实现
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot{
@@ -763,8 +829,7 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
     
 }
 
--(void)addScatterChart{
-    //NSLog(@"addScatterChart");
+-(void)addScatterChart {
     self.linkage=YES;
     if([self.graph plotWithIdentifier:COLUMNAR_DATALINE_IDENTIFIER]){
         [self.graph removePlot:self.barPlot];
@@ -795,7 +860,6 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
         self.forecastDefaultLinePlot.dataLineStyle = lineStyle;
         self.forecastDefaultLinePlot.identifier = FORECAST_DEFAULT_DATALINE_IDENTIFIER;
         self.forecastDefaultLinePlot.dataSource = self;
-        
         
         //创建历史数据线段
         lineStyle.lineWidth=1.5f;
@@ -847,13 +911,10 @@ static NSString * COLUMNAR_DATALINE_IDENTIFIER =@"columnar_dataline_identifier";
 }
 
 -(NSUInteger)supportedInterfaceOrientations{
-    //NSLog(@"%s",__FUNCTION__);
     return UIInterfaceOrientationMaskLandscapeRight;
 }
 
-- (BOOL)shouldAutorotate
-{
-    //NSLog(@"%s",__FUNCTION__);
+- (BOOL)shouldAutorotate {
     return YES;
 }
 

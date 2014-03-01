@@ -86,7 +86,6 @@
     if (cell == nil) {
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"ValueViewCell" owner:self options:nil];//加载自定义cell的xib文件
         cell = [array objectAtIndex:0];
-        cell.conciseTextView.layoutManager.delegate = self;
         cell.conciseTextView.textContainer.size = CGSizeMake(304,100);
     }
     
@@ -106,7 +105,7 @@
         temp = [NSString stringWithFormat:@"%@......",[temp substringToIndex:80]];
     }
     
-    cell.conciseTextView.text = temp;
+    cell.content = temp;
     
     [cell.updateTimeLabel setText:model[@"updatetime"]];
     

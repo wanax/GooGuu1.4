@@ -29,35 +29,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.view.backgroundColor=[Utiles colorWithHexString:@"#FFFFFE"];
-    VRGCalendarView *calendar = [[[VRGCalendarView alloc] init] autorelease];
-    calendar.delegate=self;
-    calendar.center = CGPointMake(SCREEN_WIDTH/2,44);
-    [self.view addSubview:calendar];
-    calendar.userInteractionEnabled=YES;
+
+    self.view.backgroundColor = [UIColor whiteColor];
+    VRGCalendarView *temp = [[[VRGCalendarView alloc] init] autorelease];
+    self.calendar = temp;
+    self.calendar.delegate=self;
+    self.calendar.center = CGPointMake(SCREEN_WIDTH/2,44);
+    [self.view addSubview:self.calendar];
+    self.calendar.userInteractionEnabled=YES;
     self.view.userInteractionEnabled=YES;
-    
-    UIPanGestureRecognizer *pan=[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
-    [self.view addGestureRecognizer:pan];
-    [pan release];
     
 }
 
--(void)panView:(UIPanGestureRecognizer *)tap{
-    CGPoint change=[tap translationInView:self.view];
-    if(change.x>100){
-        [(MHTabBarController *)self.parentViewController setSelectedIndex:1 animated:YES];
-    }
-    if(tap.state==UIGestureRecognizerStateChanged){
-        
-        self.view.frame=CGRectMake(0,MAX(MIN(standard.y+change.y,0),-100),SCREEN_WIDTH,442);
-        
-    }else if(tap.state==UIGestureRecognizerStateEnded){
-        standard=self.view.frame.origin;
-    }
-    
-}
 
 
 #pragma mark -
@@ -77,10 +60,13 @@
     id dateNow=[NSDate date];
     
     if ([Utiles isLogin]) {
+        NSString *reg = @"\\d+";
+        NSArray *num = [self.calendar.labelCurrentMonth.text componentsMatchedByRegex:reg];
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [Utiles getUserToken], @"token",
-                                [NSString stringWithFormat:@"%d",[dateNow year]],@"year",[NSString stringWithFormat:@"%d",month],@"month",@"googuu",@"from",
+                                [NSString stringWithFormat:@"%d",[num[0] intValue]==0?[dateNow year]:[num[0] intValue]],@"year",[NSString stringWithFormat:@"%d",month],@"month",@"googuu",@"from",
                                 nil];
+
         [Utiles postNetInfoWithPath:@"UserStockCalendar" andParams:params besidesBlock:^(id resObj){
             if(![[resObj objectForKey:@"status"] isEqualToString:@"0"]){
                 NSNumberFormatter *f = [[NSNumberFormatter alloc] init];

@@ -12,6 +12,7 @@
 #import "PrettyTabBarViewController.h"
 #import "MHTabBarController.h"
 #import "UserRegisterViewController.h"
+#import "SettingCenterViewController.h"
 
 
 @interface ClientLoginViewController ()
@@ -33,7 +34,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.autoCheckImg=[[UIImageView alloc] init];
+        UIImageView *view = [[[UIImageView alloc] init] autorelease];
+        self.autoCheckImg = view;
     }
     return self;
 }
@@ -57,6 +59,7 @@
     
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -71,6 +74,7 @@
     
     self.backButton.style = UIBarButtonSystemItemCancel;
     self.backButton.action = @selector(cancelBtClicked:);
+
 }
 
 
@@ -139,7 +143,7 @@
     }];
 }
 
--(IBAction)cancelBtClicked:(UIButton *)bt{
+-(IBAction)cancelBtClicked:(id)bt{
     [self dismissViewControllerAnimated:YES completion:nil];
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     delegate.tabBarController.selectedIndex = 0;

@@ -28,7 +28,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -89,10 +89,10 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     
     UIToolbar *toolBar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_HEIGHT,44)] autorelease];
 
-    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc]
+    UIBarButtonItem *flexibleSpace = [[[UIBarButtonItem alloc]
                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                       target:nil
-                                      action:nil];
+                                      action:nil] autorelease];
     [toolBar setItems:@[[self addBarButton:@"返回" tag:FinancialBack],
                         flexibleSpace,
                         [self addBarButton:@"财务比例" tag:FinancialRatio],
@@ -109,19 +109,14 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 
 -(void)initBarChart{
     //初始化图形视图
-    @try {
-        self.graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
-
-        self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
-       
-        self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(5,70,SCREEN_HEIGHT-10,220)];
-        [self.view addSubview:self.hostView];
-        [self.hostView setHostedGraph : self.graph ];
-        self.hostView.collapsesLayers = YES;
-    }
-    @catch (NSException *exception) {
-        NSLog(@"%@",exception);
-    }
+    self.graph=[[CPTXYGraph alloc] initWithFrame:CGRectZero];
+    
+    self.graph.fill=[CPTFill fillWithColor:[Utiles cptcolorWithHexString:@"#F0F8FF" andAlpha:1.0]];
+    
+    self.hostView=[[ CPTGraphHostingView alloc ] initWithFrame :CGRectMake(5,70,SCREEN_HEIGHT-10,220)];
+    [self.view addSubview:self.hostView];
+    [self.hostView setHostedGraph : self.graph ];
+    self.hostView.collapsesLayers = YES;
     
     self.graph . paddingLeft = 0.0f ;
     self.graph . paddingRight = 0.0f ;
@@ -184,7 +179,12 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     self.trueUnit=[temp objectForKey:@"unit"];
     NSArray *sort=[Utiles arrSort:self.points];
     self.yAxisUnit=[Utiles getUnitFromData:[[[sort lastObject] objectForKey:@"v"] stringValue] andUnit:self.trueUnit];
-    self.financalTitleLabel.text=[NSString stringWithFormat:@"%@(单位:%@)",[temp objectForKey:@"title"],self.yAxisUnit];
+    if ([self.trueUnit isEqualToString:@"%"] || [self.trueUnit isEqualToString:@"day"]) {
+        self.financalTitleLabel.text=[NSString stringWithFormat:@"%@(单位:%@)",temp[@"title"],self.yAxisUnit];
+    } else {
+        self.financalTitleLabel.text=[NSString stringWithFormat:@"%@(单位:%@|币种:%@)",temp[@"title"],self.yAxisUnit,self.currency];
+    }
+    
     [self setXYAxis];
     self.barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
     [self.graph reloadData];
@@ -201,6 +201,13 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     [Utiles getNetInfoWithPath:@"CompanyModel" andParams:params besidesBlock:^(id resObj){
         
         [self addNameLabel:resObj[@"info"]];
+        NSDictionary *currencyDic = GetConfigure(@"CurrencyMap", nil, NO);
+
+        if (resObj[@"info"][@"Currency"]) {
+            self.currency = currencyDic[resObj[@"info"][@"Currency"]];
+        } else {
+            self.currency = resObj[@"info"][@"Currency"];
+        }
         
         self.jsonForChart=[resObj JSONString];
         self.jsonForChart=[self.jsonForChart stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\\\\\""];
@@ -208,7 +215,7 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
         
         //获取金融模型种类
         id transObj=[self getObjectDataFromJsFun:@"initFinancialData" byData:self.jsonForChart];
-        
+
         self.modelRatioViewController.jsonData=transObj;
         self.modelChartViewController.jsonData=transObj;
         self.modelOtherViewController.jsonData=transObj;
@@ -216,9 +223,10 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
         self.modelChartViewController.indicator=@"listChart";
         self.modelOtherViewController.indicator=@"listOther";
         
-        [self modelClassChanged:[[[transObj objectForKey:@"listRatio"] objectAtIndex:0] objectForKey:@"id"]];
+        [self modelClassChanged:transObj[@"listRatio"][0][@"id"]];
         self.barPlot.baseValue=CPTDecimalFromFloat(XORTHOGONALCOORDINATE);
         [ProgressHUD dismiss];
+        
 
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
         [ProgressHUD dismiss];
@@ -247,26 +255,36 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
     if ( !whiteText ) {
         whiteText = [[ CPTMutableTextStyle alloc ] init ];
         whiteText.color=[CPTColor blackColor];
-        whiteText.fontSize=9.0;
+        whiteText.fontSize=11.0;
         whiteText.fontName=@"Heiti SC";
     }
 
     CPTTextLayer *newLayer = nil ;
     NSString *numberString =nil;
-    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+
     if([self.trueUnit isEqualToString:@"%"]){
-        
-        //[formatter setNumberStyle:NSNumberFormatterPercentStyle];
-        [formatter setPositiveFormat:@"0.00;0.00;-0.00"];
-        numberString = [formatter stringFromNumber:[NSNumber numberWithFloat:[[[self.points objectAtIndex:index] objectForKey:@"v"] floatValue]*100]];
-        
+        numberString = [self decplaceChoose:[self.points[index][@"v"] floatValue]*100];
     }else{
-        numberString=[[[self.points objectAtIndex:index] objectForKey:@"v"] stringValue];
-        numberString=[Utiles unitConversionData:numberString andUnit:self.yAxisUnit trueUnit:self.trueUnit];
+        numberString = [self.points[index][@"v"] stringValue];
+        NSString *tempStr = [Utiles unitConversionData:numberString andUnit:self.yAxisUnit trueUnit:self.trueUnit];
+        numberString = [self decplaceChoose:[tempStr floatValue]];
     }
     newLayer=[[CPTTextLayer alloc] initWithText:numberString style:whiteText];
-    SAFE_RELEASE(formatter);
+
     return [newLayer autorelease];
+}
+
+-(NSString *)decplaceChoose:(float)value {
+
+    NSString *returnStr = nil;
+    if (fabsf(value) > 100) {
+        returnStr = [NSString stringWithFormat:@"%.0f",value];
+    } else if (value > 10 && value < 100) {
+        returnStr = [NSString stringWithFormat:@"%.1f",value];
+    } else {
+        returnStr = [NSString stringWithFormat:@"%.2f",value];
+    }
+    return returnStr;
 }
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot{
@@ -370,25 +388,27 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 }
 
 -(void)setXYAxis{
-    NSMutableArray *xTmp=[[NSMutableArray alloc] init];
-    NSMutableArray *yTmp=[[NSMutableArray alloc] init];
-    for(id obj in self.points){
-        [xTmp addObject:[obj objectForKey:@"y"]];
-        [yTmp addObject:[obj objectForKey:@"v"]];
-    }
-    NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:FinancalModel screenHeight:220];
-    XRANGEBEGIN=[[xyDic objectForKey:@"xBegin"] floatValue];
-    XRANGELENGTH=[[xyDic objectForKey:@"xLength"] floatValue];
-    XORTHOGONALCOORDINATE=[[xyDic objectForKey:@"xOrigin"] floatValue];
-    XINTERVALLENGTH=[[xyDic objectForKey:@"xInterval"] floatValue];
-    YRANGEBEGIN=[[xyDic objectForKey:@"yBegin"] floatValue];
-    YRANGELENGTH=[[xyDic objectForKey:@"yLength"] floatValue];
-    YORTHOGONALCOORDINATE=[[xyDic objectForKey:@"yOrigin"] floatValue];
-    YINTERVALLENGTH=[[xyDic objectForKey:@"yInterval"] floatValue];
-    DrawXYAxisWithoutYAxis;
-    SAFE_RELEASE(xTmp);
-    SAFE_RELEASE(yTmp);
     
+    if ([self.points count] > 0) {
+        NSMutableArray *xTmp=[[NSMutableArray alloc] init];
+        NSMutableArray *yTmp=[[NSMutableArray alloc] init];
+        for(id obj in self.points){
+            [xTmp addObject:[obj objectForKey:@"y"]];
+            [yTmp addObject:[obj objectForKey:@"v"]];
+        }
+        NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:FinancalModel screenHeight:220];
+        XRANGEBEGIN=[[xyDic objectForKey:@"xBegin"] floatValue];
+        XRANGELENGTH=[[xyDic objectForKey:@"xLength"] floatValue];
+        XORTHOGONALCOORDINATE=[[xyDic objectForKey:@"xOrigin"] floatValue];
+        XINTERVALLENGTH=[[xyDic objectForKey:@"xInterval"] floatValue];
+        YRANGEBEGIN=[[xyDic objectForKey:@"yBegin"] floatValue];
+        YRANGELENGTH=[[xyDic objectForKey:@"yLength"] floatValue];
+        YORTHOGONALCOORDINATE=[[xyDic objectForKey:@"yOrigin"] floatValue];
+        YINTERVALLENGTH=[[xyDic objectForKey:@"yInterval"] floatValue];
+        DrawXYAxisWithoutYAxis;
+        SAFE_RELEASE(xTmp);
+        SAFE_RELEASE(yTmp);
+    }
 }
 
 

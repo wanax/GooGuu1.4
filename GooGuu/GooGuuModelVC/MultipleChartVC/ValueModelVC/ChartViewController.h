@@ -60,6 +60,8 @@
 @property BOOL webIsLoaded;
 @property BOOL disCountIsChanged;
 @property BOOL isShowDiscountView;
+@property ChartLimitRange limitType;
+@property CGPoint resetPoint;
 @property BrowseSourceType sourceType;
 @property BrowseSourceType wantSavedType;
 @property (nonatomic,retain) id comInfo;
@@ -67,11 +69,7 @@
 @property (nonatomic,retain) NSString *globalDriverId;
 @property (nonatomic,retain) NSString *valuesStr;
 @property (nonatomic,retain) NSMutableArray *changedDriverIds;
-
-@property (nonatomic,retain) DiscountRateViewController *rateViewController;
-@property (nonatomic,retain) ModelClassGrade2ViewController *modelMainViewController;
-@property (nonatomic,retain) ModelClassGrade2ViewController *modelFeeViewController;
-@property (nonatomic,retain) ModelClassGrade2ViewController *modelCapViewController;
+@property (retain, nonatomic) NSDictionary *currency;
 
 //预测曲线
 @property (nonatomic,retain) NSMutableArray *forecastPoints;
@@ -93,7 +91,9 @@
 
 //行业分类
 @property (nonatomic,retain) id industryClass;
+//经过转化便于阅读的单位
 @property (nonatomic,retain) NSString *yAxisUnit;
+//网络数据传来的单位
 @property (nonatomic,retain) NSString *trueUnit;
 
 @property (nonatomic,retain) UIWebView *webView;
@@ -104,11 +104,17 @@
 @property (nonatomic,retain) UIButton *linkBt;
 @property (nonatomic,retain) UIButton *discountBt;
 
+@property (nonatomic,retain) DiscountRateViewController *rateViewController;
+@property (nonatomic,retain) ModelClassGrade2ViewController *modelMainViewController;
+@property (nonatomic,retain) ModelClassGrade2ViewController *modelFeeViewController;
+@property (nonatomic,retain) ModelClassGrade2ViewController *modelCapViewController;
+
 //绘图view
 @property (nonatomic,retain) CPTXYGraph * graph ;
 @property (nonatomic,retain) CPTGraphHostingView *hostView;
 @property (nonatomic,retain) CPTXYPlotSpace *plotSpace;
 
+-(id)init;
 
 //坐标转换方法，实际坐标转化相对坐标
 - (CGPoint)CoordinateTransformRealToAbstract:(CGPoint)point;

@@ -68,7 +68,7 @@
     NSAssert(block, @"Can't start progress without progressBlock");
     self.block = block;
     if (!self.timer.isValid) {
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f / 30
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f
                                                       target:self
                                                     selector:@selector(updateProgress)
                                                     userInfo:nil

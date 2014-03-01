@@ -50,7 +50,7 @@
     
     if ([Utiles isLogin]) {
         NSString *url = @"";
-        if ([bt.title isEqualToString:@"关注"]) {
+        if ([bt.title isEqualToString:@"收藏"]) {
             url = @"AddAttention";
         } else {
             url = @"DeleteAttention";
@@ -64,10 +64,10 @@
         [Utiles postNetInfoWithPath:url andParams:params besidesBlock:^(id obj) {
             
             if ([obj[@"status"] isEqualToString:@"1"]) {
-                if ([bt.title isEqualToString:@"关注"]) {
-                    bt.title = @"取消关注";
+                if ([bt.title isEqualToString:@"收藏"]) {
+                    bt.title = @"取消收藏";
                 } else {
-                    bt.title = @"关注";
+                    bt.title = @"收藏";
                 }
             } else {
                 [Utiles showToastView:self.view withTitle:nil andContent:obj[@"msg"] duration:1.5];
@@ -87,7 +87,7 @@
     UIBarButtonItem *back = [[[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self  action:@selector(backUp:)] autorelease];
     self.navigationItem.leftBarButtonItem = back;
     
-    UIBarButtonItem *favButton = [[[UIBarButtonItem alloc] initWithTitle:@"关注" style:UIBarButtonItemStylePlain target:self  action:@selector(favBtClicked:)] autorelease];
+    UIBarButtonItem *favButton = [[[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStylePlain target:self  action:@selector(favBtClicked:)] autorelease];
     self.navigationItem.rightBarButtonItem = favButton;
     
     if ([Utiles isLogin]) {
@@ -104,7 +104,7 @@
                 [temp addObject:model[@"stockcode"]];
             }
             if ([temp containsObject:self.companyInfo[@"stockcode"]]) {
-                favButton.title = @"取消关注";
+                favButton.title = @"取消收藏";
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -137,8 +137,8 @@
         self.updownIndicator.image = [UIImage imageNamed:@"stockDownArrow"];
     }
     //SEGMENT
-    [self.comInfoSeg setTitle:[NSString stringWithFormat:@"关注(%@)",self.companyInfo[@"attentioncount"]] forSegmentAtIndex:1];
-    [self.comInfoSeg setTitle:[NSString stringWithFormat:@"模型(%@)",self.companyInfo[@"usersavecount"]] forSegmentAtIndex:2];
+    [self.comInfoSeg setTitle:[NSString stringWithFormat:@"关注人数(%@)",self.companyInfo[@"attentioncount"]] forSegmentAtIndex:1];
+    [self.comInfoSeg setTitle:[NSString stringWithFormat:@"模型调整(%@)",self.companyInfo[@"usersavecount"]] forSegmentAtIndex:2];
     
     [self expectStock];
     
@@ -168,15 +168,7 @@
 }
 
 #pragma mark -
-#pragma NetWork
-
--(void)getComInfo {
-    
-    
-}
-
-#pragma mark -
-#pragma Button Action
+#pragma Segment Delegate
 
 - (IBAction)comInfoSegClicked:(UISegmentedControl *)sender {
     //公司简介
@@ -246,15 +238,11 @@
     [self presentViewController:expectVC animated:YES completion:nil];
 }
 
-//业绩简报
-- (IBAction)ggReportBtClicked:(id)sender {
-    AnalysisReportViewController *reportListVC = [[[AnalysisReportViewController alloc] init] autorelease];
-    reportListVC.companyInfo = self.companyInfo;
-    [self.navigationController pushViewController:reportListVC animated:YES];
-}
+#pragma mark -
+#pragma Button Action
 
 //估值模型
-- (IBAction)ggModelBtClicked:(id)sender {
+- (IBAction)ggReportBtClicked:(id)sender {
     
     if ([self.companyInfo[@"hasmodel"] boolValue]) {
         ChartViewController *modelChartVC = [[[ChartViewController alloc] init] autorelease];
@@ -263,7 +251,34 @@
     } else {
         [self requestValution];
     }
+}
+
+//可比公司
+- (IBAction)ggModelBtClicked:(id)sender {
     
+    WebChartViewController *chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"comparecompany"] autorelease];
+    [self presentViewController:chartVC animated:YES completion:nil];
+    
+}
+
+//估值区间
+- (IBAction)ggFinBtClicked:(id)sender {
+    
+    WebChartViewController *chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"valuationspace"] autorelease];
+    [self presentViewController:chartVC animated:YES completion:nil];
+    
+}
+
+//分析师目标价
+- (IBAction)ggViewBtClicked:(id)sender {
+    
+    WebChartViewController *chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"analyseviewspace"] autorelease];
+    [self presentViewController:chartVC animated:YES completion:nil];
+    
+}
+
+-(IBAction)backUp:(UIBarButtonItem *)bt {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)requestValution{
@@ -280,31 +295,6 @@
     } failure:^(AFHTTPRequestOperation *operation,NSError *error){
         [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
     }];
-}
-
-//财务数据
-- (IBAction)ggFinBtClicked:(id)sender {
-    
-    if ([self.companyInfo[@"hasmodel"] boolValue]) {
-        FinancalModelChartViewController *finChartVC = [[[FinancalModelChartViewController alloc] init] autorelease];
-        finChartVC.comInfo = self.companyInfo;
-        [self presentViewController:finChartVC animated:YES completion:nil];
-    } else {
-        FinanceDataViewController *finChartVC = [[[FinanceDataViewController alloc] init] autorelease];
-        finChartVC.comInfo = self.companyInfo;
-        [self presentViewController:finChartVC animated:YES completion:nil];
-    }
-    
-}
-
-//估值观点
-- (IBAction)ggViewBtClicked:(id)sender {
-    ComGGViewsVC *viewListVC = [[[ComGGViewsVC alloc] initWithStockCode:self.companyInfo[@"stockcode"]] autorelease];
-    [self.navigationController pushViewController:viewListVC animated:YES];
-}
-
--(IBAction)backUp:(UIBarButtonItem *)bt {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark -
@@ -332,22 +322,22 @@
     int row = indexPath.row;
     
     if (row == 0) {
-        cell.textLabel.text = @"公司公告";
-        cell.imageView.image = [UIImage imageNamed:@"post_small_icon"];
+        cell.textLabel.text = @"财务数据";
+        cell.imageView.image = [UIImage imageNamed:@"fin_small_icon"];
     } else if (row == 1) {
         cell.textLabel.text = @"大行估值";
         cell.imageView.image = [UIImage imageNamed:@"dahon_small_icon"];
     } else if (row ==2) {
-        cell.textLabel.text = @"估友评论";
-        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+        cell.textLabel.text = @"业绩简报";
+        cell.imageView.image = [UIImage imageNamed:@"report_small_icon"];
     } else if (row ==3) {
-        cell.textLabel.text = @"估值空间";
-        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+        cell.textLabel.text = @"估值观点";
+        cell.imageView.image = [UIImage imageNamed:@"view_small_icon"];
     } else if (row ==4) {
-        cell.textLabel.text = @"分析师目标价";
-        cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
+        cell.textLabel.text = @"公司公告";
+        cell.imageView.image = [UIImage imageNamed:@"post_small_icon"];
     } else if (row ==5) {
-        cell.textLabel.text = @"可比公司分析";
+        cell.textLabel.text = @"估友评论";
         cell.imageView.image = [UIImage imageNamed:@"msg_small_icon"];
     }
     return cell;
@@ -360,29 +350,48 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     int row = indexPath.row;
-    //公司公告
+    //财务数据
     if (row == 0) {
-        CompanyPostListViewController *postVC = [[[CompanyPostListViewController alloc] init] autorelease];
-        postVC.stockCode = self.companyInfo[@"stockcode"];
-        [self.navigationController pushViewController:postVC animated:YES];
+        
+        if ([self.companyInfo[@"hasmodel"] boolValue]) {
+            FinancalModelChartViewController *finChartVC = [[[FinancalModelChartViewController alloc] init] autorelease];
+            finChartVC.comInfo = self.companyInfo;
+            [self presentViewController:finChartVC animated:YES completion:nil];
+        } else {
+            FinanceDataViewController *finChartVC = [[[FinanceDataViewController alloc] init] autorelease];
+            finChartVC.comInfo = self.companyInfo;
+            [self presentViewController:finChartVC animated:YES completion:nil];
+        }
+        
     } else if (row == 1) {//大行估值
+        
         DahonValuationViewController *dahonVC = [[[DahonValuationViewController alloc] init] autorelease];
         dahonVC.comInfo = self.companyInfo;
         [self presentViewController:dahonVC animated:YES completion:nil];
-    } else if (row == 2) {//估友评论
-        GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:CompanyComment stockCode:self.companyInfo[@"stockcode"]] autorelease];
+        
+    } else if (row == 2) {//业绩简报
+        
+        AnalysisReportViewController *reportListVC = [[[AnalysisReportViewController alloc] init] autorelease];
+        reportListVC.companyInfo = self.companyInfo;
+        [self.navigationController pushViewController:reportListVC animated:YES];
+        
+    } else if (row == 3) {//估值观点
+        
+        ComGGViewsVC *viewListVC = [[[ComGGViewsVC alloc] initWithStockCode:self.companyInfo[@"stockcode"]] autorelease];
+        [self.navigationController pushViewController:viewListVC animated:YES];
+        
+    } else if (row == 4) {//公司公告
+        
+        CompanyPostListViewController *postVC = [[[CompanyPostListViewController alloc] init] autorelease];
+        postVC.stockCode = self.companyInfo[@"stockcode"];
+        [self.navigationController pushViewController:postVC animated:YES];
+        
+    } else if (row == 5) {//估友评论
+        
+        GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"估友评论" type:CompanyComment stockCode:self.companyInfo[@"stockcode"]] autorelease];
         comVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:comVC animated:YES];
-    } else {
-        WebChartViewController *chartVC = nil;
-        if (row == 3) {
-            chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"valuationspace"] autorelease];
-        } else if (row == 4) {
-            chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"analyseviewspace"] autorelease];
-        } else if (row == 5) {
-            chartVC = [[[WebChartViewController alloc] initWithCode:self.companyInfo[@"stockcode"] type:@"comparecompany"] autorelease];
-        }
-        [self.navigationController pushViewController:chartVC animated:YES];
+        
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -390,7 +399,7 @@
 
 - (BOOL)shouldAutorotate{
     
-    return NO;
+    return YES;
 }
 
 

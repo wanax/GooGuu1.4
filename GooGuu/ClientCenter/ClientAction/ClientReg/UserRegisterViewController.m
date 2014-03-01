@@ -61,12 +61,6 @@ typedef enum{
 -(void)initComponents{
     
     UIToolbar *bar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,44)] autorelease];
-    /*UIButton *wanSay= [[UIButton alloc] initWithFrame:CGRectMake(0, 10.0, 40, 30.0)];
-     [wanSay setTitle:@"返回" forState:UIControlStateNormal];
-     [wanSay addTarget:self action:@selector(dismissView) forControlEvents:UIControlEventTouchUpInside];
-     [wanSay setTitleColor:[Utiles colorWithHexString:@"#307DF9"] forState:UIControlStateNormal];
-     UIBarButtonItem *nextStepBarBtn = [[[UIBarButtonItem alloc] initWithCustomView:wanSay] autorelease];
-     [bar setItems:[NSArray arrayWithObject:nextStepBarBtn] animated:YES];*/
     UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(dismissView)];
     back.action = @selector(dismissView);
     back.target = self;
@@ -221,7 +215,9 @@ typedef enum{
             if([[obj objectForKey:@"status"] integerValue]!=1){
                 [Utiles showToastView:self.view withTitle:nil andContent:[obj objectForKey:@"msg"] duration:2.0];
             }else{
-                [self userLoginUserName:phoneNum pwd:passWord];
+                [CommonFunction userLoginUserName:phoneNum pwd:passWord callBack:^(id obj) {
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                }];
             }
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -308,45 +304,6 @@ typedef enum{
     selectedTextFieldTag = textField.tag;
 }
 
--(void)userLoginUserName:(NSString *)userName pwd:(NSString *)pwd{
-    if ([Utiles isNetConnected]) {
-
-        NSDictionary *params=[NSDictionary dictionaryWithObjectsAndKeys:[userName lowercaseString],@"username",[Utiles md5:pwd],@"password",@"googuu",@"from", nil];
-        
-        [Utiles getNetInfoWithPath:@"Login" andParams:params besidesBlock:^(id info){
-            if([[info objectForKey:@"status"] isEqualToString:@"1"]){
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"LoginKeeping" object:nil];
-                [[NSUserDefaults standardUserDefaults] setObject:[info objectForKey:@"token"] forKey:@"UserToken"];
-                
-                NSDictionary *userInfo=[NSDictionary dictionaryWithObjectsAndKeys:userName,@"username",pwd,@"password", nil];
-                [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"UserInfo"];
-                
-                NSLog(@"%@",[info objectForKey:@"token"]);
-                
-                [self dismissViewControllerAnimated:YES completion:nil];
-                
-            }else {
-                NSString *msg=@"";
-                if ([info[@"status"] isEqual:@"0"]) {
-                    msg=@"用户不存在";
-                } else if ([info[@"status"] isEqual:@"2"]){
-                    msg=@"邮箱未激活";
-                } else if ([info[@"status"] isEqual:@"3"]){
-                    msg=@"密码错误";
-                }
-                [Utiles showToastView:self.view withTitle:nil andContent:msg duration:1.0];
-            }
-        } failure:^(AFHTTPRequestOperation *operation,NSError *error){
-
-            [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-        }];
-    } else {
-        [Utiles showToastView:self.view withTitle:nil andContent:@"网络异常" duration:1.5];
-    }
-    
-    
-}
 - (BOOL)shouldAutorotate{
     return NO;
 }

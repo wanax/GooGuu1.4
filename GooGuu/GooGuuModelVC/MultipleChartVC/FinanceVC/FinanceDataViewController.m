@@ -414,25 +414,27 @@ static NSString * BAR_IDENTIFIER =@"bar_identifier";
 }
 
 -(void)setXYAxis{
-    NSMutableArray *xTmp=[[NSMutableArray alloc] init];
-    NSMutableArray *yTmp=[[NSMutableArray alloc] init];
-    for(id obj in self.points){
-        [xTmp addObject:[obj objectForKey:@"y"]];
-        [yTmp addObject:[obj objectForKey:@"v"]];
-    }
-    NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:FinancalModel screenHeight:220];
-    XRANGEBEGIN=[[xyDic objectForKey:@"xBegin"] floatValue];
-    XRANGELENGTH=[[xyDic objectForKey:@"xLength"] floatValue];
-    XORTHOGONALCOORDINATE=[[xyDic objectForKey:@"xOrigin"] floatValue];
-    XINTERVALLENGTH=[[xyDic objectForKey:@"xInterval"] floatValue];
-    YRANGEBEGIN=[[xyDic objectForKey:@"yBegin"] floatValue];
-    YRANGELENGTH=[[xyDic objectForKey:@"yLength"] floatValue];
-    YORTHOGONALCOORDINATE=[[xyDic objectForKey:@"yOrigin"] floatValue];
-    YINTERVALLENGTH=[[xyDic objectForKey:@"yInterval"] floatValue];
-    DrawXYAxisWithoutYAxis;
-    SAFE_RELEASE(xTmp);
-    SAFE_RELEASE(yTmp);
     
+    if ([self.points count] > 0) {
+        NSMutableArray *xTmp=[[NSMutableArray alloc] init];
+        NSMutableArray *yTmp=[[NSMutableArray alloc] init];
+        for(id obj in self.points){
+            [xTmp addObject:[obj objectForKey:@"y"]];
+            [yTmp addObject:[obj objectForKey:@"v"]];
+        }
+        NSDictionary *xyDic=[DrawChartTool getXYAxisRangeFromxArr:xTmp andyArr:yTmp fromWhere:FinancalModel screenHeight:220];
+        XRANGEBEGIN=[[xyDic objectForKey:@"xBegin"] floatValue];
+        XRANGELENGTH=[[xyDic objectForKey:@"xLength"] floatValue];
+        XORTHOGONALCOORDINATE=[[xyDic objectForKey:@"xOrigin"] floatValue];
+        XINTERVALLENGTH=[[xyDic objectForKey:@"xInterval"] floatValue];
+        YRANGEBEGIN=[[xyDic objectForKey:@"yBegin"] floatValue];
+        YRANGELENGTH=[[xyDic objectForKey:@"yLength"] floatValue];
+        YORTHOGONALCOORDINATE=[[xyDic objectForKey:@"yOrigin"] floatValue];
+        YINTERVALLENGTH=[[xyDic objectForKey:@"yInterval"] floatValue];
+        DrawXYAxisWithoutYAxis;
+        SAFE_RELEASE(xTmp);
+        SAFE_RELEASE(yTmp);
+    }
 }
 
 

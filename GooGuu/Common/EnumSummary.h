@@ -186,5 +186,12 @@ typedef enum {
     ReportArticle//原始研究报告
 } GooGuuArticleType;
 
+typedef NS_ENUM(NSInteger, ChartLimitRange) {
+    BigerThan0,//(0,+∞)
+    BET0To1,//(0,1)
+    BET1To1,//(-1,1)
+    NOLimit//(-∞,+∞)
+};//图表拖动元素的取值范围
+
 
 @end

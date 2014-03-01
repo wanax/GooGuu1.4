@@ -135,18 +135,10 @@ static NSString * HISTORY_DATALINE_IDENTIFIER =@"历史股价";
 
 -(void)changeBtState:(UIButton *)nowBt{
     [self.lastMarkBt setBackgroundImage:nil forState:UIControlStateNormal];
-    [self.lastMarkBt.titleLabel setTextColor:[Utiles colorWithHexString:@"#e97a31"]];
-    [nowBt setBackgroundImage:[UIImage imageNamed:@"monthChoosenBt"] forState:UIControlStateNormal];
-    [nowBt setTitleColor:[Utiles colorWithHexString:@"#FFFEFE"] forState:UIControlStateNormal];
-    CATransition *transition=[CATransition animation];
-    transition.duration=0.3f;
-    transition.fillMode=kCAFillRuleNonZero;
-    transition.type=kCATransitionMoveIn;
-    transition.subtype=kCATransitionFromTop;
-    [nowBt.layer addAnimation:transition forKey:@"animation"];
-    transition.type=kCATransitionFade;
-    transition.subtype=kCATransitionFromTop;
-    [self.lastMarkBt.layer addAnimation:transition forKey:@"animation"];
+    [self.lastMarkBt.titleLabel setTextColor:[UIColor peterRiverColor]];
+
+    [nowBt setTitleColor:[UIColor amethystColor] forState:UIControlStateNormal];
+
     self.lastMarkBt=nowBt;
 }
 

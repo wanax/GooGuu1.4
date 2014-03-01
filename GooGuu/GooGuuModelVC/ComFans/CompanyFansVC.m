@@ -169,10 +169,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TaIndexViewController *taIndex = [[[TaIndexViewController alloc] init] autorelease];
-    taIndex.userName = self.fansList[indexPath.row][@"username"];
-    [self.navigationController pushViewController:taIndex animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([Utiles isLogin]) {
+        TaIndexViewController *taIndex = [[[TaIndexViewController alloc] init] autorelease];
+        taIndex.userName = self.fansList[indexPath.row][@"username"];
+        [self.navigationController pushViewController:taIndex animated:YES];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
+    
 }
 
 

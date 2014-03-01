@@ -160,12 +160,12 @@
     
     if ([bt.titleLabel.text isEqual:@"评论"]) {
         if (![Utiles isBlankString:self.articleInfo[@"stockcode"]]) {
-            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:CompanyComment stockCode:self.articleInfo[@"stockcode"]] autorelease];
+            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"估友评论" type:CompanyComment stockCode:self.articleInfo[@"stockcode"]] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         } else {
 
-            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"股友评论" type:ArticleComment articleId:self.articleId] autorelease];
+            GooGuuCommentListVC *comVC = [[[GooGuuCommentListVC alloc] initWithTopical:@"估友评论" type:ArticleComment articleId:self.articleId] autorelease];
             comVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:comVC animated:YES];
         }

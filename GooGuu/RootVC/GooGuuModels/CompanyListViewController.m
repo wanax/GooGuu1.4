@@ -41,7 +41,7 @@
 }
 -(void)initViewComponents{
 
-    UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT)] autorelease];
+    UITableView *temp = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_WIDTH,SCREEN_HEIGHT-65)] autorelease];
     self.comsTable = temp;
     self.comsTable.dataSource=self;
     self.comsTable.delegate=self;

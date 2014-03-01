@@ -57,6 +57,7 @@
 @property (nonatomic,retain) NSString *jsonForChart;
 @property (nonatomic,retain) NSString *trueUnit;
 @property (nonatomic,retain) NSString *yAxisUnit;
+@property (retain, nonatomic) NSString *currency;
 
 @property (nonatomic,retain) ModelClassGrade2ViewController *modelRatioViewController;
 @property (nonatomic,retain) ModelClassGrade2ViewController *modelChartViewController;

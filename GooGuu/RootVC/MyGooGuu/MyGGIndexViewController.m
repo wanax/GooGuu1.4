@@ -42,7 +42,6 @@
         [self getClientInfo];
     } else {
         ClientLoginViewController *loginViewController = [[[ClientLoginViewController alloc] initWithNibName:@"ClientLogin2View" bundle:nil] autorelease];
-        loginViewController.sourceType=SettingBar;
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
 }

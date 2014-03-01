@@ -35,8 +35,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = @"Ta的页面";
 	self.view .backgroundColor = [UIColor cloudsColor];
-    [self getUserInfo];
+    if ([Utiles isLogin]) {
+        [self getUserInfo];
+    } else {
+        [ProgressHUD showError:@"请先登录"];
+    }
 }
 
 #pragma mark -

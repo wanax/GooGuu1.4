@@ -67,9 +67,10 @@
 
 
 -(void)addTabel{
-    self.cusTable=[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_HEIGHT)];
-    self.cusTable.delegate=self;
-    self.cusTable.dataSource=self;
+    UITableView *tempTable = [[[UITableView alloc] initWithFrame:CGRectMake(0,0,SCREEN_HEIGHT,SCREEN_WIDTH)] autorelease];
+    self.cusTable = tempTable;
+    self.cusTable.delegate = self;
+    self.cusTable.dataSource = self;
     [self.view addSubview:self.cusTable];
 }
 
@@ -100,7 +101,7 @@
 	NSString *text =[[self.indicatorClass objectAtIndex:indexPath.row] objectForKey:@"name"];
 	[cell.textLabel setText:text];
     cell.textLabel.font=[UIFont fontWithName:@"Heiti SC" size:13.0f];
-    cell.textLabel.textColor=[Utiles colorWithHexString:@"#9f3c0b"];
+    cell.textLabel.textColor = [UIColor peterRiverColor];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.accessoryView.backgroundColor = [Utiles colorWithHexString:@"d57631"];
 	
@@ -112,7 +113,8 @@
 
 - (void)tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
 	
-    [delegate modelClassChanged:[[self.indicatorClass objectAtIndex:indexPath.row] objectForKey:@"id"] isShowDisView:self.isShowDiscountView];
+    id model = self.indicatorClass[indexPath.row];
+    [delegate modelClassChanged:model[@"id"] isShowDisView:self.isShowDiscountView];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 
